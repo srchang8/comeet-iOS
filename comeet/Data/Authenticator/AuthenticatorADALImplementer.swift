@@ -23,8 +23,7 @@ class AuthenticatorADALImplementer : AuthenticatorProtocol
         let authContext: ADAuthenticationContext = ADAuthenticationContext(authority: Constants.authority,
                                                                            error: &error)
         
-        authContext.acquireToken(withResource: Constants.resource, clientId: Constants.clientId, redirectUri: Constants.redirectUri)
-        { (result: ADAuthenticationResult?) in
+        authContext.acquireToken(withResource: Constants.resource, clientId: Constants.clientId, redirectUri: Constants.redirectUri) { (result: ADAuthenticationResult?) in
             guard error == nil else {
                 completion(nil, error)
                 return
