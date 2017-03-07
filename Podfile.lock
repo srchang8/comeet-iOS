@@ -1,5 +1,9 @@
 PODS:
-  - ADALiOS (3.0.0-pre7)
+  - ADAL (2.3.1):
+    - ADAL/app-lib (= 2.3.1)
+  - ADAL/app-lib (2.3.1):
+    - ADAL/tokencacheheader
+  - ADAL/tokencacheheader (2.3.1)
   - AFNetworking (3.1.0):
     - AFNetworking/NSURLSession (= 3.1.0)
     - AFNetworking/Reachability (= 3.1.0)
@@ -29,14 +33,14 @@ PODS:
   - SDWebImage/Core (4.0.0)
 
 DEPENDENCIES:
-  - ADALiOS (~> 3.0.0-pre7)
+  - ADAL (= 2.3.1)
   - Alamofire (~> 4.4.0)
   - LinkedinSwift (~> 1.7.4)
   - Realm (~> 2.4.3)
   - SDWebImage (~> 4.0.0)
 
 SPEC CHECKSUMS:
-  ADALiOS: 810c2fe1f24528224bb99eee254b5c7b7707f7bd
+  ADAL: 3fcacd30c96e77ca9ddf67e72785c4ddc5555222
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   IOSLinkedInAPIFix: a520fd805a03dade35f42904c7d89ded2a84c752
@@ -44,6 +48,6 @@ SPEC CHECKSUMS:
   Realm: e08d60b0048ccccd3949c8c28a92c4db5712d7e9
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
-PODFILE CHECKSUM: 73f51783c577c1b6ac8ea6ff00973c7672319214
+PODFILE CHECKSUM: 264a5c3adbdc2aba6f9ec907e20cc587cbb61d18
 
 COCOAPODS: 1.2.0
