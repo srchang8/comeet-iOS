@@ -15,7 +15,7 @@ class LoginViewModel {
     
     public var tokenBinding: TokenBinding?
     public var tokenErrorBinding: TokenErrorBinding?
-    private let authenticator = DataSimpleBridge.getAuthenticator()
+    internal var authenticator = DataSimpleBridge.getAuthenticator()
     
     func getToken() {
         authenticator.getToken { [weak self] (token: String?, error: Error?) in

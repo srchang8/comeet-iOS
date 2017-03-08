@@ -10,6 +10,8 @@
 		053564BD1E6E69540072A167 /* AuthenticatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053564BC1E6E69540072A167 /* AuthenticatorProtocol.swift */; };
 		053564BF1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053564BE1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift */; };
 		053564C11E6E6C7B0072A167 /* DataSimpleBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053564C01E6E6C7B0072A167 /* DataSimpleBridge.swift */; };
+		05756C2A1E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05756C291E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift */; };
+		05756C2E1E6FD6CA00A8A61B /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05756C2D1E6FD6CA00A8A61B /* LoginViewModelTests.swift */; };
 		058024FA1E6E56A600C917C0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058024F91E6E56A600C917C0 /* LoginViewController.swift */; };
 		058024FC1E6E56DB00C917C0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058024FB1E6E56DB00C917C0 /* LoginViewModel.swift */; };
 		058025021E6E57F100C917C0 /* MeetingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058025011E6E57F100C917C0 /* MeetingDetailViewController.swift */; };
@@ -24,7 +26,6 @@
 		05F214FC1E6E4D7A004E4A16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05F214FA1E6E4D7A004E4A16 /* Main.storyboard */; };
 		05F214FE1E6E4D7A004E4A16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05F214FD1E6E4D7A004E4A16 /* Assets.xcassets */; };
 		05F215011E6E4D7A004E4A16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05F214FF1E6E4D7A004E4A16 /* LaunchScreen.storyboard */; };
-		05F2150C1E6E4D7A004E4A16 /* comeetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F2150B1E6E4D7A004E4A16 /* comeetTests.swift */; };
 		05F215171E6E4D7A004E4A16 /* comeetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F215161E6E4D7A004E4A16 /* comeetUITests.swift */; };
 		0C1442D63FEB86045D7C7DA2 /* Pods_comeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B91D862A7FBE37C8586934 /* Pods_comeet.framework */; };
 		1637625E99D024466A643A19 /* Pods_comeetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD63FB99D026AD68296B3DD4 /* Pods_comeetTests.framework */; };
@@ -52,6 +53,8 @@
 		053564BC1E6E69540072A167 /* AuthenticatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticatorProtocol.swift; path = Data/Authenticator/AuthenticatorProtocol.swift; sourceTree = "<group>"; };
 		053564BE1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticatorADALImplementer.swift; path = Data/Authenticator/AuthenticatorADALImplementer.swift; sourceTree = "<group>"; };
 		053564C01E6E6C7B0072A167 /* DataSimpleBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSimpleBridge.swift; path = Data/DataSimpleBridge.swift; sourceTree = "<group>"; };
+		05756C291E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticatorADALImplementerTests.swift; path = Data/Authenticator/AuthenticatorADALImplementerTests.swift; sourceTree = "<group>"; };
+		05756C2D1E6FD6CA00A8A61B /* LoginViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModelTests.swift; path = UI/Login/LoginViewModelTests.swift; sourceTree = "<group>"; };
 		058024F91E6E56A600C917C0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = UI/Login/LoginViewController.swift; sourceTree = "<group>"; };
 		058024FB1E6E56DB00C917C0 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = UI/Login/LoginViewModel.swift; sourceTree = "<group>"; };
 		058025011E6E57F100C917C0 /* MeetingDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeetingDetailViewController.swift; path = UI/MeetingDetail/MeetingDetailViewController.swift; sourceTree = "<group>"; };
@@ -70,7 +73,6 @@
 		05F215001E6E4D7A004E4A16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05F215021E6E4D7A004E4A16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05F215071E6E4D7A004E4A16 /* comeetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = comeetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		05F2150B1E6E4D7A004E4A16 /* comeetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = comeetTests.swift; sourceTree = "<group>"; };
 		05F2150D1E6E4D7A004E4A16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05F215121E6E4D7A004E4A16 /* comeetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = comeetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F215161E6E4D7A004E4A16 /* comeetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = comeetUITests.swift; sourceTree = "<group>"; };
@@ -121,6 +123,38 @@
 				053564BE1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift */,
 			);
 			name = Authenticator;
+			sourceTree = "<group>";
+		};
+		05756C251E6FCA6000A8A61B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				05756C261E6FCA7600A8A61B /* Authenticator */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		05756C261E6FCA7600A8A61B /* Authenticator */ = {
+			isa = PBXGroup;
+			children = (
+				05756C291E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift */,
+			);
+			name = Authenticator;
+			sourceTree = "<group>";
+		};
+		05756C2B1E6FD68800A8A61B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				05756C2C1E6FD69F00A8A61B /* Login */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		05756C2C1E6FD69F00A8A61B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				05756C2D1E6FD6CA00A8A61B /* LoginViewModelTests.swift */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		058024F61E6E547600C917C0 /* UI */ = {
@@ -229,7 +263,8 @@
 		05F2150A1E6E4D7A004E4A16 /* comeetTests */ = {
 			isa = PBXGroup;
 			children = (
-				05F2150B1E6E4D7A004E4A16 /* comeetTests.swift */,
+				05756C251E6FCA6000A8A61B /* Data */,
+				05756C2B1E6FD68800A8A61B /* UI */,
 				05F2150D1E6E4D7A004E4A16 /* Info.plist */,
 			);
 			path = comeetTests;
@@ -575,7 +610,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05F2150C1E6E4D7A004E4A16 /* comeetTests.swift in Sources */,
+				05756C2E1E6FD6CA00A8A61B /* LoginViewModelTests.swift in Sources */,
+				05756C2A1E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

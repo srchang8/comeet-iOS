@@ -9,8 +9,8 @@
 import Foundation
 import ADAL
 
-class AuthenticatorADALImplementer : AuthenticatorProtocol
-{
+class AuthenticatorADALImplementer : AuthenticatorProtocol {
+    
     private struct Constants {
         static let authority = "https://login.microsoftonline.com/common"
         static let resource = "https://outlook.office365.com"
@@ -23,17 +23,24 @@ class AuthenticatorADALImplementer : AuthenticatorProtocol
         let authContext: ADAuthenticationContext = ADAuthenticationContext(authority: Constants.authority,
                                                                            error: &error)
         
-        authContext.acquireToken(withResource: Constants.resource, clientId: Constants.clientId, redirectUri: Constants.redirectUri) { (result: ADAuthenticationResult?) in
-            guard error == nil else {
+        authContext.acquireToken(withResource: Constants.resource, clientId: Constants.clientId, redirectUri: Constants.redirectUri) { [weak self] (result: ADAuthenticationResult?) in
+            self?.handle(result: result, error: error, completion: completion)
+        }
+    }  
+}
+
+internal extension AuthenticatorADALImplementer {
+    
+    func handle(result: ADAuthenticationResult?, error: ADAuthenticationError?, completion:@escaping TokenCompletion) {
+        guard error == nil else {
+            completion(nil, error)
+            return
+        }
+        guard result?.status.rawValue == AD_SUCCEEDED.rawValue,
+            let token = result?.accessToken else {
                 completion(nil, error)
                 return
-            }
-            guard result?.status.rawValue == AD_SUCCEEDED.rawValue,
-                let token = result?.accessToken else {
-                    completion(nil, error)
-                    return
-            }
-            completion(token, error)
         }
+        completion(token, error)
     }
 }
