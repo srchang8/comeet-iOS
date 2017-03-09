@@ -6,7 +6,7 @@ target 'comeet' do
   use_frameworks!
 
   # Pods for comeet
-  pod 'ADALiOS', '~> 3.0.0-pre7'
+  pod 'ADAL', '2.3.1'
   pod 'LinkedinSwift', '~> 1.7.4'
   pod 'Alamofire', '~> 4.4.0'
   pod 'Realm', '~> 2.4.3'

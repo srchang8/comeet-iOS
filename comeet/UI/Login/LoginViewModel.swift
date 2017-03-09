@@ -8,6 +8,25 @@
 
 import Foundation
 
+typealias TokenBinding = (String)-> Void
+typealias TokenErrorBinding = (Error)-> Void
+
 class LoginViewModel {
     
+    public var tokenBinding: TokenBinding?
+    public var tokenErrorBinding: TokenErrorBinding?
+    internal var authenticator = DataSimpleBridge.getAuthenticator()
+    
+    func getToken() {
+        authenticator.getToken { [weak self] (token: String?, error: Error?) in
+            guard error == nil else {
+                self?.tokenErrorBinding?(error!)
+                return
+            }
+            
+            if let token = token {
+                self?.tokenBinding?(token)
+            }
+        }
+    }
 }
