@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		053564BD1E6E69540072A167 /* AuthenticatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053564BC1E6E69540072A167 /* AuthenticatorProtocol.swift */; };
+		053564BF1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053564BE1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift */; };
+		053564C11E6E6C7B0072A167 /* DataSimpleBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053564C01E6E6C7B0072A167 /* DataSimpleBridge.swift */; };
+		05756C2A1E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05756C291E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift */; };
+		05756C2E1E6FD6CA00A8A61B /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05756C2D1E6FD6CA00A8A61B /* LoginViewModelTests.swift */; };
 		058024FA1E6E56A600C917C0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058024F91E6E56A600C917C0 /* LoginViewController.swift */; };
 		058024FC1E6E56DB00C917C0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058024FB1E6E56DB00C917C0 /* LoginViewModel.swift */; };
 		058025021E6E57F100C917C0 /* MeetingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058025011E6E57F100C917C0 /* MeetingDetailViewController.swift */; };
@@ -21,11 +26,12 @@
 		05F214FC1E6E4D7A004E4A16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05F214FA1E6E4D7A004E4A16 /* Main.storyboard */; };
 		05F214FE1E6E4D7A004E4A16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05F214FD1E6E4D7A004E4A16 /* Assets.xcassets */; };
 		05F215011E6E4D7A004E4A16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05F214FF1E6E4D7A004E4A16 /* LaunchScreen.storyboard */; };
-		05F2150C1E6E4D7A004E4A16 /* comeetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F2150B1E6E4D7A004E4A16 /* comeetTests.swift */; };
 		05F215171E6E4D7A004E4A16 /* comeetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F215161E6E4D7A004E4A16 /* comeetUITests.swift */; };
 		0C1442D63FEB86045D7C7DA2 /* Pods_comeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B91D862A7FBE37C8586934 /* Pods_comeet.framework */; };
 		1637625E99D024466A643A19 /* Pods_comeetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD63FB99D026AD68296B3DD4 /* Pods_comeetTests.framework */; };
 		D0EDA197ECD00EBD52264BA4 /* Pods_comeetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF5E5210C047205B62B9152 /* Pods_comeetUITests.framework */; };
+		FC44028A1E7234050016A90F /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4402891E7234050016A90F /* MainMenuViewController.swift */; };
+		FC44028C1E7234210016A90F /* MainMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC44028B1E7234210016A90F /* MainMenuViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +52,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		053564BC1E6E69540072A167 /* AuthenticatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticatorProtocol.swift; path = Data/Authenticator/AuthenticatorProtocol.swift; sourceTree = "<group>"; };
+		053564BE1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticatorADALImplementer.swift; path = Data/Authenticator/AuthenticatorADALImplementer.swift; sourceTree = "<group>"; };
+		053564C01E6E6C7B0072A167 /* DataSimpleBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSimpleBridge.swift; path = Data/DataSimpleBridge.swift; sourceTree = "<group>"; };
+		05756C291E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticatorADALImplementerTests.swift; path = Data/Authenticator/AuthenticatorADALImplementerTests.swift; sourceTree = "<group>"; };
+		05756C2D1E6FD6CA00A8A61B /* LoginViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModelTests.swift; path = UI/Login/LoginViewModelTests.swift; sourceTree = "<group>"; };
 		058024F91E6E56A600C917C0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = UI/Login/LoginViewController.swift; sourceTree = "<group>"; };
 		058024FB1E6E56DB00C917C0 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = UI/Login/LoginViewModel.swift; sourceTree = "<group>"; };
 		058025011E6E57F100C917C0 /* MeetingDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeetingDetailViewController.swift; path = UI/MeetingDetail/MeetingDetailViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +67,7 @@
 		0580250B1E6E58B800C917C0 /* MeetingsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeetingsListViewModel.swift; path = UI/MeetingsList/MeetingsListViewModel.swift; sourceTree = "<group>"; };
 		0580250D1E6E58CD00C917C0 /* RoomDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomDetailViewModel.swift; path = UI/RoomDetail/RoomDetailViewModel.swift; sourceTree = "<group>"; };
 		0580250F1E6E58E700C917C0 /* RoomsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomsListViewModel.swift; path = UI/RoomsList/RoomsListViewModel.swift; sourceTree = "<group>"; };
+		058025111E6E5F2600C917C0 /* comeet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = comeet.entitlements; sourceTree = "<group>"; };
 		05F214F31E6E4D7A004E4A16 /* comeet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = comeet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F214F61E6E4D7A004E4A16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05F214FB1E6E4D7A004E4A16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,7 +75,6 @@
 		05F215001E6E4D7A004E4A16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05F215021E6E4D7A004E4A16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05F215071E6E4D7A004E4A16 /* comeetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = comeetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		05F2150B1E6E4D7A004E4A16 /* comeetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = comeetTests.swift; sourceTree = "<group>"; };
 		05F2150D1E6E4D7A004E4A16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05F215121E6E4D7A004E4A16 /* comeetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = comeetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F215161E6E4D7A004E4A16 /* comeetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = comeetUITests.swift; sourceTree = "<group>"; };
@@ -77,6 +88,8 @@
 		CD63FB99D026AD68296B3DD4 /* Pods_comeetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_comeetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2B91D862A7FBE37C8586934 /* Pods_comeet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_comeet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F950E5A61E429A12E5AC9484 /* Pods-comeetUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comeetUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-comeetUITests/Pods-comeetUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FC4402891E7234050016A90F /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		FC44028B1E7234210016A90F /* MainMenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,10 +120,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		053564BB1E6E69270072A167 /* Authenticator */ = {
+			isa = PBXGroup;
+			children = (
+				053564BC1E6E69540072A167 /* AuthenticatorProtocol.swift */,
+				053564BE1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift */,
+			);
+			name = Authenticator;
+			sourceTree = "<group>";
+		};
+		05756C251E6FCA6000A8A61B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				05756C261E6FCA7600A8A61B /* Authenticator */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		05756C261E6FCA7600A8A61B /* Authenticator */ = {
+			isa = PBXGroup;
+			children = (
+				05756C291E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift */,
+			);
+			name = Authenticator;
+			sourceTree = "<group>";
+		};
+		05756C2B1E6FD68800A8A61B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				05756C2C1E6FD69F00A8A61B /* Login */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		05756C2C1E6FD69F00A8A61B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				05756C2D1E6FD6CA00A8A61B /* LoginViewModelTests.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		058024F61E6E547600C917C0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				058024F81E6E549900C917C0 /* Login */,
+				FC4402881E72333B0016A90F /* MainMenu */,
 				058025001E6E57A500C917C0 /* MeetingDetail */,
 				058024FD1E6E576C00C917C0 /* MeetingsList */,
 				058024FF1E6E579600C917C0 /* RoomDetail */,
@@ -122,6 +177,8 @@
 		058024F71E6E548000C917C0 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				053564C01E6E6C7B0072A167 /* DataSimpleBridge.swift */,
+				053564BB1E6E69270072A167 /* Authenticator */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -196,6 +253,7 @@
 		05F214F51E6E4D7A004E4A16 /* comeet */ = {
 			isa = PBXGroup;
 			children = (
+				058025111E6E5F2600C917C0 /* comeet.entitlements */,
 				058024F71E6E548000C917C0 /* Data */,
 				058024F61E6E547600C917C0 /* UI */,
 				05F214F61E6E4D7A004E4A16 /* AppDelegate.swift */,
@@ -210,7 +268,8 @@
 		05F2150A1E6E4D7A004E4A16 /* comeetTests */ = {
 			isa = PBXGroup;
 			children = (
-				05F2150B1E6E4D7A004E4A16 /* comeetTests.swift */,
+				05756C251E6FCA6000A8A61B /* Data */,
+				05756C2B1E6FD68800A8A61B /* UI */,
 				05F2150D1E6E4D7A004E4A16 /* Info.plist */,
 			);
 			path = comeetTests;
@@ -246,6 +305,15 @@
 				2AF5E5210C047205B62B9152 /* Pods_comeetUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC4402881E72333B0016A90F /* MainMenu */ = {
+			isa = PBXGroup;
+			children = (
+				FC4402891E7234050016A90F /* MainMenuViewController.swift */,
+				FC44028B1E7234210016A90F /* MainMenuViewModel.swift */,
+			);
+			name = MainMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,7 +393,13 @@
 				TargetAttributes = {
 					05F214F21E6E4D79004E4A16 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = BYFTRD4RGW;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					05F215061E6E4D7A004E4A16 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -535,11 +609,16 @@
 				058024FA1E6E56A600C917C0 /* LoginViewController.swift in Sources */,
 				058025021E6E57F100C917C0 /* MeetingDetailViewController.swift in Sources */,
 				05F214F71E6E4D7A004E4A16 /* AppDelegate.swift in Sources */,
+				FC44028A1E7234050016A90F /* MainMenuViewController.swift in Sources */,
+				053564C11E6E6C7B0072A167 /* DataSimpleBridge.swift in Sources */,
+				FC44028C1E7234210016A90F /* MainMenuViewModel.swift in Sources */,
 				058024FC1E6E56DB00C917C0 /* LoginViewModel.swift in Sources */,
+				053564BD1E6E69540072A167 /* AuthenticatorProtocol.swift in Sources */,
 				058025041E6E580B00C917C0 /* MeetingsListViewController.swift in Sources */,
 				0580250A1E6E589500C917C0 /* MeetingDetailViewModel.swift in Sources */,
 				0580250E1E6E58CD00C917C0 /* RoomDetailViewModel.swift in Sources */,
 				0580250C1E6E58B800C917C0 /* MeetingsListViewModel.swift in Sources */,
+				053564BF1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,7 +626,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05F2150C1E6E4D7A004E4A16 /* comeetTests.swift in Sources */,
+				05756C2E1E6FD6CA00A8A61B /* LoginViewModelTests.swift in Sources */,
+				05756C2A1E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,6 +772,8 @@
 			baseConfigurationReference = 7EC5EDF2169A4DF25DB3FB88 /* Pods-comeet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = comeet/comeet.entitlements;
+				DEVELOPMENT_TEAM = BYFTRD4RGW;
 				INFOPLIST_FILE = comeet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -706,6 +788,8 @@
 			baseConfigurationReference = 6846396A6214755CEEBC21EA /* Pods-comeet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = comeet/comeet.entitlements;
+				DEVELOPMENT_TEAM = BYFTRD4RGW;
 				INFOPLIST_FILE = comeet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
