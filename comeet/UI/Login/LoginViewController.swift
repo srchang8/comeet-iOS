@@ -25,6 +25,17 @@ class LoginViewController: UIViewController {
     @IBAction func getToken(_ sender: Any) {
         viewModel.getToken()
     }
+    
+    @IBAction func logIn(_ sender: Any) {
+        
+        viewModel.getToken()
+        performSegue(withIdentifier: "MainMenuSegue", sender: self)
+        
+        
+    }
+    
+    
+    
 }
 
 private extension LoginViewController {
