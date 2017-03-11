@@ -10,7 +10,6 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var tokenLabel: UILabel!
     internal let viewModel = LoginViewModel()
     
     override func viewDidLoad() {
@@ -22,15 +21,9 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
 
     }
-    @IBAction func getToken(_ sender: Any) {
-        viewModel.getToken()
-    }
-    
+   
     @IBAction func logIn(_ sender: Any) {
-        
         viewModel.getToken()
-        performSegue(withIdentifier: "MainMenuSegue", sender: self)
-        
         
     }
     
@@ -40,11 +33,16 @@ class LoginViewController: UIViewController {
 
 private extension LoginViewController {
     func setup() {
+        //invoked when we get a token by the view model
         viewModel.tokenBinding = { [weak self] (token: String) in
-            self?.tokenLabel.text = "Token: " + token
+            self?.goToMenu()
         }
+        
         viewModel.tokenErrorBinding = { [weak self] (error: Error) in
-            self?.tokenLabel.text = "Error: " + error.localizedDescription
         }
+    }
+    
+    func goToMenu(){
+        performSegue(withIdentifier: "MainMenuSegue", sender: self)
     }
 }
