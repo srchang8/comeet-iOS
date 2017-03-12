@@ -13,19 +13,23 @@ typealias TokenErrorBinding = (Error)-> Void
 
 class LoginViewModel {
     
-    public var tokenBinding: TokenBinding?
-    public var tokenErrorBinding: TokenErrorBinding?
-    internal var authenticator = DataSimpleBridge.getAuthenticator()
+    var tokenBinding: TokenBinding?
+    var tokenErrorBinding: TokenErrorBinding?
+    var authenticator = DataSimpleBridge.getAuthenticator()
     
     func getToken() {
         authenticator.getToken { [weak self] (token: String?, error: Error?) in
             guard error == nil else {
-                self?.tokenErrorBinding?(error!)
+                DispatchQueue.main.async {
+                    self?.tokenErrorBinding?(error!)
+                }
                 return
             }
             
             if let token = token {
-                self?.tokenBinding?(token)
+                DispatchQueue.main.async {
+                    self?.tokenBinding?(token)
+                }
             }
         }
     }

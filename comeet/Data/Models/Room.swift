@@ -8,20 +8,15 @@
 
 import Foundation
 
-class Room {
+struct Room {
     
-    static func parseRoom(roomDict: NSDictionary) -> Room {
-        return Room()
-    }
-    
-    static func parseRooms(roomsArray: NSArray) -> [Room] {
-        var rooms:[Room] = []
-        for roomDict in roomsArray {
-            if let roomDict = roomDict as? NSDictionary {
-                let room = parseRoom(roomDict: roomDict)
-                rooms.append(room)
-            }
-        }
-        return rooms
-    }
+    let name: String
+    let email: String
+    let address: String?
+    let country: String?
+    let state: String?
+    let metroarea: String?
+    let latitude: Double?
+    let longitude: Double?
+    let capacity: Int?
 }

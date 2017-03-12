@@ -26,14 +26,12 @@ class FetcherAlamofireImplementer : FetcherProtocol {
             
             if let JSON = response.result.value {
                 if let roomsArray = JSON as? NSArray {
-                    let rooms = Room.parseRooms(roomsArray: roomsArray)
+                    let rooms = RoomParser.parseRooms(roomsArray: roomsArray)
                     completion(rooms, nil)
                 } else {
-                    // TODO: Parsing error. Error response is not valid type
                     completion(nil, nil)
                 }
             } else {
-                // TODO: Parsing error. Response was not a valid json
                 completion(nil, nil)
             }
         }

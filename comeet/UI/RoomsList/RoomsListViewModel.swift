@@ -8,6 +8,30 @@
 
 import Foundation
 
+typealias RoomsBinding = ([Room])-> Void
+
 class RoomsListViewModel {
     
+    let authenticator: AuthenticatorProtocol
+    let fetcher: FetcherProtocol
+    var roomsBinding: RoomsBinding?
+    
+    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol) {
+        self.authenticator = authenticator
+        self.fetcher = fetcher
+    }
+    
+    func fetchRooms() {
+        fetcher.fetchRooms { [weak self] (rooms, error) in
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            if let rooms = rooms {
+                self?.roomsBinding?(rooms)
+            } else {
+                print("fetcher.fetchRooms returned nil")
+            }
+        }
+    }
 }

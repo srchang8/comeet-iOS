@@ -9,14 +9,25 @@
 import UIKit
 
 class RoomsListViewController: UIViewController {
+    
+    var viewModel: RoomsListViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setup()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
+    }
+}
+
+private extension RoomsListViewController {
+    
+    func setup() {
+        viewModel?.roomsBinding = { [weak self] (rooms) in
+            print(rooms)
+        }
     }
 }

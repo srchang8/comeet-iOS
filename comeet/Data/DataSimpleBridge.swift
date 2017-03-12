@@ -13,4 +13,8 @@ class DataSimpleBridge {
     static func getAuthenticator() -> AuthenticatorProtocol {
         return AuthenticatorADALImplementer()
     }
+    
+    static func getFetcher() -> FetcherProtocol {
+        return FetcherAlamofireImplementer()
+    }
 }
