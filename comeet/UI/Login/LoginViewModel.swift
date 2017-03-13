@@ -16,6 +16,10 @@ class LoginViewModel : BaseViewModel {
     var tokenBinding: TokenBinding?
     var tokenErrorBinding: TokenErrorBinding?
     var authenticator = DataSimpleBridge.getAuthenticator()
+    var fetcher = DataSimpleBridge.getFetcher()
+    
+    // Set API environment
+    private let environment: Environment = .Mocked
     
     func getToken() {
         authenticator.getToken { [weak self] (token: String?, error: Error?) in
@@ -28,9 +32,15 @@ class LoginViewModel : BaseViewModel {
             
             if let token = token {
                 DispatchQueue.main.async {
+                    self?.prepareFetcher(accessToken: token)
                     self?.tokenBinding?(token)
                 }
             }
         }
+    }
+    
+    private func prepareFetcher(accessToken: String) {
+        fetcher.set(environment: environment)
+        fetcher.set(accessToken: accessToken)
     }
 }

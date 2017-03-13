@@ -11,13 +11,20 @@ import Alamofire
 
 class FetcherAlamofireImplementer : FetcherProtocol {
     
-    private struct Endpoints {
-        static let fetchRooms = "https://private-98f9ba-comeet.apiary-mock.com/rooms"
+    private let sessionManager = SessionManager()
+    // Used mocked environment as default
+    private var endpoints = Endpoints(environment: .Mocked)
+    
+    func set(environment: Environment) {
+        endpoints = Endpoints(environment: environment)
     }
     
+    func set(accessToken: String) {
+        sessionManager.adapter = AlamofireAccessTokenAdapter(accessToken: accessToken)
+    }
     
-    func fetchRooms(completion:@escaping FetchRoomsCompletion) {
-        Alamofire.request(Endpoints.fetchRooms).responseJSON { (response) in
+    func getRooms(completion:@escaping FetchRoomsCompletion) {
+        sessionManager.request(endpoints.getRooms()).responseJSON { (response) in
             
             guard response.error == nil else {
                 completion(nil, response.error)
