@@ -10,6 +10,8 @@ import UIKit
 
 class RoomsListViewController: UIViewController {
     
+    @IBOutlet weak var table: UITableView!
+
     var viewModel: RoomsListViewModel?
 
     override func viewDidLoad() {
@@ -19,7 +21,6 @@ class RoomsListViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-
     }
 }
 
@@ -27,7 +28,25 @@ private extension RoomsListViewController {
     
     func setup() {
         viewModel?.roomsBinding = { [weak self] (rooms) in
-            print(rooms)
+            self?.table.reloadData()
         }
+        viewModel?.fetchRooms()
     }
+}
+
+extension RoomsListViewController : UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.roomsCount() ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = table.dequeueReusableCell(withIdentifier: "RoomCell", for: indexPath)
+        cell.textLabel?.text = viewModel?.roomName(index: indexPath.row)
+        cell.detailTextLabel?.text = viewModel?.roomDescription(index: indexPath.row)
+        return cell
+    }
+}
+
+extension RoomsListViewController : UITableViewDelegate {
+    
 }
