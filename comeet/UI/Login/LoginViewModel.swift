@@ -11,7 +11,7 @@ import Foundation
 typealias TokenBinding = (String)-> Void
 typealias TokenErrorBinding = (Error)-> Void
 
-class LoginViewModel {
+class LoginViewModel : BaseViewModel {
     
     var tokenBinding: TokenBinding?
     var tokenErrorBinding: TokenErrorBinding?

@@ -8,6 +8,6 @@
 
 import Foundation
 
-class MeetingDetailViewModel {
+class MeetingDetailViewModel : BaseViewModel {
     
 }

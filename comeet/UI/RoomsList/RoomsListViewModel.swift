@@ -10,7 +10,7 @@ import Foundation
 
 typealias RoomsBinding = ([Room])-> Void
 
-class RoomsListViewModel {
+class RoomsListViewModel : BaseViewModel {
     
     let authenticator: AuthenticatorProtocol
     let fetcher: FetcherProtocol

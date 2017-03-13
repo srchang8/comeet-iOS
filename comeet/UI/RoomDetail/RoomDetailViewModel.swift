@@ -8,6 +8,6 @@
 
 import Foundation
 
-class RoomDetailViewModel {
+class RoomDetailViewModel :  BaseViewModel {
     
 }
