@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="d4w-Q0-P4A">
-    <device id="retina4_7" orientation="portrait">
+    <device id="ipad12_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,20 +19,16 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Comeet Logo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2a4-wZ-bkk">
-                                <rect key="frame" x="0.0" y="132" width="375" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNW-gu-FWT">
-                                <rect key="frame" x="72" y="258" width="230" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNW-gu-FWT">
+                                <rect key="frame" x="397" y="653" width="230" height="60"/>
                                 <color key="backgroundColor" red="0.23672278090000001" green="0.41792716369999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="9du-KD-pAu"/>
+                                    <constraint firstAttribute="height" constant="60" id="A0n-ju-N7g"/>
+                                </constraints>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -45,9 +42,25 @@
                                     <action selector="logIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sC0-tb-AKa"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comeet Logo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3z-iZ-3cJ">
+                                <rect key="frame" x="362" y="568" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="WsE-Re-ok9"/>
+                                    <constraint firstAttribute="height" constant="50" id="xsV-uB-TQL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.0" green="0.40392156862745099" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="BNW-gu-FWT" firstAttribute="top" secondItem="y3z-iZ-3cJ" secondAttribute="bottom" constant="35" id="2am-Yl-8ly"/>
+                            <constraint firstItem="y3z-iZ-3cJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Cj-el-WpU"/>
+                            <constraint firstItem="BNW-gu-FWT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="4YJ-Tf-DPg"/>
+                            <constraint firstItem="BNW-gu-FWT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="APw-QK-2fJ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="POO-0q-p0m"/>
                     <connections>
@@ -56,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
+            <point key="canvasLocation" x="136.23188405797103" y="136.95652173913044"/>
         </scene>
         <!--Main Menu View Controller-->
         <scene sceneID="yKa-uR-ctj">
@@ -67,37 +80,32 @@
                         <viewControllerLayoutGuide type="bottom" id="jae-z4-WMc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Zu3-Mu-axF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Comeet Logo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCy-bC-OJg">
-                                <rect key="frame" x="0.0" y="108" width="375" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Comeet Logo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCy-bC-OJg">
+                                <rect key="frame" x="52" y="119" width="300" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lWV-o5-3e0">
-                                <rect key="frame" x="57" y="226" width="260" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lWV-o5-3e0">
+                                <rect key="frame" x="77" y="225" width="260" height="60"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="My Agenda"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5p-Ba-YQJ">
-                                <rect key="frame" x="57" y="304" width="260" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5p-Ba-YQJ">
+                                <rect key="frame" x="77" y="305" width="260" height="60"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="Book A Room"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMh-k2-Lns">
-                                <rect key="frame" x="57" y="380" width="260" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMh-k2-Lns">
+                                <rect key="frame" x="77" y="384" width="260" height="60"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="Find Meeting"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LSn-bd-DIW">
-                                <rect key="frame" x="72" y="551" width="230" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LSn-bd-DIW">
+                                <rect key="frame" x="92" y="525" width="230" height="60"/>
                                 <color key="backgroundColor" red="0.23672278090000001" green="0.41792716369999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Log out"/>
@@ -113,6 +121,28 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LSn-bd-DIW" firstAttribute="width" secondItem="Zu3-Mu-axF" secondAttribute="width" multiplier="0.5" id="28x-RX-wIX"/>
+                            <constraint firstItem="LSn-bd-DIW" firstAttribute="top" secondItem="QMh-k2-Lns" secondAttribute="bottom" constant="60" id="5Ma-H7-bGK"/>
+                            <constraint firstItem="QMh-k2-Lns" firstAttribute="centerX" secondItem="Zu3-Mu-axF" secondAttribute="centerX" id="7g4-Ju-gMZ"/>
+                            <constraint firstItem="lWV-o5-3e0" firstAttribute="centerX" secondItem="Zu3-Mu-axF" secondAttribute="centerX" id="9g3-4g-Ytv"/>
+                            <constraint firstItem="jae-z4-WMc" firstAttribute="top" secondItem="LSn-bd-DIW" secondAttribute="bottom" constant="50" id="CyY-e6-zOB"/>
+                            <constraint firstItem="QMh-k2-Lns" firstAttribute="height" secondItem="Zu3-Mu-axF" secondAttribute="height" multiplier="0.07" id="ENA-Kn-Ajd"/>
+                            <constraint firstItem="lWV-o5-3e0" firstAttribute="top" secondItem="xCy-bC-OJg" secondAttribute="bottom" constant="56" id="GTg-Fd-GPi"/>
+                            <constraint firstItem="R5p-Ba-YQJ" firstAttribute="height" secondItem="Zu3-Mu-axF" secondAttribute="height" multiplier="0.07" id="MOC-Eu-D5H"/>
+                            <constraint firstItem="QMh-k2-Lns" firstAttribute="top" secondItem="R5p-Ba-YQJ" secondAttribute="bottom" constant="15" id="NUY-hO-8op"/>
+                            <constraint firstItem="LSn-bd-DIW" firstAttribute="centerX" secondItem="Zu3-Mu-axF" secondAttribute="centerX" id="P0M-HE-TYT"/>
+                            <constraint firstItem="R5p-Ba-YQJ" firstAttribute="top" secondItem="lWV-o5-3e0" secondAttribute="bottom" constant="15" id="SZN-e3-g5w"/>
+                            <constraint firstItem="lWV-o5-3e0" firstAttribute="height" secondItem="Zu3-Mu-axF" secondAttribute="height" multiplier="0.07" id="U52-Pv-d1v"/>
+                            <constraint firstItem="lWV-o5-3e0" firstAttribute="width" secondItem="Zu3-Mu-axF" secondAttribute="width" multiplier="0.6" id="Xfn-QV-Zmt"/>
+                            <constraint firstItem="R5p-Ba-YQJ" firstAttribute="centerX" secondItem="Zu3-Mu-axF" secondAttribute="centerX" id="ZnI-c4-sBd"/>
+                            <constraint firstItem="xCy-bC-OJg" firstAttribute="width" secondItem="Zu3-Mu-axF" secondAttribute="width" multiplier="0.75" id="ddf-fk-Ken"/>
+                            <constraint firstItem="xCy-bC-OJg" firstAttribute="centerX" secondItem="Zu3-Mu-axF" secondAttribute="centerX" id="dfZ-gx-i1G"/>
+                            <constraint firstItem="QMh-k2-Lns" firstAttribute="width" secondItem="Zu3-Mu-axF" secondAttribute="width" multiplier="0.6" id="fdn-Em-kCE"/>
+                            <constraint firstItem="LSn-bd-DIW" firstAttribute="height" secondItem="Zu3-Mu-axF" secondAttribute="height" multiplier="0.07" id="jvE-o6-lVS"/>
+                            <constraint firstItem="xCy-bC-OJg" firstAttribute="height" secondItem="Zu3-Mu-axF" secondAttribute="height" multiplier="0.09" id="qt4-YE-WRc"/>
+                            <constraint firstItem="R5p-Ba-YQJ" firstAttribute="width" secondItem="Zu3-Mu-axF" secondAttribute="width" multiplier="0.6" id="vDN-Pr-4mc"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mXO-jX-TUI" userLabel="First Responder" sceneMemberID="firstResponder"/>

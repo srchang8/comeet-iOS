@@ -13,6 +13,15 @@ class MainMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //hide back button on navigation controller
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        
+        //make navigation bar translucent
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = UIColor.clear
+        
     }
     
     override func didReceiveMemoryWarning() {
