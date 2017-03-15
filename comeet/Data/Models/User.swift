@@ -1,14 +1,13 @@
 //
-//  MainMenuViewModel.swift
+//  User.swift
 //  comeet
 //
-//  Created by stephen chang on 3/9/17.
+//  Created by Ricardo Contreras on 3/11/17.
 //  Copyright © 2017 teamawesome. All rights reserved.
 //
 
-
 import Foundation
 
-class MainMenuViewModel {
+class User {
     
 }

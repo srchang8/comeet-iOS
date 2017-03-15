@@ -11,22 +11,36 @@ import Foundation
 typealias TokenBinding = (String)-> Void
 typealias TokenErrorBinding = (Error)-> Void
 
-class LoginViewModel {
+class LoginViewModel : BaseViewModel {
     
-    public var tokenBinding: TokenBinding?
-    public var tokenErrorBinding: TokenErrorBinding?
-    internal var authenticator = DataSimpleBridge.getAuthenticator()
+    var tokenBinding: TokenBinding?
+    var tokenErrorBinding: TokenErrorBinding?
+    var authenticator = DataSimpleBridge.getAuthenticator()
+    var fetcher = DataSimpleBridge.getFetcher()
+    
+    // Set API environment
+    private let environment: Environment = .Mocked
     
     func getToken() {
         authenticator.getToken { [weak self] (token: String?, error: Error?) in
             guard error == nil else {
-                self?.tokenErrorBinding?(error!)
+                DispatchQueue.main.async {
+                    self?.tokenErrorBinding?(error!)
+                }
                 return
             }
             
             if let token = token {
-                self?.tokenBinding?(token)
+                DispatchQueue.main.async {
+                    self?.prepareFetcher(accessToken: token)
+                    self?.tokenBinding?(token)
+                }
             }
         }
+    }
+    
+    private func prepareFetcher(accessToken: String) {
+        fetcher.set(environment: environment)
+        fetcher.set(accessToken: accessToken)
     }
 }

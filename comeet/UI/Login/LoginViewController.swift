@@ -27,12 +27,17 @@ class LoginViewController: UIViewController {
         
     }
     
-    
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else { return }
+        Router.prepare(identifier: identifier, destination: segue.destination, sourceViewModel: viewModel)
+    }
 }
 
 private extension LoginViewController {
     func setup() {
+        
+        self.title = "Login"
+        
         //invoked when we get a token by the view model
         viewModel.tokenBinding = { [weak self] (token: String) in
             self?.goToMenu()
@@ -43,6 +48,6 @@ private extension LoginViewController {
     }
     
     func goToMenu(){
-        performSegue(withIdentifier: "MainMenuSegue", sender: self)
+        performSegue(withIdentifier: Router.Constants.mainMenudentifier, sender: self)
     }
 }
