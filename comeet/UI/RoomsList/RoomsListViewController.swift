@@ -13,6 +13,10 @@ class RoomsListViewController: UIViewController {
     @IBOutlet weak var table: UITableView!
 
     var viewModel: RoomsListViewModel?
+    
+    internal struct Constants {
+        static let roomCellIdentifier = "RoomCell"
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +31,9 @@ class RoomsListViewController: UIViewController {
 private extension RoomsListViewController {
     
     func setup() {
+        
+        title = "Book a Room"
+        
         viewModel?.roomsBinding = { [weak self] (rooms) in
             self?.table.reloadData()
         }
@@ -40,7 +47,7 @@ extension RoomsListViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = table.dequeueReusableCell(withIdentifier: "RoomCell", for: indexPath)
+        let cell = table.dequeueReusableCell(withIdentifier: Constants.roomCellIdentifier, for: indexPath)
         cell.textLabel?.text = viewModel?.roomName(index: indexPath.row)
         cell.detailTextLabel?.text = viewModel?.roomDescription(index: indexPath.row)
         return cell

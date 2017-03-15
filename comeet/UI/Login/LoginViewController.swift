@@ -10,7 +10,6 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var tokenLabel: UILabel!
     internal let viewModel = LoginViewModel()
     
     override func viewDidLoad() {
@@ -22,26 +21,33 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
 
     }
-    @IBAction func getToken(_ sender: Any) {
+   
+    @IBAction func logIn(_ sender: Any) {
         viewModel.getToken()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifier = segue.identifier else {
-            return
-        }
+        guard let identifier = segue.identifier else { return }
         Router.prepare(identifier: identifier, destination: segue.destination, sourceViewModel: viewModel)
     }
 }
 
 private extension LoginViewController {
     func setup() {
+        
+        self.title = "Login"
+        
+        //invoked when we get a token by the view model
         viewModel.tokenBinding = { [weak self] (token: String) in
-            self?.tokenLabel.text = "Token: " + token
-            self?.performSegue(withIdentifier: Router.Constants.roomsListIdentifier, sender: nil)
+            self?.goToMenu()
         }
+        
         viewModel.tokenErrorBinding = { [weak self] (error: Error) in
-            self?.tokenLabel.text = "Error: " + error.localizedDescription
         }
+    }
+    
+    func goToMenu(){
+        performSegue(withIdentifier: Router.Constants.mainMenudentifier, sender: self)
     }
 }
