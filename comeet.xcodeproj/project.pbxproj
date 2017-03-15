@@ -34,6 +34,10 @@
 		05CF17DE1E78FD6F0024D84F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF17D51E78FD6F0024D84F /* User.swift */; };
 		05CF17DF1E78FD6F0024D84F /* RoomParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF17D71E78FD6F0024D84F /* RoomParser.swift */; };
 		05CF17E01E78FD900024D84F /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF17C81E78FD130024D84F /* Router.swift */; };
+		05CF17E31E790F770024D84F /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF17E21E790F770024D84F /* Environment.swift */; };
+		05CF17E61E7912A70024D84F /* AlamofireAccessTokenAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF17E51E7912A70024D84F /* AlamofireAccessTokenAdapterTests.swift */; };
+		05CF17E81E7917F70024D84F /* EnvironmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF17E71E7917F70024D84F /* EnvironmentTests.swift */; };
+		05CF17EB1E791AED0024D84F /* RoomParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF17EA1E791AED0024D84F /* RoomParserTests.swift */; };
 		05F214F71E6E4D7A004E4A16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F214F61E6E4D7A004E4A16 /* AppDelegate.swift */; };
 		05F214FC1E6E4D7A004E4A16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05F214FA1E6E4D7A004E4A16 /* Main.storyboard */; };
 		05F214FE1E6E4D7A004E4A16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05F214FD1E6E4D7A004E4A16 /* Assets.xcassets */; };
@@ -90,6 +94,10 @@
 		05CF17D41E78FD6F0024D84F /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		05CF17D51E78FD6F0024D84F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		05CF17D71E78FD6F0024D84F /* RoomParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomParser.swift; sourceTree = "<group>"; };
+		05CF17E21E790F770024D84F /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		05CF17E51E7912A70024D84F /* AlamofireAccessTokenAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlamofireAccessTokenAdapterTests.swift; path = Data/Fetcher/AlamofireAccessTokenAdapterTests.swift; sourceTree = "<group>"; };
+		05CF17E71E7917F70024D84F /* EnvironmentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnvironmentTests.swift; path = Data/Fetcher/EnvironmentTests.swift; sourceTree = "<group>"; };
+		05CF17EA1E791AED0024D84F /* RoomParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomParserTests.swift; path = Data/Parsers/RoomParserTests.swift; sourceTree = "<group>"; };
 		05F214F31E6E4D7A004E4A16 /* comeet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = comeet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F214F61E6E4D7A004E4A16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05F214FB1E6E4D7A004E4A16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -153,6 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				05756C261E6FCA7600A8A61B /* Authenticator */,
+				05CF17E41E7912800024D84F /* Fetcher */,
+				05CF17E91E791ACE0024D84F /* Parsers */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -161,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				05756C291E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift */,
+				05CF17E71E7917F70024D84F /* EnvironmentTests.swift */,
 			);
 			name = Authenticator;
 			sourceTree = "<group>";
@@ -276,6 +287,7 @@
 			children = (
 				05CF17CE1E78FD6F0024D84F /* AlamofireAccessTokenAdapter.swift */,
 				05CF17CF1E78FD6F0024D84F /* Endpoints.swift */,
+				05CF17E21E790F770024D84F /* Environment.swift */,
 				05CF17D01E78FD6F0024D84F /* FetcherAlamofireImplementer.swift */,
 				05CF17D11E78FD6F0024D84F /* FetcherProtocol.swift */,
 			);
@@ -301,6 +313,22 @@
 			);
 			name = Parsers;
 			path = Data/Parsers;
+			sourceTree = "<group>";
+		};
+		05CF17E41E7912800024D84F /* Fetcher */ = {
+			isa = PBXGroup;
+			children = (
+				05CF17E51E7912A70024D84F /* AlamofireAccessTokenAdapterTests.swift */,
+			);
+			name = Fetcher;
+			sourceTree = "<group>";
+		};
+		05CF17E91E791ACE0024D84F /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				05CF17EA1E791AED0024D84F /* RoomParserTests.swift */,
+			);
+			name = Parsers;
 			sourceTree = "<group>";
 		};
 		05F214EA1E6E4D79004E4A16 = {
@@ -700,6 +728,7 @@
 				05CF17DB1E78FD6F0024D84F /* FetcherProtocol.swift in Sources */,
 				0580250A1E6E589500C917C0 /* MeetingDetailViewModel.swift in Sources */,
 				0580250E1E6E58CD00C917C0 /* RoomDetailViewModel.swift in Sources */,
+				05CF17E31E790F770024D84F /* Environment.swift in Sources */,
 				05CF17DE1E78FD6F0024D84F /* User.swift in Sources */,
 				05CF17DC1E78FD6F0024D84F /* Meeting.swift in Sources */,
 				0580250C1E6E58B800C917C0 /* MeetingsListViewModel.swift in Sources */,
@@ -711,6 +740,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05CF17E61E7912A70024D84F /* AlamofireAccessTokenAdapterTests.swift in Sources */,
+				05CF17EB1E791AED0024D84F /* RoomParserTests.swift in Sources */,
+				05CF17E81E7917F70024D84F /* EnvironmentTests.swift in Sources */,
 				05756C2E1E6FD6CA00A8A61B /* LoginViewModelTests.swift in Sources */,
 				05756C2A1E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift in Sources */,
 			);

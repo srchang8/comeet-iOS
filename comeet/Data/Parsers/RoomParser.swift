@@ -10,7 +10,7 @@ import Foundation
 
 class RoomParser {
     
-    private struct Constants {
+    internal struct Constants {
         static let nameKey = "name"
         static let emailKey = "email"
         static let addressKey = "address"
