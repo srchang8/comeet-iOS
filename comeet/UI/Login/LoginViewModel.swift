@@ -19,7 +19,7 @@ class LoginViewModel : BaseViewModel {
     var fetcher = DataSimpleBridge.getFetcher()
     
     // Set API environment
-    private let environment: Environment = .Mocked
+    private let environment: Environment = .Production
     
     func getToken() {
         authenticator.getToken { [weak self] (token: String?, error: Error?) in

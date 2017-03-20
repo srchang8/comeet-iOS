@@ -25,12 +25,12 @@ class LoginViewModelTests: XCTestCase {
     func testTokenChange() {
 
         let fakeAuthenticator = FakeAuthenticator()
-        fakeAuthenticator.token = fakeToken()
+        fakeAuthenticator.token = Stubs.token()
         
         viewModel?.authenticator = fakeAuthenticator
         
-        viewModel!.tokenBinding = { [weak self] (token: String) in
-            XCTAssert(token == self?.fakeToken())
+        viewModel!.tokenBinding = { (token: String) in
+            XCTAssert(token == Stubs.token())
         }
         viewModel!.tokenErrorBinding = { (error: Error) in
             XCTAssert(false)
@@ -41,41 +41,16 @@ class LoginViewModelTests: XCTestCase {
     func testTokenError() {
         
         let fakeAuthenticator = FakeAuthenticator()
-        fakeAuthenticator.error = fakeError()
+        fakeAuthenticator.error = Stubs.unauthorizedError()
         
         viewModel?.authenticator = fakeAuthenticator
         
         viewModel!.tokenBinding = { (token: String) in
             XCTAssert(false)
         }
-        viewModel!.tokenErrorBinding = { [weak self] (error: Error) in
-            XCTAssert(error.localizedDescription == self?.fakeError().localizedDescription)
+        viewModel!.tokenErrorBinding = { (error: Error) in
+            XCTAssert(error.localizedDescription == Stubs.unauthorizedError().localizedDescription)
         }
         viewModel!.getToken()
-    }
-}
-
-class FakeAuthenticator: AuthenticatorProtocol
-{
-    public var token: String?
-    public var error: Error?
-    
-    func getToken(completion:@escaping TokenCompletion) {
-        completion(token, error)
-    }
-}
-
-private extension LoginViewModelTests {
-    func fakeError() -> NSError {
-        let userInfo: [AnyHashable : Any] =
-            [NSLocalizedDescriptionKey: NSLocalizedString("Unauthorized", value: "Error getting token", comment: "") ,
-             NSLocalizedFailureReasonErrorKey: NSLocalizedString("Unauthorized", value: "No token found", comment: "")]
-        let fakeError = NSError(domain: "HttpResponseErrorDomain", code: 401, userInfo: userInfo)
-        
-        return fakeError
-    }
-    
-    func fakeToken() -> String {
-        return "123"
     }
 }

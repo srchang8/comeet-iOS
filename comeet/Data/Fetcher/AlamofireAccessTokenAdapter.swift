@@ -16,7 +16,6 @@ class AlamofireAccessTokenAdapter: RequestAdapter {
         static let authorizationHeaderField = "Authorization"
     }
     
-    
     init(accessToken: String) {
         self.accessToken = accessToken
     }

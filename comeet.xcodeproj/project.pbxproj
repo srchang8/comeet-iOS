@@ -43,6 +43,10 @@
 		05F214FE1E6E4D7A004E4A16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05F214FD1E6E4D7A004E4A16 /* Assets.xcassets */; };
 		05F215011E6E4D7A004E4A16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05F214FF1E6E4D7A004E4A16 /* LaunchScreen.storyboard */; };
 		05F215171E6E4D7A004E4A16 /* comeetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F215161E6E4D7A004E4A16 /* comeetUITests.swift */; };
+		05F986BA1E7EFBFE00120AB4 /* RoomsListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F986B91E7EFBFE00120AB4 /* RoomsListViewModelTests.swift */; };
+		05F986BD1E7EFCFC00120AB4 /* FakeAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F986BC1E7EFCFC00120AB4 /* FakeAuthenticator.swift */; };
+		05F986BF1E7EFE8900120AB4 /* FakeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F986BE1E7EFE8900120AB4 /* FakeFetcher.swift */; };
+		05F986C11E7F005100120AB4 /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F986C01E7F005100120AB4 /* Stubs.swift */; };
 		0C1442D63FEB86045D7C7DA2 /* Pods_comeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B91D862A7FBE37C8586934 /* Pods_comeet.framework */; };
 		1637625E99D024466A643A19 /* Pods_comeetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD63FB99D026AD68296B3DD4 /* Pods_comeetTests.framework */; };
 		D0EDA197ECD00EBD52264BA4 /* Pods_comeetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF5E5210C047205B62B9152 /* Pods_comeetUITests.framework */; };
@@ -109,6 +113,10 @@
 		05F215121E6E4D7A004E4A16 /* comeetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = comeetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F215161E6E4D7A004E4A16 /* comeetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = comeetUITests.swift; sourceTree = "<group>"; };
 		05F215181E6E4D7A004E4A16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05F986B91E7EFBFE00120AB4 /* RoomsListViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomsListViewModelTests.swift; path = UI/RoomsList/RoomsListViewModelTests.swift; sourceTree = "<group>"; };
+		05F986BC1E7EFCFC00120AB4 /* FakeAuthenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeAuthenticator.swift; path = UI/Fakes/FakeAuthenticator.swift; sourceTree = "<group>"; };
+		05F986BE1E7EFE8900120AB4 /* FakeFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeFetcher.swift; path = UI/Fakes/FakeFetcher.swift; sourceTree = "<group>"; };
+		05F986C01E7F005100120AB4 /* Stubs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stubs.swift; path = UI/Fakes/Stubs.swift; sourceTree = "<group>"; };
 		2AF5E5210C047205B62B9152 /* Pods_comeetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_comeetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E856707B3E9B61502DB2422 /* Pods-comeetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comeetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-comeetTests/Pods-comeetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5123FE4D1C16CB40AA2456B3 /* Pods-comeetUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comeetUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-comeetUITests/Pods-comeetUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -179,7 +187,9 @@
 		05756C2B1E6FD68800A8A61B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				05F986BB1E7EFCBC00120AB4 /* Fakes */,
 				05756C2C1E6FD69F00A8A61B /* Login */,
+				05F986B81E7EFBDF00120AB4 /* RoomsList */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -385,6 +395,24 @@
 				05F215181E6E4D7A004E4A16 /* Info.plist */,
 			);
 			path = comeetUITests;
+			sourceTree = "<group>";
+		};
+		05F986B81E7EFBDF00120AB4 /* RoomsList */ = {
+			isa = PBXGroup;
+			children = (
+				05F986B91E7EFBFE00120AB4 /* RoomsListViewModelTests.swift */,
+			);
+			name = RoomsList;
+			sourceTree = "<group>";
+		};
+		05F986BB1E7EFCBC00120AB4 /* Fakes */ = {
+			isa = PBXGroup;
+			children = (
+				05F986BC1E7EFCFC00120AB4 /* FakeAuthenticator.swift */,
+				05F986BE1E7EFE8900120AB4 /* FakeFetcher.swift */,
+				05F986C01E7F005100120AB4 /* Stubs.swift */,
+			);
+			name = Fakes;
 			sourceTree = "<group>";
 		};
 		2B4779981C4B41E8AF676ACD /* Pods */ = {
@@ -740,11 +768,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05F986C11E7F005100120AB4 /* Stubs.swift in Sources */,
 				05CF17E61E7912A70024D84F /* AlamofireAccessTokenAdapterTests.swift in Sources */,
 				05CF17EB1E791AED0024D84F /* RoomParserTests.swift in Sources */,
 				05CF17E81E7917F70024D84F /* EnvironmentTests.swift in Sources */,
+				05F986BA1E7EFBFE00120AB4 /* RoomsListViewModelTests.swift in Sources */,
+				05F986BF1E7EFE8900120AB4 /* FakeFetcher.swift in Sources */,
 				05756C2E1E6FD6CA00A8A61B /* LoginViewModelTests.swift in Sources */,
 				05756C2A1E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift in Sources */,
+				05F986BD1E7EFCFC00120AB4 /* FakeAuthenticator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
