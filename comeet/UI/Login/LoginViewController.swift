@@ -43,7 +43,7 @@ private extension LoginViewController {
             self?.goToMenu()
         }
         
-        viewModel.tokenErrorBinding = { [weak self] (error: Error) in
+        viewModel.tokenErrorBinding = { (error: Error) in
         }
     }
     

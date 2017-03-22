@@ -12,7 +12,6 @@ import Alamofire
 class FetcherAlamofireImplementer : FetcherProtocol {
     
     private let sessionManager = SessionManager()
-    // Used mocked environment as default
     private var endpoints = Endpoints(environment: .Mocked)
     
     func set(environment: Environment) {
@@ -24,23 +23,28 @@ class FetcherAlamofireImplementer : FetcherProtocol {
     }
     
     func getRooms(completion:@escaping FetchRoomsCompletion) {
-        sessionManager.request(endpoints.getRooms()).responseJSON { (response) in
-            
-            guard response.error == nil else {
-                completion(nil, response.error)
-                return;
-            }
-            
-            if let JSON = response.result.value {
-                if let roomsArray = JSON as? NSArray {
-                    let rooms = RoomParser.parseRooms(roomsArray: roomsArray)
-                    completion(rooms, nil)
-                } else {
-                    completion(nil, nil)
-                }
+        sessionManager.request(endpoints.getRooms()).responseJSON { [weak self] (response) in
+            self?.handleRooms(completion: completion, response: response)
+        }
+    }
+}
+
+private extension FetcherAlamofireImplementer {
+    func handleRooms(completion:@escaping FetchRoomsCompletion, response: DataResponse<Any>) {
+        guard response.error == nil else {
+            completion(nil, response.error)
+            return;
+        }
+        
+        if let JSON = response.result.value {
+            if let roomsArray = JSON as? NSArray {
+                let rooms = RoomParser.parseRooms(roomsArray: roomsArray)
+                completion(rooms, nil)
             } else {
                 completion(nil, nil)
             }
+        } else {
+            completion(nil, nil)
         }
     }
 }
