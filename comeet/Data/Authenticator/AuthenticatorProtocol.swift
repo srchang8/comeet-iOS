@@ -12,4 +12,6 @@ typealias TokenCompletion = (String?, Error?)-> Void
 
 protocol AuthenticatorProtocol {
     func getToken(completion:@escaping TokenCompletion)
+    func isLoggedIn() -> Bool
+    func logout()
 }

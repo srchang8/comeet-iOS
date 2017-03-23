@@ -39,6 +39,10 @@ class LoginViewModel : BaseViewModel {
         }
     }
     
+    func isLoggedIn() -> Bool {
+        return authenticator.isLoggedIn()
+    }
+    
     private func prepareFetcher(accessToken: String) {
         fetcher.set(environment: environment)
         fetcher.set(accessToken: accessToken)

@@ -18,4 +18,8 @@ class MainMenuViewModel : BaseViewModel {
         self.authenticator = authenticator
         self.fetcher = fetcher
     }
+    
+    func logout() {
+        authenticator.logout()
+    }
 }
