@@ -26,7 +26,6 @@ class LoginViewModelTests: XCTestCase {
 
         let fakeAuthenticator = FakeAuthenticator()
         fakeAuthenticator.token = Stubs.token()
-        
         viewModel?.authenticator = fakeAuthenticator
         
         viewModel!.tokenBinding = { (token: String) in
@@ -42,7 +41,6 @@ class LoginViewModelTests: XCTestCase {
         
         let fakeAuthenticator = FakeAuthenticator()
         fakeAuthenticator.error = Stubs.unauthorizedError()
-        
         viewModel?.authenticator = fakeAuthenticator
         
         viewModel!.tokenBinding = { (token: String) in
@@ -52,5 +50,15 @@ class LoginViewModelTests: XCTestCase {
             XCTAssert(error.localizedDescription == Stubs.unauthorizedError().localizedDescription)
         }
         viewModel!.getToken()
+    }
+    
+    func testIsLoggedIn() {
+        let fakeAuthenticator = FakeAuthenticator()
+        fakeAuthenticator.userLoggedIn = false
+        viewModel?.authenticator = fakeAuthenticator
+        
+        XCTAssertFalse(viewModel!.isLoggedIn())
+        fakeAuthenticator.userLoggedIn = true
+        XCTAssertTrue(viewModel!.isLoggedIn())
     }
 }

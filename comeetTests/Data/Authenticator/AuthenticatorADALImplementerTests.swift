@@ -29,4 +29,18 @@ class AuthenticatorADALImplementerTests: XCTestCase {
             XCTAssert(token == nil)
         })
     }
+    
+    func testDeleteCookies() {
+        let cookieName = "CookieName"
+        let cookieJar = HTTPCookieStorage.shared
+        let cookie = HTTPCookie.init(properties: [HTTPCookiePropertyKey.name : cookieName,
+                                                  HTTPCookiePropertyKey.value : "value",
+                                                  HTTPCookiePropertyKey.domain : "test.domain.com",
+                                                  HTTPCookiePropertyKey.path : "fakepath"])
+        cookieJar.setCookie(cookie!)
+        let cookiesNum = cookieJar.cookies!.count
+        authenticator!.deleteCookies(cookiesNames: [cookieName])
+        
+        XCTAssert(cookieJar.cookies!.count == cookiesNum - 1)
+    }
 }
