@@ -24,6 +24,7 @@ class MainMenuViewController: UIViewController {
     //log out user from exchange
     //bring view back to log in segue
     @IBAction func logOut(_ sender: Any) {
+        viewModel?.logout()
         _=navigationController?.popViewController(animated: true)
         
     }

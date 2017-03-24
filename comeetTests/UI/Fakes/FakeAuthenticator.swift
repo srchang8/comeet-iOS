@@ -13,8 +13,17 @@ class FakeAuthenticator: AuthenticatorProtocol
 {
     public var token: String?
     public var error: Error?
+    public var userLoggedIn = true
     
     func getToken(completion:@escaping TokenCompletion) {
         completion(token, error)
+    }
+    
+    func isLoggedIn() -> Bool {
+        return userLoggedIn
+    }
+    
+    func logout() {
+        
     }
 }

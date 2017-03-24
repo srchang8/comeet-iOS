@@ -45,6 +45,10 @@ private extension LoginViewController {
         
         viewModel.tokenErrorBinding = { (error: Error) in
         }
+        
+        if self.viewModel.isLoggedIn() {
+            self.goToMenu()
+        }
     }
     
     func goToMenu(){
