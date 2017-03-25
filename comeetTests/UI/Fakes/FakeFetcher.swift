@@ -24,7 +24,7 @@ class FakeFetcher: FetcherProtocol {
         self.accessToken = accessToken
     }
     
-    func getRooms(completion:@escaping FetchRoomsCompletion) {
+    func getRooms(organization: String,completion:@escaping FetchRoomsCompletion) {
         completion(rooms, error)
     }
 }

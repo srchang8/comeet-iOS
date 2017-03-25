@@ -22,8 +22,8 @@ class FetcherAlamofireImplementer : FetcherProtocol {
         sessionManager.adapter = AlamofireAccessTokenAdapter(accessToken: accessToken)
     }
     
-    func getRooms(completion:@escaping FetchRoomsCompletion) {
-        sessionManager.request(endpoints.getRooms()).responseJSON { [weak self] (response) in
+    func getRooms(organization: String,completion:@escaping FetchRoomsCompletion) {
+        sessionManager.request(endpoints.getRooms(organization: organization)).responseJSON { [weak self] (response) in
             self?.handleRooms(completion: completion, response: response)
         }
     }

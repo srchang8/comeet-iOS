@@ -17,7 +17,10 @@ class AuthenticatorADALImplementer : AuthenticatorProtocol {
         static let clientId = "a64d56ea-5675-4ccf-82e9-5757620e1d26"
         static let redirectUri = URL(string: "http://localhost/comeet")
         static let authCookies = ["MSISAuth", "MSISAuthenticated", "MSISLoopDetectionCookie"]
+        static let defaultOrganization = "organization"
     }
+    
+    internal var organization: String?
     
     func getToken(completion:@escaping TokenCompletion) {
         var error: ADAuthenticationError?
@@ -44,7 +47,12 @@ class AuthenticatorADALImplementer : AuthenticatorProtocol {
         guard error == nil else {
             return
         }
+        organization = nil
         self.deleteCookies(cookiesNames: Constants.authCookies)
+    }
+    
+    func getOrganization() -> String {
+        return organization ?? Constants.defaultOrganization
     }
 }
 
@@ -56,10 +64,12 @@ internal extension AuthenticatorADALImplementer {
             return
         }
         guard result?.status.rawValue == AD_SUCCEEDED.rawValue,
-            let token = result?.accessToken else {
+            let token = result?.accessToken,
+            let item = result?.tokenCacheItem else {
                 completion(nil, error)
                 return
         }
+        saveUserEmail(item: item)
         completion(token, error)
     }
     
@@ -73,5 +83,25 @@ internal extension AuthenticatorADALImplementer {
                 cookieJar.deleteCookie(cookie)
             }
         }
+    }
+    
+    func saveUserEmail(item: ADTokenCacheItem) {
+        guard let userInformation = item.userInformation else {
+            return
+        }
+        
+        if let userEmail = userInformation.eMail {
+            organization = getUserOrganization(email: userEmail)
+        } else if let userId = userInformation.userId  {
+            organization = getUserOrganization(email: userId)
+        }
+    }
+    
+    func getUserOrganization(email: String) -> String? {
+        let components = email.components(separatedBy: "@")
+        guard components.count == 2 else {
+            return nil
+        }
+        return components[1]
     }
 }

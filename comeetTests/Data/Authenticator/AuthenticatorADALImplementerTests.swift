@@ -43,4 +43,19 @@ class AuthenticatorADALImplementerTests: XCTestCase {
         
         XCTAssert(cookieJar.cookies!.count == cookiesNum - 1)
     }
+    
+    func testNoOrganization() {
+        let organization = authenticator?.getOrganization()
+        XCTAssert(organization == "organization")
+    }
+    
+    func testOrganizationChange() {
+        let organization = authenticator?.getUserOrganization(email: "test@something.com")
+        XCTAssert(organization == "something.com")
+    }
+    
+    func testOrganizationInvalidChange() {
+        let organization = authenticator?.getUserOrganization(email: "test_something.com")
+        XCTAssert(organization == nil)
+    }
 }

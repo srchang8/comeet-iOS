@@ -23,7 +23,7 @@ class RoomsListViewModel : BaseViewModel {
     }
     
     func fetchRooms() {
-        fetcher.getRooms { [weak self] (rooms, error) in
+        fetcher.getRooms(organization: authenticator.getOrganization()) { [weak self] (rooms, error) in
             guard error == nil else {
                 print(error!)
                 return

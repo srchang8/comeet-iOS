@@ -13,5 +13,5 @@ typealias FetchRoomsCompletion = ([Room]?, Error?)-> Void
 protocol FetcherProtocol {
     func set(environment: Environment)
     func set(accessToken: String)
-    func getRooms(completion:@escaping FetchRoomsCompletion)
+    func getRooms(organization: String,completion:@escaping FetchRoomsCompletion)
 }
