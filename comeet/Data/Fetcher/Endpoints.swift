@@ -16,4 +16,9 @@ struct Endpoints {
         let roomsPath = environment.rawValue + "/" + organization + "/rooms"
         return roomsPath
     }
+    
+    func getSeatchCriteria(organization: String) -> String {
+        let roomsPath = environment.rawValue + "/" + organization + "/searchcriteria"
+        return roomsPath
+    }
 }

@@ -23,8 +23,8 @@ class FreebusyBlockParser {
             let endString = freebusyBlockDict[Constants.endKey] as? String else {
                 return nil
         }
-        guard let start = fromAPI(stringDate: startString),
-            let end = fromAPI(stringDate: endString),
+        guard let start = Date.fromAPI(stringDate: startString),
+            let end = Date.fromAPI(stringDate: endString),
             start < end else {
                 return nil
         }
@@ -46,11 +46,5 @@ class FreebusyBlockParser {
             }
         }
         return freebusyBlocks
-    }
-    
-    static func fromAPI(stringDate: String) -> Date? {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy'-'MM'-'dd' 'HH':'mm':'ss'"
-        return formatter.date(from: stringDate)
     }
 }

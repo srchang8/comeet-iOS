@@ -13,6 +13,10 @@
 		052A3C111E87365C00DD88D6 /* FreebusyBlockParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052A3C101E87365C00DD88D6 /* FreebusyBlockParser.swift */; };
 		052A3C131E87410A00DD88D6 /* AmenitiesParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052A3C121E87410A00DD88D6 /* AmenitiesParserTests.swift */; };
 		052A3C151E87413900DD88D6 /* FreebusyBlockParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052A3C141E87413900DD88D6 /* FreebusyBlockParserTests.swift */; };
+		052A3C171E874C4A00DD88D6 /* SearchCriteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052A3C161E874C4A00DD88D6 /* SearchCriteria.swift */; };
+		052A3C191E874DE100DD88D6 /* SearchCriteriaParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052A3C181E874DE100DD88D6 /* SearchCriteriaParser.swift */; };
+		052A3C1D1E87516900DD88D6 /* SearchCriteriaParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052A3C1C1E87516900DD88D6 /* SearchCriteriaParserTests.swift */; };
+		052A3C201E875B4000DD88D6 /* Date+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052A3C1F1E875B4000DD88D6 /* Date+API.swift */; };
 		053564BD1E6E69540072A167 /* AuthenticatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053564BC1E6E69540072A167 /* AuthenticatorProtocol.swift */; };
 		053564BF1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053564BE1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift */; };
 		053564C11E6E6C7B0072A167 /* DataSimpleBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053564C01E6E6C7B0072A167 /* DataSimpleBridge.swift */; };
@@ -82,6 +86,10 @@
 		052A3C101E87365C00DD88D6 /* FreebusyBlockParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreebusyBlockParser.swift; sourceTree = "<group>"; };
 		052A3C121E87410A00DD88D6 /* AmenitiesParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AmenitiesParserTests.swift; path = Data/Parsers/AmenitiesParserTests.swift; sourceTree = "<group>"; };
 		052A3C141E87413900DD88D6 /* FreebusyBlockParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FreebusyBlockParserTests.swift; path = Data/Parsers/FreebusyBlockParserTests.swift; sourceTree = "<group>"; };
+		052A3C161E874C4A00DD88D6 /* SearchCriteria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCriteria.swift; sourceTree = "<group>"; };
+		052A3C181E874DE100DD88D6 /* SearchCriteriaParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCriteriaParser.swift; sourceTree = "<group>"; };
+		052A3C1C1E87516900DD88D6 /* SearchCriteriaParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchCriteriaParserTests.swift; path = Data/Parsers/SearchCriteriaParserTests.swift; sourceTree = "<group>"; };
+		052A3C1F1E875B4000DD88D6 /* Date+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+API.swift"; path = "Data/Extensions/Date+API.swift"; sourceTree = "<group>"; };
 		053564BC1E6E69540072A167 /* AuthenticatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticatorProtocol.swift; path = Data/Authenticator/AuthenticatorProtocol.swift; sourceTree = "<group>"; };
 		053564BE1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticatorADALImplementer.swift; path = Data/Authenticator/AuthenticatorADALImplementer.swift; sourceTree = "<group>"; };
 		053564C01E6E6C7B0072A167 /* DataSimpleBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSimpleBridge.swift; path = Data/DataSimpleBridge.swift; sourceTree = "<group>"; };
@@ -168,6 +176,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		052A3C1E1E875AF300DD88D6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				052A3C1F1E875B4000DD88D6 /* Date+API.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		053564BB1E6E69270072A167 /* Authenticator */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +251,7 @@
 				053564C01E6E6C7B0072A167 /* DataSimpleBridge.swift */,
 				053564BB1E6E69270072A167 /* Authenticator */,
 				05CF17CD1E78FD6F0024D84F /* Fetcher */,
+				052A3C1E1E875AF300DD88D6 /* Extensions */,
 				05CF17D21E78FD6F0024D84F /* Models */,
 				05CF17D61E78FD6F0024D84F /* Parsers */,
 			);
@@ -324,6 +341,7 @@
 				052A3C0A1E8730CE00DD88D6 /* FreebusyBlock.swift */,
 				05CF17D31E78FD6F0024D84F /* Meeting.swift */,
 				05CF17D41E78FD6F0024D84F /* Room.swift */,
+				052A3C161E874C4A00DD88D6 /* SearchCriteria.swift */,
 				05CF17D51E78FD6F0024D84F /* User.swift */,
 			);
 			name = Models;
@@ -336,6 +354,7 @@
 				052A3C0E1E87364600DD88D6 /* AmenitiesParser.swift */,
 				052A3C101E87365C00DD88D6 /* FreebusyBlockParser.swift */,
 				05CF17D71E78FD6F0024D84F /* RoomParser.swift */,
+				052A3C181E874DE100DD88D6 /* SearchCriteriaParser.swift */,
 			);
 			name = Parsers;
 			path = Data/Parsers;
@@ -355,6 +374,7 @@
 				052A3C121E87410A00DD88D6 /* AmenitiesParserTests.swift */,
 				052A3C141E87413900DD88D6 /* FreebusyBlockParserTests.swift */,
 				05CF17EA1E791AED0024D84F /* RoomParserTests.swift */,
+				052A3C1C1E87516900DD88D6 /* SearchCriteriaParserTests.swift */,
 			);
 			name = Parsers;
 			sourceTree = "<group>";
@@ -762,9 +782,11 @@
 				058025021E6E57F100C917C0 /* MeetingDetailViewController.swift in Sources */,
 				05CF17DF1E78FD6F0024D84F /* RoomParser.swift in Sources */,
 				05F214F71E6E4D7A004E4A16 /* AppDelegate.swift in Sources */,
+				052A3C191E874DE100DD88D6 /* SearchCriteriaParser.swift in Sources */,
 				05CF17C51E78FCAD0024D84F /* MainMenuViewController.swift in Sources */,
 				05CF17D81E78FD6F0024D84F /* AlamofireAccessTokenAdapter.swift in Sources */,
 				053564C11E6E6C7B0072A167 /* DataSimpleBridge.swift in Sources */,
+				052A3C201E875B4000DD88D6 /* Date+API.swift in Sources */,
 				05CF17E01E78FD900024D84F /* Router.swift in Sources */,
 				05CF17C61E78FCAD0024D84F /* MainMenuViewModel.swift in Sources */,
 				052A3C0B1E8730CE00DD88D6 /* FreebusyBlock.swift in Sources */,
@@ -776,6 +798,7 @@
 				05CF17D91E78FD6F0024D84F /* Endpoints.swift in Sources */,
 				05CF17DB1E78FD6F0024D84F /* FetcherProtocol.swift in Sources */,
 				0580250A1E6E589500C917C0 /* MeetingDetailViewModel.swift in Sources */,
+				052A3C171E874C4A00DD88D6 /* SearchCriteria.swift in Sources */,
 				0580250E1E6E58CD00C917C0 /* RoomDetailViewModel.swift in Sources */,
 				05CF17E31E790F770024D84F /* Environment.swift in Sources */,
 				05CF17DE1E78FD6F0024D84F /* User.swift in Sources */,
@@ -797,6 +820,7 @@
 				052A3C131E87410A00DD88D6 /* AmenitiesParserTests.swift in Sources */,
 				05F986BA1E7EFBFE00120AB4 /* RoomsListViewModelTests.swift in Sources */,
 				05F986BF1E7EFE8900120AB4 /* FakeFetcher.swift in Sources */,
+				052A3C1D1E87516900DD88D6 /* SearchCriteriaParserTests.swift in Sources */,
 				05756C2E1E6FD6CA00A8A61B /* LoginViewModelTests.swift in Sources */,
 				052A3C151E87413900DD88D6 /* FreebusyBlockParserTests.swift in Sources */,
 				05756C2A1E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift in Sources */,
