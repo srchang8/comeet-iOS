@@ -52,4 +52,13 @@ class FreebusyBlockParserTests: XCTestCase {
         
         XCTAssert(freeBusyBlock == nil)
     }
+    
+    func testInvalidStatus() {
+        let validAFreeBusyDict = [FreebusyBlockParser.Constants.statusKey : "none",
+                                  FreebusyBlockParser.Constants.startKey : "2017-06-22 16:00:00",
+                                  FreebusyBlockParser.Constants.endKey : "2017-06-22 16:30:00"]
+        let freeBusyBlock = FreebusyBlockParser.parseFreebusyBlock(freebusyBlockDict: validAFreeBusyDict)
+        
+        XCTAssert(freeBusyBlock == nil)
+    }
 }

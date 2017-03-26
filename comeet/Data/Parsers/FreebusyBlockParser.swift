@@ -14,10 +14,11 @@ class FreebusyBlockParser {
         static let statusKey = "status"
         static let startKey = "start"
         static let endKey = "end"
+        static let validStatus = ["free", "busy"]
     }
     
     static func parseFreebusyBlock(freebusyBlockDict: [AnyHashable : Any]) -> FreebusyBlock? {
-        guard let status = freebusyBlockDict[Constants.startKey] as? String,
+        guard let status = freebusyBlockDict[Constants.statusKey] as? String,
             let startString = freebusyBlockDict[Constants.startKey] as? String,
             let endString = freebusyBlockDict[Constants.endKey] as? String else {
                 return nil
@@ -27,8 +28,9 @@ class FreebusyBlockParser {
             start < end else {
                 return nil
         }
-        
-        // TODO: Guard for valid statuses
+        guard Constants.validStatus.contains(status) else {
+            return nil
+        }
         
         let freebusyBlock = FreebusyBlock(status: status, start: start, end: end)
         return freebusyBlock
