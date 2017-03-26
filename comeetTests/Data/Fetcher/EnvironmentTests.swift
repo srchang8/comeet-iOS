@@ -23,13 +23,13 @@ class EnvironmentTests: XCTestCase {
         let environment: Environment = .Mocked
         let endpoints = Endpoints(environment: environment)
         
-        XCTAssert(endpoints.getRooms() == environment.rawValue + "/rooms")
+        XCTAssert(endpoints.getRooms(organization: "organization") == environment.rawValue + "/organization/rooms")
     }
     
     func testGetRoomsProduction() {
         let environment: Environment = .Production
         let endpoints = Endpoints(environment: environment)
         
-        XCTAssert(endpoints.getRooms() == environment.rawValue + "/rooms")
+        XCTAssert(endpoints.getRooms(organization: "organization") == environment.rawValue + "/organization/rooms")
     }
 }

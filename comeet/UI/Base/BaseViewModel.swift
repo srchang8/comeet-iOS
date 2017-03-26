@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias ReloadBinding = ()-> Void
+
 class BaseViewModel {
     
 }

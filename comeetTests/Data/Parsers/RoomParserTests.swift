@@ -20,18 +20,15 @@ class RoomParserTests: XCTestCase {
     }
     
     func testInvalidRoom() {
-        let invalidRoomDict = NSMutableDictionary()
-        invalidRoomDict.setValue("Nothing", forKey: "Invalid")
-        
+        let invalidRoomDict = ["Nothing" : "Invalid"]
         let room = RoomParser.parseRoom(roomDict: invalidRoomDict)
         
         XCTAssert(room == nil)
     }
     
     func testValidRoom() {
-        let invalidRoomDict = NSMutableDictionary()
-        invalidRoomDict.setValue("Name", forKey: RoomParser.Constants.nameKey)
-        invalidRoomDict.setValue("Email", forKey: RoomParser.Constants.emailKey)
+        let invalidRoomDict = [RoomParser.Constants.nameKey : "Name",
+                               RoomParser.Constants.emailKey : "Email"]
         
         let room = RoomParser.parseRoom(roomDict: invalidRoomDict)
         

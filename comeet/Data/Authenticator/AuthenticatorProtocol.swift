@@ -14,4 +14,5 @@ protocol AuthenticatorProtocol {
     func getToken(completion:@escaping TokenCompletion)
     func isLoggedIn() -> Bool
     func logout()
+    func getOrganization() -> String
 }

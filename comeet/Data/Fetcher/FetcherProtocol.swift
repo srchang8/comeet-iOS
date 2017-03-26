@@ -9,9 +9,11 @@
 import Foundation
 
 typealias FetchRoomsCompletion = ([Room]?, Error?)-> Void
+typealias FetchSearchCriteriaCompletion = ([SearchCriteria]?, Error?)-> Void
 
 protocol FetcherProtocol {
     func set(environment: Environment)
     func set(accessToken: String)
-    func getRooms(completion:@escaping FetchRoomsCompletion)
+    func getRooms(organization: String, completion:@escaping FetchRoomsCompletion)
+    func getSearchCriteria(organization: String, completion:@escaping FetchSearchCriteriaCompletion)
 }

@@ -12,7 +12,13 @@ struct Endpoints {
     
     let environment: Environment
     
-    func getRooms() -> String {
-        return environment.rawValue + "/rooms"
+    func getRooms(organization: String) -> String {
+        let roomsPath = environment.rawValue + "/" + organization + "/rooms"
+        return roomsPath
+    }
+    
+    func getSeatchCriteria(organization: String) -> String {
+        let roomsPath = environment.rawValue + "/" + organization + "/searchcriteria"
+        return roomsPath
     }
 }
