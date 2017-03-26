@@ -19,7 +19,7 @@ class RoomsListViewModelTests: XCTestCase {
         super.setUp()
         authenticator = FakeAuthenticator()
         fetcher = FakeFetcher()
-        viewModel = RoomsListViewModel(authenticator: authenticator!, fetcher: fetcher!)
+        viewModel = RoomsListViewModel(authenticator: authenticator!, fetcher: fetcher!, metroarea: "A City", roomsList: "A Building")
     }
     
     override func tearDown() {
