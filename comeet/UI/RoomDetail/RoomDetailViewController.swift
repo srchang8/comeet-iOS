@@ -7,16 +7,25 @@
 //
 
 import UIKit
+import SDWebImage
 
-class RoomDetailViewController: UIViewController {
+class RoomDetailViewController: BaseViewController {
 
+    @IBOutlet weak var roomName: UILabel!
+    @IBOutlet weak var roomPicture: UIImageView!
+    var viewModel: RoomDetailViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setup()
     }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
+private extension RoomDetailViewController {
+    
+    func setup() {
+        title = viewModel?.title()
+        roomName.text = viewModel?.roomname()
+        roomPicture.sd_setImage(with: viewModel?.roomPicture())
     }
 }

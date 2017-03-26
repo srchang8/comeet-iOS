@@ -10,4 +10,33 @@ import Foundation
 
 class RoomDetailViewModel :  BaseViewModel {
     
+    let authenticator: AuthenticatorProtocol
+    let fetcher: FetcherProtocol
+    var reloadBinding: ReloadBinding?
+    private let metroarea: String
+    private let roomsList: String
+    private let room: Room
+    
+    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, metroarea: String, roomsList: String, room: Room) {
+        self.metroarea = metroarea
+        self.roomsList = roomsList
+        self.room = room
+        self.authenticator = authenticator
+        self.fetcher = fetcher
+    }
+    
+    func title() -> String {
+        return "Selected Room"
+    }
+    
+    func roomname() -> String {
+        return room.name
+    }
+    
+    func roomPicture() -> URL? {
+        guard let picture = room.picture else {
+            return nil
+        }
+        return URL(string: picture)
+    }
 }

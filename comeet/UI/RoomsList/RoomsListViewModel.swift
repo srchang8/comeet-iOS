@@ -8,18 +8,24 @@
 
 import Foundation
 
-typealias RoomsBinding = ()-> Void
-
 class RoomsListViewModel : BaseViewModel {
     
     let authenticator: AuthenticatorProtocol
     let fetcher: FetcherProtocol
-    var roomsBinding: RoomsBinding?
+    var reloadBinding: ReloadBinding?
+    private let metroarea: String
+    private let roomsList: String
     private var rooms: [Room] = []
     
-    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol) {
+    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, metroarea: String, roomsList: String) {
+        self.metroarea = metroarea
+        self.roomsList = roomsList
         self.authenticator = authenticator
         self.fetcher = fetcher
+    }
+    
+    func title() -> String {
+        return "Rooms in " + roomsList
     }
     
     func fetchRooms() {
@@ -31,10 +37,10 @@ class RoomsListViewModel : BaseViewModel {
             if let rooms = rooms {
                 DispatchQueue.main.async {
                     self?.rooms = rooms
-                    self?.roomsBinding?()
+                    self?.reloadBinding?()
                 }
             } else {
-                print("fetcher.fetchRooms returned nil")
+                print("fetcher.getRooms returned nil")
             }
         }
     }
@@ -56,6 +62,26 @@ class RoomsListViewModel : BaseViewModel {
             return ""
         }
         let room = rooms[index]
+        if let capacity = room.capacity {
+            return "Capacity: \(capacity)"
+        }
         return room.email
+    }
+    
+    func roomPicture(index: Int) -> URL? {
+        guard rooms.count > index else {
+            return nil
+        }
+        guard let picture = rooms[index].picture else {
+            return nil
+        }
+        return URL(string: picture)
+    }
+    
+    func room(index: Int) -> Room? {
+        guard rooms.count > index else {
+            return nil
+        }
+        return rooms[index]
     }
 }

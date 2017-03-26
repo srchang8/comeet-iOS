@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainMenuViewController: UIViewController {
+class MainMenuViewController: BaseViewController {
     
     var viewModel: MainMenuViewModel?
     
@@ -21,8 +21,6 @@ class MainMenuViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    //log out user from exchange
-    //bring view back to log in segue
     @IBAction func logOut(_ sender: Any) {
         viewModel?.logout()
         _=navigationController?.popViewController(animated: true)
@@ -41,9 +39,7 @@ class MainMenuViewController: UIViewController {
 private extension MainMenuViewController {
     func setup() {
         
-        self.title = "Menu"
-        
-        //hide back button on navigation controller
+        self.title = viewModel?.title()
         self.navigationItem.setHidesBackButton(true, animated: false)
     }
 }
