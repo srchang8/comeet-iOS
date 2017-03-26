@@ -37,7 +37,7 @@ private extension FetcherAlamofireImplementer {
         }
         
         if let JSON = response.result.value {
-            if let roomsArray = JSON as? NSArray {
+            if let roomsArray = JSON as? [Any] {
                 let rooms = RoomParser.parseRooms(roomsArray: roomsArray)
                 completion(rooms, nil)
             } else {

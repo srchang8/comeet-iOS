@@ -19,4 +19,8 @@ struct Room {
     let latitude: Double?
     let longitude: Double?
     let capacity: Int?
+    let picture: String?
+    let navigation: String?
+    let amenities: [Amenity]?
+    let freebusy: [FreebusyBlock]?
 }

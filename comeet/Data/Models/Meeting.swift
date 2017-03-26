@@ -8,6 +8,6 @@
 
 import Foundation
 
-class Meeting {
+struct Meeting {
     
 }
