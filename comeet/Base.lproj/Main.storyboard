@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="d4w-Q0-P4A">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="d4w-Q0-P4A">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -95,6 +95,9 @@
                                 <rect key="frame" x="75" y="340" width="225" height="47"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="My Agenda"/>
+                                <connections>
+                                    <action selector="openAgenda:" destination="50z-iS-tfc" eventType="touchUpInside" id="urZ-Pk-SaQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5p-Ba-YQJ">
                                 <rect key="frame" x="75" y="402" width="225" height="46.5"/>
@@ -281,6 +284,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8he-qS-NsV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-606" y="137"/>
+        </scene>
+        <!--My Agenda View Controller-->
+        <scene sceneID="wjh-RE-b9l">
+            <objects>
+                <viewController id="g2Y-pU-w4T" userLabel="My Agenda View Controller" customClass="MyAgendaViewController" customModule="comeet" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6vn-cX-tk7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1009" y="-531"/>
         </scene>
         <!--Metroarea View Controller-->
         <scene sceneID="Dia-uF-8k1">
