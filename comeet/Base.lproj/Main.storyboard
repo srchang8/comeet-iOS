@@ -286,12 +286,22 @@
             <point key="canvasLocation" x="-606" y="137"/>
         </scene>
         <!--My Agenda View Controller-->
-        <scene sceneID="wjh-RE-b9l">
+        <scene sceneID="dwi-5p-cTW">
             <objects>
-                <viewController id="g2Y-pU-w4T" userLabel="My Agenda View Controller" customClass="MyAgendaViewController" customModule="comeet" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6vn-cX-tk7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="XNh-pB-7lS" userLabel="My Agenda View Controller" customClass="MyAgendaViewController" customModule="comeet" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uet-hr-MU3"/>
+                        <viewControllerLayoutGuide type="bottom" id="SMu-vD-jXK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vaJ-DI-Dhf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UEL-6k-b5K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1009" y="-531"/>
+            <point key="canvasLocation" x="1379" y="-563"/>
         </scene>
         <!--Metroarea View Controller-->
         <scene sceneID="Dia-uF-8k1">

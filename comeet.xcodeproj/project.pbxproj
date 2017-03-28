@@ -65,8 +65,8 @@
 		0C1442D63FEB86045D7C7DA2 /* Pods_comeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B91D862A7FBE37C8586934 /* Pods_comeet.framework */; };
 		1637625E99D024466A643A19 /* Pods_comeetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD63FB99D026AD68296B3DD4 /* Pods_comeetTests.framework */; };
 		D0EDA197ECD00EBD52264BA4 /* Pods_comeetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF5E5210C047205B62B9152 /* Pods_comeetUITests.framework */; };
-		FC5E31731E89BAD600035758 /* MyAgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E31721E89BAD600035758 /* MyAgendaViewController.swift */; };
-		FC5E31751E89BAFF00035758 /* MyAgendaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E31741E89BAFF00035758 /* MyAgendaViewModel.swift */; };
+		FC5E31781E8AD13A00035758 /* MyAgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E31771E8AD13A00035758 /* MyAgendaViewController.swift */; };
+		FC5E317A1E8AD16700035758 /* MyAgendaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E31791E8AD16700035758 /* MyAgendaViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,8 +158,8 @@
 		CD63FB99D026AD68296B3DD4 /* Pods_comeetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_comeetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2B91D862A7FBE37C8586934 /* Pods_comeet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_comeet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F950E5A61E429A12E5AC9484 /* Pods-comeetUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comeetUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-comeetUITests/Pods-comeetUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		FC5E31721E89BAD600035758 /* MyAgendaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyAgendaViewController.swift; path = comeet/UI/MyAgendaViewController.swift; sourceTree = SOURCE_ROOT; };
-		FC5E31741E89BAFF00035758 /* MyAgendaViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAgendaViewModel.swift; sourceTree = "<group>"; };
+		FC5E31771E8AD13A00035758 /* MyAgendaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyAgendaViewController.swift; path = ../MyAgenda/MyAgendaViewController.swift; sourceTree = "<group>"; };
+		FC5E31791E8AD16700035758 /* MyAgendaViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAgendaViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,10 +265,10 @@
 		058024F61E6E547600C917C0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				FC5E31761E89BB0500035758 /* MyAgenda */,
 				05CF17CA1E78FD4B0024D84F /* Base */,
 				058024F81E6E549900C917C0 /* Login */,
 				FC4402881E72333B0016A90F /* MainMenu */,
+				FC5E317B1E8AD16E00035758 /* MyAgenda */,
 				058025001E6E57A500C917C0 /* MeetingDetail */,
 				058024FD1E6E576C00C917C0 /* MeetingsList */,
 				052A3C211E87655D00DD88D6 /* Metroarea */,
@@ -521,13 +521,14 @@
 			name = MainMenu;
 			sourceTree = "<group>";
 		};
-		FC5E31761E89BB0500035758 /* MyAgenda */ = {
+		FC5E317B1E8AD16E00035758 /* MyAgenda */ = {
 			isa = PBXGroup;
 			children = (
-				FC5E31721E89BAD600035758 /* MyAgendaViewController.swift */,
-				FC5E31741E89BAFF00035758 /* MyAgendaViewModel.swift */,
+				FC5E31771E8AD13A00035758 /* MyAgendaViewController.swift */,
+				FC5E31791E8AD16700035758 /* MyAgendaViewModel.swift */,
 			);
 			name = MyAgenda;
+			path = UI/Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -846,7 +847,7 @@
 				052A3C301E879D7A00DD88D6 /* BaseViewController.swift in Sources */,
 				0580250A1E6E589500C917C0 /* MeetingDetailViewModel.swift in Sources */,
 				052A3C2C1E8771BF00DD88D6 /* MetroareaViewModel.swift in Sources */,
-				FC5E31751E89BAFF00035758 /* MyAgendaViewModel.swift in Sources */,
+				FC5E317A1E8AD16700035758 /* MyAgendaViewModel.swift in Sources */,
 				052A3C281E87663500DD88D6 /* RoomsListsViewModel.swift in Sources */,
 				052A3C171E874C4A00DD88D6 /* SearchCriteria.swift in Sources */,
 				0580250E1E6E58CD00C917C0 /* RoomDetailViewModel.swift in Sources */,
@@ -854,7 +855,7 @@
 				05CF17DE1E78FD6F0024D84F /* User.swift in Sources */,
 				052A3C261E87661900DD88D6 /* RoomsListsViewController.swift in Sources */,
 				05CF17DC1E78FD6F0024D84F /* Meeting.swift in Sources */,
-				FC5E31731E89BAD600035758 /* MyAgendaViewController.swift in Sources */,
+				FC5E31781E8AD13A00035758 /* MyAgendaViewController.swift in Sources */,
 				052A3C111E87365C00DD88D6 /* FreebusyBlockParser.swift in Sources */,
 				0580250C1E6E58B800C917C0 /* MeetingsListViewModel.swift in Sources */,
 				053564BF1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift in Sources */,

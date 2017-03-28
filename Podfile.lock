@@ -39,7 +39,16 @@ DEPENDENCIES:
   - LinkedinSwift (~> 1.7.4)
   - Realm (~> 2.4.3)
   - SDWebImage (~> 4.0.0)
-  - SSCalendar
+  - SSCalendar (from `https://github.com/srchang8/sscalendar`)
+
+EXTERNAL SOURCES:
+  SSCalendar:
+    :git: https://github.com/srchang8/sscalendar
+
+CHECKOUT OPTIONS:
+  SSCalendar:
+    :commit: cbd8192bdf61d8690f426b9fe7f05470230c1440
+    :git: https://github.com/srchang8/sscalendar
 
 SPEC CHECKSUMS:
   ADAL: 3fcacd30c96e77ca9ddf67e72785c4ddc5555222
@@ -51,6 +60,6 @@ SPEC CHECKSUMS:
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SSCalendar: 65498d7ec6ff38b4aead38d3cf8bb317666a2fe4
 
-PODFILE CHECKSUM: f5404936c1d0af95ab2e621618ec4147b756a353
+PODFILE CHECKSUM: c4ba10bb4ca145ca8681186277ff690e95a60a69
 
 COCOAPODS: 1.2.0

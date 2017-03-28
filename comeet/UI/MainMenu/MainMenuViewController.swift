@@ -46,13 +46,18 @@ class MainMenuViewController: BaseViewController {
     
     @IBAction func openAgenda(_ sender: Any) {
         
-        SSStyles.applyNavigationBarStyles()
+      
         
-        let annualViewController = SSCalendarAnnualViewController(events: generateEvents())
-        let navigationController = UINavigationController(rootViewController: annualViewController!)
+        let monthViewController = SSCalendarMonthlyViewController(events: generateEvents())
+        let navigationController = UINavigationController(rootViewController: monthViewController!)
+        
         navigationController.navigationBar.isTranslucent = false
+        
         self.present(navigationController, animated: true, completion: nil)
     }
+    
+    
+    
     
     
     //MARK: - SSCalendar setup
@@ -75,6 +80,7 @@ class MainMenuViewController: BaseViewController {
         return events
     }
     
+    //
     fileprivate func generateEvent(_ year: Int) -> SSEvent {
         let month = Int(arc4random_uniform(12)) + 1
         let day = Int(arc4random_uniform(28)) + 1
