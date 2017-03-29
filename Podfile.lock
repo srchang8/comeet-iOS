@@ -47,7 +47,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   SSCalendar:
-    :commit: d0374b4631b1d893388e7f710759632c4098550b
+    :commit: 91ac642e8ffb783bc5c2dd4be3ad06e40a54c356
     :git: https://github.com/srchang8/sscalendar
 
 SPEC CHECKSUMS:
