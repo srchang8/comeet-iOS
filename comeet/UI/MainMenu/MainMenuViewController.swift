@@ -73,8 +73,8 @@ class MainMenuViewController: BaseViewController {
         let customEvent : SSEvent = SSEvent()
         customEvent.startDate = SSCalendarUtils.date(withYear: 2017, month: 3, day: 27)
         customEvent.startTime = "11:30"
-        customEvent.name = "Ex"
-        customEvent.desc = "Details of the event"
+        customEvent.name = "Example Meeting"
+        customEvent.desc = "Details of the user meeting"
         
         events.append(customEvent)
         
@@ -89,8 +89,8 @@ class MainMenuViewController: BaseViewController {
         let event = SSEvent()
         event.startDate = SSCalendarUtils.date(withYear: year, month: month, day: day)
         event.startTime = "09:00"
-        event.name = "Example Event"
-        event.desc = "Details of the event"
+        event.name = "Example Meeting"
+        event.desc = "Details of the meeting"
         
         return event
     }
