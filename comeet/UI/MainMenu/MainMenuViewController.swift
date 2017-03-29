@@ -49,6 +49,7 @@ class MainMenuViewController: BaseViewController {
       
         
         let monthViewController = SSCalendarMonthlyViewController(events: generateEvents())
+        //let weekViewController = SSCalendarDailyViewController(events: generateEvents())
         let navigationController = UINavigationController(rootViewController: monthViewController!)
         
         navigationController.navigationBar.isTranslucent = false
