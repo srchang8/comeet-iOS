@@ -46,15 +46,11 @@ class MainMenuViewController: BaseViewController {
     
     @IBAction func openAgenda(_ sender: Any) {
         
-      
-        
-        //let monthViewController = SSCalendarMonthlyViewController(events: generateEvents())
-        let hybridMonthDayViewController = SSCalendarHybridViewController(events: generateEvents())
-        let navigationController = UINavigationController(rootViewController: hybridMonthDayViewController!)
-        
+        let viewController = SSCalendarDailyViewController(events: generateEvents())!
+        viewController.day = SSDayNode(date: Date())
+        let navigationController = self.navigationController!
         navigationController.navigationBar.isTranslucent = false
-        
-        self.present(navigationController, animated: true, completion: nil)
+        navigationController.pushViewController(viewController, animated: true);
     }
     
     
@@ -73,8 +69,8 @@ class MainMenuViewController: BaseViewController {
         let customEvent : SSEvent = SSEvent()
         customEvent.startDate = SSCalendarUtils.date(withYear: 2017, month: 3, day: 27)
         customEvent.startTime = "11:30"
-        customEvent.name = "Example Meeting"
-        customEvent.desc = "Details of the user meeting"
+        customEvent.name = "Ex"
+        customEvent.desc = "Details of the event"
         
         events.append(customEvent)
         
@@ -89,8 +85,8 @@ class MainMenuViewController: BaseViewController {
         let event = SSEvent()
         event.startDate = SSCalendarUtils.date(withYear: year, month: month, day: day)
         event.startTime = "09:00"
-        event.name = "Example Meeting"
-        event.desc = "Details of the meeting"
+        event.name = "Example Event"
+        event.desc = "Details of the event"
         
         return event
     }
