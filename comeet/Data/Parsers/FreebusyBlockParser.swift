@@ -14,7 +14,8 @@ class FreebusyBlockParser {
         static let statusKey = "status"
         static let startKey = "start"
         static let endKey = "end"
-        static let validStatus = ["free", "busy"]
+        static let validStatus = [FreebusyBlock.Constants.freeStatus,
+                                  FreebusyBlock.Constants.busyStatus]
     }
     
     static func parseFreebusyBlock(freebusyBlockDict: [AnyHashable : Any]) -> FreebusyBlock? {

@@ -16,6 +16,7 @@ class RoomsListViewModel : BaseViewModel {
     private let metroarea: String
     private let roomsList: String
     private var rooms: [Room] = []
+    private var selectedDate = Date()
     
     init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, metroarea: String, roomsList: String) {
         self.metroarea = metroarea
@@ -83,5 +84,23 @@ class RoomsListViewModel : BaseViewModel {
             return nil
         }
         return rooms[index]
+    }
+    
+    func selected(date: Date) {
+        selectedDate = date
+        reloadBinding?()
+    }
+    
+    func maxTimeInterval() -> TimeInterval {
+        return 60 * 60 * 24 * 360
+    }
+    
+    func availableRooms() -> [Room] {
+        return rooms.filter({ (room) -> Bool in
+            guard let freebusy = room.freebusy else {
+                return false
+            }
+            return freebusy.containsFree(date: selectedDate)
+        })
     }
 }
