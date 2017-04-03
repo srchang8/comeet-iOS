@@ -15,9 +15,10 @@ class FakeAuthenticator: AuthenticatorProtocol
     public var error: Error?
     public var userLoggedIn = true
     public var organization = "organization"
+    public var authType = AuthType.oauth2
     
     func getToken(completion:@escaping TokenCompletion) {
-        completion(token, error)
+        completion(token, error, authType)
     }
     
     func isLoggedIn() -> Bool {

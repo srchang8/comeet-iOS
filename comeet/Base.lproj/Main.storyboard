@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNW-gu-FWT">
-                                <rect key="frame" x="72.5" y="303.5" width="230" height="60"/>
+                                <rect key="frame" x="73" y="304" width="230" height="60"/>
                                 <color key="backgroundColor" red="0.23672278090000001" green="0.41792716369999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="230" id="9du-KD-pAu"/>
@@ -45,7 +45,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comeet Logo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3z-iZ-3cJ">
-                                <rect key="frame" x="37.5" y="218.5" width="300" height="50"/>
+                                <rect key="frame" x="38" y="219" width="300" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="WsE-Re-ok9"/>
                                     <constraint firstAttribute="height" constant="50" id="xsV-uB-TQL"/>
@@ -97,7 +97,7 @@
                                 <state key="normal" title="My Agenda"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5p-Ba-YQJ">
-                                <rect key="frame" x="75" y="402" width="225" height="46.5"/>
+                                <rect key="frame" x="75" y="402" width="225" height="47"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="Book A Room"/>
                                 <connections>
@@ -105,12 +105,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMh-k2-Lns">
-                                <rect key="frame" x="75" y="463.5" width="225" height="47"/>
+                                <rect key="frame" x="75" y="464" width="225" height="47"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="Find Meeting"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LSn-bd-DIW">
-                                <rect key="frame" x="94" y="570.5" width="187.5" height="46.5"/>
+                                <rect key="frame" x="94" y="571" width="188" height="46"/>
                                 <color key="backgroundColor" red="0.23672278090000001" green="0.41792716369999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Log out"/>

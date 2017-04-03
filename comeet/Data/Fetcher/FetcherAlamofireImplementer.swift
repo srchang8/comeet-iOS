@@ -18,8 +18,8 @@ class FetcherAlamofireImplementer : FetcherProtocol {
         endpoints = Endpoints(environment: environment)
     }
     
-    func set(accessToken: String) {
-        sessionManager.adapter = AlamofireAccessTokenAdapter(accessToken: accessToken)
+    func set(accessToken: String, type: AuthType) {
+        sessionManager.adapter = AlamofireAccessTokenAdapter(accessToken: accessToken, type: type)
     }
     
     func getRooms(organization: String,completion:@escaping FetchRoomsCompletion) {

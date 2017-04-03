@@ -11,13 +11,13 @@ import ADAL
 
 class AuthenticatorADALImplementer : AuthenticatorProtocol {
     
-    private struct Constants {
+    internal struct Constants {
         static let authority = "https://login.microsoftonline.com/common"
         static let resource = "https://outlook.office365.com"
         static let clientId = "a64d56ea-5675-4ccf-82e9-5757620e1d26"
         static let redirectUri = URL(string: "http://localhost/comeet")
         static let authCookies = ["MSISAuth", "MSISAuthenticated", "MSISLoopDetectionCookie"]
-        static let defaultOrganization = "organization"
+        static let authType = AuthType.oauth2
     }
     
     internal var organization: String?
@@ -52,7 +52,7 @@ class AuthenticatorADALImplementer : AuthenticatorProtocol {
     }
     
     func getOrganization() -> String {
-        return organization ?? Constants.defaultOrganization
+        return organization ?? AuthenticatorUtils.Constants.defaultOrganization
     }
 }
 
@@ -60,17 +60,17 @@ internal extension AuthenticatorADALImplementer {
     
     func handle(result: ADAuthenticationResult?, error: ADAuthenticationError?, completion:@escaping TokenCompletion) {
         guard error == nil else {
-            completion(nil, error)
+            completion(nil, error, Constants.authType)
             return
         }
         guard result?.status.rawValue == AD_SUCCEEDED.rawValue,
             let token = result?.accessToken,
             let item = result?.tokenCacheItem else {
-                completion(nil, error)
+                completion(nil, error, Constants.authType)
                 return
         }
         saveUserEmail(item: item)
-        completion(token, error)
+        completion(token, error, Constants.authType)
     }
     
     func deleteCookies(cookiesNames: [String]) {
@@ -91,17 +91,9 @@ internal extension AuthenticatorADALImplementer {
         }
         
         if let userEmail = userInformation.eMail {
-            organization = getUserOrganization(email: userEmail)
+            organization = AuthenticatorUtils.getUserOrganization(email: userEmail)
         } else if let userId = userInformation.userId  {
-            organization = getUserOrganization(email: userId)
+            organization = AuthenticatorUtils.getUserOrganization(email: userId)
         }
-    }
-    
-    func getUserOrganization(email: String) -> String? {
-        let components = email.components(separatedBy: "@")
-        guard components.count == 2 else {
-            return nil
-        }
-        return components[1]
     }
 }
