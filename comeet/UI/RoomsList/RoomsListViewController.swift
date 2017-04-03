@@ -13,6 +13,7 @@ import DateTimePicker
 class RoomsListViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var selectDateButton: UIButton!
     var viewModel: RoomsListViewModel?
     internal struct Constants {
         static let roomCellIdentifier = "RoomCell"
@@ -31,6 +32,10 @@ class RoomsListViewController: BaseViewController {
         }
         Router.prepare(identifier: identifier, destination: segue.destination, sourceViewModel: viewModel)
     }
+    
+    @IBAction func selectDate(_ sender: Any) {
+        showPicker()
+    }
 }
 
 private extension RoomsListViewController {
@@ -38,6 +43,7 @@ private extension RoomsListViewController {
     func setup() {
         
         title = viewModel?.title()
+        updateDateButton()
         
         viewModel?.reloadBinding = { [weak self] (rooms) in
             self?.tableView.reloadData()
@@ -55,7 +61,12 @@ private extension RoomsListViewController {
         picker.todayButtonTitle = "Today"
         picker.completionHandler = { [weak self] date in
             self?.viewModel?.selected(date: date)
+            self?.updateDateButton()
         }
+    }
+    
+    func updateDateButton() {
+        selectDateButton.setTitle(viewModel?.dateString(), for: .normal)
     }
 }
 
@@ -83,10 +94,9 @@ extension RoomsListViewController : UITableViewDataSource {
 extension RoomsListViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        showPicker()
         if let room = viewModel?.room(index: indexPath.row) {
             Router.selectedRoom = room
-//            performSegue(withIdentifier: Router.Constants.roomDetailSegue, sender: self)
+            performSegue(withIdentifier: Router.Constants.roomDetailSegue, sender: self)
         }
     }
 }

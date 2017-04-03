@@ -13,9 +13,9 @@ class RoomsListsViewModel : BaseViewModel {
     let authenticator: AuthenticatorProtocol
     let fetcher: FetcherProtocol
     private let metroarea: String
-    private let roomsLists: [String]
+    private let roomsLists: [RoomList]
     
-    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, metroarea: String, roomsLists: [String]) {
+    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, metroarea: String, roomsLists: [RoomList]) {
         self.metroarea = metroarea
         self.roomsLists = roomsLists
         self.authenticator = authenticator
@@ -34,6 +34,10 @@ class RoomsListsViewModel : BaseViewModel {
         guard roomsLists.count > index else {
             return ""
         }
+        return roomsLists[index].name
+    }
+    
+    func roomsList(index: Int) -> RoomList {
         return roomsLists[index]
     }
     

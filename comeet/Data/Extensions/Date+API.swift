@@ -15,5 +15,11 @@ extension Date {
         formatter.dateFormat = "yyyy'-'MM'-'dd' 'HH':'mm':'ss'"
         return formatter.date(from: stringDate)
     }
+    
+    func displayString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH':'mm' 'MM'/'dd'/'yyyy"
+        return formatter.string(from: self)
+    }
 }
 

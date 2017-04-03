@@ -27,11 +27,11 @@ class FakeFetcher: FetcherProtocol {
         self.authType = type
     }
     
-    func getRooms(organization: String,completion:@escaping FetchRoomsCompletion) {
-        completion(rooms, error)
-    }
-    
     func getSearchCriteria(organization: String, completion:@escaping FetchSearchCriteriaCompletion) {
         completion(searchCriteria, error)
+    }
+    
+    func getRooms(organization: String, roomlist: String, completion:@escaping FetchRoomsCompletion) {
+        completion(rooms, error)
     }
 }

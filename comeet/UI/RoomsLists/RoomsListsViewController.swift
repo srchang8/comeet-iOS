@@ -52,7 +52,7 @@ extension RoomsListsViewController : UITableViewDataSource {
 
 extension RoomsListsViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Router.selectedRoomsList = viewModel?.roomsListName(index: indexPath.row)
+        Router.selectedRoomsList = viewModel?.roomsList(index: indexPath.row)
         performSegue(withIdentifier: Router.Constants.roomsListSegue, sender: self)
     }
 }

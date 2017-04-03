@@ -14,10 +14,10 @@ class RoomDetailViewModel :  BaseViewModel {
     let fetcher: FetcherProtocol
     var reloadBinding: ReloadBinding?
     private let metroarea: String
-    private let roomsList: String
+    private let roomsList: RoomList
     private let room: Room
     
-    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, metroarea: String, roomsList: String, room: Room) {
+    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, metroarea: String, roomsList: RoomList, room: Room) {
         self.metroarea = metroarea
         self.roomsList = roomsList
         self.room = room

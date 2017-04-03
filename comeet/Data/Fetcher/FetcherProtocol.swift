@@ -14,6 +14,6 @@ typealias FetchSearchCriteriaCompletion = ([SearchCriteria]?, Error?)-> Void
 protocol FetcherProtocol {
     func set(environment: Environment)
     func set(accessToken: String, type: AuthType)
-    func getRooms(organization: String, completion:@escaping FetchRoomsCompletion)
     func getSearchCriteria(organization: String, completion:@escaping FetchSearchCriteriaCompletion)
+    func getRooms(organization: String, roomlist: String, completion:@escaping FetchRoomsCompletion)
 }

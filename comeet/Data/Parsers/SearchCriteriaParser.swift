@@ -11,15 +11,16 @@ import Foundation
 class SearchCriteriaParser {
     
     internal struct Constants {
-        static let metroareaKey = "metroarea"
-        static let roomsListsKey = "roomslists"
+        static let metroareaKey = "metro"
+        static let roomsListsKey = "roomlists"
     }
     
     static func parseSearchCriterion(searchCriterionDict: [AnyHashable : Any]) -> SearchCriteria? {
         guard let metroarea = searchCriterionDict[Constants.metroareaKey] as? String,
-            let roomsLists = searchCriterionDict[Constants.roomsListsKey] as? [String] else {
+            let roomsListsArray = searchCriterionDict[Constants.roomsListsKey] as? [AnyHashable : Any] else {
                 return nil
         }
+        let roomsLists = RoomListParser.parseRoomLists(roomListsDict: roomsListsArray)
         let searchCriterion = SearchCriteria(metroarea: metroarea, roomsLists: roomsLists)
         return searchCriterion
     }

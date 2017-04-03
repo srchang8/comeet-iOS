@@ -12,8 +12,8 @@ import UIKit
 class Router {
     
     static var selectedMetroarea: String?
-    static var selectedRoomsLists: [String]?
-    static var selectedRoomsList: String?
+    static var selectedRoomsLists: [RoomList]?
+    static var selectedRoomsList: RoomList?
     static var selectedRoom: Room?
     
     struct Constants {
