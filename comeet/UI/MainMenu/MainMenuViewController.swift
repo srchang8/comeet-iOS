@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SSCalendar
 
 class MainMenuViewController: BaseViewController {
     
@@ -14,8 +15,13 @@ class MainMenuViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         setup()
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -30,9 +36,59 @@ class MainMenuViewController: BaseViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier,
             let viewModel = viewModel else {
+                print("")
                 return
         }
         Router.prepare(identifier: identifier, destination: segue.destination, sourceViewModel: viewModel)
+    }
+    
+    
+    
+    @IBAction func openAgenda(_ sender: Any) {
+        
+        let viewController = SSCalendarDailyViewController(events: generateEvents())!
+        viewController.day = SSDayNode(date: Date())
+        let navigationController = self.navigationController!
+        navigationController.navigationBar.isTranslucent = false
+        navigationController.pushViewController(viewController, animated: true);
+    }
+    
+    
+    
+    
+    
+    //MARK: - SSCalendar setup
+    fileprivate func generateEvents() -> [SSEvent] {
+        var events: [SSEvent] = []
+        for year in 2016...2021 {
+            for _ in 1...100 {
+                events.append(generateEvent(year));
+            }
+        }
+        
+        let customEvent : SSEvent = SSEvent()
+        customEvent.startDate = SSCalendarUtils.date(withYear: 2017, month: 3, day: 27)
+        customEvent.startTime = "11:30"
+        customEvent.name = "Ex"
+        customEvent.desc = "Details of the event"
+        
+        events.append(customEvent)
+        
+        return events
+    }
+    
+    //
+    fileprivate func generateEvent(_ year: Int) -> SSEvent {
+        let month = Int(arc4random_uniform(12)) + 1
+        let day = Int(arc4random_uniform(28)) + 1
+        
+        let event = SSEvent()
+        event.startDate = SSCalendarUtils.date(withYear: year, month: month, day: day)
+        event.startTime = "09:00"
+        event.name = "Example Event"
+        event.desc = "Details of the event"
+        
+        return event
     }
 }
 
