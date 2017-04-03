@@ -40,7 +40,7 @@ class LoginViewModel : BaseViewModel {
     }
     
     func isLoggedIn() -> Bool {
-        return authenticator.isLoggedIn()
+        return true //authenticator.isLoggedIn()
     }
     
     private func prepareFetcher(accessToken: String, type: AuthType) {

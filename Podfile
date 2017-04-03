@@ -12,6 +12,8 @@ target 'comeet' do
   pod 'Realm', '~> 2.4.3'
   pod 'SDWebImage', '~> 4.0.0'
   pod 'DateTimePicker', '~> 1.0.3'
+  #pod 'SSCalendar'
+  pod 'SSCalendar', :git => 'https://github.com/srchang8/sscalendar'
 
   target 'comeetTests' do
     inherit! :search_paths
