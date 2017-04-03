@@ -32,6 +32,7 @@ PODS:
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
+  - SSCalendar (0.0.3)
 
 DEPENDENCIES:
   - ADAL (= 2.3.1)
@@ -40,6 +41,16 @@ DEPENDENCIES:
   - LinkedinSwift (~> 1.7.4)
   - Realm (~> 2.4.3)
   - SDWebImage (~> 4.0.0)
+  - SSCalendar (from `https://github.com/srchang8/sscalendar`)
+
+EXTERNAL SOURCES:
+  SSCalendar:
+    :git: https://github.com/srchang8/sscalendar
+
+CHECKOUT OPTIONS:
+  SSCalendar:
+    :commit: ffc6853a92b3a2a0c0a19af7a74b393b76b24880
+    :git: https://github.com/srchang8/sscalendar
 
 SPEC CHECKSUMS:
   ADAL: 3fcacd30c96e77ca9ddf67e72785c4ddc5555222
@@ -50,7 +61,8 @@ SPEC CHECKSUMS:
   LinkedinSwift: fba071cbbcedf42471f45c0cd2438cba3f6c9c7c
   Realm: e08d60b0048ccccd3949c8c28a92c4db5712d7e9
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SSCalendar: 65498d7ec6ff38b4aead38d3cf8bb317666a2fe4
 
-PODFILE CHECKSUM: a97e2066d696d21f81e17536985672d8fa0c10fa
+PODFILE CHECKSUM: 2f1d6da9267cc2c87e580614f5186736c3972d7d
 
 COCOAPODS: 1.2.0
