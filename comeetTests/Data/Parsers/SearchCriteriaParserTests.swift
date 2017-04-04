@@ -35,9 +35,10 @@ class SearchCriteriaParserTests: XCTestCase {
     }
     
     func testValidSearchCriteria() {
-        let invalidSearchCriterionDict: [AnyHashable : Any] = [SearchCriteriaParser.Constants.metroareaKey: "A place",
-                                          SearchCriteriaParser.Constants.roomsListsKey: ["A building"]]
-        let searchCriteria = SearchCriteriaParser.parseSearchCriterion(searchCriterionDict: invalidSearchCriterionDict)
+        let validRoomListDict: [AnyHashable : Any] = ["room@test.com" : "A room"]
+        let validSearchCriterionDict: [AnyHashable : Any] = [SearchCriteriaParser.Constants.metroareaKey: "A place",
+                                          SearchCriteriaParser.Constants.roomsListsKey: validRoomListDict]
+        let searchCriteria = SearchCriteriaParser.parseSearchCriterion(searchCriterionDict: validSearchCriterionDict)
         
         XCTAssert(searchCriteria != nil)
     }

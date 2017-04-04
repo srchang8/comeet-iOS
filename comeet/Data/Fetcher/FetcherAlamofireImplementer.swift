@@ -18,12 +18,12 @@ class FetcherAlamofireImplementer : FetcherProtocol {
         endpoints = Endpoints(environment: environment)
     }
     
-    func set(accessToken: String) {
-        sessionManager.adapter = AlamofireAccessTokenAdapter(accessToken: accessToken)
+    func set(accessToken: String, type: AuthType) {
+        sessionManager.adapter = AlamofireAccessTokenAdapter(accessToken: accessToken, type: type)
     }
     
-    func getRooms(organization: String,completion:@escaping FetchRoomsCompletion) {
-        sessionManager.request(endpoints.getRooms(organization: organization)).responseJSON { (response) in
+    func getRooms(organization: String, roomlist: String, completion:@escaping FetchRoomsCompletion) {
+        sessionManager.request(endpoints.getRooms(organization: organization, roomlist: roomlist)).responseJSON { (response) in
             var rooms: [Room]?
             if let array = FetcherAlamofireImplementer.getArray(response: response) {
                 rooms = RoomParser.parseRooms(roomsArray: array)

@@ -14,10 +14,11 @@ class RoomsListViewModel : BaseViewModel {
     let fetcher: FetcherProtocol
     var reloadBinding: ReloadBinding?
     private let metroarea: String
-    private let roomsList: String
+    private let roomsList: RoomList
     private var rooms: [Room] = []
+    private var selectedDate = Date()
     
-    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, metroarea: String, roomsList: String) {
+    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, metroarea: String, roomsList: RoomList) {
         self.metroarea = metroarea
         self.roomsList = roomsList
         self.authenticator = authenticator
@@ -25,11 +26,15 @@ class RoomsListViewModel : BaseViewModel {
     }
     
     func title() -> String {
-        return "Rooms in " + roomsList
+        return "Rooms in " + roomsList.name
+    }
+    
+    func dateString() -> String {
+        return selectedDate.displayString()
     }
     
     func fetchRooms() {
-        fetcher.getRooms(organization: authenticator.getOrganization()) { [weak self] (rooms, error) in
+        fetcher.getRooms(organization: authenticator.getOrganization(), roomlist: roomsList.email) { [weak self] (rooms, error) in
             guard error == nil else {
                 print(error!)
                 return
@@ -83,5 +88,23 @@ class RoomsListViewModel : BaseViewModel {
             return nil
         }
         return rooms[index]
+    }
+    
+    func selected(date: Date) {
+        selectedDate = date
+        reloadBinding?()
+    }
+    
+    func maxTimeInterval() -> TimeInterval {
+        return 60 * 60 * 24 * 360
+    }
+    
+    func availableRooms() -> [Room] {
+        return rooms.filter({ (room) -> Bool in
+            guard let freebusy = room.freebusy else {
+                return false
+            }
+            return freebusy.containsFree(date: selectedDate)
+        })
     }
 }

@@ -15,9 +15,6 @@ class MainMenuViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         setup()
     }
     

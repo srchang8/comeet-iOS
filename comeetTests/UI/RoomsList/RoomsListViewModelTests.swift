@@ -19,7 +19,8 @@ class RoomsListViewModelTests: XCTestCase {
         super.setUp()
         authenticator = FakeAuthenticator()
         fetcher = FakeFetcher()
-        viewModel = RoomsListViewModel(authenticator: authenticator!, fetcher: fetcher!, metroarea: "A City", roomsList: "A Building")
+        let roomlist = RoomList(name: "A Building", email: "test@test.com")
+        viewModel = RoomsListViewModel(authenticator: authenticator!, fetcher: fetcher!, metroarea: "A City", roomsList: roomlist)
     }
     
     override func tearDown() {

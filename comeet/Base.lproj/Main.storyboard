@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNW-gu-FWT">
-                                <rect key="frame" x="72.5" y="303.5" width="230" height="60"/>
+                                <rect key="frame" x="73" y="304" width="230" height="60"/>
                                 <color key="backgroundColor" red="0.23672278090000001" green="0.41792716369999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="230" id="9du-KD-pAu"/>
@@ -45,7 +45,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comeet Logo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3z-iZ-3cJ">
-                                <rect key="frame" x="37.5" y="218.5" width="300" height="50"/>
+                                <rect key="frame" x="38" y="219" width="300" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="WsE-Re-ok9"/>
                                     <constraint firstAttribute="height" constant="50" id="xsV-uB-TQL"/>
@@ -100,7 +100,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5p-Ba-YQJ">
-                                <rect key="frame" x="75" y="402" width="225" height="46.5"/>
+                                <rect key="frame" x="75" y="402" width="225" height="47"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="Book A Room"/>
                                 <connections>
@@ -108,12 +108,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMh-k2-Lns">
-                                <rect key="frame" x="75" y="463.5" width="225" height="47"/>
+                                <rect key="frame" x="75" y="464" width="225" height="47"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="Find Meeting"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LSn-bd-DIW">
-                                <rect key="frame" x="94" y="570.5" width="187.5" height="46.5"/>
+                                <rect key="frame" x="94" y="571" width="188" height="46"/>
                                 <color key="backgroundColor" red="0.23672278090000001" green="0.41792716369999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Log out"/>
@@ -170,7 +170,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="3cJ-T6-Oib">
-                                <rect key="frame" x="16" y="6" width="343" height="661"/>
+                                <rect key="frame" x="16" y="56" width="343" height="611"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RoomCell" textLabel="2VU-ss-lqr" detailTextLabel="rUN-1B-RdP" style="IBUITableViewCellStyleSubtitle" id="K96-sz-Lb0">
@@ -204,16 +204,31 @@
                                     <outlet property="delegate" destination="6jN-vA-7fy" id="T6T-Ui-FVG"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2l-uW-r5S" userLabel="DateButton">
+                                <rect key="frame" x="0.0" y="64" width="375" height="42"/>
+                                <color key="backgroundColor" red="0.23672278090000001" green="0.41792716369999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Date">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectDate:" destination="6jN-vA-7fy" eventType="touchUpInside" id="mIj-CU-zH3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Y2l-uW-r5S" secondAttribute="trailing" id="5Xh-FN-3wN"/>
                             <constraint firstItem="4IH-4s-zps" firstAttribute="top" secondItem="3cJ-T6-Oib" secondAttribute="bottom" id="AHq-Cq-5VH"/>
-                            <constraint firstItem="3cJ-T6-Oib" firstAttribute="topMargin" secondItem="ezH-DM-H6E" secondAttribute="bottom" constant="-50" id="fMK-n2-fbu"/>
+                            <constraint firstItem="Y2l-uW-r5S" firstAttribute="leading" secondItem="q8P-5y-Gks" secondAttribute="leading" id="Ch4-7q-0Zn"/>
+                            <constraint firstItem="3cJ-T6-Oib" firstAttribute="topMargin" secondItem="ezH-DM-H6E" secondAttribute="bottom" id="fMK-n2-fbu"/>
+                            <constraint firstItem="Y2l-uW-r5S" firstAttribute="top" secondItem="ezH-DM-H6E" secondAttribute="bottom" id="jj8-1p-MTo"/>
                             <constraint firstItem="3cJ-T6-Oib" firstAttribute="leading" secondItem="q8P-5y-Gks" secondAttribute="leadingMargin" id="pwh-iy-Ubk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3cJ-T6-Oib" secondAttribute="trailing" id="ydw-6b-fiC"/>
+                            <constraint firstItem="Y2l-uW-r5S" firstAttribute="bottom" secondItem="3cJ-T6-Oib" secondAttribute="top" constant="50" id="ztZ-Wu-wly"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="selectDateButton" destination="Y2l-uW-r5S" id="STA-2G-s5o"/>
                         <outlet property="tableView" destination="3cJ-T6-Oib" id="2AF-Qy-Flp"/>
                         <segue destination="pBn-BR-C9P" kind="show" identifier="RoomDetailSegue" id="1Rd-aM-M33"/>
                     </connections>

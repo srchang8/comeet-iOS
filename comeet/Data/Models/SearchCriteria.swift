@@ -10,5 +10,5 @@ import Foundation
 
 struct SearchCriteria {
     let metroarea: String
-    let roomsLists: [String]
+    let roomsLists: [RoomList]
 }

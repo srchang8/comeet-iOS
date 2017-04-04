@@ -22,7 +22,7 @@ class LoginViewModel : BaseViewModel {
     private let environment: Environment = .Mocked
     
     func getToken() {
-        authenticator.getToken { [weak self] (token: String?, error: Error?) in
+        authenticator.getToken { [weak self] (token: String?, error: Error?, type: AuthType) in
             guard error == nil else {
                 DispatchQueue.main.async {
                     self?.tokenErrorBinding?(error!)
@@ -32,7 +32,7 @@ class LoginViewModel : BaseViewModel {
             
             if let token = token {
                 DispatchQueue.main.async {
-                    self?.prepareFetcher(accessToken: token)
+                    self?.prepareFetcher(accessToken: token, type: type)
                     self?.tokenBinding?(token)
                 }
             }
@@ -40,11 +40,11 @@ class LoginViewModel : BaseViewModel {
     }
     
     func isLoggedIn() -> Bool {
-        return true //authenticator.isLoggedIn()
+        return authenticator.isLoggedIn()
     }
     
-    private func prepareFetcher(accessToken: String) {
+    private func prepareFetcher(accessToken: String, type: AuthType) {
         fetcher.set(environment: environment)
-        fetcher.set(accessToken: accessToken)
+        fetcher.set(accessToken: accessToken, type: type)
     }
 }

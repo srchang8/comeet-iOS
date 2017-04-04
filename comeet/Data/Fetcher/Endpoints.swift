@@ -12,13 +12,15 @@ struct Endpoints {
     
     let environment: Environment
     
-    func getRooms(organization: String) -> String {
-        let roomsPath = environment.rawValue + "/" + organization + "/rooms"
-        return roomsPath
+    func getSeatchCriteria(organization: String) -> String {
+        let seatchCriteriaPath = environment.rawValue + "/" + organization + "/metros"
+        return seatchCriteriaPath
     }
     
-    func getSeatchCriteria(organization: String) -> String {
-        let roomsPath = environment.rawValue + "/" + organization + "/searchcriteria"
+    func getRooms(organization: String, roomlist: String) -> String {
+        let validRoomList: String = roomlist.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+        let roomsPath = environment.rawValue + "/" + organization + "/roomlists/" + validRoomList + "/rooms"
+        
         return roomsPath
     }
 }

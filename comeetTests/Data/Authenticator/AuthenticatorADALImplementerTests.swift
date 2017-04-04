@@ -24,7 +24,7 @@ class AuthenticatorADALImplementerTests: XCTestCase {
     }
     
     func testHandleNil() {
-        authenticator!.handle(result: nil, error: nil, completion: { (token: String?, error: Error?) in
+        authenticator!.handle(result: nil, error: nil, completion: { (token: String?, error: Error?, type: AuthType) in
             XCTAssert(error == nil)
             XCTAssert(token == nil)
         })
@@ -50,12 +50,12 @@ class AuthenticatorADALImplementerTests: XCTestCase {
     }
     
     func testOrganizationChange() {
-        let organization = authenticator?.getUserOrganization(email: "test@something.com")
+        let organization = AuthenticatorUtils.getUserOrganization(email: "test@something.com")
         XCTAssert(organization == "something.com")
     }
     
     func testOrganizationInvalidChange() {
-        let organization = authenticator?.getUserOrganization(email: "test_something.com")
+        let organization = AuthenticatorUtils.getUserOrganization(email: "test_something.com")
         XCTAssert(organization == nil)
     }
 }
