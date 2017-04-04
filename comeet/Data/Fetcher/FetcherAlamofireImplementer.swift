@@ -18,33 +18,37 @@ class FetcherAlamofireImplementer : FetcherProtocol {
         endpoints = Endpoints(environment: environment)
     }
     
-    func set(accessToken: String) {
-        sessionManager.adapter = AlamofireAccessTokenAdapter(accessToken: accessToken)
+    func set(accessToken: String, type: AuthType) {
+        sessionManager.adapter = AlamofireAccessTokenAdapter(accessToken: accessToken, type: type)
     }
     
-    func getRooms(completion:@escaping FetchRoomsCompletion) {
-        sessionManager.request(endpoints.getRooms()).responseJSON { [weak self] (response) in
-            self?.handleRooms(completion: completion, response: response)
+    func getRooms(organization: String, roomlist: String, completion:@escaping FetchRoomsCompletion) {
+        sessionManager.request(endpoints.getRooms(organization: organization, roomlist: roomlist)).responseJSON { (response) in
+            var rooms: [Room]?
+            if let array = FetcherAlamofireImplementer.getArray(response: response) {
+                rooms = RoomParser.parseRooms(roomsArray: array)
+            }
+            completion(rooms, response.error)
+        }
+    }
+    
+    func getSearchCriteria(organization: String, completion:@escaping FetchSearchCriteriaCompletion) {
+        sessionManager.request(endpoints.getSeatchCriteria(organization: organization)).responseJSON { (response) in
+            var searchCriteria: [SearchCriteria]?
+            if let array = FetcherAlamofireImplementer.getArray(response: response) {
+                searchCriteria = SearchCriteriaParser.parseSearchCriteria(searchCriteriaArray: array)
+            }
+            completion(searchCriteria, response.error)
         }
     }
 }
 
 private extension FetcherAlamofireImplementer {
-    func handleRooms(completion:@escaping FetchRoomsCompletion, response: DataResponse<Any>) {
-        guard response.error == nil else {
-            completion(nil, response.error)
-            return;
+    
+    static func getArray(response: DataResponse<Any>) -> [Any]? {
+        guard let array = response.result.value as? [Any] else {
+                return nil;
         }
-        
-        if let JSON = response.result.value {
-            if let roomsArray = JSON as? NSArray {
-                let rooms = RoomParser.parseRooms(roomsArray: roomsArray)
-                completion(rooms, nil)
-            } else {
-                completion(nil, nil)
-            }
-        } else {
-            completion(nil, nil)
-        }
+        return array
     }
 }

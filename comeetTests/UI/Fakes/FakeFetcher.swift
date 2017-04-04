@@ -13,18 +13,25 @@ class FakeFetcher: FetcherProtocol {
     
     var environment: Environment = .Production
     var accessToken: String?
+    var authType: AuthType?
     var rooms: [Room]?
+    var searchCriteria: [SearchCriteria]?
     var error: Error?
     
     func set(environment: Environment) {
         self.environment = environment
     }
     
-    func set(accessToken: String) {
+    func set(accessToken: String, type: AuthType) {
         self.accessToken = accessToken
+        self.authType = type
     }
     
-    func getRooms(completion:@escaping FetchRoomsCompletion) {
+    func getSearchCriteria(organization: String, completion:@escaping FetchSearchCriteriaCompletion) {
+        completion(searchCriteria, error)
+    }
+    
+    func getRooms(organization: String, roomlist: String, completion:@escaping FetchRoomsCompletion) {
         completion(rooms, error)
     }
 }

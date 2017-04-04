@@ -24,9 +24,38 @@ class AuthenticatorADALImplementerTests: XCTestCase {
     }
     
     func testHandleNil() {
-        authenticator!.handle(result: nil, error: nil, completion: { (token: String?, error: Error?) in
+        authenticator!.handle(result: nil, error: nil, completion: { (token: String?, error: Error?, type: AuthType) in
             XCTAssert(error == nil)
             XCTAssert(token == nil)
         })
+    }
+    
+    func testDeleteCookies() {
+        let cookieName = "CookieName"
+        let cookieJar = HTTPCookieStorage.shared
+        let cookie = HTTPCookie.init(properties: [HTTPCookiePropertyKey.name : cookieName,
+                                                  HTTPCookiePropertyKey.value : "value",
+                                                  HTTPCookiePropertyKey.domain : "test.domain.com",
+                                                  HTTPCookiePropertyKey.path : "fakepath"])
+        cookieJar.setCookie(cookie!)
+        let cookiesNum = cookieJar.cookies!.count
+        authenticator!.deleteCookies(cookiesNames: [cookieName])
+        
+        XCTAssert(cookieJar.cookies!.count == cookiesNum - 1)
+    }
+    
+    func testNoOrganization() {
+        let organization = authenticator?.getOrganization()
+        XCTAssert(organization == "organization")
+    }
+    
+    func testOrganizationChange() {
+        let organization = AuthenticatorUtils.getUserOrganization(email: "test@something.com")
+        XCTAssert(organization == "something.com")
+    }
+    
+    func testOrganizationInvalidChange() {
+        let organization = AuthenticatorUtils.getUserOrganization(email: "test_something.com")
+        XCTAssert(organization == nil)
     }
 }

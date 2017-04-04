@@ -8,8 +8,16 @@
 
 import Foundation
 
-typealias TokenCompletion = (String?, Error?)-> Void
+typealias TokenCompletion = (String?, Error?, AuthType)-> Void
+
+enum AuthType {
+    case basic
+    case oauth2
+}
 
 protocol AuthenticatorProtocol {
     func getToken(completion:@escaping TokenCompletion)
+    func isLoggedIn() -> Bool
+    func logout()
+    func getOrganization() -> String
 }

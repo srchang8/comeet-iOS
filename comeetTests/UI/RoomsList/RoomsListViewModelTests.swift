@@ -19,7 +19,8 @@ class RoomsListViewModelTests: XCTestCase {
         super.setUp()
         authenticator = FakeAuthenticator()
         fetcher = FakeFetcher()
-        viewModel = RoomsListViewModel(authenticator: authenticator!, fetcher: fetcher!)
+        let roomlist = RoomList(name: "A Building", email: "test@test.com")
+        viewModel = RoomsListViewModel(authenticator: authenticator!, fetcher: fetcher!, metroarea: "A City", roomsList: roomlist)
     }
     
     override func tearDown() {
@@ -30,7 +31,7 @@ class RoomsListViewModelTests: XCTestCase {
         self.fetcher?.error = Stubs.unauthorizedError()
         self.fetcher?.rooms = [Stubs.room()]
         
-        viewModel?.roomsBinding = {[weak self] in
+        viewModel?.reloadBinding = {[weak self] in
             XCTAssertTrue(self!.viewModel!.roomsCount() == 0)
         }
         self.viewModel?.fetchRooms()
@@ -39,7 +40,7 @@ class RoomsListViewModelTests: XCTestCase {
     func testFetchRooms() {
         self.fetcher?.rooms = [Stubs.room()]
         
-        viewModel?.roomsBinding = {[weak self] in
+        viewModel?.reloadBinding = {[weak self] in
             XCTAssertTrue(self!.viewModel!.roomsCount() == 1)
         }
         self.viewModel?.fetchRooms()
@@ -48,7 +49,7 @@ class RoomsListViewModelTests: XCTestCase {
     func testRoomName() {
         self.fetcher?.rooms = [Stubs.room()]
         
-        viewModel?.roomsBinding = {[weak self] in
+        viewModel?.reloadBinding = {[weak self] in
             XCTAssertTrue(self!.viewModel!.roomName(index: 0) == Stubs.room().name)
         }
         self.viewModel?.fetchRooms()
@@ -57,7 +58,7 @@ class RoomsListViewModelTests: XCTestCase {
     func testRoomDescription() {
         self.fetcher?.rooms = [Stubs.room()]
         
-        viewModel?.roomsBinding = {[weak self] in
+        viewModel?.reloadBinding = {[weak self] in
             XCTAssertTrue(self!.viewModel!.roomDescription(index: 0) == Stubs.room().email)
         }
         self.viewModel?.fetchRooms()

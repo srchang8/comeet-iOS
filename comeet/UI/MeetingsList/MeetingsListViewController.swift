@@ -8,15 +8,10 @@
 
 import UIKit
 
-class MeetingsListViewController: UIViewController {
+class MeetingsListViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
 
     }
 }

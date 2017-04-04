@@ -18,4 +18,12 @@ class MainMenuViewModel : BaseViewModel {
         self.authenticator = authenticator
         self.fetcher = fetcher
     }
+    
+    func title() -> String {
+        return "Menu"
+    }
+    
+    func logout() {
+        authenticator.logout()
+    }
 }

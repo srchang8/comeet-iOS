@@ -33,7 +33,11 @@ struct Stubs {
                         metroarea: "Austin",
                         latitude: nil,
                         longitude: nil,
-                        capacity: 10)
+                        capacity: 10,
+                        picture: nil,
+                        navigation: nil,
+                        amenities: nil,
+                        freebusy: nil)
         
         return room
     }

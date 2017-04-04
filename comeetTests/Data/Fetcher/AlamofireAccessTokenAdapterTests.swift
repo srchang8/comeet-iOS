@@ -15,20 +15,33 @@ class AlamofireAccessTokenAdapterTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        adapter = AlamofireAccessTokenAdapter(accessToken: "token")
     }
     
     override func tearDown() {
         super.tearDown()
     }
     
-    func testAuthoricationHeader() {
+    func testOauth2AuthoricationHeader() {
+        adapter = AlamofireAccessTokenAdapter(accessToken: "token", type: AuthType.oauth2)
         var request = URLRequest(url: URL(string:"http://www.test.com")!)
         
         do {
             request = try (adapter?.adapt(request))!
             let authorizationHeader = request.allHTTPHeaderFields!["Authorization"]
             XCTAssert(authorizationHeader == "Bearer token")
+        } catch {
+            XCTAssert(false)
+        }
+    }
+    
+    func testBasicAuthoricationHeader() {
+        adapter = AlamofireAccessTokenAdapter(accessToken: "user/pass", type: AuthType.basic)
+        var request = URLRequest(url: URL(string:"http://www.test.com")!)
+        
+        do {
+            request = try (adapter?.adapt(request))!
+            let authorizationHeader = request.allHTTPHeaderFields!["Authorization"]
+            XCTAssert(authorizationHeader == "Basic user/pass")
         } catch {
             XCTAssert(false)
         }

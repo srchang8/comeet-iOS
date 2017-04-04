@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
 
     internal let viewModel = LoginViewModel()
     
@@ -45,9 +45,13 @@ private extension LoginViewController {
         
         viewModel.tokenErrorBinding = { (error: Error) in
         }
+        
+        if self.viewModel.isLoggedIn() {
+            self.goToMenu()
+        }
     }
     
     func goToMenu(){
-        performSegue(withIdentifier: Router.Constants.mainMenudentifier, sender: self)
+        performSegue(withIdentifier: Router.Constants.mainMenuSegue, sender: self)
     }
 }

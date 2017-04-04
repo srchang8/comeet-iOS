@@ -20,9 +20,13 @@ class RoomParser {
         static let latitudeKey = "latitude"
         static let longitudeKey = "longitude"
         static let capacityKey = "capacity"
+        static let pictureKey = "picture"
+        static let navigationKey = "navigation"
+        static let amenitiesKey = "amenities"
+        static let freebusyKey = "freebusy"
     }
     
-    static func parseRoom(roomDict: NSDictionary) -> Room? {
+    static func parseRoom(roomDict: [AnyHashable : Any]) -> Room? {
         
         guard let name = roomDict[Constants.nameKey] as? String,
             let email = roomDict[Constants.emailKey] as? String else {
@@ -56,6 +60,23 @@ class RoomParser {
         if let capacityValue = roomDict[Constants.capacityKey] as? Int {
            capacity = capacityValue
         }
+        var picture: String?
+        if let pictureValue = roomDict[Constants.pictureKey] as? String {
+            picture = pictureValue
+        }
+        var navigation: String?
+        if let navigationValue = roomDict[Constants.navigationKey] as? String {
+            navigation = navigationValue
+        }
+        var amenities: [Amenity]? = nil
+        if let amenitiesArray = roomDict[Constants.amenitiesKey] as? [Any] {
+            amenities = AmenitiesParser.parseAmenities(amenitiesArray: amenitiesArray)
+        }
+        
+        var freebusy: [FreebusyBlock]? = nil
+        if let freebusyBocksArray = roomDict[Constants.freebusyKey] as? [Any] {
+            freebusy = FreebusyBlockParser.parseFreebusyBlocks(freebusyBlocksArray: freebusyBocksArray)
+        }
         
         return Room(name: name,
                     email: email,
@@ -65,13 +86,17 @@ class RoomParser {
                     metroarea: metroarea,
                     latitude: latitude,
                     longitude: longitude,
-                    capacity: capacity)
+                    capacity: capacity,
+                    picture: picture,
+                    navigation: navigation,
+                    amenities: amenities,
+                    freebusy: freebusy)
     }
     
-    static func parseRooms(roomsArray: NSArray) -> [Room] {
+    static func parseRooms(roomsArray: [Any]) -> [Room] {
         var rooms:[Room] = []
         for roomDict in roomsArray {
-            if let roomDict = roomDict as? NSDictionary {
+            if let roomDict = roomDict as? [AnyHashable : Any] {
                 if let room = parseRoom(roomDict: roomDict) {
                     rooms.append(room)
                 }
