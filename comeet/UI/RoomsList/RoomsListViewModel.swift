@@ -16,7 +16,8 @@ class RoomsListViewModel : BaseViewModel {
     private let metroarea: String
     private let roomsList: RoomList
     private var rooms: [Room] = []
-    private var selectedDate = Date()
+    internal var startDate : Date?
+    internal var endDate : Date?
     
     init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, metroarea: String, roomsList: RoomList) {
         self.metroarea = metroarea
@@ -25,12 +26,21 @@ class RoomsListViewModel : BaseViewModel {
         self.fetcher = fetcher
     }
     
+    struct Constants {
+        static let startDateText = "Select Start"
+        static let endDateText = "Select End"
+    }
+    
     func title() -> String {
         return "Rooms in " + roomsList.name
     }
     
-    func dateString() -> String {
-        return selectedDate.displayString()
+    func startDateString() -> String {
+        return startDate?.displayString() ?? Constants.startDateText
+    }
+    
+    func endDateString() -> String {
+        return endDate?.displayString() ?? Constants.endDateText
     }
     
     func fetchRooms() {
@@ -51,22 +61,22 @@ class RoomsListViewModel : BaseViewModel {
     }
     
     func roomsCount() -> Int {
-        return rooms.count
+        return availableRooms().count
     }
     
     func roomName(index: Int) -> String {
-        guard rooms.count > index else {
+        guard availableRooms().count > index else {
             return ""
         }
-        let room = rooms[index]
+        let room = availableRooms()[index]
         return room.name
     }
     
     func roomDescription(index: Int) -> String {
-        guard rooms.count > index else {
+        guard availableRooms().count > index else {
             return ""
         }
-        let room = rooms[index]
+        let room = availableRooms()[index]
         if let capacity = room.capacity {
             return "Capacity: \(capacity)"
         }
@@ -74,24 +84,29 @@ class RoomsListViewModel : BaseViewModel {
     }
     
     func roomPicture(index: Int) -> URL? {
-        guard rooms.count > index else {
+        guard availableRooms().count > index else {
             return nil
         }
-        guard let picture = rooms[index].picture else {
+        guard let picture = availableRooms()[index].picture else {
             return nil
         }
         return URL(string: picture)
     }
     
     func room(index: Int) -> Room? {
-        guard rooms.count > index else {
+        guard availableRooms().count > index else {
             return nil
         }
-        return rooms[index]
+        return availableRooms()[index]
     }
     
-    func selected(date: Date) {
-        selectedDate = date
+    func start(date: Date) {
+        startDate = date
+        reloadBinding?()
+    }
+    
+    func end(date: Date) {
+        endDate = date
         reloadBinding?()
     }
     
@@ -100,11 +115,16 @@ class RoomsListViewModel : BaseViewModel {
     }
     
     func availableRooms() -> [Room] {
+        guard let startDate = startDate,
+            let endDate = endDate else {
+                return rooms
+        }
+        
         return rooms.filter({ (room) -> Bool in
             guard let freebusy = room.freebusy else {
                 return false
             }
-            return freebusy.containsFree(date: selectedDate)
+            return freebusy.containsFree(date: startDate) && freebusy.containsFree(date: endDate)
         })
     }
 }

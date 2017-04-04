@@ -8,16 +8,18 @@
 
 import UIKit
 import SDWebImage
-import DateTimePicker
 
 class RoomsListViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var selectDateButton: UIButton!
+    @IBOutlet weak var startDateTextField: UITextField!
+    @IBOutlet weak var endDateTextField: UITextField!
+
     var viewModel: RoomsListViewModel?
     internal struct Constants {
         static let roomCellIdentifier = "RoomCell"
         static let placeholderImage = "RoomsListPlaceholder"
+        static let selectDateText = "Done"
     }
 
     override func viewDidLoad() {
@@ -33,8 +35,16 @@ class RoomsListViewController: BaseViewController {
         Router.prepare(identifier: identifier, destination: segue.destination, sourceViewModel: viewModel)
     }
     
-    @IBAction func selectDate(_ sender: Any) {
-        showPicker()
+    func startDateChanged(sender: UIDatePicker) {
+        viewModel?.start(date: sender.date)
+    }
+    
+    func endDateChanged(sender: UIDatePicker) {
+        viewModel?.end(date: sender.date)
+    }
+    
+    func dismissPicker() {
+        view.endEditing(true)
     }
 }
 
@@ -43,30 +53,42 @@ private extension RoomsListViewController {
     func setup() {
         
         title = viewModel?.title()
-        updateDateButton()
         
         viewModel?.reloadBinding = { [weak self] (rooms) in
             self?.tableView.reloadData()
+            self?.startDateTextField.text = self?.viewModel?.startDateString()
+            self?.endDateTextField.text = self?.viewModel?.endDateString()
+            self?.startDateTextField.backgroundColor = #colorLiteral(red: 0, green: 0.5042713881, blue: 1, alpha: 1)
+            self?.endDateTextField.backgroundColor = #colorLiteral(red: 0, green: 0.5042713881, blue: 1, alpha: 1)
         }
         viewModel?.fetchRooms()
+        
+        addPicker(input: startDateTextField, action: #selector(startDateChanged(sender:)))
+        addToolbar(input: startDateTextField)
+        addPicker(input: endDateTextField, action: #selector(endDateChanged(sender:)))
+        addToolbar(input: endDateTextField)
     }
     
-    func showPicker() {
-        let now = Date()
-        let maxInterval = viewModel?.maxTimeInterval() ?? 0
-        let nextYear = Date().addingTimeInterval(maxInterval)
-        let picker = DateTimePicker.show(selected: now, minimumDate: now, maximumDate: nextYear)
-        picker.highlightColor = .blue
-        picker.doneButtonTitle = "Show Rooms"
-        picker.todayButtonTitle = "Today"
-        picker.completionHandler = { [weak self] date in
-            self?.viewModel?.selected(date: date)
-            self?.updateDateButton()
-        }
+    func addPicker(input: UITextField, action: Selector) {
+        let picker = UIDatePicker.init()
+        picker.datePickerMode = .dateAndTime
+        picker.minimumDate = Date()
+        picker.addTarget(self, action: action, for: .valueChanged)
+        input.inputView = picker
     }
     
-    func updateDateButton() {
-        selectDateButton.setTitle(viewModel?.dateString(), for: .normal)
+    func addToolbar(input: UITextField) {
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor.black
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: Constants.selectDateText, style: UIBarButtonItemStyle.plain, target: self, action: #selector(dismissPicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([ spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        input.inputAccessoryView = toolBar
     }
 }
 
@@ -84,7 +106,7 @@ extension RoomsListViewController : UITableViewDataSource {
         if let roomPicture = viewModel?.roomPicture(index: indexPath.row) {
             cell.imageView?.sd_setImage(with: roomPicture, placeholderImage: UIImage(named: Constants.placeholderImage))
         } else {
-            cell.imageView?.image = nil
+            cell.imageView?.image = nil 
         }
         
         return cell
@@ -93,6 +115,16 @@ extension RoomsListViewController : UITableViewDataSource {
 
 extension RoomsListViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let _ = viewModel?.startDate else {
+            startDateTextField.backgroundColor = UIColor.red
+            return
+        }
+        
+        guard let _ = viewModel?.endDate else {
+            endDateTextField.backgroundColor = UIColor.red
+            return
+        }
         
         if let room = viewModel?.room(index: indexPath.row) {
             Router.selectedRoom = room
