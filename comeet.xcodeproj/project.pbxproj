@@ -71,6 +71,16 @@
 		0C1442D63FEB86045D7C7DA2 /* Pods_comeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B91D862A7FBE37C8586934 /* Pods_comeet.framework */; };
 		1637625E99D024466A643A19 /* Pods_comeetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD63FB99D026AD68296B3DD4 /* Pods_comeetTests.framework */; };
 		D0EDA197ECD00EBD52264BA4 /* Pods_comeetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF5E5210C047205B62B9152 /* Pods_comeetUITests.framework */; };
+		FC008BA01E915D5E00DB7CF2 /* Artboard 1.png in Resources */ = {isa = PBXBuildFile; fileRef = FC008B971E915D5E00DB7CF2 /* Artboard 1.png */; };
+		FC008BA11E915D5E00DB7CF2 /* Artboard 1.svg in Resources */ = {isa = PBXBuildFile; fileRef = FC008B981E915D5E00DB7CF2 /* Artboard 1.svg */; };
+		FC008BA21E915D5E00DB7CF2 /* Artboard 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC008B991E915D5E00DB7CF2 /* Artboard 1@2x.png */; };
+		FC008BA31E915D5E00DB7CF2 /* Artboard 1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC008B9A1E915D5E00DB7CF2 /* Artboard 1@3x.png */; };
+		FC008BA41E915D5E00DB7CF2 /* Artboard 2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC008B9B1E915D5E00DB7CF2 /* Artboard 2.png */; };
+		FC008BA51E915D5E00DB7CF2 /* Artboard 2.svg in Resources */ = {isa = PBXBuildFile; fileRef = FC008B9C1E915D5E00DB7CF2 /* Artboard 2.svg */; };
+		FC008BA61E915D5E00DB7CF2 /* Artboard 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC008B9D1E915D5E00DB7CF2 /* Artboard 2@2x.png */; };
+		FC008BA71E915D5E00DB7CF2 /* Artboard 2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC008B9E1E915D5E00DB7CF2 /* Artboard 2@3x.png */; };
+		FC008BA81E915D5E00DB7CF2 /* comeet-logo.1.ai in Resources */ = {isa = PBXBuildFile; fileRef = FC008B9F1E915D5E00DB7CF2 /* comeet-logo.1.ai */; };
+		FC008BAC1E916ABD00DB7CF2 /* 750x1334-trees_comet_stars-29983 2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC008BAB1E916ABD00DB7CF2 /* 750x1334-trees_comet_stars-29983 2.png */; };
 		FC5E31781E8AD13A00035758 /* MyAgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E31771E8AD13A00035758 /* MyAgendaViewController.swift */; };
 		FC5E317A1E8AD16700035758 /* MyAgendaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E31791E8AD16700035758 /* MyAgendaViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -170,6 +180,16 @@
 		CD63FB99D026AD68296B3DD4 /* Pods_comeetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_comeetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2B91D862A7FBE37C8586934 /* Pods_comeet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_comeet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F950E5A61E429A12E5AC9484 /* Pods-comeetUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comeetUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-comeetUITests/Pods-comeetUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FC008B971E915D5E00DB7CF2 /* Artboard 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Artboard 1.png"; path = "../../../../../Desktop/drive-download-20170401T193821Z-001/Artboard 1.png"; sourceTree = "<group>"; };
+		FC008B981E915D5E00DB7CF2 /* Artboard 1.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Artboard 1.svg"; path = "../../../../../Desktop/drive-download-20170401T193821Z-001/Artboard 1.svg"; sourceTree = "<group>"; };
+		FC008B991E915D5E00DB7CF2 /* Artboard 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Artboard 1@2x.png"; path = "../../../../../Desktop/drive-download-20170401T193821Z-001/Artboard 1@2x.png"; sourceTree = "<group>"; };
+		FC008B9A1E915D5E00DB7CF2 /* Artboard 1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Artboard 1@3x.png"; path = "../../../../../Desktop/drive-download-20170401T193821Z-001/Artboard 1@3x.png"; sourceTree = "<group>"; };
+		FC008B9B1E915D5E00DB7CF2 /* Artboard 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Artboard 2.png"; path = "../../../../../Desktop/drive-download-20170401T193821Z-001/Artboard 2.png"; sourceTree = "<group>"; };
+		FC008B9C1E915D5E00DB7CF2 /* Artboard 2.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Artboard 2.svg"; path = "../../../../../Desktop/drive-download-20170401T193821Z-001/Artboard 2.svg"; sourceTree = "<group>"; };
+		FC008B9D1E915D5E00DB7CF2 /* Artboard 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Artboard 2@2x.png"; path = "../../../../../Desktop/drive-download-20170401T193821Z-001/Artboard 2@2x.png"; sourceTree = "<group>"; };
+		FC008B9E1E915D5E00DB7CF2 /* Artboard 2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Artboard 2@3x.png"; path = "../../../../../Desktop/drive-download-20170401T193821Z-001/Artboard 2@3x.png"; sourceTree = "<group>"; };
+		FC008B9F1E915D5E00DB7CF2 /* comeet-logo.1.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "comeet-logo.1.ai"; path = "../../../../../Desktop/drive-download-20170401T193821Z-001/comeet-logo.1.ai"; sourceTree = "<group>"; };
+		FC008BAB1E916ABD00DB7CF2 /* 750x1334-trees_comet_stars-29983 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "750x1334-trees_comet_stars-29983 2.png"; path = "../../../../../Desktop/750x1334-trees_comet_stars-29983 2.png"; sourceTree = "<group>"; };
 		FC5E31771E8AD13A00035758 /* MyAgendaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyAgendaViewController.swift; path = ../MyAgenda/MyAgendaViewController.swift; sourceTree = "<group>"; };
 		FC5E31791E8AD16700035758 /* MyAgendaViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAgendaViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -466,6 +486,7 @@
 		05F214F51E6E4D7A004E4A16 /* comeet */ = {
 			isa = PBXGroup;
 			children = (
+				FC008B931E9036C700DB7CF2 /* Resources */,
 				058025111E6E5F2600C917C0 /* comeet.entitlements */,
 				058024F71E6E548000C917C0 /* Data */,
 				058024F61E6E547600C917C0 /* UI */,
@@ -536,6 +557,31 @@
 				2AF5E5210C047205B62B9152 /* Pods_comeetUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC008B931E9036C700DB7CF2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FC008B941E90370600DB7CF2 /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		FC008B941E90370600DB7CF2 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				FC008BAB1E916ABD00DB7CF2 /* 750x1334-trees_comet_stars-29983 2.png */,
+				FC008B971E915D5E00DB7CF2 /* Artboard 1.png */,
+				FC008B981E915D5E00DB7CF2 /* Artboard 1.svg */,
+				FC008B991E915D5E00DB7CF2 /* Artboard 1@2x.png */,
+				FC008B9A1E915D5E00DB7CF2 /* Artboard 1@3x.png */,
+				FC008B9B1E915D5E00DB7CF2 /* Artboard 2.png */,
+				FC008B9C1E915D5E00DB7CF2 /* Artboard 2.svg */,
+				FC008B9D1E915D5E00DB7CF2 /* Artboard 2@2x.png */,
+				FC008B9E1E915D5E00DB7CF2 /* Artboard 2@3x.png */,
+				FC008B9F1E915D5E00DB7CF2 /* comeet-logo.1.ai */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		FC4402881E72333B0016A90F /* MainMenu */ = {
@@ -679,10 +725,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC008BA61E915D5E00DB7CF2 /* Artboard 2@2x.png in Resources */,
 				05F215011E6E4D7A004E4A16 /* LaunchScreen.storyboard in Resources */,
+<<<<<<< HEAD
 				05C8C56D1E91E8D70027E2D7 /* AuthenticatorBasicViewController.xib in Resources */,
+=======
+				FC008BA01E915D5E00DB7CF2 /* Artboard 1.png in Resources */,
+				FC008BA41E915D5E00DB7CF2 /* Artboard 2.png in Resources */,
+				FC008BA51E915D5E00DB7CF2 /* Artboard 2.svg in Resources */,
+				FC008BA11E915D5E00DB7CF2 /* Artboard 1.svg in Resources */,
+				FC008BA81E915D5E00DB7CF2 /* comeet-logo.1.ai in Resources */,
+				FC008BAC1E916ABD00DB7CF2 /* 750x1334-trees_comet_stars-29983 2.png in Resources */,
+				FC008BA31E915D5E00DB7CF2 /* Artboard 1@3x.png in Resources */,
+				FC008BA21E915D5E00DB7CF2 /* Artboard 1@2x.png in Resources */,
+>>>>>>> BOOKAROOM-41
 				05F214FE1E6E4D7A004E4A16 /* Assets.xcassets in Resources */,
 				05F214FC1E6E4D7A004E4A16 /* Main.storyboard in Resources */,
+				FC008BA71E915D5E00DB7CF2 /* Artboard 2@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
