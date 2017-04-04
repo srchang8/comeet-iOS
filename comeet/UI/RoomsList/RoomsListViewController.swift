@@ -106,7 +106,7 @@ extension RoomsListViewController : UITableViewDataSource {
         if let roomPicture = viewModel?.roomPicture(index: indexPath.row) {
             cell.imageView?.sd_setImage(with: roomPicture, placeholderImage: UIImage(named: Constants.placeholderImage))
         } else {
-            cell.imageView?.image = nil 
+            cell.imageView?.image = nil
         }
         
         return cell
