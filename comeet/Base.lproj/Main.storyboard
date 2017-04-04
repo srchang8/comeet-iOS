@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="d4w-Q0-P4A">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="d4w-Q0-P4A">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -204,38 +204,51 @@
                                     <outlet property="delegate" destination="6jN-vA-7fy" id="T6T-Ui-FVG"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2l-uW-r5S" userLabel="DateButton">
-                                <rect key="frame" x="0.0" y="64" width="375" height="42"/>
-                                <color key="backgroundColor" red="0.23672278090000001" green="0.41792716369999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Date">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="selectDate:" destination="6jN-vA-7fy" eventType="touchUpInside" id="mIj-CU-zH3"/>
-                                </connections>
-                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Start Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ra0-cg-3J1">
+                                <rect key="frame" x="0.0" y="64" width="187.5" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.4039215686" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="fUa-xc-dHB"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="End Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ae7-e5-YES">
+                                <rect key="frame" x="187" y="64" width="187.5" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.4039215686" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="eda-vf-Krp"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Y2l-uW-r5S" secondAttribute="trailing" id="5Xh-FN-3wN"/>
+                            <constraint firstItem="ae7-e5-YES" firstAttribute="width" secondItem="q8P-5y-Gks" secondAttribute="width" multiplier="1:2" id="4nI-CF-u4G"/>
                             <constraint firstItem="4IH-4s-zps" firstAttribute="top" secondItem="3cJ-T6-Oib" secondAttribute="bottom" id="AHq-Cq-5VH"/>
-                            <constraint firstItem="Y2l-uW-r5S" firstAttribute="leading" secondItem="q8P-5y-Gks" secondAttribute="leading" id="Ch4-7q-0Zn"/>
+                            <constraint firstItem="Ra0-cg-3J1" firstAttribute="leading" secondItem="q8P-5y-Gks" secondAttribute="leadingMargin" constant="-16" id="Nez-ha-xqB"/>
                             <constraint firstItem="3cJ-T6-Oib" firstAttribute="topMargin" secondItem="ezH-DM-H6E" secondAttribute="bottom" id="fMK-n2-fbu"/>
-                            <constraint firstItem="Y2l-uW-r5S" firstAttribute="top" secondItem="ezH-DM-H6E" secondAttribute="bottom" id="jj8-1p-MTo"/>
+                            <constraint firstItem="Ra0-cg-3J1" firstAttribute="top" secondItem="ezH-DM-H6E" secondAttribute="bottom" id="njn-LI-jGT"/>
                             <constraint firstItem="3cJ-T6-Oib" firstAttribute="leading" secondItem="q8P-5y-Gks" secondAttribute="leadingMargin" id="pwh-iy-Ubk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ae7-e5-YES" secondAttribute="trailing" constant="-15.5" id="tMG-sS-q1t"/>
+                            <constraint firstItem="Ra0-cg-3J1" firstAttribute="width" secondItem="q8P-5y-Gks" secondAttribute="width" multiplier="1:2" id="wnn-xt-SEj"/>
+                            <constraint firstItem="ae7-e5-YES" firstAttribute="top" secondItem="ezH-DM-H6E" secondAttribute="bottom" id="yRU-Ss-bNa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3cJ-T6-Oib" secondAttribute="trailing" id="ydw-6b-fiC"/>
-                            <constraint firstItem="Y2l-uW-r5S" firstAttribute="bottom" secondItem="3cJ-T6-Oib" secondAttribute="top" constant="50" id="ztZ-Wu-wly"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="selectDateButton" destination="Y2l-uW-r5S" id="STA-2G-s5o"/>
+                        <outlet property="endDateTextField" destination="ae7-e5-YES" id="ADs-0z-RJA"/>
+                        <outlet property="startDateTextField" destination="Ra0-cg-3J1" id="suJ-vW-yVr"/>
                         <outlet property="tableView" destination="3cJ-T6-Oib" id="2AF-Qy-Flp"/>
                         <segue destination="pBn-BR-C9P" kind="show" identifier="RoomDetailSegue" id="1Rd-aM-M33"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LW8-1U-CpL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3377" y="134"/>
+            <point key="canvasLocation" x="3376.8000000000002" y="133.5832083958021"/>
         </scene>
         <!--Room Detail View Controller-->
         <scene sceneID="cu9-b1-E6L">
@@ -338,11 +351,11 @@
                                         <rect key="frame" x="0.0" y="1" width="343" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OtR-80-gxW" id="xzN-n9-vxa">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="k3S-Bb-zTU">
-                                                    <rect key="frame" x="15" y="0.0" width="313" height="79"/>
+                                                    <rect key="frame" x="15" y="0.0" width="313" height="79.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -396,11 +409,11 @@
                                         <rect key="frame" x="0.0" y="1" width="343" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TVm-B4-YW6" id="GZ4-Bv-JUm">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SQ3-A6-vAN">
-                                                    <rect key="frame" x="15" y="0.0" width="313" height="79"/>
+                                                    <rect key="frame" x="15" y="0.0" width="313" height="79.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
