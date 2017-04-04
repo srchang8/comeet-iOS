@@ -24,44 +24,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNW-gu-FWT">
-                                <rect key="frame" x="72.5" y="303.5" width="230" height="60"/>
-                                <color key="backgroundColor" red="0.23672278090000001" green="0.41792716369999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="230" id="9du-KD-pAu"/>
-                                    <constraint firstAttribute="height" constant="60" id="A0n-ju-N7g"/>
-                                </constraints>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="logIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sC0-tb-AKa"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comeet Logo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3z-iZ-3cJ">
-                                <rect key="frame" x="37.5" y="218.5" width="300" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="WsE-Re-ok9"/>
-                                    <constraint firstAttribute="height" constant="50" id="xsV-uB-TQL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="750x1334-trees_comet_stars-29983 2.png" translatesAutoresizingMaskIntoConstraints="NO" id="H49-2f-mDh">
+                                <rect key="frame" x="-234" y="-472" width="750" height="1334"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5QX-in-Ea3">
+                                <rect key="frame" x="39" y="266" width="296" height="178"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNW-gu-FWT">
+                                        <rect key="frame" x="84" y="134" width="129" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.018108299009999999" green="0.032525371810000002" blue="0.078043193720000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="logIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sC0-tb-AKa"/>
+                                        </connections>
+                                    </button>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Artboard 1.png" translatesAutoresizingMaskIntoConstraints="NO" id="oic-tm-9lf" userLabel="ComeetArtboard 1.png">
+                                        <rect key="frame" x="50" y="16" width="197" height="110"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.23672278090000001" green="0.41792716369999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.0" green="0.40392156862745099" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="BNW-gu-FWT" firstAttribute="top" secondItem="y3z-iZ-3cJ" secondAttribute="bottom" constant="35" id="2am-Yl-8ly"/>
-                            <constraint firstItem="y3z-iZ-3cJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Cj-el-WpU"/>
-                            <constraint firstItem="BNW-gu-FWT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="4YJ-Tf-DPg"/>
-                            <constraint firstItem="BNW-gu-FWT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="APw-QK-2fJ"/>
+                            <constraint firstItem="5QX-in-Ea3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="202" id="GNf-Ys-JBq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5QX-in-Ea3" secondAttribute="trailing" constant="24" id="JOg-0Q-9Hr"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5QX-in-Ea3" secondAttribute="bottom" constant="223" id="S4M-4Z-VbJ"/>
+                            <constraint firstItem="5QX-in-Ea3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="23" id="xf4-9y-znN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="POO-0q-p0m"/>
@@ -71,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.23188405797103" y="136.95652173913044"/>
+            <point key="canvasLocation" x="135.19999999999999" y="136.28185907046478"/>
         </scene>
         <!--Main Menu View Controller-->
         <scene sceneID="yKa-uR-ctj">
@@ -296,7 +297,21 @@
                     <view key="view" contentMode="scaleToFill" id="vaJ-DI-Dhf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Artboard 1.png.png" translatesAutoresizingMaskIntoConstraints="NO" id="XhE-1T-ruX">
+                                <rect key="frame" x="93" y="320" width="189" height="83"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Artboard 2.png" translatesAutoresizingMaskIntoConstraints="NO" id="FjH-6F-NUs">
+                                <rect key="frame" x="162" y="484" width="123" height="123"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Artboard 2.png.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jpx-gu-J38">
+                                <rect key="frame" x="21" y="475" width="122" height="123"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UEL-6k-b5K" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -420,4 +435,11 @@
             <point key="canvasLocation" x="2567" y="134"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="750x1334-trees_comet_stars-29983 2.png" width="750" height="1334"/>
+        <image name="Artboard 1.png" width="189" height="83"/>
+        <image name="Artboard 1.png.png" width="189" height="83"/>
+        <image name="Artboard 2.png" width="122" height="123"/>
+        <image name="Artboard 2.png.png" width="122" height="123"/>
+    </resources>
 </document>
