@@ -54,11 +54,11 @@ class LoginViewModelTests: XCTestCase {
     
     func testIsLoggedIn() {
         let fakeAuthenticator = FakeAuthenticator()
-        fakeAuthenticator.userLoggedIn = false
+        fakeAuthenticator.token = nil
         viewModel?.authenticator = fakeAuthenticator
         
         XCTAssertFalse(viewModel!.isLoggedIn())
-        fakeAuthenticator.userLoggedIn = true
+        fakeAuthenticator.token = "token"
         XCTAssertTrue(viewModel!.isLoggedIn())
     }
 }

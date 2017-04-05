@@ -25,6 +25,7 @@ PODS:
   - LinkedinSwift (1.7.4):
     - AFNetworking (>= 3.1.0)
     - IOSLinkedInAPIFix (>= 2.0.4)
+  - MARKRangeSlider (1.1.1)
   - Realm (2.4.4):
     - Realm/Headers (= 2.4.4)
   - Realm/Headers (2.4.4)
@@ -37,18 +38,19 @@ DEPENDENCIES:
   - ADAL (= 2.3.1)
   - Alamofire (~> 4.4.0)
   - LinkedinSwift (~> 1.7.4)
+  - MARKRangeSlider (~> 1.1.1)
   - Realm (~> 2.4.3)
   - SDWebImage (~> 4.0.0)
-  - SSCalendar (from `https://github.com/srchang8/sscalendar`)
+  - SSCalendar (from `https://github.com/bookaroom/sscalendar`)
 
 EXTERNAL SOURCES:
   SSCalendar:
-    :git: https://github.com/srchang8/sscalendar
+    :git: https://github.com/bookaroom/sscalendar
 
 CHECKOUT OPTIONS:
   SSCalendar:
-    :commit: ffc6853a92b3a2a0c0a19af7a74b393b76b24880
-    :git: https://github.com/srchang8/sscalendar
+    :commit: 9ca62acc26875ce4f7b1d204ebf3e676043d46b4
+    :git: https://github.com/bookaroom/sscalendar
 
 SPEC CHECKSUMS:
   ADAL: 3fcacd30c96e77ca9ddf67e72785c4ddc5555222
@@ -56,10 +58,11 @@ SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   IOSLinkedInAPIFix: a520fd805a03dade35f42904c7d89ded2a84c752
   LinkedinSwift: fba071cbbcedf42471f45c0cd2438cba3f6c9c7c
+  MARKRangeSlider: ef7e1fe84d22996f47fd72dcb8de50b9410aac47
   Realm: 5a280a1f5a9a3c267bebf4f41ee47911137703d7
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SSCalendar: 65498d7ec6ff38b4aead38d3cf8bb317666a2fe4
 
-PODFILE CHECKSUM: c4ba10bb4ca145ca8681186277ff690e95a60a69
+PODFILE CHECKSUM: e915c792690f760f1addde91a00858ab92862aef
 
 COCOAPODS: 1.2.0

@@ -11,33 +11,28 @@ import UIKit
 
 class AuthenticatorBasicImplementer : AuthenticatorProtocol {
     
+    let type = AuthType.basic
     struct Constants {
-        static let authType = AuthType.basic
+        static let credentialsKey = "credentialsKey"
+        static let emailKey = "emailKey"
     }
     
     // TODO: Use keychain
-    internal var userEmail: String?
-    internal var password: String?
     internal var loginViewController: AuthenticatorBasicViewController?
     internal var completion: TokenCompletion?
-    internal var token: String? {
-        get {
-            guard let userEmail = userEmail, let password = password else {
-                return nil
-            }
-            let credentialData = "\(userEmail):\(password)".data(using: String.Encoding.utf8)!
-            let base64Credentials = credentialData.base64EncodedString()
-            return base64Credentials
-        }
-    }
     
     func getToken(completion:@escaping TokenCompletion) {
+        
+        if let token = UserDefaults.standard.string(forKey: Constants.credentialsKey) {
+            completion(token, nil, type)
+            return
+        }
         
         loginViewController = AuthenticatorBasicViewController()
         
         guard let controller = AuthenticatorBasicImplementer.topViewController(),
             let loginViewController = loginViewController else {
-            completion(nil, nil, Constants.authType)
+            completion(nil, nil, type)
             return
         }
         
@@ -46,40 +41,41 @@ class AuthenticatorBasicImplementer : AuthenticatorProtocol {
         controller.present(loginViewController, animated: true, completion: nil)
     }
     
-    func isLoggedIn() -> Bool {
-        return userEmail != nil && password != nil
+    func hasToken() -> String? {
+        return UserDefaults.standard.string(forKey: Constants.credentialsKey)
     }
     
     func logout() {
-        userEmail = nil
-        password = nil
+        UserDefaults.standard.setValue(nil, forKey: Constants.credentialsKey)
+        UserDefaults.standard.synchronize()
     }
     
     func getOrganization() -> String {
-        let dafault = AuthenticatorUtils.Constants.defaultOrganization
-        guard let userEmail = userEmail else {
-            return dafault
+        let defaultOrganization = AuthenticatorUtils.Constants.defaultOrganization
+        guard let userEmail = UserDefaults.standard.string(forKey: Constants.emailKey) else {
+            return defaultOrganization
         }
         
-        return AuthenticatorUtils.getUserOrganization(email: userEmail) ?? dafault
+        return AuthenticatorUtils.getUserOrganization(email: userEmail) ?? defaultOrganization
     }
 }
 
 extension AuthenticatorBasicImplementer : AuthenticatorBasicViewControllerDelegate {
     
     func authenticate(userEmail: String?, password: String?) {
-        self.userEmail = userEmail
-        self.password = password
+        guard let userEmail = userEmail, let password = password else {
+            return
+        }
         
         loginViewController?.dismiss(animated: true, completion: { [weak self] in
             self?.loginViewController = nil
         })
         
-        guard token != nil else {
-            return
-        }
-        
-        completion?(token, nil, Constants.authType)
+        let userToken = token(userEmail: userEmail, password: password)
+        UserDefaults.standard.setValue(userToken, forKey: Constants.credentialsKey)
+        UserDefaults.standard.setValue(userEmail, forKey: Constants.emailKey)
+        UserDefaults.standard.synchronize()
+        completion?(userToken, nil, type)
     }
 }
 
@@ -98,5 +94,11 @@ private extension AuthenticatorBasicImplementer {
             return topViewController(controller: presented)
         }
         return controller
+    }
+    
+    func token(userEmail: String, password: String) -> String {
+        let credentialData = "\(userEmail):\(password)".data(using: String.Encoding.utf8)!
+        let base64Credentials = credentialData.base64EncodedString()
+        return base64Credentials
     }
 }

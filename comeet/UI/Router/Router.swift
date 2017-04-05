@@ -54,7 +54,7 @@ class Router {
                 return
         }
         
-        let toVM = MainMenuViewModel(authenticator: fromVM.authenticator, fetcher: fromVM.fetcher)
+        let toVM = MainMenuViewModel(authenticator: fromVM.authenticator, fetcher: fromVM.fetcher, persistor: fromVM.persistor)
         toVC.viewModel = toVM
     }
     
@@ -65,8 +65,7 @@ class Router {
                 assert(false, Constants.incorrectRouteMessage)
                 return
         }
-        
-        let toVM = MetroareaViewModel(authenticator: fromVM.authenticator, fetcher: fromVM.fetcher)
+        let toVM = MetroareaViewModel(authenticator: fromVM.authenticator, fetcher: fromVM.fetcher, selectedDate: fromVM.selectedDate, persistor: fromVM.persistor)
         
         toVC.viewModel = toVM
     }
@@ -81,7 +80,7 @@ class Router {
                 return
         }
         
-        let toVM = RoomsListsViewModel(authenticator: fromVM.authenticator, fetcher: fromVM.fetcher, metroarea: metroarea , roomsLists: roomsLists)
+        let toVM = RoomsListsViewModel(authenticator: fromVM.authenticator, fetcher: fromVM.fetcher, selectedDate: fromVM.selectedDate, metroarea: metroarea , roomsLists: roomsLists, persistor: fromVM.persistor)
         
         toVC.viewModel = toVM
     }
@@ -96,7 +95,7 @@ class Router {
                 return
         }
         
-        let toVM = RoomsListViewModel(authenticator: fromVM.authenticator, fetcher: fromVM.fetcher, metroarea: metroarea, roomsList: roomsList)
+        let toVM = RoomsListViewModel(authenticator: fromVM.authenticator, fetcher: fromVM.fetcher, selectedDate: fromVM.selectedDate, metroarea: metroarea, roomsList: roomsList)
         toVC.viewModel = toVM
     }
     
@@ -111,7 +110,7 @@ class Router {
                 return
         }
         
-        let toVM = RoomDetailViewModel(authenticator: fromVM.authenticator, fetcher: fromVM.fetcher, metroarea: metroarea, roomsList: roomsList, room: room)
+        let toVM = RoomDetailViewModel(authenticator: fromVM.authenticator, fetcher: fromVM.fetcher, selectedDate: fromVM.selectedDate, metroarea: metroarea, roomsList: roomsList, room: room)
         toVC.viewModel = toVM
     }
 }

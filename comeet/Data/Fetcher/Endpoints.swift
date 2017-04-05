@@ -18,8 +18,7 @@ struct Endpoints {
     }
     
     func getRooms(organization: String, roomlist: String) -> String {
-        let validRoomList: String = roomlist.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
-        let roomsPath = environment.rawValue + "/" + organization + "/roomlists/" + validRoomList + "/rooms"
+        let roomsPath = environment.rawValue + "/" + organization + "/roomlists/" + roomlist + "/rooms"
         
         return roomsPath
     }

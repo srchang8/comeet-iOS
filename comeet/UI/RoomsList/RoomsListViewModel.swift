@@ -13,17 +13,19 @@ class RoomsListViewModel : BaseViewModel {
     let authenticator: AuthenticatorProtocol
     let fetcher: FetcherProtocol
     var reloadBinding: ReloadBinding?
+    let selectedDate: Date
     private let metroarea: String
     private let roomsList: RoomList
     private var rooms: [Room] = []
     internal var startDate : Date?
     internal var endDate : Date?
     
-    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, metroarea: String, roomsList: RoomList) {
+    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, selectedDate: Date, metroarea: String, roomsList: RoomList) {
         self.metroarea = metroarea
         self.roomsList = roomsList
         self.authenticator = authenticator
         self.fetcher = fetcher
+        self.selectedDate = selectedDate
     }
     
     struct Constants {

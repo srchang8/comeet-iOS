@@ -13,10 +13,13 @@ class MainMenuViewModel : BaseViewModel {
     
     let authenticator: AuthenticatorProtocol
     let fetcher: FetcherProtocol
+    let persistor: PersistorProtocol
+    var selectedDate = Date()
     
-    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol) {
+    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, persistor: PersistorProtocol) {
         self.authenticator = authenticator
         self.fetcher = fetcher
+        self.persistor = persistor
     }
     
     func title() -> String {

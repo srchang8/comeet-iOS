@@ -37,6 +37,8 @@
 		0580250C1E6E58B800C917C0 /* MeetingsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580250B1E6E58B800C917C0 /* MeetingsListViewModel.swift */; };
 		0580250E1E6E58CD00C917C0 /* RoomDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580250D1E6E58CD00C917C0 /* RoomDetailViewModel.swift */; };
 		058025101E6E58E700C917C0 /* RoomsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580250F1E6E58E700C917C0 /* RoomsListViewModel.swift */; };
+		05A7184A1E94B94000A8574C /* PersistorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A718491E94B94000A8574C /* PersistorProtocol.swift */; };
+		05A7184E1E94BB7900A8574C /* PersistorUserDefaultsImplementer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A7184D1E94BB7900A8574C /* PersistorUserDefaultsImplementer.swift */; };
 		05C8C5671E91E5F20027E2D7 /* AuthenticatorBasicImplementer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C8C5661E91E5F20027E2D7 /* AuthenticatorBasicImplementer.swift */; };
 		05C8C5691E91E7430027E2D7 /* AuthenticatorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C8C5681E91E7430027E2D7 /* AuthenticatorUtils.swift */; };
 		05C8C56C1E91E8D70027E2D7 /* AuthenticatorBasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C8C56A1E91E8D70027E2D7 /* AuthenticatorBasicViewController.swift */; };
@@ -71,16 +73,6 @@
 		0C1442D63FEB86045D7C7DA2 /* Pods_comeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B91D862A7FBE37C8586934 /* Pods_comeet.framework */; };
 		1637625E99D024466A643A19 /* Pods_comeetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD63FB99D026AD68296B3DD4 /* Pods_comeetTests.framework */; };
 		D0EDA197ECD00EBD52264BA4 /* Pods_comeetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF5E5210C047205B62B9152 /* Pods_comeetUITests.framework */; };
-		FC008BA01E915D5E00DB7CF2 /* Artboard 1.png in Resources */ = {isa = PBXBuildFile; fileRef = FC008B971E915D5E00DB7CF2 /* Artboard 1.png */; };
-		FC008BA11E915D5E00DB7CF2 /* Artboard 1.svg in Resources */ = {isa = PBXBuildFile; fileRef = FC008B981E915D5E00DB7CF2 /* Artboard 1.svg */; };
-		FC008BA21E915D5E00DB7CF2 /* Artboard 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC008B991E915D5E00DB7CF2 /* Artboard 1@2x.png */; };
-		FC008BA31E915D5E00DB7CF2 /* Artboard 1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC008B9A1E915D5E00DB7CF2 /* Artboard 1@3x.png */; };
-		FC008BA41E915D5E00DB7CF2 /* Artboard 2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC008B9B1E915D5E00DB7CF2 /* Artboard 2.png */; };
-		FC008BA51E915D5E00DB7CF2 /* Artboard 2.svg in Resources */ = {isa = PBXBuildFile; fileRef = FC008B9C1E915D5E00DB7CF2 /* Artboard 2.svg */; };
-		FC008BA61E915D5E00DB7CF2 /* Artboard 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC008B9D1E915D5E00DB7CF2 /* Artboard 2@2x.png */; };
-		FC008BA71E915D5E00DB7CF2 /* Artboard 2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC008B9E1E915D5E00DB7CF2 /* Artboard 2@3x.png */; };
-		FC008BA81E915D5E00DB7CF2 /* comeet-logo.1.ai in Resources */ = {isa = PBXBuildFile; fileRef = FC008B9F1E915D5E00DB7CF2 /* comeet-logo.1.ai */; };
-		FC008BAC1E916ABD00DB7CF2 /* 750x1334-trees_comet_stars-29983 2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC008BAB1E916ABD00DB7CF2 /* 750x1334-trees_comet_stars-29983 2.png */; };
 		FC5E31781E8AD13A00035758 /* MyAgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E31771E8AD13A00035758 /* MyAgendaViewController.swift */; };
 		FC5E317A1E8AD16700035758 /* MyAgendaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E31791E8AD16700035758 /* MyAgendaViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -134,6 +126,8 @@
 		0580250D1E6E58CD00C917C0 /* RoomDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomDetailViewModel.swift; path = UI/RoomDetail/RoomDetailViewModel.swift; sourceTree = "<group>"; };
 		0580250F1E6E58E700C917C0 /* RoomsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomsListViewModel.swift; path = UI/RoomsList/RoomsListViewModel.swift; sourceTree = "<group>"; };
 		058025111E6E5F2600C917C0 /* comeet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = comeet.entitlements; sourceTree = "<group>"; };
+		05A718491E94B94000A8574C /* PersistorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistorProtocol.swift; path = Data/Persistor/PersistorProtocol.swift; sourceTree = "<group>"; };
+		05A7184D1E94BB7900A8574C /* PersistorUserDefaultsImplementer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistorUserDefaultsImplementer.swift; path = Data/Persistor/PersistorUserDefaultsImplementer.swift; sourceTree = "<group>"; };
 		05C8C5661E91E5F20027E2D7 /* AuthenticatorBasicImplementer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticatorBasicImplementer.swift; path = Data/Authenticator/AuthenticatorBasicImplementer.swift; sourceTree = "<group>"; };
 		05C8C5681E91E7430027E2D7 /* AuthenticatorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticatorUtils.swift; path = Data/Authenticator/AuthenticatorUtils.swift; sourceTree = "<group>"; };
 		05C8C56A1E91E8D70027E2D7 /* AuthenticatorBasicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticatorBasicViewController.swift; path = Data/Authenticator/BasicUI/AuthenticatorBasicViewController.swift; sourceTree = "<group>"; };
@@ -180,16 +174,6 @@
 		CD63FB99D026AD68296B3DD4 /* Pods_comeetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_comeetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2B91D862A7FBE37C8586934 /* Pods_comeet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_comeet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F950E5A61E429A12E5AC9484 /* Pods-comeetUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comeetUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-comeetUITests/Pods-comeetUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		FC008B971E915D5E00DB7CF2 /* Artboard 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Artboard 1.png"; path = "../../../../../Desktop/drive-download-20170401T193821Z-001/Artboard 1.png"; sourceTree = "<group>"; };
-		FC008B981E915D5E00DB7CF2 /* Artboard 1.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Artboard 1.svg"; path = "../../../../../Desktop/drive-download-20170401T193821Z-001/Artboard 1.svg"; sourceTree = "<group>"; };
-		FC008B991E915D5E00DB7CF2 /* Artboard 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Artboard 1@2x.png"; path = "../../../../../Desktop/drive-download-20170401T193821Z-001/Artboard 1@2x.png"; sourceTree = "<group>"; };
-		FC008B9A1E915D5E00DB7CF2 /* Artboard 1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Artboard 1@3x.png"; path = "../../../../../Desktop/drive-download-20170401T193821Z-001/Artboard 1@3x.png"; sourceTree = "<group>"; };
-		FC008B9B1E915D5E00DB7CF2 /* Artboard 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Artboard 2.png"; path = "../../../../../Desktop/drive-download-20170401T193821Z-001/Artboard 2.png"; sourceTree = "<group>"; };
-		FC008B9C1E915D5E00DB7CF2 /* Artboard 2.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Artboard 2.svg"; path = "../../../../../Desktop/drive-download-20170401T193821Z-001/Artboard 2.svg"; sourceTree = "<group>"; };
-		FC008B9D1E915D5E00DB7CF2 /* Artboard 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Artboard 2@2x.png"; path = "../../../../../Desktop/drive-download-20170401T193821Z-001/Artboard 2@2x.png"; sourceTree = "<group>"; };
-		FC008B9E1E915D5E00DB7CF2 /* Artboard 2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Artboard 2@3x.png"; path = "../../../../../Desktop/drive-download-20170401T193821Z-001/Artboard 2@3x.png"; sourceTree = "<group>"; };
-		FC008B9F1E915D5E00DB7CF2 /* comeet-logo.1.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "comeet-logo.1.ai"; path = "../../../../../Desktop/drive-download-20170401T193821Z-001/comeet-logo.1.ai"; sourceTree = "<group>"; };
-		FC008BAB1E916ABD00DB7CF2 /* 750x1334-trees_comet_stars-29983 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "750x1334-trees_comet_stars-29983 2.png"; path = "../../../../../Desktop/750x1334-trees_comet_stars-29983 2.png"; sourceTree = "<group>"; };
 		FC5E31771E8AD13A00035758 /* MyAgendaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyAgendaViewController.swift; path = ../MyAgenda/MyAgendaViewController.swift; sourceTree = "<group>"; };
 		FC5E31791E8AD16700035758 /* MyAgendaViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAgendaViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -324,6 +308,7 @@
 				052A3C1E1E875AF300DD88D6 /* Extensions */,
 				05CF17D21E78FD6F0024D84F /* Models */,
 				05CF17D61E78FD6F0024D84F /* Parsers */,
+				05A718481E94B8FB00A8574C /* Persistor */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -371,6 +356,15 @@
 				058025091E6E589500C917C0 /* MeetingDetailViewModel.swift */,
 			);
 			name = MeetingDetail;
+			sourceTree = "<group>";
+		};
+		05A718481E94B8FB00A8574C /* Persistor */ = {
+			isa = PBXGroup;
+			children = (
+				05A718491E94B94000A8574C /* PersistorProtocol.swift */,
+				05A7184D1E94BB7900A8574C /* PersistorUserDefaultsImplementer.swift */,
+			);
+			name = Persistor;
 			sourceTree = "<group>";
 		};
 		05C8C56E1E91E8DC0027E2D7 /* BasicUI */ = {
@@ -562,26 +556,8 @@
 		FC008B931E9036C700DB7CF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FC008B941E90370600DB7CF2 /* Images */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		FC008B941E90370600DB7CF2 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				FC008BAB1E916ABD00DB7CF2 /* 750x1334-trees_comet_stars-29983 2.png */,
-				FC008B971E915D5E00DB7CF2 /* Artboard 1.png */,
-				FC008B981E915D5E00DB7CF2 /* Artboard 1.svg */,
-				FC008B991E915D5E00DB7CF2 /* Artboard 1@2x.png */,
-				FC008B9A1E915D5E00DB7CF2 /* Artboard 1@3x.png */,
-				FC008B9B1E915D5E00DB7CF2 /* Artboard 2.png */,
-				FC008B9C1E915D5E00DB7CF2 /* Artboard 2.svg */,
-				FC008B9D1E915D5E00DB7CF2 /* Artboard 2@2x.png */,
-				FC008B9E1E915D5E00DB7CF2 /* Artboard 2@3x.png */,
-				FC008B9F1E915D5E00DB7CF2 /* comeet-logo.1.ai */,
-			);
-			name = Images;
 			sourceTree = "<group>";
 		};
 		FC4402881E72333B0016A90F /* MainMenu */ = {
@@ -725,23 +701,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC008BA61E915D5E00DB7CF2 /* Artboard 2@2x.png in Resources */,
 				05F215011E6E4D7A004E4A16 /* LaunchScreen.storyboard in Resources */,
-<<<<<<< HEAD
 				05C8C56D1E91E8D70027E2D7 /* AuthenticatorBasicViewController.xib in Resources */,
-=======
-				FC008BA01E915D5E00DB7CF2 /* Artboard 1.png in Resources */,
-				FC008BA41E915D5E00DB7CF2 /* Artboard 2.png in Resources */,
-				FC008BA51E915D5E00DB7CF2 /* Artboard 2.svg in Resources */,
-				FC008BA11E915D5E00DB7CF2 /* Artboard 1.svg in Resources */,
-				FC008BA81E915D5E00DB7CF2 /* comeet-logo.1.ai in Resources */,
-				FC008BAC1E916ABD00DB7CF2 /* 750x1334-trees_comet_stars-29983 2.png in Resources */,
-				FC008BA31E915D5E00DB7CF2 /* Artboard 1@3x.png in Resources */,
-				FC008BA21E915D5E00DB7CF2 /* Artboard 1@2x.png in Resources */,
->>>>>>> BOOKAROOM-41
 				05F214FE1E6E4D7A004E4A16 /* Assets.xcassets in Resources */,
 				05F214FC1E6E4D7A004E4A16 /* Main.storyboard in Resources */,
-				FC008BA71E915D5E00DB7CF2 /* Artboard 2@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -915,6 +878,7 @@
 				05C8C5701E9206D00027E2D7 /* RoomList.swift in Sources */,
 				058025021E6E57F100C917C0 /* MeetingDetailViewController.swift in Sources */,
 				05CF17DF1E78FD6F0024D84F /* RoomParser.swift in Sources */,
+				05A7184A1E94B94000A8574C /* PersistorProtocol.swift in Sources */,
 				05F214F71E6E4D7A004E4A16 /* AppDelegate.swift in Sources */,
 				052A3C191E874DE100DD88D6 /* SearchCriteriaParser.swift in Sources */,
 				05CF17C51E78FCAD0024D84F /* MainMenuViewController.swift in Sources */,
@@ -924,6 +888,7 @@
 				05CF17E01E78FD900024D84F /* Router.swift in Sources */,
 				05CF17C61E78FCAD0024D84F /* MainMenuViewModel.swift in Sources */,
 				052A3C241E8765D000DD88D6 /* MetroareaViewController.swift in Sources */,
+				05A7184E1E94BB7900A8574C /* PersistorUserDefaultsImplementer.swift in Sources */,
 				052A3C0B1E8730CE00DD88D6 /* FreebusyBlock.swift in Sources */,
 				05CF17DD1E78FD6F0024D84F /* Room.swift in Sources */,
 				058024FC1E6E56DB00C917C0 /* LoginViewModel.swift in Sources */,

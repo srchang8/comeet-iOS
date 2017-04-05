@@ -9,13 +9,24 @@
 import UIKit
 import SSCalendar
 
-class MainMenuViewController: BaseViewController {
+class MainMenuViewController: SSCalendarDailyViewController {
     
     var viewModel: MainMenuViewModel?
+    
+    required init(coder: NSCoder) {
+//        super.init(events: MainMenuViewController.generateEvents())
+        super.init(coder: coder)!
+        self.addEvents(MainMenuViewController.generateEvents())
+        self.day = SSDayNode(value: 5, month: 4, year: 2017, weekday: 0)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -43,52 +54,30 @@ class MainMenuViewController: BaseViewController {
         }
         Router.prepare(identifier: identifier, destination: segue.destination, sourceViewModel: viewModel)
     }
-    
-    
-    
-    @IBAction func openAgenda(_ sender: Any) {
-        
-        let viewController = SSCalendarDailyViewController(events: generateEvents())!
-        viewController.day = SSDayNode(date: Date())
-        let navigationController = self.navigationController!
-        navigationController.navigationBar.isTranslucent = false
-        navigationController.pushViewController(viewController, animated: true);
+
+    @IBAction func bookAction(_ sender: Any) {
+        performSegue(withIdentifier: Router.Constants.metroareaSegue, sender: self)
     }
     
-    
-    
-    
-    
     //MARK: - SSCalendar setup
-    fileprivate func generateEvents() -> [SSEvent] {
+    static func generateEvents() -> [SSEvent] {
         var events: [SSEvent] = []
         for year in 2016...2021 {
             for _ in 1...100 {
                 events.append(generateEvent(year));
             }
         }
-        
-        let customEvent : SSEvent = SSEvent()
-        customEvent.startDate = SSCalendarUtils.date(withYear: 2017, month: 3, day: 27)
-        customEvent.startTime = "11:30"
-        customEvent.name = "Ex"
-        customEvent.desc = "Details of the event"
-        
-        events.append(customEvent)
-        
         return events
     }
     
-    //
-    fileprivate func generateEvent(_ year: Int) -> SSEvent {
+    static func generateEvent(_ year: Int) -> SSEvent {
         let month = Int(arc4random_uniform(12)) + 1
         let day = Int(arc4random_uniform(28)) + 1
         
         let event = SSEvent()
         event.startDate = SSCalendarUtils.date(withYear: year, month: month, day: day)
         event.startTime = "09:00"
-        event.name = "Example Event"
-        event.desc = "Details of the event"
+        event.name = "Let's get together to discuss the architecture of the project."
         
         return event
     }
@@ -99,5 +88,11 @@ private extension MainMenuViewController {
         
         self.title = viewModel?.title()
         self.navigationItem.setHidesBackButton(true, animated: false)
+        
+        self.dateChanged = { [weak self] (date: Date?) in
+            if let date = date {
+                self?.viewModel?.selectedDate = date
+            }
+        }
     }
 }

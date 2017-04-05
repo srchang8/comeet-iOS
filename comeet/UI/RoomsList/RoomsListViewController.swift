@@ -8,13 +8,15 @@
 
 import UIKit
 import SDWebImage
+import MARKRangeSlider
 
 class RoomsListViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var startDateTextField: UITextField!
-    @IBOutlet weak var endDateTextField: UITextField!
-
+    @IBOutlet weak var sliderView: MARKRangeSlider!
+    @IBOutlet weak var startTimelabel: UILabel!
+    @IBOutlet weak var endTimelabel: UILabel!
+    
     var viewModel: RoomsListViewModel?
     internal struct Constants {
         static let roomCellIdentifier = "RoomCell"
@@ -43,8 +45,17 @@ class RoomsListViewController: BaseViewController {
         viewModel?.end(date: sender.date)
     }
     
-    func dismissPicker() {
-        view.endEditing(true)
+    func sliderChange(slider: MARKRangeSlider) {
+        changeTime(label: startTimelabel, sliderValue: slider.leftValue, displayText: "Start")
+        changeTime(label: endTimelabel, sliderValue: slider.rightValue, displayText: "End")
+    }
+    
+    func changeTime(label: UILabel, sliderValue: CGFloat, displayText: String) {
+        let startHours = Int(sliderValue / 60)
+        let startMinutes = Int(sliderValue.truncatingRemainder(dividingBy: 60))
+        let startHoursString = startHours > 9 ? "\(startHours)" : "0\(startHours)"
+        let startMinutesString = startMinutes > 9 ? "\(startMinutes)" : "0\(startMinutes)"
+        label.text = "\(displayText) \(startHoursString):\(startMinutesString)"
     }
 }
 
@@ -56,39 +67,23 @@ private extension RoomsListViewController {
         
         viewModel?.reloadBinding = { [weak self] (rooms) in
             self?.tableView.reloadData()
-            self?.startDateTextField.text = self?.viewModel?.startDateString()
-            self?.endDateTextField.text = self?.viewModel?.endDateString()
-            self?.startDateTextField.backgroundColor = #colorLiteral(red: 0, green: 0.5042713881, blue: 1, alpha: 1)
-            self?.endDateTextField.backgroundColor = #colorLiteral(red: 0, green: 0.5042713881, blue: 1, alpha: 1)
         }
         viewModel?.fetchRooms()
         
-        addPicker(input: startDateTextField, action: #selector(startDateChanged(sender:)))
-        addToolbar(input: startDateTextField)
-        addPicker(input: endDateTextField, action: #selector(endDateChanged(sender:)))
-        addToolbar(input: endDateTextField)
-    }
-    
-    func addPicker(input: UITextField, action: Selector) {
-        let picker = UIDatePicker.init()
-        picker.datePickerMode = .dateAndTime
-        picker.minimumDate = Date()
-        picker.addTarget(self, action: action, for: .valueChanged)
-        input.inputView = picker
-    }
-    
-    func addToolbar(input: UITextField) {
-        let toolBar = UIToolbar()
-        toolBar.barStyle = UIBarStyle.default
-        toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor.black
-        toolBar.sizeToFit()
+        let tenHours: Int = 60 * 10
         
-        let doneButton = UIBarButtonItem(title: Constants.selectDateText, style: UIBarButtonItemStyle.plain, target: self, action: #selector(dismissPicker))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        toolBar.setItems([ spaceButton, doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
-        input.inputAccessoryView = toolBar
+        let hour: Int = Calendar.current.component(.hour, from: Date())
+        let minute: Int = Calendar.current.component(.minute, from: Date())
+        let startValue: Int = (hour * 60) + minute
+        let endValue: Int = startValue + tenHours
+        let endAutoSelect: Int = startValue + 120
+        
+        changeTime(label: startTimelabel, sliderValue: CGFloat(startValue), displayText: "Start")
+        changeTime(label: endTimelabel, sliderValue: CGFloat(endAutoSelect), displayText: "End")
+        
+        sliderView.setMinValue(CGFloat(startValue), maxValue: CGFloat(endValue))
+        sliderView.setLeftValue(CGFloat(startValue), rightValue: CGFloat(endAutoSelect))
+        sliderView.addTarget(self, action: #selector(sliderChange(slider:)), for: .valueChanged)
     }
 }
 
@@ -115,16 +110,6 @@ extension RoomsListViewController : UITableViewDataSource {
 
 extension RoomsListViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        guard let _ = viewModel?.startDate else {
-            startDateTextField.backgroundColor = UIColor.red
-            return
-        }
-        
-        guard let _ = viewModel?.endDate else {
-            endDateTextField.backgroundColor = UIColor.red
-            return
-        }
         
         if let room = viewModel?.room(index: indexPath.row) {
             Router.selectedRoom = room

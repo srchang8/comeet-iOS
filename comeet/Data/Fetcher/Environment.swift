@@ -10,5 +10,5 @@ import Foundation
 
 enum Environment : String {
     case Mocked = "https://private-98f9ba-comeet.apiary-mock.com"
-    case Production = "http://ec2-52-35-139-201.us-west-2.compute.amazonaws.com:8080/JavaApplication/rest/UserService"
+    case Production = "https://api.meetl.ink:8443/comeet"
 }
