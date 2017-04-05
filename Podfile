@@ -11,8 +11,9 @@ target 'comeet' do
   pod 'Alamofire', '~> 4.4.0'
   pod 'Realm', '~> 2.4.3'
   pod 'SDWebImage', '~> 4.0.0'
-  #pod 'SSCalendar'
-  pod 'SSCalendar', :git => 'https://github.com/srchang8/sscalendar'
+  pod 'SSCalendar', :git => 'https://github.com/bookaroom/sscalendar'
+  #pod 'SSCalendar', :path => '../sscalendar'
+  pod 'MARKRangeSlider', '~> 1.1.1'
 
   target 'comeetTests' do
     inherit! :search_paths

@@ -10,5 +10,8 @@ import Foundation
 
 protocol PersistorProtocol {
 
-
+    func save(metroArea: String?)
+    func getMetroArea() -> String?
+    func save(roomlist: String?)
+    func getRoomlist() -> String?
 }

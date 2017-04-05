@@ -8,10 +8,15 @@
 
 import UIKit
 import SDWebImage
+import MARKRangeSlider
 
 class RoomsListViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var sliderView: MARKRangeSlider!
+    @IBOutlet weak var startTimelabel: UILabel!
+    @IBOutlet weak var endTimelabel: UILabel!
+    
     var viewModel: RoomsListViewModel?
     internal struct Constants {
         static let roomCellIdentifier = "RoomCell"
@@ -40,8 +45,17 @@ class RoomsListViewController: BaseViewController {
         viewModel?.end(date: sender.date)
     }
     
-    func dismissPicker() {
-        view.endEditing(true)
+    func sliderChange(slider: MARKRangeSlider) {
+        changeTime(label: startTimelabel, sliderValue: slider.leftValue, displayText: "Start")
+        changeTime(label: endTimelabel, sliderValue: slider.rightValue, displayText: "End")
+    }
+    
+    func changeTime(label: UILabel, sliderValue: CGFloat, displayText: String) {
+        let startHours = Int(sliderValue / 60)
+        let startMinutes = Int(sliderValue.truncatingRemainder(dividingBy: 60))
+        let startHoursString = startHours > 9 ? "\(startHours)" : "0\(startHours)"
+        let startMinutesString = startMinutes > 9 ? "\(startMinutes)" : "0\(startMinutes)"
+        label.text = "\(displayText) \(startHoursString):\(startMinutesString)"
     }
 }
 
@@ -55,28 +69,21 @@ private extension RoomsListViewController {
             self?.tableView.reloadData()
         }
         viewModel?.fetchRooms()
-    }
-    
-    func addPicker(input: UITextField, action: Selector) {
-        let picker = UIDatePicker.init()
-        picker.datePickerMode = .dateAndTime
-        picker.minimumDate = Date()
-        picker.addTarget(self, action: action, for: .valueChanged)
-        input.inputView = picker
-    }
-    
-    func addToolbar(input: UITextField) {
-        let toolBar = UIToolbar()
-        toolBar.barStyle = UIBarStyle.default
-        toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor.black
-        toolBar.sizeToFit()
         
-        let doneButton = UIBarButtonItem(title: Constants.selectDateText, style: UIBarButtonItemStyle.plain, target: self, action: #selector(dismissPicker))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        toolBar.setItems([ spaceButton, doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
-        input.inputAccessoryView = toolBar
+        let tenHours: Int = 60 * 10
+        
+        let hour: Int = Calendar.current.component(.hour, from: Date())
+        let minute: Int = Calendar.current.component(.minute, from: Date())
+        let startValue: Int = (hour * 60) + minute
+        let endValue: Int = startValue + tenHours
+        let endAutoSelect: Int = startValue + 120
+        
+        changeTime(label: startTimelabel, sliderValue: CGFloat(startValue), displayText: "Start")
+        changeTime(label: endTimelabel, sliderValue: CGFloat(endAutoSelect), displayText: "End")
+        
+        sliderView.setMinValue(CGFloat(startValue), maxValue: CGFloat(endValue))
+        sliderView.setLeftValue(CGFloat(startValue), rightValue: CGFloat(endAutoSelect))
+        sliderView.addTarget(self, action: #selector(sliderChange(slider:)), for: .valueChanged)
     }
 }
 

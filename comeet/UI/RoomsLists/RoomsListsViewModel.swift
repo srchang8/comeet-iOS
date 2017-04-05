@@ -12,14 +12,18 @@ class RoomsListsViewModel : BaseViewModel {
     
     let authenticator: AuthenticatorProtocol
     let fetcher: FetcherProtocol
+    let persistor: PersistorProtocol
     private let metroarea: String
     private let roomsLists: [RoomList]
+    let selectedDate: Date
     
-    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, metroarea: String, roomsLists: [RoomList]) {
+    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, selectedDate: Date, metroarea: String, roomsLists: [RoomList], persistor: PersistorProtocol) {
         self.metroarea = metroarea
         self.roomsLists = roomsLists
         self.authenticator = authenticator
         self.fetcher = fetcher
+        self.selectedDate = selectedDate
+        self.persistor = persistor
     }
     
     func title() -> String {

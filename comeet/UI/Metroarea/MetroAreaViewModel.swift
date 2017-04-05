@@ -12,12 +12,16 @@ class MetroareaViewModel : BaseViewModel {
     
     let authenticator: AuthenticatorProtocol
     let fetcher: FetcherProtocol
+    let persistor: PersistorProtocol
     var reloadBinding: ReloadBinding?
+    let selectedDate: Date
     private var searchCriteria: [SearchCriteria] = []
     
-    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol) {
+    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, selectedDate: Date, persistor: PersistorProtocol) {
         self.authenticator = authenticator
         self.fetcher = fetcher
+        self.selectedDate = selectedDate
+        self.persistor = persistor
     }
     
     func title() -> String {
@@ -42,12 +46,11 @@ class MetroareaViewModel : BaseViewModel {
     }
     
     func metroareaCached() -> String? {
-        // TODO:
-        return nil
+        return persistor.getMetroArea()
     }
     
     func invalidateMetroareaCache() {
-        // TODO:
+        persistor.save(metroArea: nil)
     }
     
     func metroareaCount() -> Int {
