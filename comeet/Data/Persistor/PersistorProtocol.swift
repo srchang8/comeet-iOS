@@ -10,6 +10,5 @@ import Foundation
 
 protocol PersistorProtocol {
 
-    func save(credentials: String?)
-    func getCredentials() -> String?
+
 }

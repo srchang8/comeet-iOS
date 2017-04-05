@@ -16,8 +16,9 @@ enum AuthType {
 }
 
 protocol AuthenticatorProtocol {
+    var type: AuthType { get }
     func getToken(completion:@escaping TokenCompletion)
-    func isLoggedIn() -> Bool
+    func hasToken() -> String?
     func logout()
     func getOrganization() -> String
 }

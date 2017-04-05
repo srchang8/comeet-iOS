@@ -12,9 +12,6 @@ import SDWebImage
 class RoomsListViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var startDateTextField: UITextField!
-    @IBOutlet weak var endDateTextField: UITextField!
-
     var viewModel: RoomsListViewModel?
     internal struct Constants {
         static let roomCellIdentifier = "RoomCell"
@@ -56,17 +53,8 @@ private extension RoomsListViewController {
         
         viewModel?.reloadBinding = { [weak self] (rooms) in
             self?.tableView.reloadData()
-            self?.startDateTextField.text = self?.viewModel?.startDateString()
-            self?.endDateTextField.text = self?.viewModel?.endDateString()
-            self?.startDateTextField.backgroundColor = #colorLiteral(red: 0, green: 0.5042713881, blue: 1, alpha: 1)
-            self?.endDateTextField.backgroundColor = #colorLiteral(red: 0, green: 0.5042713881, blue: 1, alpha: 1)
         }
         viewModel?.fetchRooms()
-        
-        addPicker(input: startDateTextField, action: #selector(startDateChanged(sender:)))
-        addToolbar(input: startDateTextField)
-        addPicker(input: endDateTextField, action: #selector(endDateChanged(sender:)))
-        addToolbar(input: endDateTextField)
     }
     
     func addPicker(input: UITextField, action: Selector) {
@@ -115,16 +103,6 @@ extension RoomsListViewController : UITableViewDataSource {
 
 extension RoomsListViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        guard let _ = viewModel?.startDate else {
-            startDateTextField.backgroundColor = UIColor.red
-            return
-        }
-        
-        guard let _ = viewModel?.endDate else {
-            endDateTextField.backgroundColor = UIColor.red
-            return
-        }
         
         if let room = viewModel?.room(index: indexPath.row) {
             Router.selectedRoom = room

@@ -11,15 +11,5 @@ import Foundation
 class PersistorUserDefaultsImplementer : PersistorProtocol {
     
     private struct Constants {
-        static let credentialsKey = "credentialsKey"
-    }
-    
-    func save(credentials: String?) {
-        UserDefaults.standard.setValue(credentials, forKey: Constants.credentialsKey)
-        UserDefaults.standard.synchronize()
-    }
-    
-    func getCredentials() -> String? {
-        return UserDefaults.standard.string(forKey: Constants.credentialsKey)
     }
 }

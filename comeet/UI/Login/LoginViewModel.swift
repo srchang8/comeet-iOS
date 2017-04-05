@@ -17,6 +17,7 @@ class LoginViewModel : BaseViewModel {
     var tokenErrorBinding: TokenErrorBinding?
     var authenticator = DataSimpleBridge.getAuthenticator()
     var fetcher = DataSimpleBridge.getFetcher()
+    var persistor = DataSimpleBridge.getPersistor()
     
     // Set API environment
     private let environment: Environment = .Mocked
@@ -40,7 +41,11 @@ class LoginViewModel : BaseViewModel {
     }
     
     func isLoggedIn() -> Bool {
-        return authenticator.isLoggedIn()
+        guard let token = authenticator.hasToken() else {
+            return false
+        }
+        prepareFetcher(accessToken: token, type: authenticator.type)
+        return true
     }
     
     private func prepareFetcher(accessToken: String, type: AuthType) {

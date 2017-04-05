@@ -11,13 +11,13 @@ import ADAL
 
 class AuthenticatorADALImplementer : AuthenticatorProtocol {
     
+    let type = AuthType.oauth2
     internal struct Constants {
         static let authority = "https://login.microsoftonline.com/common"
         static let resource = "https://outlook.office365.com"
         static let clientId = "a64d56ea-5675-4ccf-82e9-5757620e1d26"
         static let redirectUri = URL(string: "http://localhost/comeet")
         static let authCookies = ["MSISAuth", "MSISAuthenticated", "MSISLoopDetectionCookie"]
-        static let authType = AuthType.oauth2
     }
     
     internal var organization: String?
@@ -32,12 +32,13 @@ class AuthenticatorADALImplementer : AuthenticatorProtocol {
         }
     }
     
-    func isLoggedIn() -> Bool {
+    func hasToken() -> String? {
         var error: AutoreleasingUnsafeMutablePointer<ADAuthenticationError?>?
-        guard let allItems = ADKeychainTokenCache.defaultKeychain().allItems(error) else {
-            return false
+        guard let allItems = ADKeychainTokenCache.defaultKeychain().allItems(error),
+            allItems.count > 0 else {
+            return nil
         }
-        return allItems.count > 0
+        return allItems.first?.accessToken
     }
     
     func logout() {
@@ -60,17 +61,17 @@ internal extension AuthenticatorADALImplementer {
     
     func handle(result: ADAuthenticationResult?, error: ADAuthenticationError?, completion:@escaping TokenCompletion) {
         guard error == nil else {
-            completion(nil, error, Constants.authType)
+            completion(nil, error, type)
             return
         }
         guard result?.status.rawValue == AD_SUCCEEDED.rawValue,
             let token = result?.accessToken,
             let item = result?.tokenCacheItem else {
-                completion(nil, error, Constants.authType)
+                completion(nil, error, type)
                 return
         }
         saveUserEmail(item: item)
-        completion(token, error, Constants.authType)
+        completion(token, error, type)
     }
     
     func deleteCookies(cookiesNames: [String]) {

@@ -17,4 +17,8 @@ class DataSimpleBridge {
     static func getFetcher() -> FetcherProtocol {
         return FetcherAlamofireImplementer()
     }
+    
+    static func getPersistor() -> PersistorProtocol {
+        return PersistorUserDefaultsImplementer()
+    }
 }
