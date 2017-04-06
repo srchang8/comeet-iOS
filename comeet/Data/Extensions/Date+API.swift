@@ -21,5 +21,17 @@ extension Date {
         formatter.dateFormat = "HH':'mm' 'MM'/'dd'/'yyyy"
         return formatter.string(from: self)
     }
+    
+    func displayStringDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM'/'dd'/'yyyy"
+        return formatter.string(from: self)
+    }
+    
+    func displayStringHour() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH':'mm"
+        return formatter.string(from: self)
+    }
 }
 

@@ -37,25 +37,25 @@ class RoomsListViewController: BaseViewController {
         Router.prepare(identifier: identifier, destination: segue.destination, sourceViewModel: viewModel)
     }
     
-    func startDateChanged(sender: UIDatePicker) {
-        viewModel?.start(date: sender.date)
-    }
-    
-    func endDateChanged(sender: UIDatePicker) {
-        viewModel?.end(date: sender.date)
-    }
-    
     func sliderChange(slider: MARKRangeSlider) {
-        changeTime(label: startTimelabel, sliderValue: slider.leftValue, displayText: "Start")
-        changeTime(label: endTimelabel, sliderValue: slider.rightValue, displayText: "End")
+        startTimelabel.text = "Start \(displayTime(sliderValue: slider.leftValue, start: true))"
+        endTimelabel.text = "End \(displayTime(sliderValue: slider.rightValue, start: false))"
     }
     
-    func changeTime(label: UILabel, sliderValue: CGFloat, displayText: String) {
-        let startHours = Int(sliderValue / 60)
-        let startMinutes = Int(sliderValue.truncatingRemainder(dividingBy: 60))
-        let startHoursString = startHours > 9 ? "\(startHours)" : "0\(startHours)"
-        let startMinutesString = startMinutes > 9 ? "\(startMinutes)" : "0\(startMinutes)"
-        label.text = "\(displayText) \(startHoursString):\(startMinutesString)"
+    func displayTime(sliderValue: CGFloat, start: Bool) -> String {
+        var hours = Int(sliderValue / 60)
+        if hours >= 24 {
+            hours -= 24
+        }
+        let minutes = Int(sliderValue.truncatingRemainder(dividingBy: 60))
+        if start {
+            viewModel?.start(hours: hours, minutes: minutes)
+        } else {
+            viewModel?.end(hours: hours, minutes: minutes)
+        }
+        let startHoursString = hours > 9 ? "\(hours)" : "0\(hours)"
+        let startMinutesString = minutes > 9 ? "\(minutes)" : "0\(minutes)"
+        return "\(startHoursString):\(startMinutesString)"
     }
 }
 
@@ -78,12 +78,11 @@ private extension RoomsListViewController {
         let endValue: Int = startValue + tenHours
         let endAutoSelect: Int = startValue + 120
         
-        changeTime(label: startTimelabel, sliderValue: CGFloat(startValue), displayText: "Start")
-        changeTime(label: endTimelabel, sliderValue: CGFloat(endAutoSelect), displayText: "End")
-        
         sliderView.setMinValue(CGFloat(startValue), maxValue: CGFloat(endValue))
         sliderView.setLeftValue(CGFloat(startValue), rightValue: CGFloat(endAutoSelect))
         sliderView.addTarget(self, action: #selector(sliderChange(slider:)), for: .valueChanged)
+        
+        sliderChange(slider: sliderView)
     }
 }
 
@@ -108,10 +107,7 @@ extension RoomsListViewController : UITableViewDataSource {
         } else {
             cell.imageView?.image = nil 
         }
-
-        //NSLog("%@",cell)
-        //NSLog("%@",cell.subviews)
-        //NSLog("%@",cell.imageView)
+        
         return cell
     }
 }

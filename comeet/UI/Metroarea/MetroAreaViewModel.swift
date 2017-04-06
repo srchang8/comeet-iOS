@@ -49,8 +49,8 @@ class MetroareaViewModel : BaseViewModel {
         return persistor.getMetroArea()
     }
     
-    func invalidateMetroareaCache() {
-        persistor.save(metroArea: nil)
+    func save(metroarea: String?) {
+        persistor.save(metroArea: metroarea)
     }
     
     func metroareaCount() -> Int {
@@ -69,5 +69,14 @@ class MetroareaViewModel : BaseViewModel {
             return []
         }
         return searchCriteria[index].roomsLists
+    }
+    
+    func roomsLists(metroarea: String) -> [RoomList]? {
+        for searchCriterion in searchCriteria {
+            if searchCriterion.metroarea == metroarea {
+                return searchCriterion.roomsLists
+            }
+        }
+        return nil
     }
 }

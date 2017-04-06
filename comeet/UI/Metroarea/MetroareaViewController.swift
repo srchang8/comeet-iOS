@@ -38,8 +38,19 @@ private extension MetroareaViewController {
         
         viewModel?.reloadBinding = { [weak self] (rooms) in
             self?.tableView.reloadData()
+            
+            guard let metroarea = self?.viewModel?.metroareaCached(),
+                let roomlist = self?.viewModel?.roomsLists(metroarea: metroarea) else  {
+                    return
+            }
+            
+            Router.selectedMetroarea = metroarea
+            Router.selectedRoomsLists = roomlist
+            self?.performSegue(withIdentifier: Router.Constants.roomsListsSegue, sender: self)
         }
         viewModel?.fetchSearchCriteria()
+        
+        
     }
 }
 
@@ -57,6 +68,8 @@ extension MetroareaViewController : UITableViewDataSource {
 
 extension MetroareaViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        viewModel?.save(metroarea: viewModel?.metroareaName(index: indexPath.row))
         Router.selectedMetroarea = viewModel?.metroareaName(index: indexPath.row)
         Router.selectedRoomsLists = viewModel?.roomsLists(index: indexPath.row)
         performSegue(withIdentifier: Router.Constants.roomsListsSegue, sender: self)

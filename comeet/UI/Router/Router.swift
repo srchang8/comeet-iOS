@@ -110,7 +110,7 @@ class Router {
                 return
         }
         
-        let toVM = RoomDetailViewModel(authenticator: fromVM.authenticator, fetcher: fromVM.fetcher, selectedDate: fromVM.selectedDate, metroarea: metroarea, roomsList: roomsList, room: room)
+        let toVM = RoomDetailViewModel(authenticator: fromVM.authenticator, fetcher: fromVM.fetcher, startDate: fromVM.startDate, endDate: fromVM.endDate, metroarea: metroarea, roomsList: roomsList, room: room)
         toVC.viewModel = toVM
     }
 }
