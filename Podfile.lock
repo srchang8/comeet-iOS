@@ -49,7 +49,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   SSCalendar:
-    :commit: 9ca62acc26875ce4f7b1d204ebf3e676043d46b4
+    :commit: a87c9bf857659158cfb4f69554f4e83cec3920de
     :git: https://github.com/bookaroom/sscalendar
 
 SPEC CHECKSUMS:
