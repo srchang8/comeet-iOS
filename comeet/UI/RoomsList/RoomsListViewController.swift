@@ -96,14 +96,22 @@ extension RoomsListViewController : UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.roomCellIdentifier, for: indexPath)
         cell.textLabel?.text = viewModel?.roomName(index: indexPath.row)
         cell.detailTextLabel?.text = viewModel?.roomDescription(index: indexPath.row)
-        cell.imageView?.contentMode = .scaleAspectFill
+        
+        
+
+        cell.imageView?.contentMode = .scaleAspectFit
+        //cell.imageView?.contentMode = UIViewContentMode.scaleAspectFill
         cell.imageView?.clipsToBounds = true
+        
         if let roomPicture = viewModel?.roomPicture(index: indexPath.row) {
             cell.imageView?.sd_setImage(with: roomPicture, placeholderImage: UIImage(named: Constants.placeholderImage))
         } else {
             cell.imageView?.image = nil 
         }
-        
+
+        //NSLog("%@",cell)
+        //NSLog("%@",cell.subviews)
+        //NSLog("%@",cell.imageView)
         return cell
     }
 }

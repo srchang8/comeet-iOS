@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="d4w-Q0-P4A">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="d4w-Q0-P4A">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,44 +24,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNW-gu-FWT">
-                                <rect key="frame" x="73" y="304" width="230" height="60"/>
-                                <color key="backgroundColor" red="0.23672278090000001" green="0.41792716369999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="750x1334-trees_comet_stars.png" translatesAutoresizingMaskIntoConstraints="NO" id="KVU-gd-7XI">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bjw-JF-kUv">
+                                <rect key="frame" x="0.0" y="202" width="375" height="186"/>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="Artboard 1.png" translatesAutoresizingMaskIntoConstraints="NO" id="vP1-eZ-RGJ">
+                                        <rect key="frame" x="74" y="40" width="189" height="83"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNW-gu-FWT">
+                                        <rect key="frame" x="112" y="140" width="151" height="30"/>
+                                        <color key="backgroundColor" red="0.23672278090000001" green="0.41792716369999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="logIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sC0-tb-AKa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="230" id="9du-KD-pAu"/>
-                                    <constraint firstAttribute="height" constant="60" id="A0n-ju-N7g"/>
+                                    <constraint firstItem="BNW-gu-FWT" firstAttribute="width" secondItem="vP1-eZ-RGJ" secondAttribute="width" multiplier="0.5" id="2cV-zV-hka"/>
+                                    <constraint firstItem="BNW-gu-FWT" firstAttribute="height" secondItem="vP1-eZ-RGJ" secondAttribute="height" multiplier="0.2" id="Cab-DD-kSB"/>
+                                    <constraint firstItem="BNW-gu-FWT" firstAttribute="centerY" secondItem="Bjw-JF-kUv" secondAttribute="centerY" multiplier="1.5" id="D3N-NT-0xZ"/>
+                                    <constraint firstItem="vP1-eZ-RGJ" firstAttribute="centerX" secondItem="Bjw-JF-kUv" secondAttribute="centerX" multiplier="0.85" id="r7e-aL-roF"/>
+                                    <constraint firstItem="BNW-gu-FWT" firstAttribute="centerX" secondItem="Bjw-JF-kUv" secondAttribute="centerX" id="vUM-kA-8Xp"/>
+                                    <constraint firstItem="vP1-eZ-RGJ" firstAttribute="centerY" secondItem="Bjw-JF-kUv" secondAttribute="centerY" multiplier="0.85" id="zrE-C0-90a"/>
                                 </constraints>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="logIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sC0-tb-AKa"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comeet Logo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3z-iZ-3cJ">
-                                <rect key="frame" x="38" y="219" width="300" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="WsE-Re-ok9"/>
-                                    <constraint firstAttribute="height" constant="50" id="xsV-uB-TQL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.0" green="0.40392156862745099" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="BNW-gu-FWT" firstAttribute="top" secondItem="y3z-iZ-3cJ" secondAttribute="bottom" constant="35" id="2am-Yl-8ly"/>
-                            <constraint firstItem="y3z-iZ-3cJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Cj-el-WpU"/>
-                            <constraint firstItem="BNW-gu-FWT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="4YJ-Tf-DPg"/>
-                            <constraint firstItem="BNW-gu-FWT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="APw-QK-2fJ"/>
+                            <constraint firstItem="Bjw-JF-kUv" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="3qP-bv-K86"/>
+                            <constraint firstItem="Bjw-JF-kUv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Kxf-At-7cD"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="KVU-gd-7XI" secondAttribute="bottom" id="PSK-r7-Pha"/>
+                            <constraint firstItem="Bjw-JF-kUv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aYw-Xd-FJS"/>
+                            <constraint firstAttribute="trailing" secondItem="KVU-gd-7XI" secondAttribute="trailing" id="axK-7r-Juo"/>
+                            <constraint firstItem="KVU-gd-7XI" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="d27-gW-Au9"/>
+                            <constraint firstItem="Bjw-JF-kUv" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.25" id="emR-Ov-2Gf"/>
+                            <constraint firstItem="KVU-gd-7XI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="z9S-2n-dqS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="POO-0q-p0m"/>
@@ -71,7 +81,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.23188405797103" y="136.95652173913044"/>
+            <point key="canvasLocation" x="135.19999999999999" y="136.28185907046478"/>
         </scene>
         <!--Main Menu View Controller-->
         <scene sceneID="yKa-uR-ctj">
@@ -483,4 +493,8 @@
             <point key="canvasLocation" x="2567" y="134"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="750x1334-trees_comet_stars.png" width="750" height="1334"/>
+        <image name="Artboard 1.png" width="189" height="83"/>
+    </resources>
 </document>
