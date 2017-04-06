@@ -14,10 +14,9 @@ class MainMenuViewController: SSCalendarDailyViewController {
     var viewModel: MainMenuViewModel?
     
     required init(coder: NSCoder) {
-//        super.init(events: MainMenuViewController.generateEvents())
         super.init(coder: coder)!
         self.addEvents(MainMenuViewController.generateEvents())
-        self.day = SSDayNode(value: 5, month: 4, year: 2017, weekday: 0)
+        self.day = SSDayNode(value: 6, month: 4, year: 2017, weekday: 0)
     }
     
     override func viewDidLoad() {
@@ -59,26 +58,33 @@ class MainMenuViewController: SSCalendarDailyViewController {
         performSegue(withIdentifier: Router.Constants.metroareaSegue, sender: self)
     }
     
-    //MARK: - SSCalendar setup
     static func generateEvents() -> [SSEvent] {
-        var events: [SSEvent] = []
-        for year in 2016...2021 {
-            for _ in 1...100 {
-                events.append(generateEvent(year));
-            }
-        }
-        return events
+        return [MainMenuViewController.demoEventA(),
+                MainMenuViewController.demoEventB(),
+                MainMenuViewController.demoEventC()]
     }
     
-    static func generateEvent(_ year: Int) -> SSEvent {
-        let month = Int(arc4random_uniform(12)) + 1
-        let day = Int(arc4random_uniform(28)) + 1
-        
+    static func demoEventA() -> SSEvent {
         let event = SSEvent()
-        event.startDate = SSCalendarUtils.date(withYear: year, month: month, day: day)
-        event.startTime = "09:00"
-        event.name = "Let's get together to discuss the architecture of the project."
-        
+        event.startDate = SSCalendarUtils.date(withYear: 2017, month: 04, day: 07)
+        event.startTime = "09:30"
+        event.name = "Review design for upcoming features."
+        return event
+    }
+    
+    static func demoEventB() -> SSEvent {
+        let event = SSEvent()
+        event.startDate = SSCalendarUtils.date(withYear: 2017, month: 04, day: 07)
+        event.startTime = "10:00"
+        event.name = "Sprint 2 retrospective."
+        return event
+    }
+    
+    static func demoEventC() -> SSEvent {
+        let event = SSEvent()
+        event.startDate = SSCalendarUtils.date(withYear: 2017, month: 04, day: 07)
+        event.startTime = "12:30"
+        event.name = "Prepare sprint 3 demo."
         return event
     }
 }
