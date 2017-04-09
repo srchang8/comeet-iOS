@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		050AE8391E9AEFB600A2A6A5 /* MeetingParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050AE8381E9AEFB600A2A6A5 /* MeetingParser.swift */; };
+		050AE83B1E9AF40900A2A6A5 /* UserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050AE83A1E9AF40900A2A6A5 /* UserParser.swift */; };
 		052A3C0B1E8730CE00DD88D6 /* FreebusyBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052A3C0A1E8730CE00DD88D6 /* FreebusyBlock.swift */; };
 		052A3C0D1E8730E400DD88D6 /* Amenity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052A3C0C1E8730E400DD88D6 /* Amenity.swift */; };
 		052A3C0F1E87364600DD88D6 /* AmenitiesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052A3C0E1E87364600DD88D6 /* AmenitiesParser.swift */; };
@@ -43,8 +45,6 @@
 		05C8C5691E91E7430027E2D7 /* AuthenticatorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C8C5681E91E7430027E2D7 /* AuthenticatorUtils.swift */; };
 		05C8C56C1E91E8D70027E2D7 /* AuthenticatorBasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C8C56A1E91E8D70027E2D7 /* AuthenticatorBasicViewController.swift */; };
 		05C8C56D1E91E8D70027E2D7 /* AuthenticatorBasicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05C8C56B1E91E8D70027E2D7 /* AuthenticatorBasicViewController.xib */; };
-		05C8C5701E9206D00027E2D7 /* RoomList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C8C56F1E9206D00027E2D7 /* RoomList.swift */; };
-		05C8C5721E9207890027E2D7 /* RoomListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C8C5711E9207890027E2D7 /* RoomListParser.swift */; };
 		05CF17C51E78FCAD0024D84F /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF17C31E78FCAD0024D84F /* MainMenuViewController.swift */; };
 		05CF17C61E78FCAD0024D84F /* MainMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF17C41E78FCAD0024D84F /* MainMenuViewModel.swift */; };
 		05CF17CC1E78FD4B0024D84F /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF17CB1E78FD4B0024D84F /* BaseViewModel.swift */; };
@@ -105,6 +105,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		050AE8381E9AEFB600A2A6A5 /* MeetingParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingParser.swift; sourceTree = "<group>"; };
+		050AE83A1E9AF40900A2A6A5 /* UserParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserParser.swift; sourceTree = "<group>"; };
 		052A3C0A1E8730CE00DD88D6 /* FreebusyBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreebusyBlock.swift; sourceTree = "<group>"; };
 		052A3C0C1E8730E400DD88D6 /* Amenity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Amenity.swift; sourceTree = "<group>"; };
 		052A3C0E1E87364600DD88D6 /* AmenitiesParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmenitiesParser.swift; sourceTree = "<group>"; };
@@ -142,8 +144,6 @@
 		05C8C5681E91E7430027E2D7 /* AuthenticatorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticatorUtils.swift; path = Data/Authenticator/AuthenticatorUtils.swift; sourceTree = "<group>"; };
 		05C8C56A1E91E8D70027E2D7 /* AuthenticatorBasicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticatorBasicViewController.swift; path = Data/Authenticator/BasicUI/AuthenticatorBasicViewController.swift; sourceTree = "<group>"; };
 		05C8C56B1E91E8D70027E2D7 /* AuthenticatorBasicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AuthenticatorBasicViewController.xib; path = Data/Authenticator/BasicUI/AuthenticatorBasicViewController.xib; sourceTree = "<group>"; };
-		05C8C56F1E9206D00027E2D7 /* RoomList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomList.swift; sourceTree = "<group>"; };
-		05C8C5711E9207890027E2D7 /* RoomListParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListParser.swift; sourceTree = "<group>"; };
 		05CF17C31E78FCAD0024D84F /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainMenuViewController.swift; path = UI/MainMenu/MainMenuViewController.swift; sourceTree = "<group>"; };
 		05CF17C41E78FCAD0024D84F /* MainMenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainMenuViewModel.swift; path = UI/MainMenu/MainMenuViewModel.swift; sourceTree = "<group>"; };
 		05CF17C81E78FD130024D84F /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -435,7 +435,6 @@
 				052A3C0A1E8730CE00DD88D6 /* FreebusyBlock.swift */,
 				05CF17D31E78FD6F0024D84F /* Meeting.swift */,
 				05CF17D41E78FD6F0024D84F /* Room.swift */,
-				05C8C56F1E9206D00027E2D7 /* RoomList.swift */,
 				052A3C161E874C4A00DD88D6 /* SearchCriteria.swift */,
 				05CF17D51E78FD6F0024D84F /* User.swift */,
 			);
@@ -448,9 +447,10 @@
 			children = (
 				052A3C0E1E87364600DD88D6 /* AmenitiesParser.swift */,
 				052A3C101E87365C00DD88D6 /* FreebusyBlockParser.swift */,
-				05C8C5711E9207890027E2D7 /* RoomListParser.swift */,
+				050AE8381E9AEFB600A2A6A5 /* MeetingParser.swift */,
 				05CF17D71E78FD6F0024D84F /* RoomParser.swift */,
 				052A3C181E874DE100DD88D6 /* SearchCriteriaParser.swift */,
+				050AE83A1E9AF40900A2A6A5 /* UserParser.swift */,
 			);
 			name = Parsers;
 			path = Data/Parsers;
@@ -923,7 +923,6 @@
 				05C8C5671E91E5F20027E2D7 /* AuthenticatorBasicImplementer.swift in Sources */,
 				052A3C0D1E8730E400DD88D6 /* Amenity.swift in Sources */,
 				058024FA1E6E56A600C917C0 /* LoginViewController.swift in Sources */,
-				05C8C5701E9206D00027E2D7 /* RoomList.swift in Sources */,
 				058025021E6E57F100C917C0 /* MeetingDetailViewController.swift in Sources */,
 				05CF17DF1E78FD6F0024D84F /* RoomParser.swift in Sources */,
 				05A7184A1E94B94000A8574C /* PersistorProtocol.swift in Sources */,
@@ -946,7 +945,6 @@
 				05CF17D91E78FD6F0024D84F /* Endpoints.swift in Sources */,
 				05CF17DB1E78FD6F0024D84F /* FetcherProtocol.swift in Sources */,
 				05C8C56C1E91E8D70027E2D7 /* AuthenticatorBasicViewController.swift in Sources */,
-				05C8C5721E9207890027E2D7 /* RoomListParser.swift in Sources */,
 				052A3C301E879D7A00DD88D6 /* BaseViewController.swift in Sources */,
 				05C8C5691E91E7430027E2D7 /* AuthenticatorUtils.swift in Sources */,
 				0580250A1E6E589500C917C0 /* MeetingDetailViewModel.swift in Sources */,
@@ -954,6 +952,8 @@
 				FC5E317A1E8AD16700035758 /* MyAgendaViewModel.swift in Sources */,
 				052A3C281E87663500DD88D6 /* RoomsListsViewModel.swift in Sources */,
 				052A3C171E874C4A00DD88D6 /* SearchCriteria.swift in Sources */,
+				050AE8391E9AEFB600A2A6A5 /* MeetingParser.swift in Sources */,
+				050AE83B1E9AF40900A2A6A5 /* UserParser.swift in Sources */,
 				0580250E1E6E58CD00C917C0 /* RoomDetailViewModel.swift in Sources */,
 				05CF17E31E790F770024D84F /* Environment.swift in Sources */,
 				05CF17DE1E78FD6F0024D84F /* User.swift in Sources */,

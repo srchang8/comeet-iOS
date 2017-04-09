@@ -9,7 +9,7 @@
 import Foundation
 
 protocol FreebusyProtocol {
-    func isFree(date: Date) -> Bool
+    func isFree(start: Date, end: Date) -> Bool
 }
 
 struct FreebusyBlock : FreebusyProtocol {
@@ -23,15 +23,15 @@ struct FreebusyBlock : FreebusyProtocol {
     let start: Date
     let end: Date
     
-    func isFree(date: Date) -> Bool {
+    func isFree(start: Date, end: Date) -> Bool {
         return self.status == FreebusyBlock.Constants.freeStatus &&
-            self.start <= date &&
-            self.end > date
+            self.start <= start &&
+            self.end >= end
     }
 }
 
 extension Array where Element: FreebusyProtocol {
-    func containsFree(date: Date) -> Bool {
-        return self.reduce(false) { $0 || $1.isFree(date: date) }
+    func containsFree(start: Date, end: Date) -> Bool {
+        return self.reduce(false) { $0 || $1.isFree(start: start, end: end) }
     }
 }

@@ -20,7 +20,7 @@ class SearchCriteriaParser {
             let roomsListsArray = searchCriterionDict[Constants.roomsListsKey] as? [AnyHashable : Any] else {
                 return nil
         }
-        let roomsLists = RoomListParser.parseRoomLists(roomListsDict: roomsListsArray)
+        let roomsLists = UserParser.parseUsersFlat(roomListsDict: roomsListsArray)
         let searchCriterion = SearchCriteria(metroarea: metroarea, roomsLists: roomsLists)
         return searchCriterion
     }

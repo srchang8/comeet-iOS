@@ -8,18 +8,20 @@
 
 import Foundation
 
+typealias BookRoomBinding = (Bool)-> Void
+
 class RoomDetailViewModel :  BaseViewModel {
     
     let authenticator: AuthenticatorProtocol
     let fetcher: FetcherProtocol
-    var reloadBinding: ReloadBinding?
+    var bookRoomBinding: BookRoomBinding?
     let startDate: Date
     let endDate: Date
     private let metroarea: String
-    private let roomsList: RoomList
+    private let roomsList: User
     private let room: Room
     
-    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, startDate: Date, endDate: Date, metroarea: String, roomsList: RoomList, room: Room) {
+    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, startDate: Date, endDate: Date, metroarea: String, roomsList: User, room: Room) {
         self.metroarea = metroarea
         self.roomsList = roomsList
         self.room = room
@@ -27,6 +29,18 @@ class RoomDetailViewModel :  BaseViewModel {
         self.fetcher = fetcher
         self.startDate = startDate
         self.endDate = endDate
+    }
+    
+    func bookRoom() {
+        let subject = "Comeet metting"
+        let body = "This meeting was created by comeet"
+        let requiredAtendees = [room.email]
+        let optionalAttendees: [String]? = nil
+        let params = fetcher.bookRoomParams(start: startDate.stringForAPI(), end: endDate.stringForAPI(), subject: subject, body: body, requiredAttendees: requiredAtendees, optionalAttendees: optionalAttendees)
+        
+        fetcher.bookRoom(organization: authenticator.getOrganization(), roomrecipient: room.email, params: params) { [weak self] (succes: Bool, error: Error?) in
+            self?.bookRoomBinding?(succes)
+        }
     }
     
     func title() -> String {
@@ -67,6 +81,6 @@ class RoomDetailViewModel :  BaseViewModel {
     }
     
     func roomBookText() -> String {
-        return "Book \(startDate.displayStringDate()) \(startDate.displayStringHour())-\(endDate.displayStringHour())"
+        return "Book \(startDate.displayStringDate()) \(startDate.displayStringHourMinute())-\(endDate.displayStringHourMinute())"
     }
 }

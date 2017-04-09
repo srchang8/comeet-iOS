@@ -17,6 +17,7 @@ class FakeFetcher: FetcherProtocol {
     var rooms: [Room]?
     var searchCriteria: [SearchCriteria]?
     var error: Error?
+    var bookRoomParams: [String: Any] = [:]
     
     func set(environment: Environment) {
         self.environment = environment
@@ -31,7 +32,14 @@ class FakeFetcher: FetcherProtocol {
         completion(searchCriteria, error)
     }
     
-    func getRooms(organization: String, roomlist: String, completion:@escaping FetchRoomsCompletion) {
-        completion(rooms, error)
+    func getRooms(organization: String, roomlist: String, start: String, end: String, completion:@escaping FetchRoomsCompletion) {
+    }
+    
+    func bookRoom(organization: String, roomrecipient: String, params: [String: Any], completion:@escaping BookRoomCompletion) {
+        
+    }
+    
+    func bookRoomParams(start: String, end: String, subject: String, body: String, requiredAttendees: [String], optionalAttendees:[String]?) -> [String: Any] {
+        return bookRoomParams
     }
 }

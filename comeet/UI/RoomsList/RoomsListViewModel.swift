@@ -13,14 +13,14 @@ class RoomsListViewModel : BaseViewModel {
     let authenticator: AuthenticatorProtocol
     let fetcher: FetcherProtocol
     var reloadBinding: ReloadBinding?
-    private let selectedDate: Date
+    internal let selectedDate: Date
     private let metroarea: String
-    private let roomsList: RoomList
-    private var rooms: [Room] = []
+    private let roomsList: User
+    internal var rooms: [Room] = []
     internal var startDate : Date
     internal var endDate : Date
     
-    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, selectedDate: Date, metroarea: String, roomsList: RoomList) {
+    init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, selectedDate: Date, metroarea: String, roomsList: User) {
         self.metroarea = metroarea
         self.roomsList = roomsList
         self.authenticator = authenticator
@@ -48,7 +48,7 @@ class RoomsListViewModel : BaseViewModel {
     }
     
     func fetchRooms() {
-        fetcher.getRooms(organization: authenticator.getOrganization(), roomlist: roomsList.email) { [weak self] (rooms, error) in
+        fetcher.getRooms(organization: authenticator.getOrganization(), roomlist: roomsList.email, start: startDateForRequest(), end: endDateForRequest()) { [weak self] (rooms, error) in
             guard error == nil else {
                 print(error!)
                 return
@@ -113,6 +113,21 @@ class RoomsListViewModel : BaseViewModel {
         endDate = dateFrom(hours: hours, minutes: minutes)
         reloadBinding?()
     }
+}
+
+private extension RoomsListViewModel {
+    
+    func startDateForRequest() -> String {
+        let start = selectedDate.startOfDay()
+        return start.stringForAPI()
+    }
+    
+    func endDateForRequest() -> String {
+        guard let end = selectedDate.endOfDay() else {
+            return selectedDate.stringForAPI()
+        }
+        return end.stringForAPI()
+    }
     
     func dateFrom(hours: Int, minutes: Int) -> Date {
         var components = NSCalendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: selectedDate)
@@ -121,23 +136,13 @@ class RoomsListViewModel : BaseViewModel {
         return NSCalendar.current.date(from: components) ?? selectedDate
     }
     
-    func maxTimeInterval() -> TimeInterval {
-        return 60 * 60 * 24 * 360
-    }
-    
     func availableRooms() -> [Room] {
-        
-        return rooms
-//        guard let startDate = startDate,
-//            let endDate = endDate else {
-//                return rooms
-//        }
-        
-//        return rooms.filter({ (room) -> Bool in
-//            guard let freebusy = room.freebusy else {
-//                return false
-//            }
-//            return freebusy.containsFree(date: startDate) && freebusy.containsFree(date: endDate)
-//        })
+                
+        return rooms.filter({ (room) -> Bool in
+            guard let freebusy = room.freebusy else {
+                return false
+            }
+            return freebusy.containsFree(start: startDate, end: endDate)
+        })
     }
 }

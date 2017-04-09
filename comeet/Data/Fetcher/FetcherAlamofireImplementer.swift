@@ -22,8 +22,18 @@ class FetcherAlamofireImplementer : FetcherProtocol {
         sessionManager.adapter = AlamofireAccessTokenAdapter(accessToken: accessToken, type: type)
     }
     
-    func getRooms(organization: String, roomlist: String, completion:@escaping FetchRoomsCompletion) {
-        sessionManager.request(endpoints.getRooms(organization: organization, roomlist: roomlist)).responseJSON { (response) in
+    func getSearchCriteria(organization: String, completion:@escaping FetchSearchCriteriaCompletion) {
+        sessionManager.request(endpoints.getSeatchCriteria(organization: organization)).responseJSON { (response) in
+            var searchCriteria: [SearchCriteria]?
+            if let array = FetcherAlamofireImplementer.getArray(response: response) {
+                searchCriteria = SearchCriteriaParser.parseSearchCriteria(searchCriteriaArray: array)
+            }
+            completion(searchCriteria, response.error)
+        }
+    }
+    
+    func getRooms(organization: String, roomlist: String, start: String, end: String, completion:@escaping FetchRoomsCompletion) {
+        sessionManager.request(endpoints.getRooms(organization: organization, roomlist: roomlist, start: start, end: end)).responseJSON { (response) in
             var rooms: [Room]?
             if let array = FetcherAlamofireImplementer.getArray(response: response) {
                 rooms = RoomParser.parseRooms(roomsArray: array)
@@ -32,13 +42,35 @@ class FetcherAlamofireImplementer : FetcherProtocol {
         }
     }
     
-    func getSearchCriteria(organization: String, completion:@escaping FetchSearchCriteriaCompletion) {
-        sessionManager.request(endpoints.getSeatchCriteria(organization: organization)).responseJSON { (response) in
-            var searchCriteria: [SearchCriteria]?
-            if let array = FetcherAlamofireImplementer.getArray(response: response) {
-                searchCriteria = SearchCriteriaParser.parseSearchCriteria(searchCriteriaArray: array)
+    func bookRoom(organization: String, roomrecipient: String, params: [String: Any], completion:@escaping BookRoomCompletion) {
+        let endpoint = endpoints.bookRoom(organization: organization, roomrecipient: roomrecipient)
+        sessionManager.request(endpoint, method: .post, parameters: params, encoding: URLEncoding.httpBody).responseJSON { (response) in
+            guard let json = response.result.value as? [String : Bool],
+                let success = json["success"] else {
+                completion(false, response.error)
+                return;
             }
-            completion(searchCriteria, response.error)
+            completion(success, response.error)
+        }
+    }
+    
+    func bookRoomParams(start: String, end: String, subject: String, body: String, requiredAttendees: [String], optionalAttendees:[String]?) -> [String: Any] {
+        let params: [String: Any] = ["start": start,
+                                     "end": end,
+                                     "subject": subject,
+                                     "body": body,
+                                     "required": requiredAttendees,
+                                     "optional": optionalAttendees ?? []]
+        return params
+    }
+    
+    func getMeetings(organization: String, user: String, start: String, end: String, completion:@escaping FetchMeetingsCompletion) {
+        sessionManager.request(endpoints.getMeetings(organization: organization, user: user, start: start, end: end)).responseJSON { (response) in
+            var meetings: [Meeting]?
+            if let array = FetcherAlamofireImplementer.getArray(response: response) {
+                // TODO:
+            }
+            completion(meetings, response.error)
         }
     }
 }

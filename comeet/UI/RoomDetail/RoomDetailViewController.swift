@@ -24,14 +24,7 @@ class RoomDetailViewController: BaseViewController {
     }
     
     @IBAction func book (_ sender: Any) {
-        guard let viewControllers = navigationController?.viewControllers else {
-            return
-        }
-        for controller in viewControllers {
-            if controller is MainMenuViewController {
-                _ = navigationController?.popToViewController(controller, animated: true)
-            }
-        }
+        viewModel?.bookRoom()
     }
 }
 
@@ -44,5 +37,22 @@ private extension RoomDetailViewController {
         roomAddress.text = viewModel?.roomAddress()
         roomAmenities.text = viewModel?.roomAmenities()
         bookButton.setTitle(viewModel?.roomBookText(), for: .normal)
+        
+        viewModel?.bookRoomBinding = { [weak self] (success: Bool) in
+            if (success) {
+                self?.goBackToMenu()
+            }
+        }
+    }
+    
+    func goBackToMenu() {
+        guard let viewControllers = navigationController?.viewControllers else {
+            return
+        }
+        for controller in viewControllers {
+            if controller is MainMenuViewController {
+                _ = navigationController?.popToViewController(controller, animated: true)
+            }
+        }
     }
 }

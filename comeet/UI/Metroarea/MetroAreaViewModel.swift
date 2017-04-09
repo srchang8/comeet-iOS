@@ -64,14 +64,14 @@ class MetroareaViewModel : BaseViewModel {
         return searchCriteria[index].metroarea
     }
     
-    func roomsLists(index: Int) -> [RoomList] {
+    func roomsLists(index: Int) -> [User] {
         guard searchCriteria.count > index else {
             return []
         }
         return searchCriteria[index].roomsLists
     }
     
-    func roomsLists(metroarea: String) -> [RoomList]? {
+    func roomsLists(metroarea: String) -> [User]? {
         for searchCriterion in searchCriteria {
             if searchCriterion.metroarea == metroarea {
                 return searchCriterion.roomsLists

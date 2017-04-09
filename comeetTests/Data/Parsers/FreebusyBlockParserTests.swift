@@ -26,10 +26,10 @@ class FreebusyBlockParserTests: XCTestCase {
         XCTAssert(freeBusyBlock == nil)
     }
     
-    func testValidAmenity() {
+    func testValidFreeBusyBlock() {
         let validAFreeBusyDict = [FreebusyBlockParser.Constants.statusKey : "busy",
-                                    FreebusyBlockParser.Constants.startKey : "2017-06-22 16:00:00",
-                                    FreebusyBlockParser.Constants.endKey : "2017-06-22 16:30:00"]
+                                    FreebusyBlockParser.Constants.startKey : "2017-08-24T09:00:00-0400",
+                                    FreebusyBlockParser.Constants.endKey : "2017-08-24T09:30:00-0400"]
         let freeBusyBlock = FreebusyBlockParser.parseFreebusyBlock(freebusyBlockDict: validAFreeBusyDict)
         
         XCTAssert(freeBusyBlock != nil)
@@ -37,8 +37,8 @@ class FreebusyBlockParserTests: XCTestCase {
     
     func testInvalidTime() {
         let validAFreeBusyDict = [FreebusyBlockParser.Constants.statusKey : "busy",
-                                  FreebusyBlockParser.Constants.startKey : "2017-06-22 17:00:00",
-                                  FreebusyBlockParser.Constants.endKey : "2017-06-22 16:30:00"]
+                                  FreebusyBlockParser.Constants.startKey : "2017-08-10T17:00:00Z",
+                                  FreebusyBlockParser.Constants.endKey : "2017-08-10T16:30:00Z"]
         let freeBusyBlock = FreebusyBlockParser.parseFreebusyBlock(freebusyBlockDict: validAFreeBusyDict)
         
         XCTAssert(freeBusyBlock == nil)
