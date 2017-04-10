@@ -17,7 +17,7 @@ struct Endpoints {
     }
     
     func getRooms(organization: String, roomlist: String, start: String, end: String) -> String {
-        // TODO: Go back to send dates once changes from the API coem through
+        // TODO: Go back to send dates once changes from the API come through
         //return environment.rawValue + "/" + organization + "/roomlists/" + roomlist + "/rooms?start=" + start + "&end=" + end
         return environment.rawValue + "/" + organization + "/roomlists/" + roomlist + "/rooms"
     }
