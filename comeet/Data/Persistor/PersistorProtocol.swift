@@ -12,6 +12,6 @@ protocol PersistorProtocol {
 
     func save(metroArea: String?)
     func getMetroArea() -> String?
-    func save(roomlist: [RoomList]?)
-    func getRoomlist() -> [RoomList]?
+    func save(roomlist: [User]?)
+    func getRoomlist() -> [User]?
 }

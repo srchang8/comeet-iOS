@@ -23,13 +23,17 @@ class EnvironmentTests: XCTestCase {
         let environment: Environment = .Mocked
         let endpoints = Endpoints(environment: environment)
         
-        XCTAssert(endpoints.getRooms(organization: "organization", roomlist: "test@test.com") == environment.rawValue + "/organization/roomlists/test@test.com/rooms")
+        // TODO: Go back to send dates once changes from the API come through
+        //XCTAssert(endpoints.getRooms(organization: "organization", roomlist: "test@test.com", start:"startdate", end: "enddate") == environment.rawValue + "/organization/roomlists/test@test.com/rooms?start=startdate&end=enddate")
+        XCTAssert(endpoints.getRooms(organization: "organization", roomlist: "test@test.com", start:"startdate", end: "enddate") == environment.rawValue + "/organization/roomlists/test@test.com/rooms")
     }
     
     func testGetRoomsProduction() {
         let environment: Environment = .Production
         let endpoints = Endpoints(environment: environment)
         
-        XCTAssert(endpoints.getRooms(organization: "organization", roomlist: "test@test.com") == environment.rawValue + "/organization/roomlists/test@test.com/rooms")
+        // TODO: Go back to send dates once changes from the API come through
+        //XCTAssert(endpoints.getRooms(organization: "organization", roomlist: "test@test.com", start:"startdate", end: "enddate") == environment.rawValue + "/organization/roomlists/test@test.com/rooms?start=startdate&end=enddate")
+        XCTAssert(endpoints.getRooms(organization: "organization", roomlist: "test@test.com", start:"startdate", end: "enddate") == environment.rawValue + "/organization/roomlists/test@test.com/rooms")
     }
 }

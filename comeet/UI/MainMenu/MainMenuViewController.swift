@@ -15,8 +15,8 @@ class MainMenuViewController: SSCalendarDailyViewController {
     
     required init(coder: NSCoder) {
         super.init(coder: coder)!
-        self.addEvents(MainMenuViewController.generateEvents())
-        self.day = SSDayNode(value: 6, month: 4, year: 2017, weekday: 0)
+        self.addEvents([])
+        self.day = SSDayNode(value: 10, month: 4, year: 2017, weekday: 0)
     }
     
     override func viewDidLoad() {
@@ -58,47 +58,54 @@ class MainMenuViewController: SSCalendarDailyViewController {
         performSegue(withIdentifier: Router.Constants.metroareaSegue, sender: self)
     }
     
-    static func generateEvents() -> [SSEvent] {
-        return [MainMenuViewController.demoEventA(),
-                MainMenuViewController.demoEventB(),
-                MainMenuViewController.demoEventC()]
-    }
-    
-    static func demoEventA() -> SSEvent {
-        let event = SSEvent()
-        event.startDate = SSCalendarUtils.date(withYear: 2017, month: 04, day: 07)
-        event.startTime = "09:30"
-        event.name = "Review design for upcoming features."
-        return event
-    }
-    
-    static func demoEventB() -> SSEvent {
-        let event = SSEvent()
-        event.startDate = SSCalendarUtils.date(withYear: 2017, month: 04, day: 07)
-        event.startTime = "10:00"
-        event.name = "Sprint 2 retrospective."
-        return event
-    }
-    
-    static func demoEventC() -> SSEvent {
-        let event = SSEvent()
-        event.startDate = SSCalendarUtils.date(withYear: 2017, month: 04, day: 07)
-        event.startTime = "12:30"
-        event.name = "Prepare sprint 3 demo."
-        return event
-    }
+//    static func generateEvents() -> [SSEvent] {
+//        return [MainMenuViewController.demoEventA(),
+//                MainMenuViewController.demoEventB(),
+//                MainMenuViewController.demoEventC()]
+//    }
+//    
+//    static func demoEventA() -> SSEvent {
+//        let event = SSEvent()
+//        event.startDate = SSCalendarUtils.date(withYear: 2017, month: 04, day: 07)
+//        event.startTime = "09:30"
+//        event.name = "Review design for upcoming features."
+//        return event
+//    }
+//    
+//    static func demoEventB() -> SSEvent {
+//        let event = SSEvent()
+//        event.startDate = SSCalendarUtils.date(withYear: 2017, month: 04, day: 07)
+//        event.startTime = "10:00"
+//        event.name = "Sprint 2 retrospective."
+//        return event
+//    }
+//    
+//    static func demoEventC() -> SSEvent {
+//        let event = SSEvent()
+//        event.startDate = SSCalendarUtils.date(withYear: 2017, month: 04, day: 07)
+//        event.startTime = "12:30"
+//        event.name = "Prepare sprint 3 demo."
+//        return event
+//    }
 }
 
 private extension MainMenuViewController {
     func setup() {
         
-        self.title = viewModel?.title()
-        self.navigationItem.setHidesBackButton(true, animated: false)
+        title = viewModel?.title()
+        navigationItem.setHidesBackButton(true, animated: false)
         
-        self.dateChanged = { [weak self] (date: Date?) in
+        dateChanged = { [weak self] (date: Date?) in
             if let date = date {
                 self?.viewModel?.selectedDate = date
             }
         }
+        
+        viewModel?.reloadBinding = { [weak self] in
+            self?.addEvents(self?.viewModel?.events())
+            self?.refresh()
+        }
+        
+        viewModel?.fetchMeetings()
     }
 }
