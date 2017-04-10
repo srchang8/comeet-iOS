@@ -139,7 +139,7 @@ private extension RoomsListViewModel {
     func availableRooms() -> [Room] {
                 
         return rooms.filter({ (room) -> Bool in
-            guard let freebusy = room.freebusy else {
+            guard let freebusy = room.freebusy, freebusy.count > 0 else {
                 return true
             }
             return freebusy.containsFree(start: startDate, end: endDate)
