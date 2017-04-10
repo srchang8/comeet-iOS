@@ -55,14 +55,10 @@ private extension MainMenuViewModel {
     static func eventFrom(meeting: Meeting) -> SSEvent {
         let event = SSEvent()
         
-        event.startDate = SSCalendarUtils.date(withYear: 2017, month: 04, day: 07)
-        event.startTime = "09:30"
-        event.name = "Review design for upcoming features."
-        
-//        event.startDate = meeting.start
-//        event.startTime = meeting.start.displayStringHourMinute()
-//        event.endTime = meeting.end.displayStringHourMinute()
-//        event.name = meeting.subject
+        event.startDate = meeting.start
+        event.startTime = meeting.start.displayStringHourMinute()
+        event.endTime = meeting.end.displayStringHourMinute()
+        event.name = meeting.subject
         return event
     }
 }

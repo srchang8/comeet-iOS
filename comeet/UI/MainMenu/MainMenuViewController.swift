@@ -103,7 +103,6 @@ private extension MainMenuViewController {
         
         viewModel?.reloadBinding = { [weak self] in
             self?.addEvents(self?.viewModel?.events())
-            self?.refresh()
         }
         
         viewModel?.fetchMeetings()
