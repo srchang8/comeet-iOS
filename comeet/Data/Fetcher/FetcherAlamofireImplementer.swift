@@ -68,7 +68,7 @@ class FetcherAlamofireImplementer : FetcherProtocol {
         sessionManager.request(endpoints.getMeetings(organization: organization, user: user, start: start, end: end)).responseJSON { (response) in
             var meetings: [Meeting]?
             if let array = FetcherAlamofireImplementer.getArray(response: response) {
-                // TODO:
+                meetings = MeetingParser.parseMeetings(meetingsArray: array)
             }
             completion(meetings, response.error)
         }

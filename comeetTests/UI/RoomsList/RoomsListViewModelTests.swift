@@ -19,7 +19,7 @@ class RoomsListViewModelTests: XCTestCase {
         super.setUp()
         authenticator = FakeAuthenticator()
         fetcher = FakeFetcher()
-        let roomlist = RoomList(name: "A Building", email: "test@test.com")
+        let roomlist = User(name: "A Building", email: "test@test.com")
         viewModel = RoomsListViewModel(authenticator: authenticator!, fetcher: fetcher!, selectedDate: Date(), metroarea: "A City", roomsList: roomlist)
     }
     

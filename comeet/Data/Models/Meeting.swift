@@ -19,5 +19,4 @@ struct Meeting {
     let metingcreator: User
     let requiredattendees: [User]
     let optionalattendees: [User]
-    
 }
