@@ -24,6 +24,8 @@ class RoomDetailViewController: BaseViewController {
     }
     
     @IBAction func book (_ sender: Any) {
+        
+        //viewModel?.bookRoomExample()
         viewModel?.bookRoom()
     }
 }
