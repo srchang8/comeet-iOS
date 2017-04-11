@@ -36,7 +36,7 @@ class RoomDetailViewModel :  BaseViewModel {
         
         request.httpMethod = "POST"
         
-        request.setValue("Basic amFibGFja0BtZWV0bC5pbms6Q2Fwc3RvbmVFNTk5", forHTTPHeaderField: "Authorization")
+        request.setValue("Basic YOUR_TOKEN_HERE", forHTTPHeaderField: "Authorization")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         
         let postString = "start=2017-05-12T09:00:00-0400&end=2017-05-12T10:05:00-0400&subject=Science Class&body=Momentum and Gravity&required=jablack@meetl.ink, adminish@meetl.ink"
