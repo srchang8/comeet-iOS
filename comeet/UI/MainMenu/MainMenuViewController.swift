@@ -9,15 +9,14 @@
 import UIKit
 import SSCalendar
 
-class MainMenuViewController: SSCalendarDailyViewController {
+class MainMenuViewController: BaseViewController {
+    
+    @IBOutlet weak var dateButton: UIButton!
+    @IBOutlet weak var containerView: UIView!
+    
+    let roomsListVC = RoomsListViewController()
     
     var viewModel: MainMenuViewModel?
-    
-    required init(coder: NSCoder) {
-        super.init(coder: coder)!
-        self.addEvents([])
-        self.day = SSDayNode(value: 10, month: 4, year: 2017, weekday: 0)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +38,7 @@ class MainMenuViewController: SSCalendarDailyViewController {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func logOut(_ sender: Any) {
-        viewModel?.logout()
-        _=navigationController?.popViewController(animated: true)
-        
-    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier,
@@ -54,39 +49,15 @@ class MainMenuViewController: SSCalendarDailyViewController {
         Router.prepare(identifier: identifier, destination: segue.destination, sourceViewModel: viewModel)
     }
 
-    @IBAction func bookAction(_ sender: Any) {
-        performSegue(withIdentifier: Router.Constants.metroareaSegue, sender: self)
+    @IBAction func logOut(_ sender: Any) {
+        viewModel?.logout()
+        _=navigationController?.popViewController(animated: true)
+        
     }
     
-//    static func generateEvents() -> [SSEvent] {
-//        return [MainMenuViewController.demoEventA(),
-//                MainMenuViewController.demoEventB(),
-//                MainMenuViewController.demoEventC()]
-//    }
-//    
-//    static func demoEventA() -> SSEvent {
-//        let event = SSEvent()
-//        event.startDate = SSCalendarUtils.date(withYear: 2017, month: 04, day: 07)
-//        event.startTime = "09:30"
-//        event.name = "Review design for upcoming features."
-//        return event
-//    }
-//    
-//    static func demoEventB() -> SSEvent {
-//        let event = SSEvent()
-//        event.startDate = SSCalendarUtils.date(withYear: 2017, month: 04, day: 07)
-//        event.startTime = "10:00"
-//        event.name = "Sprint 2 retrospective."
-//        return event
-//    }
-//    
-//    static func demoEventC() -> SSEvent {
-//        let event = SSEvent()
-//        event.startDate = SSCalendarUtils.date(withYear: 2017, month: 04, day: 07)
-//        event.startTime = "12:30"
-//        event.name = "Prepare sprint 3 demo."
-//        return event
-//    }
+    @IBAction func changeDate(_ sender: Any) {
+        
+    }
 }
 
 private extension MainMenuViewController {
@@ -95,16 +66,35 @@ private extension MainMenuViewController {
         title = viewModel?.title()
         navigationItem.setHidesBackButton(true, animated: false)
         
-        dateChanged = { [weak self] (date: Date?) in
-            if let date = date {
-                self?.viewModel?.selectedDate = date
-            }
-        }
+        dateButton.setTitle(viewModel?.selectedDate.displayStringDate(), for: .normal)
         
-        viewModel?.reloadBinding = { [weak self] in
-            self?.addEvents(self?.viewModel?.events())
-        }
+//        viewModel?.reloadBinding = { [weak self] in
+//
+//        }
+//        viewModel?.fetchMeetings()
+        showRoomsList()
+    }
+    
+    func showRoomsList() {
         
-        viewModel?.fetchMeetings()
+        addChildViewController(roomsListVC)
+//        roomsListVC.view.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        roomsListVC.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        
+        containerView.addSubview(roomsListVC.view)
+        roomsListVC.didMove(toParentViewController: self)
+        
+        let views = ["containerView" : containerView,
+                     "roomsListVCView" : roomsListVC.view
+        ]
+        
+        let vflVertical = "V:|[roomsListVCView]|"
+        let vflHorizontall = "H:|[roomsListVCView]|"
+        
+        containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: vflVertical, options: [], metrics: nil, views: views))
+        containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: vflHorizontall, options: [], metrics: nil, views: views))
+        
     }
 }
