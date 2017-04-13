@@ -57,7 +57,15 @@ class MainMenuViewController: BaseViewController {
     
     @IBAction func changeDate(_ sender: Any) {
         
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "calendarPopUp") as! CalendarViewController
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMove(toParentViewController: self)
+        
     }
+    
+    
 }
 
 private extension MainMenuViewController {
@@ -97,4 +105,5 @@ private extension MainMenuViewController {
         containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: vflHorizontall, options: [], metrics: nil, views: views))
         
     }
+
 }
