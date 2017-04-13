@@ -95,9 +95,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cIF-3v-ruZ">
-                                <rect key="frame" x="56" y="130" width="262" height="364"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cIF-3v-ruZ">
+                                <rect key="frame" x="47" y="83" width="281" height="500"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IL3-tE-0Lk">
                                         <rect key="frame" x="102" y="90" width="37" height="30"/>
@@ -120,6 +119,12 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cIF-3v-ruZ" firstAttribute="centerY" secondItem="9dm-a8-poY" secondAttribute="centerY" id="GcS-HE-W6R"/>
+                            <constraint firstItem="cIF-3v-ruZ" firstAttribute="centerX" secondItem="9dm-a8-poY" secondAttribute="centerX" id="HF3-TS-juG"/>
+                            <constraint firstItem="cIF-3v-ruZ" firstAttribute="width" secondItem="9dm-a8-poY" secondAttribute="width" multiplier="0.75" id="Xci-Ru-qV9"/>
+                            <constraint firstItem="cIF-3v-ruZ" firstAttribute="height" secondItem="9dm-a8-poY" secondAttribute="height" multiplier="0.75" id="fZ5-CJ-cMR"/>
+                        </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
