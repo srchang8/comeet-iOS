@@ -31,32 +31,6 @@ class RoomDetailViewModel :  BaseViewModel {
         self.endDate = endDate
     }
     
-    func bookRoomExample(){
-        var request = URLRequest(url: URL(string: "https://api.meetl.ink:8443/comeet/meetl.ink/rooms/jablack@meetl.ink/reserve")!)
-        
-        request.httpMethod = "POST"
-        
-        request.setValue("Basic YOUR_TOKEN_HERE", forHTTPHeaderField: "Authorization")
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        
-        let postString = "start=2017-05-12T09:00:00-0400&end=2017-05-12T10:05:00-0400&subject=Science Class&body=Momentum and Gravity&required=jablack@meetl.ink, adminish@meetl.ink"
-        
-        request.httpBody = postString.data(using: .utf8)
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(error)")
-                return
-            }
-            
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
-        }
-        task.resume()
-        
-    }
-    
     func bookRoom() {
         let subject = "Comeet metting"
         let body = "This meeting was created by comeet"
