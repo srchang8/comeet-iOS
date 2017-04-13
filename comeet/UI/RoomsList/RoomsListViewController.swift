@@ -63,26 +63,33 @@ private extension RoomsListViewController {
     
     func setup() {
         
+        view.backgroundColor = .red
+//        tableView.backgroundColor = .blue
+        
         title = viewModel?.title()
         
-        viewModel?.reloadBinding = { [weak self] (rooms) in
-            self?.tableView.reloadData()
-        }
-        viewModel?.fetchRooms()
+//        viewModel?.reloadBinding = { [weak self] (rooms) in
+//            self?.tableView.reloadData()
+//        }
+//        viewModel?.fetchRooms()
+//        
+//        let tenHours: Int = 60 * 10
+//        
+//        let hour: Int = Calendar.current.component(.hour, from: Date())
+//        let minute: Int = Calendar.current.component(.minute, from: Date())
+//        let startValue: Int = (hour * 60) + minute
+//        let endValue: Int = startValue + tenHours
+//        let endAutoSelect: Int = startValue + 120
+//        
+//        sliderView.setMinValue(CGFloat(startValue), maxValue: CGFloat(endValue))
+//        sliderView.setLeftValue(CGFloat(startValue), rightValue: CGFloat(endAutoSelect))
+//        sliderView.addTarget(self, action: #selector(sliderChange(slider:)), for: .valueChanged)
+//        
+//        sliderChange(slider: sliderView)
+    }
+    
+    func addRoomsTable() {
         
-        let tenHours: Int = 60 * 10
-        
-        let hour: Int = Calendar.current.component(.hour, from: Date())
-        let minute: Int = Calendar.current.component(.minute, from: Date())
-        let startValue: Int = (hour * 60) + minute
-        let endValue: Int = startValue + tenHours
-        let endAutoSelect: Int = startValue + 120
-        
-        sliderView.setMinValue(CGFloat(startValue), maxValue: CGFloat(endValue))
-        sliderView.setLeftValue(CGFloat(startValue), rightValue: CGFloat(endAutoSelect))
-        sliderView.addTarget(self, action: #selector(sliderChange(slider:)), for: .valueChanged)
-        
-        sliderChange(slider: sliderView)
     }
 }
 
