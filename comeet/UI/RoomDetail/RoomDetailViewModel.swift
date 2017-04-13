@@ -60,8 +60,8 @@ class RoomDetailViewModel :  BaseViewModel {
     func bookRoom() {
         let subject = "Comeet metting"
         let body = "This meeting was created by comeet"
-        let requiredAtendees = [room.email]
-        let optionalAttendees: [String]? = nil
+        let requiredAtendees = room.email
+        let optionalAttendees = ""
         let params = fetcher.bookRoomParams(start: startDate.stringForAPI(), end: endDate.stringForAPI(), subject: subject, body: body, requiredAttendees: requiredAtendees, optionalAttendees: optionalAttendees)
         
         fetcher.bookRoom(organization: authenticator.getOrganization(), roomrecipient: room.email, params: params) { [weak self] (succes: Bool, error: Error?) in

@@ -54,13 +54,13 @@ class FetcherAlamofireImplementer : FetcherProtocol {
         }
     }
     
-    func bookRoomParams(start: String, end: String, subject: String, body: String, requiredAttendees: [String], optionalAttendees:[String]?) -> [String: Any] {
+    func bookRoomParams(start: String, end: String, subject: String, body: String, requiredAttendees: String, optionalAttendees:String) -> [String: Any] {
         let params: [String: Any] = ["start": start,
                                      "end": end,
                                      "subject": subject,
                                      "body": body,
                                      "required": requiredAttendees,
-                                     "optional": optionalAttendees ?? []]
+                                     "optional": optionalAttendees]
         return params
     }
     
