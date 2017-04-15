@@ -14,8 +14,6 @@ class MainMenuViewController: BaseViewController {
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     
-    let roomsListVC = RoomsListViewController()
-    
     var viewModel: MainMenuViewModel?
     
     override func viewDidLoad() {
@@ -67,34 +65,47 @@ private extension MainMenuViewController {
         navigationItem.setHidesBackButton(true, animated: false)
         
         dateButton.setTitle(viewModel?.selectedDate.displayStringDate(), for: .normal)
-        
-//        viewModel?.reloadBinding = { [weak self] in
-//
-//        }
-//        viewModel?.fetchMeetings()
-        showRoomsList()
+        addRoomsList()
     }
     
-    func showRoomsList() {
+    func addRoomsList() {
+        if let roomsListVC = getRoomsListVC() {
+            addChild(viewController: roomsListVC, inView: containerView)
+        }
+    }
+    
+    func addChild(viewController: UIViewController, inView: UIView) {
+        addChildViewController(viewController)
+        viewController.view.translatesAutoresizingMaskIntoConstraints = false
+        inView.addSubview(viewController.view)
+        viewController.didMove(toParentViewController: self)
         
-        addChildViewController(roomsListVC)
-//        roomsListVC.view.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        roomsListVC.view.translatesAutoresizingMaskIntoConstraints = false
+        let views = ["viewControllerView" : viewController.view]
+        let vflVertical = "V:|[viewControllerView]|"
+        let vflHorizontall = "H:|[viewControllerView]|"
         
+        inView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: vflVertical, options: [], metrics: nil, views: views))
+        inView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: vflHorizontall, options: [], metrics: nil, views: views))
+    }
+    
+    func getRoomsListVC() -> RoomsListViewController? {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "RoomsListViewController")
+        guard let roomsListVC = viewController as? RoomsListViewController else {
+            return nil
+        }
+        if let roomsListViewModel = getRoomsListViewModel() {
+            roomsListVC.viewModel = roomsListViewModel
+        }
         
-        
-        containerView.addSubview(roomsListVC.view)
-        roomsListVC.didMove(toParentViewController: self)
-        
-        let views = ["containerView" : containerView,
-                     "roomsListVCView" : roomsListVC.view
-        ]
-        
-        let vflVertical = "V:|[roomsListVCView]|"
-        let vflHorizontall = "H:|[roomsListVCView]|"
-        
-        containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: vflVertical, options: [], metrics: nil, views: views))
-        containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: vflHorizontall, options: [], metrics: nil, views: views))
-        
+        return roomsListVC
+    }
+    
+    func getRoomsListViewModel() -> RoomsListViewModel? {
+        guard let viewModel = viewModel else {
+            return nil
+        }
+        let roomsListViewModel = RoomsListViewModel(authenticator: viewModel.authenticator, fetcher: viewModel.fetcher, persistor: viewModel.persistor, selectedDate: viewModel.selectedDate, metroarea: nil, roomsList: nil)
+        return roomsListViewModel
     }
 }
