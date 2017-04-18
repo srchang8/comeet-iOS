@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0506BA351EA273BD0008E642 /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0506BA341EA273BD0008E642 /* RoomTableViewCell.swift */; };
 		050AE8391E9AEFB600A2A6A5 /* MeetingParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050AE8381E9AEFB600A2A6A5 /* MeetingParser.swift */; };
 		050AE83B1E9AF40900A2A6A5 /* UserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050AE83A1E9AF40900A2A6A5 /* UserParser.swift */; };
 		052A3C0B1E8730CE00DD88D6 /* FreebusyBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052A3C0A1E8730CE00DD88D6 /* FreebusyBlock.swift */; };
@@ -107,6 +108,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0506BA341EA273BD0008E642 /* RoomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomTableViewCell.swift; path = UI/RoomsList/RoomTableViewCell.swift; sourceTree = "<group>"; };
 		050AE8381E9AEFB600A2A6A5 /* MeetingParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingParser.swift; sourceTree = "<group>"; };
 		050AE83A1E9AF40900A2A6A5 /* UserParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserParser.swift; sourceTree = "<group>"; };
 		052A3C0A1E8730CE00DD88D6 /* FreebusyBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreebusyBlock.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 			children = (
 				058025071E6E587600C917C0 /* RoomsListViewController.swift */,
 				0580250F1E6E58E700C917C0 /* RoomsListViewModel.swift */,
+				0506BA341EA273BD0008E642 /* RoomTableViewCell.swift */,
 			);
 			name = RoomsList;
 			sourceTree = "<group>";
@@ -932,6 +935,7 @@
 				058025101E6E58E700C917C0 /* RoomsListViewModel.swift in Sources */,
 				05CF17DA1E78FD6F0024D84F /* FetcherAlamofireImplementer.swift in Sources */,
 				058025081E6E587600C917C0 /* RoomsListViewController.swift in Sources */,
+				0506BA351EA273BD0008E642 /* RoomTableViewCell.swift in Sources */,
 				05CF17CC1E78FD4B0024D84F /* BaseViewModel.swift in Sources */,
 				FC36A7721EA00B2A008C3FE4 /* CalendarViewModel.swift in Sources */,
 				058025061E6E585A00C917C0 /* RoomDetailViewController.swift in Sources */,
