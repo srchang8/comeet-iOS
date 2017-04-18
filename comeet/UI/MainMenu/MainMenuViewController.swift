@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import WWCalendarTimeSelector
 
-class MainMenuViewController: BaseViewController {
+class MainMenuViewController: BaseViewController, WWCalendarTimeSelectorProtocol {
     
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var containerView: UIView!
@@ -30,6 +31,7 @@ class MainMenuViewController: BaseViewController {
         // Show the navigation bar on other view controllers
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -54,15 +56,39 @@ class MainMenuViewController: BaseViewController {
     
     @IBAction func changeDate(_ sender: Any) {
         
-        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "calendarPopUp") as! CalendarViewController
+        /*let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "calendarPopUp") as! CalendarViewController
         self.addChildViewController(popOverVC)
         popOverVC.view.frame = self.view.frame
         self.view.addSubview(popOverVC.view)
-        popOverVC.didMove(toParentViewController: self)
+        popOverVC.didMove(toParentViewController: self)*/
+        
+        let calendarVC = WWCalendarTimeSelector.instantiate()
+        calendarVC.optionTopPanelBackgroundColor = UIColor(colorLiteralRed: 129.0/255.0, green: 216.0/255.0, blue: 208.0/255.0, alpha: 1.0)
+        calendarVC.optionCalendarBackgroundColorTodayHighlight = UIColor(colorLiteralRed: 129.0/255.0, green: 216.0/255.0, blue: 208.0/255.0, alpha: 1.0)
+        calendarVC.optionSelectorPanelBackgroundColor = UIColor(colorLiteralRed: 129.0/255.0, green: 216.0/255.0, blue: 208.0/255.0, alpha: 1.0)
+        calendarVC.optionButtonFontColorDone = UIColor(colorLiteralRed: 129.0/255.0, green: 216.0/255.0, blue: 208.0/255.0, alpha: 1.0)
+        calendarVC.delegate = self
+        calendarVC.modalPresentationStyle = .popover
+        calendarVC.popoverPresentationController?.sourceView = sender as? UIButton
+        self.present(calendarVC, animated: true) { 
+            
+        }
         
     }
     
+    //callback from WWCalendar library when a date is selected and done button is pressed
+    func WWCalendarTimeSelectorDone(_ selector: WWCalendarTimeSelector, date: Date) {
+        updateDateButton(date: date)
+    }
     
+    //helper function to convert the date into a string and use that string to update the title of the date button
+    func updateDateButton(date: Date) {
+        let df = DateFormatter()
+        df.dateStyle = .medium
+        let title = df.string(from: date)
+        
+        dateButton.setTitle(title, for: .normal)
+    }
 }
 
 private extension MainMenuViewController {
