@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SSCalendar
 
 class MainMenuViewController: BaseViewController {
     

@@ -8,7 +8,6 @@
 
 
 import Foundation
-import SSCalendar
 
 class MainMenuViewModel : BaseViewModel {
     
@@ -46,19 +45,8 @@ class MainMenuViewModel : BaseViewModel {
         persistor.save(metroArea: nil)
     }
     
-    func events() -> [SSEvent] {
-        return meetings.map { MainMenuViewModel.eventFrom(meeting: $0) }
-    }
+  
 }
 
 private extension MainMenuViewModel {
-    static func eventFrom(meeting: Meeting) -> SSEvent {
-        let event = SSEvent()
-        
-        event.startDate = meeting.start
-        event.startTime = meeting.start.displayStringHourMinute()
-        event.endTime = meeting.end.displayStringHourMinute()
-        event.name = meeting.subject
-        return event
     }
-}
