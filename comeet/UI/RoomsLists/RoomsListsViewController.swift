@@ -52,7 +52,12 @@ extension RoomsListsViewController : UITableViewDataSource {
 
 extension RoomsListsViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Router.selectedRoomsList = viewModel?.roomsList(index: indexPath.row)
+        guard let viewModel = viewModel else {
+            return
+        }
+        
+        viewModel.save(roomlist: viewModel.roomsList(index: indexPath.row))
+        Router.selectedRoomsList = viewModel.roomsList(index: indexPath.row)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RoomsListNewLocation"), object: nil)
         dismiss(animated: true, completion: nil)
     }

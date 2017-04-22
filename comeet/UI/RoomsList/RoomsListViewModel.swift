@@ -16,7 +16,7 @@ class RoomsListViewModel : BaseViewModel {
     var reloadBinding: ReloadBinding?
     internal let selectedDate: Date
     private var metroarea: String?
-    private var roomsList: User?
+    private(set) var roomsList: User?
     internal var rooms: [Room] = []
     internal var startDate : Date
     internal var endDate : Date
@@ -126,6 +126,18 @@ class RoomsListViewModel : BaseViewModel {
     func end(hours: Int, minutes: Int) {
         endDate = dateFrom(hours: hours, minutes: minutes)
         reloadBinding?()
+    }
+    
+    func locationPersisted() -> Bool {
+        if let metroarea = persistor.getMetroArea(),
+            let roomlist = persistor.getRoomlist() {
+            Router.selectedMetroarea = metroarea
+            Router.selectedRoomsList = roomlist
+            newLocation(metroarea: metroarea, roomsList: roomlist)
+            return true
+        } else {
+            return false
+        }
     }
 }
 

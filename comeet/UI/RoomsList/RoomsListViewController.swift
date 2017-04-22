@@ -39,7 +39,11 @@ class RoomsListViewController: BaseViewController {
             let viewModel = viewModel else {
                 return
         }
-        prepareForPopUp(controller: segue.destination)
+        
+        if segue.identifier == Router.Constants.metroareaSegue {
+            prepareForPopUp(controller: segue.destination)
+        }
+        
         Router.prepare(identifier: identifier, destination: segue.destination, sourceViewModel: viewModel)
     }
     
@@ -70,6 +74,18 @@ class RoomsListViewController: BaseViewController {
     
     func newLocation(sender: Any) {
         viewModel?.newLocation(metroarea: Router.selectedMetroarea, roomsList: Router.selectedRoomsList)
+        selectLocationButton.setTitle(viewModel?.roomsList?.name, for: .normal)
+    }
+    
+    func book(sender: Any) {
+        guard let button = sender as? UIButton else {
+            return
+        }
+        
+        if let room = viewModel?.room(index: button.tag) {
+            Router.selectedRoom = room
+            performSegue(withIdentifier: Router.Constants.roomDetailSegue, sender: nil)
+        }
     }
     
     deinit {
@@ -81,12 +97,17 @@ class RoomsListViewController: BaseViewController {
 private extension RoomsListViewController {
     
     func setup() {
-        title = viewModel?.title()
         
-        viewModel?.reloadBinding = { [weak self] (rooms) in
+        guard let viewModel = viewModel else {
+            return
+        }
+        
+        title = viewModel.title()
+        
+        viewModel.reloadBinding = { [weak self] (rooms) in
             self?.tableView.reloadData()
         }
-        viewModel?.fetchRooms()
+        viewModel.fetchRooms()
         
         let tenHours: Int = 60 * 10
         
@@ -104,8 +125,11 @@ private extension RoomsListViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector (newLocation(sender:)), name: NSNotification.Name(rawValue: "RoomsListNewLocation"), object: nil)
         
-        // TODO: Check for persisted metro/roomList
-        performSegue(withIdentifier: Router.Constants.metroareaSegue, sender: self)
+        if (viewModel.locationPersisted()) {
+            selectLocationButton.setTitle(viewModel.roomsList?.name, for: .normal)
+        } else {
+            performSegue(withIdentifier: Router.Constants.metroareaSegue, sender: self)
+        }
     }
     
     func prepareForPopUp(controller: UIViewController) {
@@ -129,7 +153,8 @@ extension RoomsListViewController : UITableViewDataSource {
         
         roomCell.roomName.text = viewModel?.roomName(index: indexPath.row)
         roomCell.roomCapacity.text = viewModel?.roomDescription(index: indexPath.row)
-        
+        roomCell.bookButton.tag = indexPath.row
+        roomCell.bookButton.addTarget(self, action: #selector(book(sender:)), for: .touchUpInside)
         
         if let roomPicture = viewModel?.roomPicture(index: indexPath.row) {
             roomCell.roomImage.sd_setImage(with: roomPicture, placeholderImage: UIImage(named: Constants.placeholderImage))
@@ -143,10 +168,6 @@ extension RoomsListViewController : UITableViewDataSource {
 
 extension RoomsListViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if let room = viewModel?.room(index: indexPath.row) {
-            Router.selectedRoom = room
-        }
     }
 }
 
