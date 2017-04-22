@@ -147,6 +147,11 @@ private extension MainMenuViewController {
         addRoomsList()
         addAgendaView()
         
+//        viewModel?.reloadBinding = { [weak self] in
+//
+//        }
+        //viewModel?.fetchMeetings()
+//        showRoomsList()
     }
     
     func addAgendaView() {

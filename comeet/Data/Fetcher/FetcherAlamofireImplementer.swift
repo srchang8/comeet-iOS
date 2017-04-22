@@ -64,7 +64,11 @@ class FetcherAlamofireImplementer : FetcherProtocol {
     }
     
     func getMeetings(organization: String, user: String, start: String, end: String, completion:@escaping FetchMeetingsCompletion) {
-        sessionManager.request(endpoints.getMeetings(organization: organization, user: user, start: start, end: end)).responseJSON { (response) in
+        let endpoint = endpoints.getMeetings(organization: organization, user: user, start: start, end: end)
+        
+                
+        sessionManager.request(endpoint).responseJSON { (response) in
+            
             var meetings: [Meeting]?
             if let array = FetcherAlamofireImplementer.getArray(response: response) {
                 meetings = MeetingParser.parseMeetings(meetingsArray: array)
