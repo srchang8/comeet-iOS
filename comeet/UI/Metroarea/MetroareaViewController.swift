@@ -34,7 +34,7 @@ private extension MetroareaViewController {
     func setup() {
         
         self.title = "Metro Area"
-        self.navigationItem.setHidesBackButton(false, animated: false)
+        self.navigationItem.setHidesBackButton(true, animated: false)
         
         viewModel?.reloadBinding = { [weak self] (rooms) in
             self?.tableView.reloadData()

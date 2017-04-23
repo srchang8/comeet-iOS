@@ -14,8 +14,6 @@ class FreebusyBlockParser {
         static let statusKey = "status"
         static let startKey = "start"
         static let endKey = "end"
-        static let validStatus = [FreebusyBlock.Constants.freeStatus,
-                                  FreebusyBlock.Constants.busyStatus]
     }
     
     static func parseFreebusyBlock(freebusyBlockDict: [AnyHashable : Any]) -> FreebusyBlock? {
@@ -24,13 +22,10 @@ class FreebusyBlockParser {
             let endString = freebusyBlockDict[Constants.endKey] as? String else {
                 return nil
         }
-        guard let start = Date.fromAPI(stringDate: startString),
-            let end = Date.fromAPI(stringDate: endString),
+        guard let start = Date.fromAPIFreeBusy(stringDate: startString),
+            let end = Date.fromAPIFreeBusy(stringDate: endString),
             start < end else {
                 return nil
-        }
-        guard Constants.validStatus.contains(status) else {
-            return nil
         }
         
         let freebusyBlock = FreebusyBlock(status: status, start: start, end: end)

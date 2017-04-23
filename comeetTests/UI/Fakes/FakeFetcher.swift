@@ -40,7 +40,7 @@ class FakeFetcher: FetcherProtocol {
         
     }
     
-    func bookRoomParams(start: String, end: String, subject: String, body: String, requiredAttendees: String, optionalAttendees:String) -> [String: Any] {
+    func bookRoomParams(start: String, end: String, subject: String, body: String, requiredAttendees: String) -> [String: Any] {
         return bookRoomParams
     }
     

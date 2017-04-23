@@ -11,75 +11,68 @@ import UIKit
 
 class MyAgendaViewController: BaseViewController {
     
-    var viewModel: MainMenuViewModel?
+    var viewModel: MyAgendaViewModel?
     
     @IBOutlet weak var tableView: UITableView!
     
-    var rows = -1
-    var meetingLabels = [String]()
-    
-    func reloadMeetingData()->Bool{
-        
-        if (viewModel?.meetings) != nil {
-            
-            if let meetings = viewModel?.meetings{
-                
-                meetingLabels = [String]()
-                
-                for meeting in meetings{
-                    meetingLabels.append((meeting.start?.displayString())! + " " + meeting.subject!)
-                    
-                }
-                
-                tableView.reloadData()
-                return true
-                
-            }
-        }
-        
-        return false
-        
+    internal struct Constants {
+        static let agendaCellIdentifier = "AgendaCell"
     }
-    
-    var selectedDate: Date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewModel?.fetchMeetings()
-        
-        tableView.delegate = self;
-        tableView.dataSource = self;
-        
-        //tableView.reloadData()
-        
-        print("INPUT DATE" + selectedDate.displayString())
-        
+        setup()
     }
-    @IBAction func reloadTableData(_ sender: Any) {
-        reloadMeetingData()
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier,
+            let viewModel = viewModel else {
+                return
+        }
+        Router.prepare(identifier: identifier, destination: segue.destination, sourceViewModel: viewModel)
     }
+    
+    func change(date: Date) {
+        viewModel?.change(date: date)
+    }
+}
 
+private extension MyAgendaViewController {
+    
+    func setup() {
+        guard let viewModel = viewModel else {
+            return
+        }
+        
+        viewModel.reloadBinding = { [weak self] in
+            self?.tableView.reloadData()
+        }
+        viewModel.fetchMeetings()
+    }
 }
 
 extension MyAgendaViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return meetingLabels.count;
+        return viewModel?.meetingsCount() ?? 0;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuse", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.agendaCellIdentifier, for: indexPath)
         
-        cell.textLabel?.text = meetingLabels[indexPath.row]
+        guard let agendaCell = cell as? MyAgendaTableViewCell else {
+            return cell
+        }
+
+        agendaCell.meetingSubject.text = viewModel?.meetingSubject(index: indexPath.row)
+        agendaCell.meetingTime.text = viewModel?.meetingTime(index: indexPath.row)
+//        agendaCell.meetingRoom.text = viewModel?.meetingRoom(index: indexPath.row)
         
-        return cell
+        return agendaCell
     }
 }
 
 extension MyAgendaViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        //tableView.reloadData()
-        
+        // TODO: Go to meeting detail
     }
 }

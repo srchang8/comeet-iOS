@@ -59,7 +59,7 @@ class RoomDetailViewController: BaseViewController {
 private extension RoomDetailViewController {
     
     func setup() {
-        title = viewModel?.title()
+
         roomPicture.sd_setImage(with: viewModel?.roomPicture())
         roomName.text = viewModel?.roomname()
         roomBookTime.text = viewModel?.roomBookText()

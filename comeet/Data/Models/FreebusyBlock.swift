@@ -17,6 +17,8 @@ struct FreebusyBlock : FreebusyProtocol {
     internal struct Constants {
         static let freeStatus = "free"
         static let busyStatus = "busy"
+        static let tentativeStatus = "tentative"
+        static let consideredBusyStatus = [busyStatus, tentativeStatus]
     }
     
     let status: String
@@ -24,14 +26,23 @@ struct FreebusyBlock : FreebusyProtocol {
     let end: Date
     
     func isFree(start: Date, end: Date) -> Bool {
-        return self.status == FreebusyBlock.Constants.freeStatus &&
-            self.start <= start &&
-            self.end >= end
+        guard Constants.consideredBusyStatus.contains(self.status.lowercased()) else  {
+            return true
+        }
+        let busyBefore = end >= self.start && end <= self.end
+        let busyAfter = start >= self.start && start <= self.end
+        let busyThroughout = start < self.start && end > self.end
+        return !busyBefore && !busyAfter && !busyThroughout
     }
 }
 
 extension Array where Element: FreebusyProtocol {
-    func containsFree(start: Date, end: Date) -> Bool {
-        return self.reduce(false) { $0 || $1.isFree(start: start, end: end) }
+    func isFree(start: Date, end: Date) -> Bool {
+        
+        var isFree = true
+        for busyBlock in self {
+            isFree = busyBlock.isFree(start: start, end: end)
+        }
+        return isFree
     }
 }

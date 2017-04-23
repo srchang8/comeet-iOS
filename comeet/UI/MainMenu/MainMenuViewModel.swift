@@ -24,32 +24,6 @@ class MainMenuViewModel : BaseViewModel {
         self.persistor = persistor
     }
     
-    func fetchMeetings() {
-        let start = ""
-        print("LOADING MEETINGS....")
-        let end = ""
-        
-        
-        
-        fetcher.getMeetings(organization: authenticator.getOrganization(), user: "", start: start, end: end) { [weak self] (meetings: [Meeting]?, error: Error?) in
-            if let meetings = meetings {
-                
-                print("COMPLETE... PRESS RELOAD")
-                /*
-                for me in meetings{
-                    print(me.subject)
-                    print(me.body)
-                    print(me.location)
-                    print(me.start?.displayString())
-                    print(me.end?.displayString())
-                }*/
-                
-                self?.meetings = meetings
-                self?.reloadBinding?()
-            }
-        }
-    }
-    
     func title() -> String {
         return ""
     }

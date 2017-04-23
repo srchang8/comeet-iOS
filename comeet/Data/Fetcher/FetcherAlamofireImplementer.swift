@@ -50,21 +50,21 @@ class FetcherAlamofireImplementer : FetcherProtocol {
         let endpoint = endpoints.bookRoom(organization: organization, roomrecipient: roomrecipient)
         let request = sessionManager.request(endpoint, method: .post, parameters: params, encoding: URLEncoding.httpBody)
         request.responseJSON { (response) in
-            guard response.response?.statusCode == 200 else {
-                completion(false, response.error)
-                return;
+            guard let json = response.result.value as? [String : Bool],
+                let success = json["success"] else {
+                    completion(false, response.error)
+                    return;
             }
-            completion(true, response.detailedError(request))
+            completion(success, response.error)
         }
     }
     
-    func bookRoomParams(start: String, end: String, subject: String, body: String, requiredAttendees: String, optionalAttendees:String) -> [String: Any] {
+    func bookRoomParams(start: String, end: String, subject: String, body: String, requiredAttendees: String) -> [String: Any] {
         let params: [String: Any] = ["start": start,
                                      "end": end,
                                      "subject": subject,
                                      "body": body,
-                                     "required": requiredAttendees,
-                                     "optional": optionalAttendees]
+                                     "required": requiredAttendees]
         return params
     }
     

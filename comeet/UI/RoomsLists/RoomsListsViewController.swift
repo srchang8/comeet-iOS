@@ -14,6 +14,7 @@ class RoomsListsViewController: BaseViewController {
     var viewModel: RoomsListsViewModel?
     internal struct Constants {
         static let metroareaCellIdentifier = "RoomsListsCell"
+        static let roomsListNewLocationNotification = "RoomsListNewLocation"
     }
     
     override func viewDidLoad() {
@@ -34,7 +35,7 @@ private extension RoomsListsViewController {
     func setup() {
         
         self.title = viewModel?.title()
-        self.navigationItem.setHidesBackButton(false, animated: false)
+        self.navigationItem.setHidesBackButton(true, animated: false)
     }
 }
 
@@ -58,7 +59,7 @@ extension RoomsListsViewController : UITableViewDelegate {
         
         viewModel.save(roomlist: viewModel.roomsList(index: indexPath.row))
         Router.selectedRoomsList = viewModel.roomsList(index: indexPath.row)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RoomsListNewLocation"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.roomsListNewLocationNotification), object: nil)
         dismiss(animated: true, completion: nil)
     }
 }

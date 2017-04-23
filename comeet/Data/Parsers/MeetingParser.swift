@@ -67,7 +67,6 @@ class MeetingParser {
     static func parseMeetings(meetingsArray: [Any]) -> [Meeting] {
         var meetings:[Meeting] = []
         for meetingDict in meetingsArray {
-            print("ENTER ")
             
             if let meetingDict = meetingDict as? [AnyHashable : Any] {
                 

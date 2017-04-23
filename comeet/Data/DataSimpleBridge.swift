@@ -26,4 +26,8 @@ class DataSimpleBridge {
     static func getPersistor() -> PersistorProtocol {
         return PersistorUserDefaultsImplementer()
     }
+    
+    static func getLoader() -> LoaderProtocol {
+        return LoaderALLoadingViewImplementer()
+    }
 }

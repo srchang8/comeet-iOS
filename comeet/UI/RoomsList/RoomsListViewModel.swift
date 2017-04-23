@@ -7,19 +7,22 @@
 //
 
 import Foundation
+import ALLoadingView
 
 class RoomsListViewModel : BaseViewModel {
     
     let authenticator: AuthenticatorProtocol
     let fetcher: FetcherProtocol
     let persistor: PersistorProtocol
+    internal let loader = DataSimpleBridge.getLoader()
     var reloadBinding: ReloadBinding?
-    internal let selectedDate: Date
+    internal var selectedDate: Date
     private var metroarea: String?
     private(set) var roomsList: User?
     internal var rooms: [Room] = []
     internal var startDate : Date
     internal var endDate : Date
+    internal var testing = false
     
     init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, persistor: PersistorProtocol, selectedDate: Date, metroarea: String?, roomsList: User?) {
         self.metroarea = metroarea
@@ -35,6 +38,7 @@ class RoomsListViewModel : BaseViewModel {
     struct Constants {
         static let startDateText = "Select Start"
         static let endDateText = "Select End"
+        static let loadingText = "Loading Rooms"
     }
     
     func newLocation(metroarea: String?, roomsList: User?) {
@@ -58,11 +62,22 @@ class RoomsListViewModel : BaseViewModel {
         return endDate.displayString()
     }
     
+    func change(date: Date) {
+        selectedDate = date
+        fetchRooms()
+    }
+    
     func fetchRooms() {
         guard let email = roomsList?.email else {
             return
         }
+    
+        removeRooms()
+        showLoading()
+        
         fetcher.getRooms(organization: authenticator.getOrganization(), roomlist: email, start: startDateForRequest(), end: endDateForRequest()) { [weak self] (rooms, error) in
+            
+            self?.hideLoading()
             guard error == nil else {
                 // TODO: surface error in UI?
                 print(error!)
@@ -100,6 +115,18 @@ class RoomsListViewModel : BaseViewModel {
             return "Capacity: \(capacity)"
         }
         return room.email
+    }
+    
+    func roomLatLong(index: Int) -> (Double, Double)? {
+        guard availableRooms().count > index else {
+            return nil
+        }
+        let room = availableRooms()[index]
+        if let lat = room.latitude,
+            let long = room.longitude {
+            return (lat, long)
+        }
+        return nil
     }
     
     func roomPicture(index: Int) -> URL? {
@@ -164,13 +191,30 @@ private extension RoomsListViewModel {
     }
     
     func availableRooms() -> [Room] {
-              return rooms
-        // TODO: Correct filter criteria
-//        return rooms.filter({ (room) -> Bool in
-//            guard let freebusy = room.freebusy, freebusy.count > 0 else {
-//                return true
-//            }
-//            return freebusy.containsFree(start: startDate, end: endDate)
-//        })
+        return rooms.filter({ (room) -> Bool in
+            guard let freebusy = room.freebusy, freebusy.count > 0 else {
+                return true
+            }
+            return freebusy.isFree(start: startDate, end: endDate)
+        })
+    }
+    
+    func removeRooms() {
+        if (!testing) {
+            rooms = []
+            reloadBinding?()
+        }
+    }
+    
+    func showLoading() {
+        if (!testing) {
+            loader.show(text: Constants.loadingText)
+        }
+    }
+    
+    func hideLoading() {
+        if (!testing) {
+            loader.hide()
+        }
     }
 }
