@@ -73,6 +73,8 @@
 		05F986C11E7F005100120AB4 /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F986C01E7F005100120AB4 /* Stubs.swift */; };
 		0C1442D63FEB86045D7C7DA2 /* Pods_comeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B91D862A7FBE37C8586934 /* Pods_comeet.framework */; };
 		1637625E99D024466A643A19 /* Pods_comeetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD63FB99D026AD68296B3DD4 /* Pods_comeetTests.framework */; };
+		A62898811EAAB99A008F2773 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A62898801EAAB99A008F2773 /* Settings.bundle */; };
+		A62898831EAC3C6C008F2773 /* AuthenticatorADALSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62898821EAC3C6C008F2773 /* AuthenticatorADALSettings.swift */; };
 		D0EDA197ECD00EBD52264BA4 /* Pods_comeetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF5E5210C047205B62B9152 /* Pods_comeetUITests.framework */; };
 		FC36A7721EA00B2A008C3FE4 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC36A7711EA00B2A008C3FE4 /* CalendarViewModel.swift */; };
 		FC36A7741EA010B6008C3FE4 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC36A7731EA010B6008C3FE4 /* CalendarViewController.swift */; };
@@ -185,6 +187,8 @@
 		6846396A6214755CEEBC21EA /* Pods-comeet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comeet.release.xcconfig"; path = "Pods/Target Support Files/Pods-comeet/Pods-comeet.release.xcconfig"; sourceTree = "<group>"; };
 		7EC5EDF2169A4DF25DB3FB88 /* Pods-comeet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comeet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-comeet/Pods-comeet.debug.xcconfig"; sourceTree = "<group>"; };
 		8D2B4C82B05E7502411FD08B /* Pods-comeetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comeetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-comeetTests/Pods-comeetTests.release.xcconfig"; sourceTree = "<group>"; };
+		A62898801EAAB99A008F2773 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		A62898821EAC3C6C008F2773 /* AuthenticatorADALSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatorADALSettings.swift; sourceTree = "<group>"; };
 		CD63FB99D026AD68296B3DD4 /* Pods_comeetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_comeetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2B91D862A7FBE37C8586934 /* Pods_comeet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_comeet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F950E5A61E429A12E5AC9484 /* Pods-comeetUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comeetUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-comeetUITests/Pods-comeetUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 				053564BE1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift */,
 				05C8C5661E91E5F20027E2D7 /* AuthenticatorBasicImplementer.swift */,
 				05C8C5681E91E7430027E2D7 /* AuthenticatorUtils.swift */,
+				A62898821EAC3C6C008F2773 /* AuthenticatorADALSettings.swift */,
 			);
 			name = Authenticator;
 			sourceTree = "<group>";
@@ -517,6 +522,7 @@
 				05F214FD1E6E4D7A004E4A16 /* Assets.xcassets */,
 				05F214FF1E6E4D7A004E4A16 /* LaunchScreen.storyboard */,
 				05F215021E6E4D7A004E4A16 /* Info.plist */,
+				A62898801EAAB99A008F2773 /* Settings.bundle */,
 			);
 			path = comeet;
 			sourceTree = "<group>";
@@ -763,6 +769,7 @@
 				05C8C56D1E91E8D70027E2D7 /* AuthenticatorBasicViewController.xib in Resources */,
 				FC4B15061E958B1F00FCCBD1 /* Artboard 2@3x.png in Resources */,
 				FC4B15051E958B1F00FCCBD1 /* Artboard 2@2x.png in Resources */,
+				A62898811EAAB99A008F2773 /* Settings.bundle in Resources */,
 				05F214FE1E6E4D7A004E4A16 /* Assets.xcassets in Resources */,
 				FC4B14FF1E958B1F00FCCBD1 /* 750x1334-trees_comet_stars.png in Resources */,
 				FC4B15071E958B1F00FCCBD1 /* BackgroundLogIn.jpg in Resources */,
@@ -832,7 +839,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		3F2EEF1E86F168C9ED1457C3 /* [CP] Embed Pods Frameworks */ = {
@@ -862,7 +869,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		836C39607D5641B7F859FBFA /* [CP] Check Pods Manifest.lock */ = {
@@ -877,7 +884,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		901332E17EC144FAE8BE86FE /* [CP] Embed Pods Frameworks */ = {
@@ -967,6 +974,7 @@
 				052A3C301E879D7A00DD88D6 /* BaseViewController.swift in Sources */,
 				05C8C5691E91E7430027E2D7 /* AuthenticatorUtils.swift in Sources */,
 				0580250A1E6E589500C917C0 /* MeetingDetailViewModel.swift in Sources */,
+				A62898831EAC3C6C008F2773 /* AuthenticatorADALSettings.swift in Sources */,
 				052A3C2C1E8771BF00DD88D6 /* MetroareaViewModel.swift in Sources */,
 				FC5E317A1E8AD16700035758 /* MyAgendaViewModel.swift in Sources */,
 				052A3C281E87663500DD88D6 /* RoomsListsViewModel.swift in Sources */,

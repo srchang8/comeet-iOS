@@ -64,6 +64,7 @@ class RoomsListViewModel : BaseViewModel {
         }
         fetcher.getRooms(organization: authenticator.getOrganization(), roomlist: email, start: startDateForRequest(), end: endDateForRequest()) { [weak self] (rooms, error) in
             guard error == nil else {
+                // TODO: surface error in UI?
                 print(error!)
                 return
             }
