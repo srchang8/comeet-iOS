@@ -89,6 +89,15 @@ class MainMenuViewController: BaseViewController, WWCalendarTimeSelectorProtocol
                 print("")
                 return
         }
+        
+
+        if identifier == "toAgenda" {
+            let dest = segue.destination as? MyAgendaViewController
+            dest?.viewModel = viewModel
+            return
+        }
+
+        
         Router.prepare(identifier: identifier, destination: segue.destination, sourceViewModel: viewModel)
     }
 

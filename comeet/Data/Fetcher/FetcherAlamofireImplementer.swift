@@ -14,7 +14,7 @@ class FetcherAlamofireImplementer : FetcherProtocol {
     internal static let X_RestApiError = "X-com.comeet.RestApiError"
     
     private let sessionManager = SessionManager()
-    private var endpoints = Endpoints(environment: .Mocked)
+    private var endpoints = Endpoints(environment: .Production)
     
     func set(environment: Environment) {
         endpoints = Endpoints(environment: environment)

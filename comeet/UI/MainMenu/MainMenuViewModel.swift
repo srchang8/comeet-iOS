@@ -16,7 +16,7 @@ class MainMenuViewModel : BaseViewModel {
     let persistor: PersistorProtocol
     var selectedDate = Date()
     var reloadBinding: ReloadBinding?
-    private var meetings: [Meeting] = []
+    public var meetings: [Meeting] = []
     
     init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, persistor: PersistorProtocol) {
         self.authenticator = authenticator
@@ -26,7 +26,7 @@ class MainMenuViewModel : BaseViewModel {
     
     func fetchMeetings() {
         let start = ""
-        print(start)
+        print("LOADING MEETINGS....")
         let end = ""
         
         
@@ -34,6 +34,7 @@ class MainMenuViewModel : BaseViewModel {
         fetcher.getMeetings(organization: authenticator.getOrganization(), user: "", start: start, end: end) { [weak self] (meetings: [Meeting]?, error: Error?) in
             if let meetings = meetings {
                 
+                print("COMPLETE... PRESS RELOAD")
                 /*
                 for me in meetings{
                     print(me.subject)
