@@ -11,6 +11,7 @@ import Foundation
 class DataSimpleBridge {
     
     static func getAuthenticator() -> AuthenticatorProtocol {
+        UserDefaults.standard.synchronize()
         let use_adal = UserDefaults.standard.bool(forKey: "use_adal")
         if use_adal {
             return AuthenticatorADALImplementer()

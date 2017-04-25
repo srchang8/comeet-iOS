@@ -50,7 +50,7 @@
 			<key>Key</key>
 			<string>oauth_clientid</string>
 			<key>DefaultValue</key>
-			<string>a64d56ea-5675-4ccf-82e9-5757620e1d26</string>
+			<string>a2a8a356-0919-41d9-84c1-f964e892e297</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>KeyboardType</key>
@@ -70,7 +70,7 @@
 			<key>Key</key>
 			<string>oauth_scope</string>
 			<key>DefaultValue</key>
-			<string>https://outlook.office365.com https://outlook.office.com/calendars.read</string>
+			<string>https://outlook.office365.com</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>KeyboardType</key>
