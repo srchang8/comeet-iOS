@@ -6,6 +6,7 @@
 //  Copyright © 2017 teamawesome. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import SDWebImage
 import MARKRangeSlider
@@ -18,7 +19,9 @@ class RoomsListViewController: BaseViewController {
     @IBOutlet weak var startTimelabel: UILabel!
     @IBOutlet weak var endTimelabel: UILabel!
     @IBOutlet weak var selectLocationButton: UIButton!
+    @IBOutlet weak var guideView: UIView!
     
+   
     var viewModel: RoomsListViewModel?
     internal struct Constants {
         static let roomCellIdentifier = "RoomCell"
@@ -26,10 +29,13 @@ class RoomsListViewController: BaseViewController {
         static let selectDateText = "Done"
         static let regionDistance:CLLocationDistance = 10000
         static let roomsListNewLocationNotification = "RoomsListNewLocation"
+        
     }
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         setup()
     }
     
@@ -78,6 +84,24 @@ class RoomsListViewController: BaseViewController {
     func newLocation(sender: Any) {
         viewModel?.newLocation(metroarea: Router.selectedMetroarea, roomsList: Router.selectedRoomsList)
         selectLocationButton.setTitle(viewModel?.roomsList?.name, for: .normal)
+        
+        let userDefault = UserDefaults.standard
+        userDefault.set(false, forKey: "isRoomsGuideShown")
+        self.guideView.isHidden = false
+        let isGuideShown = userDefault.bool(forKey: "isRoomsGuideShown")
+        if (!isGuideShown) {
+            let when = DispatchTime.now() + 3 // change 2 to desired number of seconds
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                // Your code with delay
+                if ( self.guideView.isHidden == false) {
+                    self.guideView.isHidden = true
+                }
+                userDefault.set(true, forKey: "isRoomsGuideShown")
+            }
+        } else {
+            self.guideView.isHidden = true
+        }
+        
     }
     
     func book(sender: Any) {
@@ -130,6 +154,7 @@ private extension RoomsListViewController {
             return
         }
         
+        
         title = viewModel.title()
         
         viewModel.reloadBinding = { [weak self] in
@@ -146,6 +171,10 @@ private extension RoomsListViewController {
         } else {
             performSegue(withIdentifier: Router.Constants.metroareaSegue, sender: self)
         }
+        
+        
+        
+        
     }
     
     func setupSlider() {
@@ -200,6 +229,19 @@ extension RoomsListViewController : UITableViewDataSource {
         } else {
             roomCell.mapButton.isHidden = false
             roomCell.mapButton.addTarget(self, action: #selector(map(sender:)), for: .touchUpInside)
+        }
+        
+        let amenities = viewModel?.roomAmenities(index: indexPath.row) ?? []
+        //clear images first
+        for imageView in roomCell.amenityImageViews {
+            imageView.image = nil
+        }
+
+        //fill amenity image views
+        var i = 0
+        for amenity in amenities {
+            roomCell.amenityImageViews[i].image = UIImage(named: amenity.name)
+            i += 1
         }
         
         return cell
