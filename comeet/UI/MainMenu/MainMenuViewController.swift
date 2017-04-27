@@ -13,6 +13,8 @@ class MainMenuViewController: BaseViewController {
     
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var guideView: UIView!
+    
     
     var viewModel: MainMenuViewModel?
     
@@ -30,6 +32,8 @@ class MainMenuViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        
         
         // Show the navigation bar on other view controllers
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -75,8 +79,24 @@ class MainMenuViewController: BaseViewController {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.agendaVC?.view.alpha = 1.0
                     self.roomListVC?.view.alpha = 0.0
+                    let userDefault = UserDefaults.standard
+                   userDefault.set(false, forKey: "isAgendaGuideShown")
+                    let isGuideShown = userDefault.bool(forKey: "isAgendaGuideShown")
+                    if (!isGuideShown) {
+                        let when = DispatchTime.now() + 3 // change 2 to desired number of seconds
+                        DispatchQueue.main.asyncAfter(deadline: when) {
+                            // Your code with delay
+                            if ( self.agendaVC?.guideView.isHidden == false) {
+                                self.agendaVC?.guideView.isHidden = true
+                            }
+                            userDefault.set(true, forKey: "isAgendaGuideShown")
+                        }
+                    } else {
+                        self.agendaVC?.guideView.isHidden = true
+                    }
                 }, completion: { (success) in
                     self.roomListVC?.view.isHidden = true
+                    
                 })
             }
         case UISwipeGestureRecognizerDirection.right:
@@ -90,6 +110,7 @@ class MainMenuViewController: BaseViewController {
                     self.agendaVC?.view.alpha = 0.0
                 }, completion: { (success) in
                     self.agendaVC?.view.isHidden = true
+                    
                 })
             }
         default:
@@ -116,8 +137,11 @@ private extension MainMenuViewController {
         
         addGestureRecognizers()
         dateButton.setTitle(viewModel?.selectedDate.displayStringDate(), for: .normal)
+        
         addRoomsList()
         addAgendaView()
+        
+        
     }
     
     func addGestureRecognizers() {

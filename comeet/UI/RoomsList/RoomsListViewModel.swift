@@ -117,6 +117,14 @@ class RoomsListViewModel : BaseViewModel {
         return room.email
     }
     
+    func roomAmenities(index: Int) -> [Amenity] {
+        guard availableRooms().count > index else {
+            return []
+        }
+        let room = availableRooms()[index]
+        return room.amenities ?? []
+    }
+
     func roomLatLong(index: Int) -> (Double, Double)? {
         guard availableRooms().count > index else {
             return nil

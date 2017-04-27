@@ -14,6 +14,7 @@ class MyAgendaViewController: BaseViewController {
     var viewModel: MyAgendaViewModel?
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var guideView: UIView!
     
     internal struct Constants {
         static let agendaCellIdentifier = "AgendaCell"
@@ -48,6 +49,8 @@ private extension MyAgendaViewController {
             self?.tableView.reloadData()
         }
         viewModel.fetchMeetings()
+        
+        
     }
 }
 

@@ -92,6 +92,10 @@
 		FC4B15071E958B1F00FCCBD1 /* BackgroundLogIn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FC4B14FD1E958B1F00FCCBD1 /* BackgroundLogIn.jpg */; };
 		FC4B15081E958B1F00FCCBD1 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = FC4B14FE1E958B1F00FCCBD1 /* images.jpeg */; };
 		FC5E31781E8AD13A00035758 /* MyAgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E31771E8AD13A00035758 /* MyAgendaViewController.swift */; };
+		FC813DF71EB0453B003A7EC5 /* projector.png in Resources */ = {isa = PBXBuildFile; fileRef = FC813DF41EB0453B003A7EC5 /* projector.png */; };
+		FC813DF81EB0453B003A7EC5 /* Speaker Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = FC813DF51EB0453B003A7EC5 /* Speaker Phone.png */; };
+		FC813DF91EB0453B003A7EC5 /* Whiteboard.png in Resources */ = {isa = PBXBuildFile; fileRef = FC813DF61EB0453B003A7EC5 /* Whiteboard.png */; };
+		FC813E011EB04D05003A7EC5 /* Television.png in Resources */ = {isa = PBXBuildFile; fileRef = FC813E001EB04D05003A7EC5 /* Television.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,6 +214,10 @@
 		FC4B14FD1E958B1F00FCCBD1 /* BackgroundLogIn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = BackgroundLogIn.jpg; path = Resources/Images/BackgroundLogIn.jpg; sourceTree = SOURCE_ROOT; };
 		FC4B14FE1E958B1F00FCCBD1 /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = images.jpeg; path = Resources/Images/images.jpeg; sourceTree = SOURCE_ROOT; };
 		FC5E31771E8AD13A00035758 /* MyAgendaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyAgendaViewController.swift; path = ../MyAgenda/MyAgendaViewController.swift; sourceTree = "<group>"; };
+		FC813DF41EB0453B003A7EC5 /* projector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projector.png; sourceTree = "<group>"; };
+		FC813DF51EB0453B003A7EC5 /* Speaker Phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Speaker Phone.png"; sourceTree = "<group>"; };
+		FC813DF61EB0453B003A7EC5 /* Whiteboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Whiteboard.png; sourceTree = "<group>"; };
+		FC813E001EB04D05003A7EC5 /* Television.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Television.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -623,6 +631,10 @@
 			children = (
 				FC4B14F51E958B1F00FCCBD1 /* 750x1334-trees_comet_stars.png */,
 				FC4B14F61E958B1F00FCCBD1 /* a-trees_comet_stars-29983.png */,
+				FC813E001EB04D05003A7EC5 /* Television.png */,
+				FC813DF41EB0453B003A7EC5 /* projector.png */,
+				FC813DF51EB0453B003A7EC5 /* Speaker Phone.png */,
+				FC813DF61EB0453B003A7EC5 /* Whiteboard.png */,
 				FC4B14F71E958B1F00FCCBD1 /* Artboard 1.png */,
 				FC4B14F81E958B1F00FCCBD1 /* Artboard 1@2x.png */,
 				FC4B14F91E958B1F00FCCBD1 /* Artboard 1@3x.png */,
@@ -770,12 +782,16 @@
 			files = (
 				05F215011E6E4D7A004E4A16 /* LaunchScreen.storyboard in Resources */,
 				FC4B15011E958B1F00FCCBD1 /* Artboard 1.png in Resources */,
+				FC813DF91EB0453B003A7EC5 /* Whiteboard.png in Resources */,
 				FC4B15041E958B1F00FCCBD1 /* Artboard 2.png in Resources */,
 				FC4B15081E958B1F00FCCBD1 /* images.jpeg in Resources */,
 				05C8C56D1E91E8D70027E2D7 /* AuthenticatorBasicViewController.xib in Resources */,
+				FC813DF81EB0453B003A7EC5 /* Speaker Phone.png in Resources */,
 				FC4B15061E958B1F00FCCBD1 /* Artboard 2@3x.png in Resources */,
+				FC813E011EB04D05003A7EC5 /* Television.png in Resources */,
 				FC4B15051E958B1F00FCCBD1 /* Artboard 2@2x.png in Resources */,
 				A62898811EAAB99A008F2773 /* Settings.bundle in Resources */,
+				FC813DF71EB0453B003A7EC5 /* projector.png in Resources */,
 				05F214FE1E6E4D7A004E4A16 /* Assets.xcassets in Resources */,
 				FC4B14FF1E958B1F00FCCBD1 /* 750x1334-trees_comet_stars.png in Resources */,
 				FC4B15071E958B1F00FCCBD1 /* BackgroundLogIn.jpg in Resources */,
@@ -1109,6 +1125,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1151,6 +1168,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1169,6 +1187,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamawesome.comeet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1185,6 +1204,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamawesome.comeet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
