@@ -69,7 +69,7 @@ class FetcherAlamofireImplementer : FetcherProtocol {
     }
     
     func getMeetings(organization: String, user: String, start: String, end: String, completion:@escaping FetchMeetingsCompletion) {
-        let endpoint = endpoints.getMeetings(organization: organization, user: user, start: start, end: end)
+        let endpoint = endpoints.getMeetings(organization: organization, start: start, end: end)
         let request = sessionManager.request(endpoint)
         request.responseJSON { (response) in
             var meetings: [Meeting]?
@@ -77,6 +77,19 @@ class FetcherAlamofireImplementer : FetcherProtocol {
                 meetings = MeetingParser.parseMeetings(meetingsArray: array)
             }
             completion(meetings, response.detailedError(request))
+        }
+    }
+    
+    func getMeetingData(organization: String, id: String, completion:@escaping FetchMeetingCompletion) {
+        let endpoint = endpoints.getMeetingData(organization: organization, id: id)
+        let request = sessionManager.request(endpoint)
+        request.responseJSON { (response) in
+            if let meetingDict = response.result.value as? [AnyHashable : Any],
+                let meeting = MeetingParser.parseMeeting(meetingDict: meetingDict) {
+                completion(meeting, response.detailedError(request))
+            } else {
+                completion(nil, response.detailedError(request))
+            }
         }
     }
 }

@@ -12,7 +12,6 @@ class MyAgendaTableViewCell: UITableViewCell {
 
     @IBOutlet weak var meetingSubject: UILabel!
     @IBOutlet weak var meetingTime: UILabel!
-    @IBOutlet weak var meetingRoom: UILabel!
     @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var floorPlanButton: UIButton!
     

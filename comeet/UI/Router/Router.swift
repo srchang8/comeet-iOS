@@ -15,6 +15,7 @@ class Router {
     static var selectedRoomsLists: [User]?
     static var selectedRoomsList: User?
     static var selectedRoom: Room?
+    static var selectedMeeting: Meeting?
     
     struct Constants {
         static let mainMenuSegue = "MainMenuSegue"
@@ -22,6 +23,7 @@ class Router {
         static let roomsListsSegue = "RoomsListsSegue"
         static let roomsListSegue = "RoomsListSegue"
         static let roomDetailSegue = "RoomDetailSegue"
+        static let agendaDetailSegue = "AgendaDetailSegue"
         static let incorrectRouteMessage = "Incorrect route"
     }
     
@@ -41,6 +43,10 @@ class Router {
             break
         case Constants.roomDetailSegue:
             prepareRoomDetail(identifier: identifier, destination: destination, sourceViewModel: sourceViewModel)
+            break
+        case Constants.agendaDetailSegue:
+            prepareAgendaDetail(identifier: identifier, destination: destination, sourceViewModel: sourceViewModel)
+            break
         default:
             return
         }
@@ -119,6 +125,19 @@ class Router {
         }
         
         let toVM = RoomDetailViewModel(authenticator: fromVM.authenticator, fetcher: fromVM.fetcher, startDate: fromVM.startDate, endDate: fromVM.endDate, metroarea: metroarea, roomsList: roomsList, room: room)
+        toVC.viewModel = toVM
+    }
+    
+    private static func prepareAgendaDetail(identifier: String, destination: UIViewController, sourceViewModel: BaseViewModel) {
+        guard identifier == Constants.agendaDetailSegue,
+            let toVC = destination as? MyAgendaDetailViewController,
+            let fromVM = sourceViewModel as? MyAgendaViewModel,
+            let meeting = Router.selectedMeeting else {
+                assert(false, Constants.incorrectRouteMessage)
+                return
+        }
+        
+        let toVM = MyAgendaDetailViewModel(authenticator: fromVM.authenticator, fetcher: fromVM.fetcher, persistor: fromVM.persistor, selectedDate: fromVM.selectedDate, selectedMeeting: meeting)
         toVC.viewModel = toVM
     }
 }

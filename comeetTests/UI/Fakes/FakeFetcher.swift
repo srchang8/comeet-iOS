@@ -46,4 +46,8 @@ class FakeFetcher: FetcherProtocol {
     
     func getMeetings(organization: String, user: String, start: String, end: String, completion:@escaping FetchMeetingsCompletion) {
     }
+    
+    func getMeetingData(organization: String, id: String, completion:@escaping FetchMeetingCompletion) {
+        
+    }
 }

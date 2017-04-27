@@ -55,8 +55,13 @@ private extension MyAgendaViewController {
 }
 
 extension MyAgendaViewController : UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel?.sectionsCount() ?? 0
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.meetingsCount() ?? 0;
+        return viewModel?.meetingsCount(section: section) ?? 0;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,16 +71,22 @@ extension MyAgendaViewController : UITableViewDataSource {
             return cell
         }
 
-        agendaCell.meetingSubject.text = viewModel?.meetingSubject(index: indexPath.row)
-        agendaCell.meetingTime.text = viewModel?.meetingTime(index: indexPath.row)
-//        agendaCell.meetingRoom.text = viewModel?.meetingRoom(index: indexPath.row)
+        agendaCell.meetingSubject.text = viewModel?.meetingSubject(section: indexPath.section, index: indexPath.row)
+        agendaCell.meetingTime.text = viewModel?.meetingTime(section: indexPath.section, index: indexPath.row)
         
         return agendaCell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return viewModel?.sectionTitle(section: section)
     }
 }
 
 extension MyAgendaViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: Go to meeting detail
+        if let meeting = viewModel?.meeting(section: indexPath.section, index: indexPath.row) {
+            Router.selectedMeeting = meeting
+            performSegue(withIdentifier: Router.Constants.agendaDetailSegue, sender: nil)
+        }
     }
 }

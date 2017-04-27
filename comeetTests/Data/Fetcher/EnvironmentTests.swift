@@ -25,7 +25,7 @@ class EnvironmentTests: XCTestCase {
         
         // TODO: Go back to send dates once changes from the API come through
         //XCTAssert(endpoints.getRooms(organization: "organization", roomlist: "test@test.com", start:"startdate", end: "enddate") == environment.rawValue + "/organization/roomlists/test@test.com/rooms?start=startdate&end=enddate")
-        XCTAssert(endpoints.getRooms(organization: "organization", roomlist: "test@test.com", start:"startdate", end: "enddate") == environment.rawValue + "/organization/roomlists/test@test.com/rooms")
+        XCTAssert(endpoints.getRooms(organization: "organization", roomlist: "test@test.com", start:"startdate", end: "enddate") == environment.rawValue + "/organization/roomlists/test@test.com/rooms?start=startdate&end=enddate")
     }
     
     func testGetRoomsProduction() {
@@ -34,6 +34,6 @@ class EnvironmentTests: XCTestCase {
         
         // TODO: Go back to send dates once changes from the API come through
         //XCTAssert(endpoints.getRooms(organization: "organization", roomlist: "test@test.com", start:"startdate", end: "enddate") == environment.rawValue + "/organization/roomlists/test@test.com/rooms?start=startdate&end=enddate")
-        XCTAssert(endpoints.getRooms(organization: "organization", roomlist: "test@test.com", start:"startdate", end: "enddate") == environment.rawValue + "/organization/roomlists/test@test.com/rooms")
+        XCTAssert(endpoints.getRooms(organization: "organization", roomlist: "test@test.com", start:"startdate", end: "enddate") == environment.rawValue + "/organization/roomlists/test@test.com/rooms?start=startdate&end=enddate")
     }
 }

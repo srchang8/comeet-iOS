@@ -22,9 +22,20 @@ extension Date {
         return formatter.date(from: stringDate)
     }
     
+    static func fromAPIMeetings(stringDate: String) -> Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter.date(from: stringDate)
+    }
+    
     func stringForAPI() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss-SSSS"
+        return formatter.string(from: self)
+    }
+    
+    func stringForAPIRooms() -> String {
+        let formatter = ISO8601DateFormatter()
         return formatter.string(from: self)
     }
     

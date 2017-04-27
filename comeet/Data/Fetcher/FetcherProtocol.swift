@@ -10,6 +10,7 @@ import Foundation
 
 typealias FetchRoomsCompletion = ([Room]?, Error?)-> Void
 typealias FetchMeetingsCompletion = ([Meeting]?, Error?)-> Void
+typealias FetchMeetingCompletion = (Meeting?, Error?)-> Void
 typealias FetchSearchCriteriaCompletion = ([SearchCriteria]?, Error?)-> Void
 typealias BookRoomCompletion = (Bool, Error?)-> Void
 
@@ -21,4 +22,5 @@ protocol FetcherProtocol {
     func bookRoom(organization: String, roomrecipient: String, params: [String: Any], completion:@escaping BookRoomCompletion)
     func bookRoomParams(start: String, end: String, subject: String, body: String, requiredAttendees: String) -> [String: Any]
     func getMeetings(organization: String, user: String, start: String, end: String, completion:@escaping FetchMeetingsCompletion)
+    func getMeetingData(organization: String, id: String, completion:@escaping FetchMeetingCompletion)
 }

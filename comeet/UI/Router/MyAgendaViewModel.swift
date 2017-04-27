@@ -8,15 +8,16 @@
 
 import Foundation
 
-class MyAgendaViewModel : BaseViewModel {let authenticator: AuthenticatorProtocol
+class MyAgendaViewModel : BaseViewModel {
     
+    let authenticator: AuthenticatorProtocol
     let fetcher: FetcherProtocol
     let persistor: PersistorProtocol
     internal let loader = DataSimpleBridge.getLoader()
     var reloadBinding: ReloadBinding?
     internal var selectedDate: Date
-    internal var meetings: [Meeting] = []
     internal var testing = false
+    internal var meetingsByDate: [Date:[Meeting]] = [:]
     
     init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, persistor: PersistorProtocol, selectedDate: Date) {
         self.persistor = persistor
@@ -31,7 +32,6 @@ class MyAgendaViewModel : BaseViewModel {let authenticator: AuthenticatorProtoco
     
     func change(date: Date) {
         selectedDate = date
-        // TODO: Go to date or fetchMeetings()
     }
     
     func fetchMeetings() {
@@ -45,7 +45,7 @@ class MyAgendaViewModel : BaseViewModel {let authenticator: AuthenticatorProtoco
             }
             if let meetings = meetings {
                 DispatchQueue.main.async {
-                    self?.meetings = meetings
+                    self?.meetingsByDate = MyAgendaViewModel.createMeetingsByDate(meetings: meetings)
                     self?.reloadBinding?()
                 }
             } else {
@@ -54,41 +54,84 @@ class MyAgendaViewModel : BaseViewModel {let authenticator: AuthenticatorProtoco
         }
     }
     
-    func meetingsCount() -> Int {
-        return meetings.count
+    func sectionsCount() -> Int {
+        return meetingsByDate.keys.count
     }
     
-    func meetingSubject(index: Int) -> String {
-        guard meetings.count > index else {
-            return ""
-        }
-        let meeting = meetings[index]
-        return meeting.subject ?? ""
-    }
-    
-    func meetingTime(index: Int) -> String {
-        guard meetings.count > index else {
-            return ""
-        }
-        let meeting = meetings[index]
-        
-        if let start = meeting.start {
-            return "\(start.displayStringDate()) \(start.displayStringHourMinute())"
+    func sectionTitle(section: Int) -> String? {
+        if let sectionDate = dateFrom(section: section) {
+            return sectionDate.displayStringDate()
         } else {
-            return ""
+            return nil
         }
-        
     }
     
-    func meetingRoom(index: Int) -> String {
+    func meetingsCount(section: Int) -> Int {
+        return getMeetings(section: section).count
+    }
+    
+    func meetingSubject(section: Int, index: Int) -> String {
+        let meetings = getMeetings(section: section)
         guard meetings.count > index else {
             return ""
         }
         let meeting = meetings[index]
-        return meeting.room?.name ?? ""
+        return meeting.subject
+    }
+    
+    func meetingTime(section: Int, index: Int) -> String {
+        let meetings = getMeetings(section: section)
+        guard meetings.count > index else {
+            return ""
+        }
+        let meeting = meetings[index]
+        return "\(meeting.start.displayStringHourMinute()) - \(meeting.end.displayStringHourMinute())"
+    }
+    
+    func meeting(section: Int, index: Int) -> Meeting? {
+        let meetings = getMeetings(section: section)
+        guard meetings.count > index else {
+            return nil
+        }
+        let meeting = meetings[index]
+        return meeting
     }
 }
 
 private extension MyAgendaViewModel {
 
+    static func createMeetingsByDate(meetings: [Meeting]) -> [Date:[Meeting]] {
+        var meetingsByDate: [Date:[Meeting]] = [:]
+        
+        for meeting in meetings {
+            
+            let startWithoutTime = Calendar.current.startOfDay(for: meeting.start)
+            
+            if var dayArray = meetingsByDate[startWithoutTime] {
+                dayArray.append(meeting)
+                meetingsByDate[startWithoutTime] = dayArray
+            } else {
+                meetingsByDate[startWithoutTime] = [meeting]
+            }
+        }
+        return meetingsByDate
+    }
+    
+    func getMeetings(section: Int) -> [Meeting] {
+        if let sectionDate = dateFrom(section: section),
+            let meetings = meetingsByDate[sectionDate] {
+            return meetings
+        } else {
+            return []
+        }
+    }
+    
+    func dateFrom(section: Int) -> Date? {
+        let sortedDays = Array(meetingsByDate.keys).sorted { $0 < $1 }
+        
+        guard sortedDays.count > section else {
+            return nil
+        }
+        return sortedDays[section]
+    }
 }
