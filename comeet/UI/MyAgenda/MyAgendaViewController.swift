@@ -35,6 +35,11 @@ class MyAgendaViewController: BaseViewController {
     
     func change(date: Date) {
         viewModel?.change(date: date)
+        viewModel?.fetchMeetings()
+    }
+    
+    func reloadAgenda() {
+        viewModel?.fetchMeetings()
     }
 }
 

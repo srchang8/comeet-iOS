@@ -147,6 +147,16 @@ class RoomsListViewModel : BaseViewModel {
         return URL(string: picture)
     }
     
+    func roomFloorPlan(index: Int) -> URL? {
+        guard availableRooms().count > index else {
+            return nil
+        }
+        guard let picture = availableRooms()[index].navigation else {
+            return nil
+        }
+        return URL(string: picture)
+    }
+    
     func room(index: Int) -> Room? {
         guard availableRooms().count > index else {
             return nil

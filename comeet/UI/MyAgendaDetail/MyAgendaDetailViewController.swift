@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import MapKit
 
-class MyAgendaDetailViewController: UIViewController {
+class MyAgendaDetailViewController: BaseViewController {
 
     var viewModel: MyAgendaDetailViewModel?
     
@@ -19,9 +18,6 @@ class MyAgendaDetailViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var attendeesLabel: UILabel!
     
-    internal struct Constants {
-        static let regionDistance:CLLocationDistance = 10000
-    }
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -34,28 +30,27 @@ class MyAgendaDetailViewController: UIViewController {
     
     @IBAction func map(sender: Any) {
         if let (lat, long) = viewModel?.roomLatLong() {
-            let latitude: CLLocationDegrees = lat
-            let longitude: CLLocationDegrees = long
-            
-            let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
-            let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, Constants.regionDistance, Constants.regionDistance)
-            let options = [
-                MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
-                MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
-            ]
-            let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-            let mapItem = MKMapItem(placemark: placemark)
-            mapItem.name = viewModel?.roomName()
-            mapItem.openInMaps(launchOptions: options)
+            showMapDirections(lat: lat, long: long, name: viewModel?.roomName())
         }
     }
     
     @IBAction func floorPlan(sender: Any) {
-        
+        if let floorPlan = viewModel?.roomFloorPlan() {
+            Router.floorPlan = floorPlan
+            performSegue(withIdentifier: Router.Constants.floorPlanSegue, sender: nil)
+        }
     }
     
     @IBAction func sendAttendeesMail(sender: Any) {
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier,
+            let viewModel = viewModel else {
+                return
+        }
+        Router.prepare(identifier: identifier, destination: segue.destination, sourceViewModel: viewModel)
     }
 }
 

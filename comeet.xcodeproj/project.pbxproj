@@ -34,6 +34,7 @@
 		05756C2E1E6FD6CA00A8A61B /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05756C2D1E6FD6CA00A8A61B /* LoginViewModelTests.swift */; };
 		057B12AF1EB0CB9C004ECA36 /* MyAgendaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057B12AE1EB0CB9C004ECA36 /* MyAgendaDetailViewController.swift */; };
 		057B12B11EB0CBB0004ECA36 /* MyAgendaDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057B12B01EB0CBB0004ECA36 /* MyAgendaDetailViewModel.swift */; };
+		057B12B41EB1C08D004ECA36 /* FloorPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057B12B31EB1C08D004ECA36 /* FloorPlanViewController.swift */; };
 		058024FA1E6E56A600C917C0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058024F91E6E56A600C917C0 /* LoginViewController.swift */; };
 		058024FC1E6E56DB00C917C0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058024FB1E6E56DB00C917C0 /* LoginViewModel.swift */; };
 		058025041E6E580B00C917C0 /* MeetingsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058025031E6E580B00C917C0 /* MeetingsListViewController.swift */; };
@@ -143,6 +144,7 @@
 		05756C2D1E6FD6CA00A8A61B /* LoginViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModelTests.swift; path = UI/Login/LoginViewModelTests.swift; sourceTree = "<group>"; };
 		057B12AE1EB0CB9C004ECA36 /* MyAgendaDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyAgendaDetailViewController.swift; path = UI/MyAgendaDetail/MyAgendaDetailViewController.swift; sourceTree = "<group>"; };
 		057B12B01EB0CBB0004ECA36 /* MyAgendaDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyAgendaDetailViewModel.swift; path = UI/MyAgendaDetail/MyAgendaDetailViewModel.swift; sourceTree = "<group>"; };
+		057B12B31EB1C08D004ECA36 /* FloorPlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloorPlanViewController.swift; path = UI/FloorPlan/FloorPlanViewController.swift; sourceTree = "<group>"; };
 		058024F91E6E56A600C917C0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = UI/Login/LoginViewController.swift; sourceTree = "<group>"; };
 		058024FB1E6E56DB00C917C0 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = UI/Login/LoginViewModel.swift; sourceTree = "<group>"; };
 		058025031E6E580B00C917C0 /* MeetingsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeetingsListViewController.swift; path = UI/MeetingsList/MeetingsListViewController.swift; sourceTree = "<group>"; };
@@ -333,12 +335,21 @@
 			name = MyAgendaDetail;
 			sourceTree = "<group>";
 		};
+		057B12B21EB1C048004ECA36 /* FloorPlan */ = {
+			isa = PBXGroup;
+			children = (
+				057B12B31EB1C08D004ECA36 /* FloorPlanViewController.swift */,
+			);
+			name = FloorPlan;
+			sourceTree = "<group>";
+		};
 		058024F61E6E547600C917C0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				05D238AA1EAD062C00E28745 /* UIConstants.swift */,
 				05CF17CA1E78FD4B0024D84F /* Base */,
 				058024F81E6E549900C917C0 /* Login */,
+				057B12B21EB1C048004ECA36 /* FloorPlan */,
 				FC4402881E72333B0016A90F /* MainMenu */,
 				FC5E317B1E8AD16E00035758 /* MyAgenda */,
 				057B12AD1EB0CB6A004ECA36 /* MyAgendaDetail */,
@@ -1012,6 +1023,7 @@
 				052A3C261E87661900DD88D6 /* RoomsListsViewController.swift in Sources */,
 				05CF17DC1E78FD6F0024D84F /* Meeting.swift in Sources */,
 				FC5E31781E8AD13A00035758 /* MyAgendaViewController.swift in Sources */,
+				057B12B41EB1C08D004ECA36 /* FloorPlanViewController.swift in Sources */,
 				052A3C111E87365C00DD88D6 /* FreebusyBlockParser.swift in Sources */,
 				0580250C1E6E58B800C917C0 /* MeetingsListViewModel.swift in Sources */,
 				053564BF1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift in Sources */,

@@ -12,6 +12,10 @@ import ALLoadingView
 class LoaderALLoadingViewImplementer: LoaderProtocol {
     
     func show(text: String) {
+        guard !ALLoadingView.manager.isPresented else {
+            return
+        }
+        
         ALLoadingView.manager.showLoadingView(ofType: .messageWithIndicator, windowMode: .windowed, completionBlock: nil)
         ALLoadingView.manager.messageText = text
         ALLoadingView.manager.messageFont = UIFont.systemFont(ofSize: 15)

@@ -83,6 +83,22 @@ class RoomDetailViewModel :  BaseViewModel {
         return amenitiesString
     }
     
+    func roomFloorPlan() -> URL? {
+        if let picture = room.navigation {
+            return URL(string: picture)
+        } else {
+            return nil
+        }
+    }
+    
+    func roomLatLong() -> (Double, Double)? {
+        if let lat = room.latitude,
+            let long = room.longitude {
+            return (lat, long)
+        }
+        return nil
+    }
+    
     func roomBookText() -> String {
         return "Book \(startDate.displayStringDate()) \(startDate.displayStringHourMinute())-\(endDate.displayStringHourMinute())"
     }

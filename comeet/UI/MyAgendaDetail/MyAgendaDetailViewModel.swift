@@ -50,7 +50,6 @@ class MyAgendaDetailViewModel: BaseViewModel {
                     self?.reloadBinding?()
                 }
             }
-
         }
     }
     
@@ -65,7 +64,7 @@ class MyAgendaDetailViewModel: BaseViewModel {
     
     func timeText() -> String {
         if let meeting = selectedMeetingData {
-            return "\(meeting.start.displayString()) \(meeting.start.displayStringHourMinute()) - \(meeting.end.displayStringHourMinute())"
+            return "\(meeting.start.displayStringDate()) \(meeting.start.displayStringHourMinute()) - \(meeting.end.displayStringHourMinute())"
         } else {
             return ""
         }
@@ -82,7 +81,9 @@ class MyAgendaDetailViewModel: BaseViewModel {
         if let bodyStart = bodyStart,
             let bodyEnd = bodyEnd {
             let bodyRange = Range(uncheckedBounds: (lower: bodyStart.upperBound, upper: bodyEnd.lowerBound))
-            return body.substring(with: bodyRange)
+            let body = body.substring(with: bodyRange)
+            return body.components(separatedBy: NSCharacterSet.newlines).filter(){$0 != ""}.joined(separator: "\n")
+
         } else {
             return body
         }
@@ -110,6 +111,14 @@ class MyAgendaDetailViewModel: BaseViewModel {
     
     func roomPicture() -> URL? {
         if let picture = selectedMeetingData?.room?.picture {
+            return URL(string: picture)
+        } else {
+            return nil
+        }
+    }
+    
+    func roomFloorPlan() -> URL? {
+        if let picture = selectedMeetingData?.room?.navigation {
             return URL(string: picture)
         } else {
             return nil

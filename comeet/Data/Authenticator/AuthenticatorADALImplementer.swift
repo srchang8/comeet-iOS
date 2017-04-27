@@ -27,11 +27,16 @@ class AuthenticatorADALImplementer : AuthenticatorProtocol {
     
     func hasToken() -> String? {
         var error: AutoreleasingUnsafeMutablePointer<ADAuthenticationError?>?
-        guard let allItems = ADKeychainTokenCache.defaultKeychain().allItems(error),
-            allItems.count > 0 else {
+        guard let allItems = ADKeychainTokenCache.defaultKeychain().allItems(error) else {
             return nil
         }
-        return allItems.first?.accessToken
+        
+        for item in allItems {
+            if let accessToken = item.accessToken, item.clientId == AuthenticatorADALSettings.Constants.clientId {
+                return accessToken
+            }
+        }
+        return nil
     }
     
     func logout() {

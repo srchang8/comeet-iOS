@@ -29,9 +29,7 @@ class RoomsListViewController: BaseViewController {
         static let selectDateText = "Done"
         static let regionDistance:CLLocationDistance = 10000
         static let roomsListNewLocationNotification = "RoomsListNewLocation"
-        
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +79,10 @@ class RoomsListViewController: BaseViewController {
         return UIModalPresentationStyle.none
     }
     
+    func reloadRooms() {
+        viewModel?.fetchRooms()
+    }
+    
     func newLocation(sender: Any) {
         viewModel?.newLocation(metroarea: Router.selectedMetroarea, roomsList: Router.selectedRoomsList)
         selectLocationButton.setTitle(viewModel?.roomsList?.name, for: .normal)
@@ -90,9 +92,8 @@ class RoomsListViewController: BaseViewController {
         self.guideView.isHidden = false
         let isGuideShown = userDefault.bool(forKey: "isRoomsGuideShown")
         if (!isGuideShown) {
-            let when = DispatchTime.now() + 3 // change 2 to desired number of seconds
+            let when = DispatchTime.now() + 3
             DispatchQueue.main.asyncAfter(deadline: when) {
-                // Your code with delay
                 if ( self.guideView.isHidden == false) {
                     self.guideView.isHidden = true
                 }
@@ -115,25 +116,24 @@ class RoomsListViewController: BaseViewController {
         }
     }
     
+    func floorPlan(sender: Any) {
+        guard let button = sender as? UIButton else {
+            return
+        }
+        
+        if let floorPlan = viewModel?.roomFloorPlan(index: button.tag) {
+            Router.floorPlan = floorPlan
+            performSegue(withIdentifier: Router.Constants.floorPlanSegue, sender: nil)
+        }
+    }
+    
     func map(sender: Any) {
         guard let button = sender as? UIButton else {
             return
         }
         
         if let (lat, long) = viewModel?.roomLatLong(index: button.tag) {
-            let latitude: CLLocationDegrees = lat
-            let longitude: CLLocationDegrees = long
-            
-            let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
-            let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, Constants.regionDistance, Constants.regionDistance)
-            let options = [
-                MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
-                MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
-            ]
-            let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-            let mapItem = MKMapItem(placemark: placemark)
-            mapItem.name = viewModel?.roomName(index: button.tag)
-            mapItem.openInMaps(launchOptions: options)
+            showMapDirections(lat: lat, long: long, name: viewModel?.roomName(index: button.tag))
         }
     }
     
@@ -171,10 +171,6 @@ private extension RoomsListViewController {
         } else {
             performSegue(withIdentifier: Router.Constants.metroareaSegue, sender: self)
         }
-        
-        
-        
-        
     }
     
     func setupSlider() {
@@ -229,6 +225,13 @@ extension RoomsListViewController : UITableViewDataSource {
         } else {
             roomCell.mapButton.isHidden = false
             roomCell.mapButton.addTarget(self, action: #selector(map(sender:)), for: .touchUpInside)
+        }
+        
+        if viewModel?.roomFloorPlan(index: indexPath.row) == nil {
+            roomCell.floorPlanButton.isHidden = true
+        } else {
+            roomCell.floorPlanButton.isHidden = false
+            roomCell.floorPlanButton.addTarget(self, action: #selector(floorPlan(sender:)), for: .touchUpInside)
         }
         
         let amenities = viewModel?.roomAmenities(index: indexPath.row) ?? []

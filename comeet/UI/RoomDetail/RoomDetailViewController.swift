@@ -19,6 +19,9 @@ class RoomDetailViewController: BaseViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     var viewModel: RoomDetailViewModel?
+    internal struct Constants {
+        static let roomsBookedNotification = "RoomsBooked"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +36,19 @@ class RoomDetailViewController: BaseViewController {
     @IBAction func cancel(_ sender: Any) {
         view.endEditing(true)
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func map(sender: Any) {
+        if let (lat, long) = viewModel?.roomLatLong() {
+            showMapDirections(lat: lat, long: long, name: viewModel?.roomname())
+        }
+    }
+    
+    @IBAction func floorPlan(sender: Any) {
+        if let floorPlan = viewModel?.roomFloorPlan() {
+            Router.floorPlan = floorPlan
+            performSegue(withIdentifier: Router.Constants.floorPlanSegue, sender: nil)
+        }
     }
     
     func keyboardWillShow(notification:NSNotification){
@@ -51,6 +67,14 @@ class RoomDetailViewController: BaseViewController {
         scrollView.contentInset = contentInset
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier,
+            let viewModel = viewModel else {
+                return
+        }
+        Router.prepare(identifier: identifier, destination: segue.destination, sourceViewModel: viewModel)
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -66,6 +90,7 @@ private extension RoomDetailViewController {
         
         viewModel?.bookRoomBinding = { [weak self] (success: Bool) in
             if (success) {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.roomsBookedNotification), object: nil)
                 self?.goBackToMenu()
             }
         }

@@ -20,6 +20,9 @@ class MainMenuViewController: BaseViewController {
     
     var agendaVC: MyAgendaViewController?
     var roomListVC: RoomsListViewController?
+    internal struct Constants {
+        static let roomsBookedNotification = "RoomsBooked"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,50 +75,22 @@ class MainMenuViewController: BaseViewController {
     func containerViewSwiped(gesture: UISwipeGestureRecognizer) {
         switch gesture.direction {
         case UISwipeGestureRecognizerDirection.left:
-            if agendaVC?.view.isHidden ?? true {
-                //animate fade in of agenda VC
-                agendaVC?.view.alpha = 0.0
-                agendaVC?.view.isHidden = false
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.agendaVC?.view.alpha = 1.0
-                    self.roomListVC?.view.alpha = 0.0
-                    let userDefault = UserDefaults.standard
-                   userDefault.set(false, forKey: "isAgendaGuideShown")
-                    let isGuideShown = userDefault.bool(forKey: "isAgendaGuideShown")
-                    if (!isGuideShown) {
-                        let when = DispatchTime.now() + 3 // change 2 to desired number of seconds
-                        DispatchQueue.main.asyncAfter(deadline: when) {
-                            // Your code with delay
-                            if ( self.agendaVC?.guideView.isHidden == false) {
-                                self.agendaVC?.guideView.isHidden = true
-                            }
-                            userDefault.set(true, forKey: "isAgendaGuideShown")
-                        }
-                    } else {
-                        self.agendaVC?.guideView.isHidden = true
-                    }
-                }, completion: { (success) in
-                    self.roomListVC?.view.isHidden = true
-                    
-                })
-            }
+            showAgenda()
         case UISwipeGestureRecognizerDirection.right:
-            if roomListVC?.view.isHidden ?? true {
-                
-                //animate fade in of agenda VC
-                roomListVC?.view.alpha = 0.0
-                roomListVC?.view.isHidden = false
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.roomListVC?.view.alpha = 1.0
-                    self.agendaVC?.view.alpha = 0.0
-                }, completion: { (success) in
-                    self.agendaVC?.view.isHidden = true
-                    
-                })
-            }
+            showRoomsList()
         default:
             break
         }
+    }
+    
+    func roomBooked(sender: Any) {
+        self.agendaVC?.reloadAgenda()
+        self.roomListVC?.reloadRooms()
+        showAgenda()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
@@ -125,7 +100,7 @@ extension MainMenuViewController : WWCalendarTimeSelectorProtocol {
     func WWCalendarTimeSelectorDone(_ selector: WWCalendarTimeSelector, date: Date) {
         updateDateButton(date: date)
         roomListVC?.change(date: date)
-        // TODO: Update agenda
+        agendaVC?.change(date: date)
     }
 }
 
@@ -141,7 +116,7 @@ private extension MainMenuViewController {
         addRoomsList()
         addAgendaView()
         
-        
+        NotificationCenter.default.addObserver(self, selector: #selector (roomBooked(sender:)), name: NSNotification.Name(rawValue: Constants.roomsBookedNotification), object: nil)
     }
     
     func addGestureRecognizers() {
@@ -248,5 +223,50 @@ private extension MainMenuViewController {
         let title = df.string(from: date)
         
         dateButton.setTitle(title, for: .normal)
+    }
+    
+    func showAgenda() {
+        if agendaVC?.view.isHidden ?? true {
+            //animate fade in of agenda VC
+            agendaVC?.view.alpha = 0.0
+            agendaVC?.view.isHidden = false
+            UIView.animate(withDuration: 0.5, animations: {
+                self.agendaVC?.view.alpha = 1.0
+                self.roomListVC?.view.alpha = 0.0
+                let userDefault = UserDefaults.standard
+                userDefault.set(false, forKey: "isAgendaGuideShown")
+                let isGuideShown = userDefault.bool(forKey: "isAgendaGuideShown")
+                if (!isGuideShown) {
+                    let when = DispatchTime.now() + 3
+                    DispatchQueue.main.asyncAfter(deadline: when) {
+                        if ( self.agendaVC?.guideView.isHidden == false) {
+                            self.agendaVC?.guideView.isHidden = true
+                        }
+                        userDefault.set(true, forKey: "isAgendaGuideShown")
+                    }
+                } else {
+                    self.agendaVC?.guideView.isHidden = true
+                }
+            }, completion: { (success) in
+                self.roomListVC?.view.isHidden = true
+                
+            })
+        }
+    }
+    
+    func showRoomsList() {
+        if roomListVC?.view.isHidden ?? true {
+            
+            //animate fade in of agenda VC
+            roomListVC?.view.alpha = 0.0
+            roomListVC?.view.isHidden = false
+            UIView.animate(withDuration: 0.5, animations: {
+                self.roomListVC?.view.alpha = 1.0
+                self.agendaVC?.view.alpha = 0.0
+            }, completion: { (success) in
+                self.agendaVC?.view.isHidden = true
+                
+            })
+        }
     }
 }
