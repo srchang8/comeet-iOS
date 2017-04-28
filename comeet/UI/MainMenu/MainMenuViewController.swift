@@ -73,9 +73,13 @@ class MainMenuViewController: BaseViewController {
     }
     
     func containerViewSwiped(gesture: UISwipeGestureRecognizer) {
+        let gesturePoint = gesture.location(in: containerView)
+        
         switch gesture.direction {
         case UISwipeGestureRecognizerDirection.left:
-            showAgenda()
+            if gesturePoint.y < containerView.frame.height - 80 { //bottom vie height
+                showAgenda()
+            }
         case UISwipeGestureRecognizerDirection.right:
             showRoomsList()
         default:
