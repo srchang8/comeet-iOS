@@ -16,24 +16,12 @@ class MainMenuViewModel : BaseViewModel {
     let persistor: PersistorProtocol
     var selectedDate = Date()
     var reloadBinding: ReloadBinding?
-    private var meetings: [Meeting] = []
+    public var meetings: [Meeting] = []
     
     init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, persistor: PersistorProtocol) {
         self.authenticator = authenticator
         self.fetcher = fetcher
         self.persistor = persistor
-    }
-    
-    func fetchMeetings() {
-        let start = Date().stringForAPI()
-        let end = Date().addingTimeInterval(60 * 60 * 24).stringForAPI()
-        
-        fetcher.getMeetings(organization: authenticator.getOrganization(), user: "", start: start, end: end) { [weak self] (meetings: [Meeting]?, error: Error?) in
-            if let meetings = meetings {
-                self?.meetings = meetings
-                self?.reloadBinding?()
-            }
-        }
     }
     
     func title() -> String {
@@ -47,6 +35,3 @@ class MainMenuViewModel : BaseViewModel {
     
   
 }
-
-private extension MainMenuViewModel {
-    }

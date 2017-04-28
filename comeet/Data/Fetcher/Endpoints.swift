@@ -17,16 +17,18 @@ struct Endpoints {
     }
     
     func getRooms(organization: String, roomlist: String, start: String, end: String) -> String {
-        // TODO: Go back to send dates once changes from the API come through
-        //return environment.rawValue + "/" + organization + "/roomlists/" + roomlist + "/rooms?start=" + start + "&end=" + end
-        return environment.rawValue + "/" + organization + "/roomlists/" + roomlist + "/rooms"
+        return environment.rawValue + "/" + organization + "/roomlists/" + roomlist + "/rooms?start=" + start + "&end=" + end
     }
     
     func bookRoom(organization: String, roomrecipient: String) -> String {
         return environment.rawValue + "/" + organization + "/rooms/" + roomrecipient + "/reserve"
     }
     
-    func getMeetings(organization: String, user: String, start: String, end: String) -> String {
+    func getMeetings(organization: String, start: String, end: String) -> String {
         return environment.rawValue + "/" + organization + "/meetings?start=" + start + "&end=" + end
+    }
+    
+    func getMeetingData(organization: String, id: String) -> String {
+        return environment.rawValue + "/" + organization + "/meeting/data?id=" + id
     }
 }

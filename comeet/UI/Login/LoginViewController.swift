@@ -14,7 +14,6 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationController?.isNavigationBarHidden = true
         setup()
     }
     
@@ -51,9 +50,7 @@ private extension LoginViewController {
         viewModel.tokenErrorBinding = { (error: Error) in
         }
         
-        if self.viewModel.isLoggedIn() {
-            self.goToMenu()
-        }
+        viewModel.getToken()
     }
     
     func goToMenu(){

@@ -7,19 +7,22 @@
 //
 
 import Foundation
+import ALLoadingView
 
 class RoomsListViewModel : BaseViewModel {
     
     let authenticator: AuthenticatorProtocol
     let fetcher: FetcherProtocol
     let persistor: PersistorProtocol
+    internal let loader = DataSimpleBridge.getLoader()
     var reloadBinding: ReloadBinding?
-    internal let selectedDate: Date
+    internal var selectedDate: Date
     private var metroarea: String?
-    private var roomsList: User?
+    private(set) var roomsList: User?
     internal var rooms: [Room] = []
     internal var startDate : Date
     internal var endDate : Date
+    internal var testing = false
     
     init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, persistor: PersistorProtocol, selectedDate: Date, metroarea: String?, roomsList: User?) {
         self.metroarea = metroarea
@@ -35,6 +38,10 @@ class RoomsListViewModel : BaseViewModel {
     struct Constants {
         static let startDateText = "Select Start"
         static let endDateText = "Select End"
+        static let loadingText = "Loading Rooms"
+        static let genericTitleText = "Select a Room"
+        static let titleText = "Rooms in "
+        static let capacityText = "Capacity: "
     }
     
     func newLocation(metroarea: String?, roomsList: User?) {
@@ -45,25 +52,30 @@ class RoomsListViewModel : BaseViewModel {
     
     func title() -> String {
         guard let name = roomsList?.name else {
-            return "Select a Room"
+            return Constants.genericTitleText
         }
-        return "Rooms in " + name
+        return Constants.titleText + name
     }
+
     
-    func startDateString() -> String {
-        return startDate.displayString()
-    }
-    
-    func endDateString() -> String {
-        return endDate.displayString()
+    func change(date: Date) {
+        selectedDate = date
+        fetchRooms()
     }
     
     func fetchRooms() {
         guard let email = roomsList?.email else {
             return
         }
+    
+        removeRooms()
+        showLoading()
+        
         fetcher.getRooms(organization: authenticator.getOrganization(), roomlist: email, start: startDateForRequest(), end: endDateForRequest()) { [weak self] (rooms, error) in
+            
+            self?.hideLoading()
             guard error == nil else {
+                // TODO: surface error in UI?
                 print(error!)
                 return
             }
@@ -96,9 +108,29 @@ class RoomsListViewModel : BaseViewModel {
         }
         let room = availableRooms()[index]
         if let capacity = room.capacity {
-            return "Capacity: \(capacity)"
+            return Constants.capacityText + "\(capacity)"
         }
         return room.email
+    }
+    
+    func roomAmenities(index: Int) -> [Amenity] {
+        guard availableRooms().count > index else {
+            return []
+        }
+        let room = availableRooms()[index]
+        return room.amenities ?? []
+    }
+
+    func roomLatLong(index: Int) -> (Double, Double)? {
+        guard availableRooms().count > index else {
+            return nil
+        }
+        let room = availableRooms()[index]
+        if let lat = room.latitude,
+            let long = room.longitude {
+            return (lat, long)
+        }
+        return nil
     }
     
     func roomPicture(index: Int) -> URL? {
@@ -106,6 +138,16 @@ class RoomsListViewModel : BaseViewModel {
             return nil
         }
         guard let picture = availableRooms()[index].picture else {
+            return nil
+        }
+        return URL(string: picture)
+    }
+    
+    func roomFloorPlan(index: Int) -> URL? {
+        guard availableRooms().count > index else {
+            return nil
+        }
+        guard let picture = availableRooms()[index].navigation else {
             return nil
         }
         return URL(string: picture)
@@ -127,20 +169,32 @@ class RoomsListViewModel : BaseViewModel {
         endDate = dateFrom(hours: hours, minutes: minutes)
         reloadBinding?()
     }
+    
+    func locationPersisted() -> Bool {
+        if let metroarea = persistor.getMetroArea(),
+            let roomlist = persistor.getRoomlist() {
+            Router.selectedMetroarea = metroarea
+            Router.selectedRoomsList = roomlist
+            newLocation(metroarea: metroarea, roomsList: roomlist)
+            return true
+        } else {
+            return false
+        }
+    }
 }
 
 private extension RoomsListViewModel {
     
     func startDateForRequest() -> String {
         let start = selectedDate.startOfDay()
-        return start.stringForAPI()
+        return start.stringForAPIRooms()
     }
     
     func endDateForRequest() -> String {
         guard let end = selectedDate.endOfDay() else {
-            return selectedDate.stringForAPI()
+            return selectedDate.stringForAPIRooms()
         }
-        return end.stringForAPI()
+        return end.stringForAPIRooms()
     }
     
     func dateFrom(hours: Int, minutes: Int) -> Date {
@@ -151,13 +205,30 @@ private extension RoomsListViewModel {
     }
     
     func availableRooms() -> [Room] {
-              return rooms
-        // TODO: Correct filter criteria
-//        return rooms.filter({ (room) -> Bool in
-//            guard let freebusy = room.freebusy, freebusy.count > 0 else {
-//                return true
-//            }
-//            return freebusy.containsFree(start: startDate, end: endDate)
-//        })
+        return rooms.filter({ (room) -> Bool in
+            guard let freebusy = room.freebusy, freebusy.count > 0 else {
+                return true
+            }
+            return freebusy.isFree(start: startDate, end: endDate)
+        })
+    }
+    
+    func removeRooms() {
+        if (!testing) {
+            rooms = []
+            reloadBinding?()
+        }
+    }
+    
+    func showLoading() {
+        if (!testing) {
+            loader.show(text: Constants.loadingText)
+        }
+    }
+    
+    func hideLoading() {
+        if (!testing) {
+            loader.hide()
+        }
     }
 }

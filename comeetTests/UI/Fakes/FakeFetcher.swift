@@ -34,16 +34,21 @@ class FakeFetcher: FetcherProtocol {
     }
     
     func getRooms(organization: String, roomlist: String, start: String, end: String, completion:@escaping FetchRoomsCompletion) {
+        completion(rooms, error)
     }
     
     func bookRoom(organization: String, roomrecipient: String, params: [String: Any], completion:@escaping BookRoomCompletion) {
         
     }
     
-    func bookRoomParams(start: String, end: String, subject: String, body: String, requiredAttendees: String, optionalAttendees:String) -> [String: Any] {
+    func bookRoomParams(start: String, end: String, subject: String, body: String, requiredAttendees: String) -> [String: Any] {
         return bookRoomParams
     }
     
     func getMeetings(organization: String, user: String, start: String, end: String, completion:@escaping FetchMeetingsCompletion) {
+    }
+    
+    func getMeetingData(organization: String, id: String, completion:@escaping FetchMeetingCompletion) {
+        
     }
 }

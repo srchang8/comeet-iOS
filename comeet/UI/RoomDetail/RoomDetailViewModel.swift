@@ -14,12 +14,17 @@ class RoomDetailViewModel :  BaseViewModel {
     
     let authenticator: AuthenticatorProtocol
     let fetcher: FetcherProtocol
+    private let loader = DataSimpleBridge.getLoader()
     var bookRoomBinding: BookRoomBinding?
     let startDate: Date
     let endDate: Date
     private let metroarea: String
     private let roomsList: User
     private let room: Room
+    
+    struct Constants {
+        static let loadingText = "Booking"
+    }
     
     init(authenticator: AuthenticatorProtocol, fetcher: FetcherProtocol, startDate: Date, endDate: Date, metroarea: String, roomsList: User, room: Room) {
         self.metroarea = metroarea
@@ -31,20 +36,18 @@ class RoomDetailViewModel :  BaseViewModel {
         self.endDate = endDate
     }
     
-    func bookRoom() {
-        let subject = "Comeet metting"
-        let body = "This meeting was created by comeet"
+    func bookRoom(subject: String?, body: String?) {
+        let finalSubject = subject ?? ""
+        let finalBody = body ?? ""
         let requiredAtendees = room.email
-        let optionalAttendees = ""
-        let params = fetcher.bookRoomParams(start: startDate.stringForAPI(), end: endDate.stringForAPI(), subject: subject, body: body, requiredAttendees: requiredAtendees, optionalAttendees: optionalAttendees)
+        let params = fetcher.bookRoomParams(start: startDate.stringForAPI(), end: endDate.stringForAPI(), subject: finalSubject, body: finalBody, requiredAttendees: requiredAtendees)
+        
+        loader.show(text: Constants.loadingText)
         
         fetcher.bookRoom(organization: authenticator.getOrganization(), roomrecipient: room.email, params: params) { [weak self] (succes: Bool, error: Error?) in
+            self?.loader.hide()
             self?.bookRoomBinding?(succes)
         }
-    }
-    
-    func title() -> String {
-        return "Selected Room"
     }
     
     func roomname() -> String {
@@ -78,6 +81,22 @@ class RoomDetailViewModel :  BaseViewModel {
         }
 
         return amenitiesString
+    }
+    
+    func roomFloorPlan() -> URL? {
+        if let picture = room.navigation {
+            return URL(string: picture)
+        } else {
+            return nil
+        }
+    }
+    
+    func roomLatLong() -> (Double, Double)? {
+        if let lat = room.latitude,
+            let long = room.longitude {
+            return (lat, long)
+        }
+        return nil
     }
     
     func roomBookText() -> String {

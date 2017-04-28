@@ -31,11 +31,11 @@ struct Stubs {
                         country: nil,
                         state: nil,
                         metroarea: "Austin",
-                        latitude: nil,
-                        longitude: nil,
+                        latitude: 1.000,
+                        longitude: 1.000,
                         capacity: 10,
-                        picture: nil,
-                        navigation: nil,
+                        picture: "http://fake.com",
+                        navigation: "http://fake.com",
                         amenities: nil,
                         freebusy: nil)
         

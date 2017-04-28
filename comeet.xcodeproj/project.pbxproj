@@ -10,6 +10,8 @@
 		0506BA351EA273BD0008E642 /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0506BA341EA273BD0008E642 /* RoomTableViewCell.swift */; };
 		050AE8391E9AEFB600A2A6A5 /* MeetingParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050AE8381E9AEFB600A2A6A5 /* MeetingParser.swift */; };
 		050AE83B1E9AF40900A2A6A5 /* UserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050AE83A1E9AF40900A2A6A5 /* UserParser.swift */; };
+		0522F8BD1EAD1C9000C553CE /* MyAgendaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0522F8BC1EAD1C9000C553CE /* MyAgendaTableViewCell.swift */; };
+		0522F8BF1EAD1CB900C553CE /* MyAgendaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0522F8BE1EAD1CB900C553CE /* MyAgendaViewModel.swift */; };
 		052A3C0B1E8730CE00DD88D6 /* FreebusyBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052A3C0A1E8730CE00DD88D6 /* FreebusyBlock.swift */; };
 		052A3C0D1E8730E400DD88D6 /* Amenity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052A3C0C1E8730E400DD88D6 /* Amenity.swift */; };
 		052A3C0F1E87364600DD88D6 /* AmenitiesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052A3C0E1E87364600DD88D6 /* AmenitiesParser.swift */; };
@@ -30,13 +32,14 @@
 		053564C11E6E6C7B0072A167 /* DataSimpleBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053564C01E6E6C7B0072A167 /* DataSimpleBridge.swift */; };
 		05756C2A1E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05756C291E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift */; };
 		05756C2E1E6FD6CA00A8A61B /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05756C2D1E6FD6CA00A8A61B /* LoginViewModelTests.swift */; };
+		057B12AF1EB0CB9C004ECA36 /* MyAgendaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057B12AE1EB0CB9C004ECA36 /* MyAgendaDetailViewController.swift */; };
+		057B12B11EB0CBB0004ECA36 /* MyAgendaDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057B12B01EB0CBB0004ECA36 /* MyAgendaDetailViewModel.swift */; };
+		057B12B41EB1C08D004ECA36 /* FloorPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057B12B31EB1C08D004ECA36 /* FloorPlanViewController.swift */; };
 		058024FA1E6E56A600C917C0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058024F91E6E56A600C917C0 /* LoginViewController.swift */; };
 		058024FC1E6E56DB00C917C0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058024FB1E6E56DB00C917C0 /* LoginViewModel.swift */; };
-		058025021E6E57F100C917C0 /* MeetingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058025011E6E57F100C917C0 /* MeetingDetailViewController.swift */; };
 		058025041E6E580B00C917C0 /* MeetingsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058025031E6E580B00C917C0 /* MeetingsListViewController.swift */; };
 		058025061E6E585A00C917C0 /* RoomDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058025051E6E585A00C917C0 /* RoomDetailViewController.swift */; };
 		058025081E6E587600C917C0 /* RoomsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058025071E6E587600C917C0 /* RoomsListViewController.swift */; };
-		0580250A1E6E589500C917C0 /* MeetingDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058025091E6E589500C917C0 /* MeetingDetailViewModel.swift */; };
 		0580250C1E6E58B800C917C0 /* MeetingsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580250B1E6E58B800C917C0 /* MeetingsListViewModel.swift */; };
 		0580250E1E6E58CD00C917C0 /* RoomDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580250D1E6E58CD00C917C0 /* RoomDetailViewModel.swift */; };
 		058025101E6E58E700C917C0 /* RoomsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580250F1E6E58E700C917C0 /* RoomsListViewModel.swift */; };
@@ -62,6 +65,9 @@
 		05CF17E61E7912A70024D84F /* AlamofireAccessTokenAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF17E51E7912A70024D84F /* AlamofireAccessTokenAdapterTests.swift */; };
 		05CF17E81E7917F70024D84F /* EnvironmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF17E71E7917F70024D84F /* EnvironmentTests.swift */; };
 		05CF17EB1E791AED0024D84F /* RoomParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF17EA1E791AED0024D84F /* RoomParserTests.swift */; };
+		05D238A71EAC55DD00E28745 /* LoaderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D238A61EAC55DD00E28745 /* LoaderProtocol.swift */; };
+		05D238A91EAC563600E28745 /* LoaderALLoadingViewImplementer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D238A81EAC563600E28745 /* LoaderALLoadingViewImplementer.swift */; };
+		05D238AB1EAD062C00E28745 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D238AA1EAD062C00E28745 /* UIConstants.swift */; };
 		05F214F71E6E4D7A004E4A16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F214F61E6E4D7A004E4A16 /* AppDelegate.swift */; };
 		05F214FC1E6E4D7A004E4A16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05F214FA1E6E4D7A004E4A16 /* Main.storyboard */; };
 		05F214FE1E6E4D7A004E4A16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05F214FD1E6E4D7A004E4A16 /* Assets.xcassets */; };
@@ -73,9 +79,9 @@
 		05F986C11E7F005100120AB4 /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F986C01E7F005100120AB4 /* Stubs.swift */; };
 		0C1442D63FEB86045D7C7DA2 /* Pods_comeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B91D862A7FBE37C8586934 /* Pods_comeet.framework */; };
 		1637625E99D024466A643A19 /* Pods_comeetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD63FB99D026AD68296B3DD4 /* Pods_comeetTests.framework */; };
+		A62898811EAAB99A008F2773 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A62898801EAAB99A008F2773 /* Settings.bundle */; };
+		A62898831EAC3C6C008F2773 /* AuthenticatorADALSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62898821EAC3C6C008F2773 /* AuthenticatorADALSettings.swift */; };
 		D0EDA197ECD00EBD52264BA4 /* Pods_comeetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF5E5210C047205B62B9152 /* Pods_comeetUITests.framework */; };
-		FC36A7721EA00B2A008C3FE4 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC36A7711EA00B2A008C3FE4 /* CalendarViewModel.swift */; };
-		FC36A7741EA010B6008C3FE4 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC36A7731EA010B6008C3FE4 /* CalendarViewController.swift */; };
 		FC4B14FF1E958B1F00FCCBD1 /* 750x1334-trees_comet_stars.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4B14F51E958B1F00FCCBD1 /* 750x1334-trees_comet_stars.png */; };
 		FC4B15001E958B1F00FCCBD1 /* a-trees_comet_stars-29983.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4B14F61E958B1F00FCCBD1 /* a-trees_comet_stars-29983.png */; };
 		FC4B15011E958B1F00FCCBD1 /* Artboard 1.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4B14F71E958B1F00FCCBD1 /* Artboard 1.png */; };
@@ -87,7 +93,10 @@
 		FC4B15071E958B1F00FCCBD1 /* BackgroundLogIn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FC4B14FD1E958B1F00FCCBD1 /* BackgroundLogIn.jpg */; };
 		FC4B15081E958B1F00FCCBD1 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = FC4B14FE1E958B1F00FCCBD1 /* images.jpeg */; };
 		FC5E31781E8AD13A00035758 /* MyAgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E31771E8AD13A00035758 /* MyAgendaViewController.swift */; };
-		FC5E317A1E8AD16700035758 /* MyAgendaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5E31791E8AD16700035758 /* MyAgendaViewModel.swift */; };
+		FC813DF71EB0453B003A7EC5 /* projector.png in Resources */ = {isa = PBXBuildFile; fileRef = FC813DF41EB0453B003A7EC5 /* projector.png */; };
+		FC813DF81EB0453B003A7EC5 /* Speaker Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = FC813DF51EB0453B003A7EC5 /* Speaker Phone.png */; };
+		FC813DF91EB0453B003A7EC5 /* Whiteboard.png in Resources */ = {isa = PBXBuildFile; fileRef = FC813DF61EB0453B003A7EC5 /* Whiteboard.png */; };
+		FC813E011EB04D05003A7EC5 /* Television.png in Resources */ = {isa = PBXBuildFile; fileRef = FC813E001EB04D05003A7EC5 /* Television.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +120,8 @@
 		0506BA341EA273BD0008E642 /* RoomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomTableViewCell.swift; path = UI/RoomsList/RoomTableViewCell.swift; sourceTree = "<group>"; };
 		050AE8381E9AEFB600A2A6A5 /* MeetingParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingParser.swift; sourceTree = "<group>"; };
 		050AE83A1E9AF40900A2A6A5 /* UserParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserParser.swift; sourceTree = "<group>"; };
+		0522F8BC1EAD1C9000C553CE /* MyAgendaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyAgendaTableViewCell.swift; path = comeet/UI/MyAgenda/MyAgendaTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		0522F8BE1EAD1CB900C553CE /* MyAgendaViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAgendaViewModel.swift; sourceTree = "<group>"; };
 		052A3C0A1E8730CE00DD88D6 /* FreebusyBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreebusyBlock.swift; sourceTree = "<group>"; };
 		052A3C0C1E8730E400DD88D6 /* Amenity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Amenity.swift; sourceTree = "<group>"; };
 		052A3C0E1E87364600DD88D6 /* AmenitiesParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmenitiesParser.swift; sourceTree = "<group>"; };
@@ -131,13 +142,14 @@
 		053564C01E6E6C7B0072A167 /* DataSimpleBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSimpleBridge.swift; path = Data/DataSimpleBridge.swift; sourceTree = "<group>"; };
 		05756C291E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticatorADALImplementerTests.swift; path = Data/Authenticator/AuthenticatorADALImplementerTests.swift; sourceTree = "<group>"; };
 		05756C2D1E6FD6CA00A8A61B /* LoginViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModelTests.swift; path = UI/Login/LoginViewModelTests.swift; sourceTree = "<group>"; };
+		057B12AE1EB0CB9C004ECA36 /* MyAgendaDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyAgendaDetailViewController.swift; path = UI/MyAgendaDetail/MyAgendaDetailViewController.swift; sourceTree = "<group>"; };
+		057B12B01EB0CBB0004ECA36 /* MyAgendaDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyAgendaDetailViewModel.swift; path = UI/MyAgendaDetail/MyAgendaDetailViewModel.swift; sourceTree = "<group>"; };
+		057B12B31EB1C08D004ECA36 /* FloorPlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloorPlanViewController.swift; path = UI/FloorPlan/FloorPlanViewController.swift; sourceTree = "<group>"; };
 		058024F91E6E56A600C917C0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = UI/Login/LoginViewController.swift; sourceTree = "<group>"; };
 		058024FB1E6E56DB00C917C0 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = UI/Login/LoginViewModel.swift; sourceTree = "<group>"; };
-		058025011E6E57F100C917C0 /* MeetingDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeetingDetailViewController.swift; path = UI/MeetingDetail/MeetingDetailViewController.swift; sourceTree = "<group>"; };
 		058025031E6E580B00C917C0 /* MeetingsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeetingsListViewController.swift; path = UI/MeetingsList/MeetingsListViewController.swift; sourceTree = "<group>"; };
 		058025051E6E585A00C917C0 /* RoomDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomDetailViewController.swift; path = UI/RoomDetail/RoomDetailViewController.swift; sourceTree = "<group>"; };
 		058025071E6E587600C917C0 /* RoomsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomsListViewController.swift; path = UI/RoomsList/RoomsListViewController.swift; sourceTree = "<group>"; };
-		058025091E6E589500C917C0 /* MeetingDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeetingDetailViewModel.swift; path = UI/MeetingDetail/MeetingDetailViewModel.swift; sourceTree = "<group>"; };
 		0580250B1E6E58B800C917C0 /* MeetingsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MeetingsListViewModel.swift; path = UI/MeetingsList/MeetingsListViewModel.swift; sourceTree = "<group>"; };
 		0580250D1E6E58CD00C917C0 /* RoomDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomDetailViewModel.swift; path = UI/RoomDetail/RoomDetailViewModel.swift; sourceTree = "<group>"; };
 		0580250F1E6E58E700C917C0 /* RoomsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomsListViewModel.swift; path = UI/RoomsList/RoomsListViewModel.swift; sourceTree = "<group>"; };
@@ -164,6 +176,9 @@
 		05CF17E51E7912A70024D84F /* AlamofireAccessTokenAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlamofireAccessTokenAdapterTests.swift; path = Data/Fetcher/AlamofireAccessTokenAdapterTests.swift; sourceTree = "<group>"; };
 		05CF17E71E7917F70024D84F /* EnvironmentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnvironmentTests.swift; path = Data/Fetcher/EnvironmentTests.swift; sourceTree = "<group>"; };
 		05CF17EA1E791AED0024D84F /* RoomParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomParserTests.swift; path = Data/Parsers/RoomParserTests.swift; sourceTree = "<group>"; };
+		05D238A61EAC55DD00E28745 /* LoaderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoaderProtocol.swift; path = Data/Loader/LoaderProtocol.swift; sourceTree = "<group>"; };
+		05D238A81EAC563600E28745 /* LoaderALLoadingViewImplementer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoaderALLoadingViewImplementer.swift; path = Data/Loader/LoaderALLoadingViewImplementer.swift; sourceTree = "<group>"; };
+		05D238AA1EAD062C00E28745 /* UIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIConstants.swift; path = UI/UIConstants.swift; sourceTree = "<group>"; };
 		05F214F31E6E4D7A004E4A16 /* comeet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = comeet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F214F61E6E4D7A004E4A16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05F214FB1E6E4D7A004E4A16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -185,11 +200,11 @@
 		6846396A6214755CEEBC21EA /* Pods-comeet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comeet.release.xcconfig"; path = "Pods/Target Support Files/Pods-comeet/Pods-comeet.release.xcconfig"; sourceTree = "<group>"; };
 		7EC5EDF2169A4DF25DB3FB88 /* Pods-comeet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comeet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-comeet/Pods-comeet.debug.xcconfig"; sourceTree = "<group>"; };
 		8D2B4C82B05E7502411FD08B /* Pods-comeetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comeetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-comeetTests/Pods-comeetTests.release.xcconfig"; sourceTree = "<group>"; };
+		A62898801EAAB99A008F2773 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		A62898821EAC3C6C008F2773 /* AuthenticatorADALSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatorADALSettings.swift; sourceTree = "<group>"; };
 		CD63FB99D026AD68296B3DD4 /* Pods_comeetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_comeetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2B91D862A7FBE37C8586934 /* Pods_comeet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_comeet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F950E5A61E429A12E5AC9484 /* Pods-comeetUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comeetUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-comeetUITests/Pods-comeetUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		FC36A7711EA00B2A008C3FE4 /* CalendarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
-		FC36A7731EA010B6008C3FE4 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarViewController.swift; path = UI/CalendarViewController.swift; sourceTree = "<group>"; };
 		FC4B14F51E958B1F00FCCBD1 /* 750x1334-trees_comet_stars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "750x1334-trees_comet_stars.png"; path = "Resources/Images/750x1334-trees_comet_stars.png"; sourceTree = SOURCE_ROOT; };
 		FC4B14F61E958B1F00FCCBD1 /* a-trees_comet_stars-29983.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "a-trees_comet_stars-29983.png"; path = "Resources/Images/a-trees_comet_stars-29983.png"; sourceTree = SOURCE_ROOT; };
 		FC4B14F71E958B1F00FCCBD1 /* Artboard 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Artboard 1.png"; path = "Resources/Images/Artboard 1.png"; sourceTree = SOURCE_ROOT; };
@@ -201,7 +216,10 @@
 		FC4B14FD1E958B1F00FCCBD1 /* BackgroundLogIn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = BackgroundLogIn.jpg; path = Resources/Images/BackgroundLogIn.jpg; sourceTree = SOURCE_ROOT; };
 		FC4B14FE1E958B1F00FCCBD1 /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = images.jpeg; path = Resources/Images/images.jpeg; sourceTree = SOURCE_ROOT; };
 		FC5E31771E8AD13A00035758 /* MyAgendaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyAgendaViewController.swift; path = ../MyAgenda/MyAgendaViewController.swift; sourceTree = "<group>"; };
-		FC5E31791E8AD16700035758 /* MyAgendaViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAgendaViewModel.swift; sourceTree = "<group>"; };
+		FC813DF41EB0453B003A7EC5 /* projector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projector.png; sourceTree = "<group>"; };
+		FC813DF51EB0453B003A7EC5 /* Speaker Phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Speaker Phone.png"; sourceTree = "<group>"; };
+		FC813DF61EB0453B003A7EC5 /* Whiteboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Whiteboard.png; sourceTree = "<group>"; };
+		FC813E001EB04D05003A7EC5 /* Television.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Television.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +284,7 @@
 				053564BE1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift */,
 				05C8C5661E91E5F20027E2D7 /* AuthenticatorBasicImplementer.swift */,
 				05C8C5681E91E7430027E2D7 /* AuthenticatorUtils.swift */,
+				A62898821EAC3C6C008F2773 /* AuthenticatorADALSettings.swift */,
 			);
 			name = Authenticator;
 			sourceTree = "<group>";
@@ -307,15 +326,33 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		057B12AD1EB0CB6A004ECA36 /* MyAgendaDetail */ = {
+			isa = PBXGroup;
+			children = (
+				057B12AE1EB0CB9C004ECA36 /* MyAgendaDetailViewController.swift */,
+				057B12B01EB0CBB0004ECA36 /* MyAgendaDetailViewModel.swift */,
+			);
+			name = MyAgendaDetail;
+			sourceTree = "<group>";
+		};
+		057B12B21EB1C048004ECA36 /* FloorPlan */ = {
+			isa = PBXGroup;
+			children = (
+				057B12B31EB1C08D004ECA36 /* FloorPlanViewController.swift */,
+			);
+			name = FloorPlan;
+			sourceTree = "<group>";
+		};
 		058024F61E6E547600C917C0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				FC36A76E1EA00AA5008C3FE4 /* Calendar */,
+				05D238AA1EAD062C00E28745 /* UIConstants.swift */,
 				05CF17CA1E78FD4B0024D84F /* Base */,
 				058024F81E6E549900C917C0 /* Login */,
+				057B12B21EB1C048004ECA36 /* FloorPlan */,
 				FC4402881E72333B0016A90F /* MainMenu */,
 				FC5E317B1E8AD16E00035758 /* MyAgenda */,
-				058025001E6E57A500C917C0 /* MeetingDetail */,
+				057B12AD1EB0CB6A004ECA36 /* MyAgendaDetail */,
 				058024FD1E6E576C00C917C0 /* MeetingsList */,
 				052A3C211E87655D00DD88D6 /* Metroarea */,
 				058024FF1E6E579600C917C0 /* RoomDetail */,
@@ -333,6 +370,7 @@
 				053564BB1E6E69270072A167 /* Authenticator */,
 				05CF17CD1E78FD6F0024D84F /* Fetcher */,
 				052A3C1E1E875AF300DD88D6 /* Extensions */,
+				05D238A51EAC558F00E28745 /* Loader */,
 				05CF17D21E78FD6F0024D84F /* Models */,
 				05CF17D61E78FD6F0024D84F /* Parsers */,
 				05A718481E94B8FB00A8574C /* Persistor */,
@@ -375,15 +413,6 @@
 				0580250D1E6E58CD00C917C0 /* RoomDetailViewModel.swift */,
 			);
 			name = RoomDetail;
-			sourceTree = "<group>";
-		};
-		058025001E6E57A500C917C0 /* MeetingDetail */ = {
-			isa = PBXGroup;
-			children = (
-				058025011E6E57F100C917C0 /* MeetingDetailViewController.swift */,
-				058025091E6E589500C917C0 /* MeetingDetailViewModel.swift */,
-			);
-			name = MeetingDetail;
 			sourceTree = "<group>";
 		};
 		05A718481E94B8FB00A8574C /* Persistor */ = {
@@ -483,6 +512,15 @@
 			name = Parsers;
 			sourceTree = "<group>";
 		};
+		05D238A51EAC558F00E28745 /* Loader */ = {
+			isa = PBXGroup;
+			children = (
+				05D238A61EAC55DD00E28745 /* LoaderProtocol.swift */,
+				05D238A81EAC563600E28745 /* LoaderALLoadingViewImplementer.swift */,
+			);
+			name = Loader;
+			sourceTree = "<group>";
+		};
 		05F214EA1E6E4D79004E4A16 = {
 			isa = PBXGroup;
 			children = (
@@ -517,6 +555,7 @@
 				05F214FD1E6E4D7A004E4A16 /* Assets.xcassets */,
 				05F214FF1E6E4D7A004E4A16 /* LaunchScreen.storyboard */,
 				05F215021E6E4D7A004E4A16 /* Info.plist */,
+				A62898801EAAB99A008F2773 /* Settings.bundle */,
 			);
 			path = comeet;
 			sourceTree = "<group>";
@@ -589,15 +628,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		FC36A76E1EA00AA5008C3FE4 /* Calendar */ = {
-			isa = PBXGroup;
-			children = (
-				FC36A7731EA010B6008C3FE4 /* CalendarViewController.swift */,
-				FC36A7711EA00B2A008C3FE4 /* CalendarViewModel.swift */,
-			);
-			name = Calendar;
-			sourceTree = "<group>";
-		};
 		FC4402881E72333B0016A90F /* MainMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -612,6 +642,10 @@
 			children = (
 				FC4B14F51E958B1F00FCCBD1 /* 750x1334-trees_comet_stars.png */,
 				FC4B14F61E958B1F00FCCBD1 /* a-trees_comet_stars-29983.png */,
+				FC813E001EB04D05003A7EC5 /* Television.png */,
+				FC813DF41EB0453B003A7EC5 /* projector.png */,
+				FC813DF51EB0453B003A7EC5 /* Speaker Phone.png */,
+				FC813DF61EB0453B003A7EC5 /* Whiteboard.png */,
 				FC4B14F71E958B1F00FCCBD1 /* Artboard 1.png */,
 				FC4B14F81E958B1F00FCCBD1 /* Artboard 1@2x.png */,
 				FC4B14F91E958B1F00FCCBD1 /* Artboard 1@3x.png */,
@@ -627,8 +661,9 @@
 		FC5E317B1E8AD16E00035758 /* MyAgenda */ = {
 			isa = PBXGroup;
 			children = (
+				0522F8BC1EAD1C9000C553CE /* MyAgendaTableViewCell.swift */,
 				FC5E31771E8AD13A00035758 /* MyAgendaViewController.swift */,
-				FC5E31791E8AD16700035758 /* MyAgendaViewModel.swift */,
+				0522F8BE1EAD1CB900C553CE /* MyAgendaViewModel.swift */,
 			);
 			name = MyAgenda;
 			path = UI/Router;
@@ -758,11 +793,16 @@
 			files = (
 				05F215011E6E4D7A004E4A16 /* LaunchScreen.storyboard in Resources */,
 				FC4B15011E958B1F00FCCBD1 /* Artboard 1.png in Resources */,
+				FC813DF91EB0453B003A7EC5 /* Whiteboard.png in Resources */,
 				FC4B15041E958B1F00FCCBD1 /* Artboard 2.png in Resources */,
 				FC4B15081E958B1F00FCCBD1 /* images.jpeg in Resources */,
 				05C8C56D1E91E8D70027E2D7 /* AuthenticatorBasicViewController.xib in Resources */,
+				FC813DF81EB0453B003A7EC5 /* Speaker Phone.png in Resources */,
 				FC4B15061E958B1F00FCCBD1 /* Artboard 2@3x.png in Resources */,
+				FC813E011EB04D05003A7EC5 /* Television.png in Resources */,
 				FC4B15051E958B1F00FCCBD1 /* Artboard 2@2x.png in Resources */,
+				A62898811EAAB99A008F2773 /* Settings.bundle in Resources */,
+				FC813DF71EB0453B003A7EC5 /* projector.png in Resources */,
 				05F214FE1E6E4D7A004E4A16 /* Assets.xcassets in Resources */,
 				FC4B14FF1E958B1F00FCCBD1 /* 750x1334-trees_comet_stars.png in Resources */,
 				FC4B15071E958B1F00FCCBD1 /* BackgroundLogIn.jpg in Resources */,
@@ -937,15 +977,15 @@
 				058025081E6E587600C917C0 /* RoomsListViewController.swift in Sources */,
 				0506BA351EA273BD0008E642 /* RoomTableViewCell.swift in Sources */,
 				05CF17CC1E78FD4B0024D84F /* BaseViewModel.swift in Sources */,
-				FC36A7721EA00B2A008C3FE4 /* CalendarViewModel.swift in Sources */,
 				058025061E6E585A00C917C0 /* RoomDetailViewController.swift in Sources */,
 				05C8C5671E91E5F20027E2D7 /* AuthenticatorBasicImplementer.swift in Sources */,
 				052A3C0D1E8730E400DD88D6 /* Amenity.swift in Sources */,
 				058024FA1E6E56A600C917C0 /* LoginViewController.swift in Sources */,
-				058025021E6E57F100C917C0 /* MeetingDetailViewController.swift in Sources */,
 				05CF17DF1E78FD6F0024D84F /* RoomParser.swift in Sources */,
 				05A7184A1E94B94000A8574C /* PersistorProtocol.swift in Sources */,
 				05F214F71E6E4D7A004E4A16 /* AppDelegate.swift in Sources */,
+				057B12B11EB0CBB0004ECA36 /* MyAgendaDetailViewModel.swift in Sources */,
+				05D238A71EAC55DD00E28745 /* LoaderProtocol.swift in Sources */,
 				052A3C191E874DE100DD88D6 /* SearchCriteriaParser.swift in Sources */,
 				05CF17C51E78FCAD0024D84F /* MainMenuViewController.swift in Sources */,
 				05CF17D81E78FD6F0024D84F /* AlamofireAccessTokenAdapter.swift in Sources */,
@@ -958,28 +998,32 @@
 				052A3C0B1E8730CE00DD88D6 /* FreebusyBlock.swift in Sources */,
 				05CF17DD1E78FD6F0024D84F /* Room.swift in Sources */,
 				058024FC1E6E56DB00C917C0 /* LoginViewModel.swift in Sources */,
+				05D238A91EAC563600E28745 /* LoaderALLoadingViewImplementer.swift in Sources */,
 				052A3C0F1E87364600DD88D6 /* AmenitiesParser.swift in Sources */,
 				053564BD1E6E69540072A167 /* AuthenticatorProtocol.swift in Sources */,
+				0522F8BD1EAD1C9000C553CE /* MyAgendaTableViewCell.swift in Sources */,
 				058025041E6E580B00C917C0 /* MeetingsListViewController.swift in Sources */,
 				05CF17D91E78FD6F0024D84F /* Endpoints.swift in Sources */,
 				05CF17DB1E78FD6F0024D84F /* FetcherProtocol.swift in Sources */,
 				05C8C56C1E91E8D70027E2D7 /* AuthenticatorBasicViewController.swift in Sources */,
+				0522F8BF1EAD1CB900C553CE /* MyAgendaViewModel.swift in Sources */,
 				052A3C301E879D7A00DD88D6 /* BaseViewController.swift in Sources */,
 				05C8C5691E91E7430027E2D7 /* AuthenticatorUtils.swift in Sources */,
-				0580250A1E6E589500C917C0 /* MeetingDetailViewModel.swift in Sources */,
+				A62898831EAC3C6C008F2773 /* AuthenticatorADALSettings.swift in Sources */,
 				052A3C2C1E8771BF00DD88D6 /* MetroareaViewModel.swift in Sources */,
-				FC5E317A1E8AD16700035758 /* MyAgendaViewModel.swift in Sources */,
 				052A3C281E87663500DD88D6 /* RoomsListsViewModel.swift in Sources */,
 				052A3C171E874C4A00DD88D6 /* SearchCriteria.swift in Sources */,
 				050AE8391E9AEFB600A2A6A5 /* MeetingParser.swift in Sources */,
 				050AE83B1E9AF40900A2A6A5 /* UserParser.swift in Sources */,
+				057B12AF1EB0CB9C004ECA36 /* MyAgendaDetailViewController.swift in Sources */,
 				0580250E1E6E58CD00C917C0 /* RoomDetailViewModel.swift in Sources */,
 				05CF17E31E790F770024D84F /* Environment.swift in Sources */,
 				05CF17DE1E78FD6F0024D84F /* User.swift in Sources */,
-				FC36A7741EA010B6008C3FE4 /* CalendarViewController.swift in Sources */,
+				05D238AB1EAD062C00E28745 /* UIConstants.swift in Sources */,
 				052A3C261E87661900DD88D6 /* RoomsListsViewController.swift in Sources */,
 				05CF17DC1E78FD6F0024D84F /* Meeting.swift in Sources */,
 				FC5E31781E8AD13A00035758 /* MyAgendaViewController.swift in Sources */,
+				057B12B41EB1C08D004ECA36 /* FloorPlanViewController.swift in Sources */,
 				052A3C111E87365C00DD88D6 /* FreebusyBlockParser.swift in Sources */,
 				0580250C1E6E58B800C917C0 /* MeetingsListViewModel.swift in Sources */,
 				053564BF1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift in Sources */,
@@ -1093,6 +1137,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1135,6 +1180,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1153,6 +1199,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamawesome.comeet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1169,6 +1216,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamawesome.comeet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

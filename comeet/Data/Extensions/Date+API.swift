@@ -11,11 +11,30 @@ import Foundation
 extension Date {
     
     static func fromAPI(stringDate: String) -> Date? {
-        let formatter = ISO8601DateFormatter()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss-SSSS"
+        return formatter.date(from: stringDate)
+    }
+    
+    static func fromAPIFreeBusy(stringDate: String) -> Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        return formatter.date(from: stringDate)
+    }
+    
+    static func fromAPIMeetings(stringDate: String) -> Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return formatter.date(from: stringDate)
     }
     
     func stringForAPI() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss-SSSS"
+        return formatter.string(from: self)
+    }
+    
+    func stringForAPIRooms() -> String {
         let formatter = ISO8601DateFormatter()
         return formatter.string(from: self)
     }

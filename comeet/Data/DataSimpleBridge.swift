@@ -11,7 +11,7 @@ import Foundation
 class DataSimpleBridge {
     
     static func getAuthenticator() -> AuthenticatorProtocol {
-        return AuthenticatorBasicImplementer()
+        return AuthenticatorUtils.shouldUseADAL() ? AuthenticatorADALImplementer() : AuthenticatorBasicImplementer()
     }
     
     static func getFetcher() -> FetcherProtocol {
@@ -20,5 +20,9 @@ class DataSimpleBridge {
     
     static func getPersistor() -> PersistorProtocol {
         return PersistorUserDefaultsImplementer()
+    }
+    
+    static func getLoader() -> LoaderProtocol {
+        return LoaderALLoadingViewImplementer()
     }
 }

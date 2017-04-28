@@ -12,44 +12,42 @@ import ADAL
 class AuthenticatorADALImplementer : AuthenticatorProtocol {
     
     let type = AuthType.oauth2
-    internal struct Constants {
-        static let authority = "https://login.microsoftonline.com/common"
-        static let resource = "https://outlook.office365.com"
-        static let clientId = "a64d56ea-5675-4ccf-82e9-5757620e1d26"
-        static let redirectUri = URL(string: "http://localhost/comeet")
-        static let authCookies = ["MSISAuth", "MSISAuthenticated", "MSISLoopDetectionCookie"]
-    }
     
     internal var organization: String?
     
     func getToken(completion:@escaping TokenCompletion) {
         var error: ADAuthenticationError?
-        let authContext: ADAuthenticationContext = ADAuthenticationContext(authority: Constants.authority,
+        let authContext: ADAuthenticationContext = ADAuthenticationContext(authority: AuthenticatorADALSettings.authority,
                                                                            error: &error)
         
-        authContext.acquireToken(withResource: Constants.resource, clientId: Constants.clientId, redirectUri: Constants.redirectUri) { [weak self] (result: ADAuthenticationResult?) in
+        authContext.acquireToken(withResource: AuthenticatorADALSettings.resource, clientId: AuthenticatorADALSettings.clientId, redirectUri: AuthenticatorADALSettings.redirectUri) { [weak self] (result: ADAuthenticationResult?) in
             self?.handle(result: result, error: error, completion: completion)
         }
     }
     
     func hasToken() -> String? {
         var error: AutoreleasingUnsafeMutablePointer<ADAuthenticationError?>?
-        guard let allItems = ADKeychainTokenCache.defaultKeychain().allItems(error),
-            allItems.count > 0 else {
+        guard let allItems = ADKeychainTokenCache.defaultKeychain().allItems(error) else {
             return nil
         }
-        return allItems.first?.accessToken
+        
+        for item in allItems {
+            if let accessToken = item.accessToken, item.clientId == AuthenticatorADALSettings.Constants.clientId {
+                return accessToken
+            }
+        }
+        return nil
     }
     
     func logout() {
         var error: AutoreleasingUnsafeMutablePointer<ADAuthenticationError?>?
-        ADKeychainTokenCache.defaultKeychain().removeAll(forClientId: Constants.clientId, error: error)
+        ADKeychainTokenCache.defaultKeychain().removeAll(forClientId: AuthenticatorADALSettings.clientId, error: error)
         
         guard error == nil else {
             return
         }
         organization = nil
-        self.deleteCookies(cookiesNames: Constants.authCookies)
+        self.deleteCookies(cookiesNames: AuthenticatorADALSettings.authCookies)
     }
     
     func getOrganization() -> String {

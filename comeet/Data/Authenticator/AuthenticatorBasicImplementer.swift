@@ -63,14 +63,15 @@ class AuthenticatorBasicImplementer : AuthenticatorProtocol {
 extension AuthenticatorBasicImplementer : AuthenticatorBasicViewControllerDelegate {
     
     func authenticate(userEmail: String?, password: String?) {
-        guard let userEmail = userEmail, let password = password else {
-            return
-        }
         
         loginViewController?.dismiss(animated: true, completion: { [weak self] in
             self?.loginViewController = nil
         })
         
+        guard let userEmail = userEmail, let password = password else {
+            return
+        }
+
         let userToken = token(userEmail: userEmail, password: password)
         UserDefaults.standard.setValue(userToken, forKey: Constants.credentialsKey)
         UserDefaults.standard.setValue(userEmail, forKey: Constants.emailKey)
