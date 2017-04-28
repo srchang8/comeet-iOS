@@ -27,7 +27,7 @@ class EnvironmentTests: XCTestCase {
     }
     
     func testGetRoomsProduction() {
-        let environment: Environment = .Production
+        let environment: Environment = .Mocked
         let endpoints = Endpoints(environment: environment)
         
         XCTAssert(endpoints.getRooms(organization: "organization", roomlist: "test@test.com", start:"startdate", end: "enddate") == environment.rawValue + "/organization/roomlists/test@test.com/rooms?start=startdate&end=enddate")

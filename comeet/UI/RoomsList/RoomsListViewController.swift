@@ -87,7 +87,8 @@ class RoomsListViewController: BaseViewController {
         viewModel?.newLocation(metroarea: Router.selectedMetroarea, roomsList: Router.selectedRoomsList)
         selectLocationButton.setTitle(viewModel?.roomsList?.name, for: .normal)
         
-        let userDefault = UserDefaults.standard
+        self.guideView.isHidden = true
+        /*let userDefault = UserDefaults.standard
         userDefault.set(false, forKey: "isRoomsGuideShown")
         self.guideView.isHidden = false
         let isGuideShown = userDefault.bool(forKey: "isRoomsGuideShown")
@@ -101,7 +102,7 @@ class RoomsListViewController: BaseViewController {
             }
         } else {
             self.guideView.isHidden = true
-        }
+        }*/
         
     }
     
@@ -158,6 +159,27 @@ private extension RoomsListViewController {
         title = viewModel.title()
         
         viewModel.reloadBinding = { [weak self] in
+            
+            if viewModel.roomsCount() > 0 {
+                let userDefault = UserDefaults.standard
+                //userDefault.set(false, forKey: "isRoomsGuideShown")
+                if let weakSelf = self {
+                    weakSelf.guideView.isHidden = false
+                    let isGuideShown = userDefault.bool(forKey: "isRoomsGuideShown")
+                    if (!isGuideShown) {
+                        let when = DispatchTime.now() + 3
+                        DispatchQueue.main.asyncAfter(deadline: when) {
+                            if ( weakSelf.guideView.isHidden == false) {
+                                weakSelf.guideView.isHidden = true
+                            }
+                            userDefault.set(true, forKey: "isRoomsGuideShown")
+                        }
+                    } else {
+                        weakSelf.guideView.isHidden = true
+                    }
+                }
+            }
+            
             self?.tableView.reloadData()
         }
         viewModel.fetchRooms()

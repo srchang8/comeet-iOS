@@ -54,6 +54,9 @@ private extension LoginViewController {
     }
     
     func goToMenu(){
+        let userDefault = UserDefaults.standard
+        userDefault.set(false, forKey: "isRoomsGuideShown")
+
         performSegue(withIdentifier: Router.Constants.mainMenuSegue, sender: self)
     }
 }
