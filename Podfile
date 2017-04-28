@@ -14,6 +14,7 @@ target 'comeet' do
   pod 'MARKRangeSlider', '~> 1.1.1'
   pod 'WWCalendarTimeSelector’, :git => 'https://github.com/bookaroom/WWCalendarTimeSelector.git'
   pod 'ALLoadingView', '1.1.3'
+  pod 'ImageScrollView'
 
   target 'comeetTests' do
     inherit! :search_paths
