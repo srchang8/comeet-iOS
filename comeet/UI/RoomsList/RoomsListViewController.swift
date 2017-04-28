@@ -207,6 +207,10 @@ private extension RoomsListViewController {
         
         sliderView.setMinValue(CGFloat(startValue), maxValue: CGFloat(endValue))
         sliderView.setLeftValue(CGFloat(startAutoSelect), rightValue: CGFloat(endAutoSelect))
+        
+        let color = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 1.0, alpha: 1.0)
+        let rangeImage = UIImage.from(color: color)
+        sliderView.rangeImage = rangeImage
         sliderView.addTarget(self, action: #selector(sliderChange(slider:)), for: .valueChanged)
         
         sliderChange(slider: sliderView)
@@ -218,6 +222,8 @@ private extension RoomsListViewController {
         controller.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: selectLocationButton.bounds.width, height: selectLocationButton.bounds.height)
     }
 }
+
+
 
 extension RoomsListViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
