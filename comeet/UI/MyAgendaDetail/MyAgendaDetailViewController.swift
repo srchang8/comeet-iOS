@@ -41,10 +41,6 @@ class MyAgendaDetailViewController: BaseViewController {
         }
     }
     
-    @IBAction func sendAttendeesMail(sender: Any) {
-        
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier,
             let viewModel = viewModel else {
