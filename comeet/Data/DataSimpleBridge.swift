@@ -11,13 +11,7 @@ import Foundation
 class DataSimpleBridge {
     
     static func getAuthenticator() -> AuthenticatorProtocol {
-        UserDefaults.standard.synchronize()
-        let key = "use_adal"
-        if let use_adal = UserDefaults.standard.value(forKey: key) as? Bool {
-            return use_adal ? AuthenticatorADALImplementer() : AuthenticatorBasicImplementer()
-        } else {
-            return AuthenticatorADALImplementer()
-        }
+        return AuthenticatorUtils.shouldUseADAL() ? AuthenticatorADALImplementer() : AuthenticatorBasicImplementer()
     }
     
     static func getFetcher() -> FetcherProtocol {

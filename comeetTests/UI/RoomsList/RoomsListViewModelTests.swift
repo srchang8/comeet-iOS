@@ -29,40 +29,74 @@ class RoomsListViewModelTests: XCTestCase {
         super.tearDown()
     }
     
-    func testFetchRoomsError() {
-        self.fetcher?.error = Stubs.unauthorizedError()
-        self.fetcher?.rooms = [Stubs.room()]
-        
-        viewModel?.reloadBinding = {[weak self] in
-            XCTAssertTrue(self!.viewModel!.roomsCount() == 0)
-        }
-        self.viewModel?.fetchRooms()
-    }
-    
     func testFetchRooms() {
         self.fetcher?.rooms = [Stubs.room()]
-        
-        viewModel?.reloadBinding = {[weak self] in
+        test(rooms: [Stubs.room()], description: "") { [weak self] in
             XCTAssertTrue(self!.viewModel!.roomsCount() == 1)
         }
-        self.viewModel?.fetchRooms()
     }
     
     func testRoomName() {
-        self.fetcher?.rooms = [Stubs.room()]
-        
-        viewModel?.reloadBinding = {[weak self] in
+        XCTAssertTrue(viewModel?.roomName(index: 0) == "")
+        test(rooms: [Stubs.room()], description: "") { [weak self] in
             XCTAssertTrue(self!.viewModel!.roomName(index: 0) == Stubs.room().name)
         }
-        self.viewModel?.fetchRooms()
     }
     
     func testRoomDescription() {
-        self.fetcher?.rooms = [Stubs.room()]
+        XCTAssertTrue(viewModel?.roomDescription(index: 0) == "")
+        test(rooms: [Stubs.room()], description: "") { [weak self] in
+            XCTAssertTrue(self!.viewModel!.roomDescription(index: 0) ==
+                "Capacity: " + "\(Stubs.room().capacity!)" )
+        }
+    }
+    
+    func testRoomLatLong() {
+        XCTAssertTrue(viewModel?.roomLatLong(index: 0) == nil)
+        test(rooms: [Stubs.room()], description: "") { [weak self] in
+            XCTAssertTrue(self!.viewModel!.roomLatLong(index: 0)! ==
+                (Stubs.room().latitude!, Stubs.room().longitude!) )
+        }
+    }
+    
+    func testRoomPicture() {
+        XCTAssertTrue(viewModel?.roomLatLong(index: 0) == nil)
+        test(rooms: [Stubs.room()], description: "") { [weak self] in
+            XCTAssertTrue(self!.viewModel!.roomPicture(index: 0)! == URL(string: Stubs.room().picture!))
+        }
+    }
+    
+    func testRoomFloorPlan() {
+        XCTAssertTrue(viewModel?.roomLatLong(index: 0) == nil)
+        test(rooms: [Stubs.room()], description: "") { [weak self] in
+            XCTAssertTrue(self!.viewModel!.roomFloorPlan(index: 0)! == URL(string: Stubs.room().navigation!))
+        }
+    }
+    
+    func testTitle() {
+        XCTAssertEqual(self.viewModel?.title(), RoomsListViewModel.Constants.titleText + "A Building")
+        viewModel?.newLocation(metroarea: nil, roomsList: nil)
+        XCTAssertEqual(self.viewModel?.title(), RoomsListViewModel.Constants.genericTitleText)
+    }
+    
+    func testChangeDate() {
+        let date = Date()
+        viewModel?.change(date: date)
+        XCTAssertEqual(date, viewModel?.selectedDate)
+    }
+}
+
+private extension RoomsListViewModelTests {
+
+    func test(rooms: [Room], description: String, completion: @escaping ()-> Void) {
+        fetcher?.rooms = rooms
         
-        viewModel?.reloadBinding = {[weak self] in
-            XCTAssertTrue(self!.viewModel!.roomDescription(index: 0) == Stubs.room().email)
+        let expect = expectation(description: description)
+        viewModel?.reloadBinding = {
+            completion()
+            expect.fulfill()
         }
         self.viewModel?.fetchRooms()
+        waitForExpectations(timeout: 0.1, handler: nil)
     }
 }

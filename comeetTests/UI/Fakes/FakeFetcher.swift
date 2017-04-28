@@ -34,6 +34,7 @@ class FakeFetcher: FetcherProtocol {
     }
     
     func getRooms(organization: String, roomlist: String, start: String, end: String, completion:@escaping FetchRoomsCompletion) {
+        completion(rooms, error)
     }
     
     func bookRoom(organization: String, roomrecipient: String, params: [String: Any], completion:@escaping BookRoomCompletion) {
