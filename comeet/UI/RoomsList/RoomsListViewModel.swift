@@ -39,6 +39,9 @@ class RoomsListViewModel : BaseViewModel {
         static let startDateText = "Select Start"
         static let endDateText = "Select End"
         static let loadingText = "Loading Rooms"
+        static let genericTitleText = "Select a Room"
+        static let titleText = "Rooms in "
+        static let capacityText = "Capacity: "
     }
     
     func newLocation(metroarea: String?, roomsList: User?) {
@@ -49,18 +52,11 @@ class RoomsListViewModel : BaseViewModel {
     
     func title() -> String {
         guard let name = roomsList?.name else {
-            return "Select a Room"
+            return Constants.genericTitleText
         }
-        return "Rooms in " + name
+        return Constants.titleText + name
     }
-    
-    func startDateString() -> String {
-        return startDate.displayString()
-    }
-    
-    func endDateString() -> String {
-        return endDate.displayString()
-    }
+
     
     func change(date: Date) {
         selectedDate = date
@@ -112,7 +108,7 @@ class RoomsListViewModel : BaseViewModel {
         }
         let room = availableRooms()[index]
         if let capacity = room.capacity {
-            return "Capacity: \(capacity)"
+            return Constants.capacityText + "\(capacity)"
         }
         return room.email
     }
