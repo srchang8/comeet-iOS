@@ -97,6 +97,6 @@ private extension RoomsListViewModelTests {
             expect.fulfill()
         }
         self.viewModel?.fetchRooms()
-        waitForExpectations(timeout: 0.1, handler: nil)
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 }
