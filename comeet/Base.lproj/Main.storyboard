@@ -771,20 +771,25 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G8e-In-daw" userLabel="SliderView" customClass="MARKRangeSlider">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G8e-In-daw" userLabel="SliderView" customClass="MARKRangeSlider">
                                         <rect key="frame" x="8" y="43" width="359" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="msC-xW-khJ"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.19215686269999999" green="0.20392156859999999" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="mgn-ge-Oc1" firstAttribute="top" secondItem="xBr-5F-ZtT" secondAttribute="top" constant="14" id="28R-Of-QlJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="G8e-In-daw" secondAttribute="bottom" constant="15" id="Fwp-OL-IqZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="G8e-In-daw" secondAttribute="trailing" constant="8" id="QtX-GU-LZP"/>
                                     <constraint firstAttribute="trailing" secondItem="wYe-IG-IF3" secondAttribute="trailing" constant="8" id="UO2-DF-cul"/>
                                     <constraint firstAttribute="height" constant="80" id="XfP-lL-E4N"/>
                                     <constraint firstItem="mgn-ge-Oc1" firstAttribute="leading" secondItem="xBr-5F-ZtT" secondAttribute="leading" constant="8" id="ZVq-en-KwS"/>
                                     <constraint firstItem="wYe-IG-IF3" firstAttribute="width" secondItem="xBr-5F-ZtT" secondAttribute="width" multiplier="1:3" id="dgL-6Q-SgX"/>
                                     <constraint firstItem="mgn-ge-Oc1" firstAttribute="width" secondItem="xBr-5F-ZtT" secondAttribute="width" multiplier="1:3" id="fP5-0s-Z4V"/>
+                                    <constraint firstItem="G8e-In-daw" firstAttribute="leading" secondItem="xBr-5F-ZtT" secondAttribute="leading" constant="8" id="ntf-18-yKB"/>
                                     <constraint firstItem="wYe-IG-IF3" firstAttribute="top" secondItem="xBr-5F-ZtT" secondAttribute="top" constant="14" id="xaC-bM-NtR"/>
                                 </constraints>
                             </view>
@@ -849,8 +854,8 @@
                             <constraint firstAttribute="trailing" secondItem="KLO-BQ-BTu" secondAttribute="trailing" id="BrQ-G5-Cqg"/>
                             <constraint firstItem="4IH-4s-zps" firstAttribute="top" secondItem="xBr-5F-ZtT" secondAttribute="bottom" id="Cmt-bk-wLJ"/>
                             <constraint firstItem="3cJ-T6-Oib" firstAttribute="top" secondItem="w7Z-7c-sYx" secondAttribute="bottom" id="Dlq-db-ElT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="xBr-5F-ZtT" secondAttribute="trailing" constant="-16" id="Tt0-5x-tgp"/>
-                            <constraint firstItem="xBr-5F-ZtT" firstAttribute="leading" secondItem="q8P-5y-Gks" secondAttribute="leadingMargin" constant="-16" id="doD-t4-ey8"/>
+                            <constraint firstAttribute="trailing" secondItem="xBr-5F-ZtT" secondAttribute="trailing" id="Tt0-5x-tgp"/>
+                            <constraint firstItem="xBr-5F-ZtT" firstAttribute="leading" secondItem="q8P-5y-Gks" secondAttribute="leading" id="doD-t4-ey8"/>
                             <constraint firstItem="KLO-BQ-BTu" firstAttribute="leading" secondItem="q8P-5y-Gks" secondAttribute="leading" id="gcC-kD-niQ"/>
                             <constraint firstAttribute="trailing" secondItem="w7Z-7c-sYx" secondAttribute="trailing" id="iCO-4R-yFZ"/>
                             <constraint firstItem="KLO-BQ-BTu" firstAttribute="top" secondItem="ezH-DM-H6E" secondAttribute="bottom" id="kPe-bi-hoP"/>
@@ -1229,6 +1234,6 @@
         <image name="whiteboard.png" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="log-Nd-lXe"/>
+        <segue reference="kKW-bu-9lG"/>
     </inferredMetricsTieBreakers>
 </document>
