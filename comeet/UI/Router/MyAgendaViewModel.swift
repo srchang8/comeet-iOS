@@ -71,6 +71,11 @@ class MyAgendaViewModel : BaseViewModel {
         return meetingsByDate.keys.count
     }
     
+    func selectedSection() -> Int? {
+        let sortedDays = getSortedDays()
+        return sortedDays.index(of: selectedDate.startOfDay())
+    }
+    
     func sectionTitle(section: Int) -> String? {
         if let sectionDate = dateFrom(section: section) {
             return sectionDate.displayStringDate()
@@ -118,7 +123,7 @@ private extension MyAgendaViewModel {
         
         for meeting in meetings {
             
-            let startWithoutTime = Calendar.current.startOfDay(for: meeting.start)
+            let startWithoutTime = meeting.start.startOfDay()
             
             if var dayArray = meetingsByDate[startWithoutTime] {
                 dayArray.append(meeting)
@@ -140,11 +145,15 @@ private extension MyAgendaViewModel {
     }
     
     func dateFrom(section: Int) -> Date? {
-        let sortedDays = Array(meetingsByDate.keys).sorted { $0 < $1 }
+        let sortedDays = getSortedDays()
         
         guard sortedDays.count > section else {
             return nil
         }
         return sortedDays[section]
+    }
+    
+    func getSortedDays() -> [Date] {
+        return Array(meetingsByDate.keys).sorted { $0 < $1 }
     }
 }

@@ -71,10 +71,15 @@ private extension MyAgendaViewController {
         
         viewModel.reloadBinding = { [weak self] in
             self?.tableView.reloadData()
+            self?.goToSelectedSection()
         }
         viewModel.fetchMeetings()
-        
-        
+    }
+    
+    func goToSelectedSection() {
+        if let selectedSection = viewModel?.selectedSection(), let position = UITableViewScrollPosition(rawValue: selectedSection) {
+            tableView.scrollToRow(at: IndexPath(row: 0, section: selectedSection), at: position, animated: true)
+        }
     }
 }
 
