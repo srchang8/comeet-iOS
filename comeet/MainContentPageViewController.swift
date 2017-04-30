@@ -11,6 +11,14 @@ import Foundation
 import UIKit
 
 class MainContentPageViewController : UIPageViewController {
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    }
     
     var orderedChildViewControllers: [UIViewController] = []
     
