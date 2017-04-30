@@ -160,14 +160,16 @@ class RoomsListViewModel : BaseViewModel {
         return availableRooms()[index]
     }
     
-    func start(hours: Int, minutes: Int) {
-        startDate = dateFrom(hours: hours, minutes: minutes)
+    func startTime(value: CGFloat) -> String {
+        startDate = Date.dateFrom(sliderValue: Float(value), date: startDate)
         reloadBinding?()
+        return startDate.displayStringHourMinute()
     }
     
-    func end(hours: Int, minutes: Int) {
-        endDate = dateFrom(hours: hours, minutes: minutes)
+    func endTime(value: CGFloat) -> String {
+        endDate = Date.dateFrom(sliderValue: Float(value), date: endDate)
         reloadBinding?()
+        return endDate.displayStringHourMinute()
     }
     
     func locationPersisted() -> Bool {
@@ -195,13 +197,6 @@ private extension RoomsListViewModel {
             return selectedDate.stringForAPIRooms()
         }
         return end.stringForAPIRooms()
-    }
-    
-    func dateFrom(hours: Int, minutes: Int) -> Date {
-        var components = NSCalendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: selectedDate)
-        components.hour = hours
-        components.minute = minutes
-        return NSCalendar.current.date(from: components) ?? selectedDate
     }
     
     func availableRooms() -> [Room] {

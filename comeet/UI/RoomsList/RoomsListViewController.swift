@@ -55,24 +55,14 @@ class RoomsListViewController: BaseViewController {
     }
     
     func sliderChange(slider: MARKRangeSlider) {
-        startTimelabel.text = "Start \(displayTime(sliderValue: slider.leftValue, start: true))"
-        endTimelabel.text = "End \(displayTime(sliderValue: slider.rightValue, start: false))"
-    }
-    
-    func displayTime(sliderValue: CGFloat, start: Bool) -> String {
-        var hours = Int(sliderValue / 60)
-        if hours >= 24 {
-            hours -= 24
+        
+        guard let start = viewModel?.startTime(value: slider.leftValue),
+            let end = viewModel?.endTime(value: slider.rightValue) else {
+                return
         }
-        let minutes = Int(sliderValue.truncatingRemainder(dividingBy: 60))
-        if start {
-            viewModel?.start(hours: hours, minutes: minutes)
-        } else {
-            viewModel?.end(hours: hours, minutes: minutes)
-        }
-        let startHoursString = hours > 9 ? "\(hours)" : "0\(hours)"
-        let startMinutesString = minutes > 9 ? "\(minutes)" : "0\(minutes)"
-        return "\(startHoursString):\(startMinutesString)"
+        
+        startTimelabel.text = "Start " + start
+        endTimelabel.text = "End " + end
     }
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {

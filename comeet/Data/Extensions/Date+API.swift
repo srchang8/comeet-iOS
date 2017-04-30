@@ -41,7 +41,7 @@ extension Date {
     
     func displayString() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH':'mm' 'MM'/'dd'/'yyyy"
+        formatter.dateFormat = Date.is24HoursFormat ? "HH':'mm' 'MM'/'dd'/'yyyy" : "h':'mm' 'MM'/'dd'/'yyyy a"
         return formatter.string(from: self)
     }
     
@@ -53,7 +53,7 @@ extension Date {
     
     func displayStringHourMinute() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH':'mm"
+        formatter.dateFormat = Date.is24HoursFormat ? "HH':'mm" : "h':'mm a"
         return formatter.string(from: self)
     }
     
@@ -66,6 +66,36 @@ extension Date {
         components.day = 1
         components.second = -1
         return Calendar.current.date(byAdding: components, to: startOfDay())
+    }
+    
+    static var is24HoursFormat : Bool  {
+        
+        let formatter = DateFormatter()
+        
+        formatter.locale    = Locale.autoupdatingCurrent
+        formatter.timeStyle = .short
+        formatter.dateStyle = .none
+        
+        let dateString = formatter.string(from: Date())
+        
+        if dateString.contains(formatter.amSymbol) || dateString.contains(formatter.pmSymbol) {
+            return false
+        }
+        
+        return true
+    }
+    
+    static func dateFrom(sliderValue: Float, date: Date) -> Date {
+        var hours = Int(sliderValue / 60)
+        if hours >= 24 {
+            hours -= 24
+        }
+        let minutes = Int(sliderValue.truncatingRemainder(dividingBy: 60))
+        
+        var components = NSCalendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        components.hour = hours
+        components.minute = minutes
+        return NSCalendar.current.date(from: components) ?? date
     }
 }
 
