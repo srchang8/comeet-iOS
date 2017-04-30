@@ -79,6 +79,7 @@
 		05F986C11E7F005100120AB4 /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F986C01E7F005100120AB4 /* Stubs.swift */; };
 		0C1442D63FEB86045D7C7DA2 /* Pods_comeet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B91D862A7FBE37C8586934 /* Pods_comeet.framework */; };
 		1637625E99D024466A643A19 /* Pods_comeetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD63FB99D026AD68296B3DD4 /* Pods_comeetTests.framework */; };
+		A62218B61EB57120002CCC34 /* MainContentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62218B51EB57120002CCC34 /* MainContentPageViewController.swift */; };
 		A62898811EAAB99A008F2773 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A62898801EAAB99A008F2773 /* Settings.bundle */; };
 		A62898831EAC3C6C008F2773 /* AuthenticatorADALSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62898821EAC3C6C008F2773 /* AuthenticatorADALSettings.swift */; };
 		D0EDA197ECD00EBD52264BA4 /* Pods_comeetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF5E5210C047205B62B9152 /* Pods_comeetUITests.framework */; };
@@ -200,6 +201,7 @@
 		6846396A6214755CEEBC21EA /* Pods-comeet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comeet.release.xcconfig"; path = "Pods/Target Support Files/Pods-comeet/Pods-comeet.release.xcconfig"; sourceTree = "<group>"; };
 		7EC5EDF2169A4DF25DB3FB88 /* Pods-comeet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comeet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-comeet/Pods-comeet.debug.xcconfig"; sourceTree = "<group>"; };
 		8D2B4C82B05E7502411FD08B /* Pods-comeetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-comeetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-comeetTests/Pods-comeetTests.release.xcconfig"; sourceTree = "<group>"; };
+		A62218B51EB57120002CCC34 /* MainContentPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContentPageViewController.swift; sourceTree = "<group>"; };
 		A62898801EAAB99A008F2773 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A62898821EAC3C6C008F2773 /* AuthenticatorADALSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatorADALSettings.swift; sourceTree = "<group>"; };
 		CD63FB99D026AD68296B3DD4 /* Pods_comeetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_comeetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -347,11 +349,12 @@
 			isa = PBXGroup;
 			children = (
 				05D238AA1EAD062C00E28745 /* UIConstants.swift */,
-				05CF17CA1E78FD4B0024D84F /* Base */,
 				058024F81E6E549900C917C0 /* Login */,
+				05CF17CA1E78FD4B0024D84F /* Base */,
 				057B12B21EB1C048004ECA36 /* FloorPlan */,
 				FC4402881E72333B0016A90F /* MainMenu */,
 				FC5E317B1E8AD16E00035758 /* MyAgenda */,
+				A62218B71EB571C8002CCC34 /* MainContentPage */,
 				057B12AD1EB0CB6A004ECA36 /* MyAgendaDetail */,
 				058024FD1E6E576C00C917C0 /* MeetingsList */,
 				052A3C211E87655D00DD88D6 /* Metroarea */,
@@ -608,6 +611,14 @@
 				5123FE4D1C16CB40AA2456B3 /* Pods-comeetUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		A62218B71EB571C8002CCC34 /* MainContentPage */ = {
+			isa = PBXGroup;
+			children = (
+				A62218B51EB57120002CCC34 /* MainContentPageViewController.swift */,
+			);
+			name = MainContentPage;
 			sourceTree = "<group>";
 		};
 		C53440A5F7447EE5EB9F4801 /* Frameworks */ = {
@@ -1013,6 +1024,7 @@
 				052A3C2C1E8771BF00DD88D6 /* MetroareaViewModel.swift in Sources */,
 				052A3C281E87663500DD88D6 /* RoomsListsViewModel.swift in Sources */,
 				052A3C171E874C4A00DD88D6 /* SearchCriteria.swift in Sources */,
+				A62218B61EB57120002CCC34 /* MainContentPageViewController.swift in Sources */,
 				050AE8391E9AEFB600A2A6A5 /* MeetingParser.swift in Sources */,
 				050AE83B1E9AF40900A2A6A5 /* UserParser.swift in Sources */,
 				057B12AF1EB0CB9C004ECA36 /* MyAgendaDetailViewController.swift in Sources */,
