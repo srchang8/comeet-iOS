@@ -148,7 +148,7 @@ private extension RoomsListViewController {
         title = viewModel.title()
         
         viewModel.reloadBinding = { [weak self] in
-            self?.tableView.reloadData()
+            self?.tableView.reloadSections([0], with: UITableViewRowAnimation.fade)
         }
         viewModel.fetchRooms()
         

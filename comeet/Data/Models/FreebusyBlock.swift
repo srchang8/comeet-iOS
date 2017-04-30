@@ -32,7 +32,8 @@ struct FreebusyBlock : FreebusyProtocol {
         let busyBefore = end >= self.start && end <= self.end
         let busyAfter = start >= self.start && start <= self.end
         let busyThroughout = start < self.start && end > self.end
-        return !busyBefore && !busyAfter && !busyThroughout
+        let isFree = !busyBefore && !busyAfter && !busyThroughout
+        return isFree
     }
 }
 

@@ -159,16 +159,22 @@ class RoomsListViewModel : BaseViewModel {
         }
         return availableRooms()[index]
     }
-    
+
     func startTime(value: CGFloat) -> String {
+        let count = availableRooms().count
         startDate = Date.dateFrom(sliderValue: Float(value), date: startDate)
-        reloadBinding?()
+        if count != availableRooms().count {
+            reloadBinding?()
+        }
         return startDate.displayStringHourMinute()
     }
     
     func endTime(value: CGFloat) -> String {
+        let count = availableRooms().count
         endDate = Date.dateFrom(sliderValue: Float(value), date: endDate)
-        reloadBinding?()
+        if count != availableRooms().count {
+            reloadBinding?()
+        }
         return endDate.displayStringHourMinute()
     }
     
@@ -177,6 +183,8 @@ class RoomsListViewModel : BaseViewModel {
             let roomlist = persistor.getRoomlist() {
             Router.selectedMetroarea = metroarea
             Router.selectedRoomsList = roomlist
+            self.metroarea = metroarea
+            self.roomsList = roomlist
             newLocation(metroarea: metroarea, roomsList: roomlist)
             return true
         } else {

@@ -99,13 +99,11 @@ private extension MainMenuViewController {
         
         self.agendaVC = getAgendaVC()
         self.roomListVC = getRoomsListVC()
-        if let agendaVC = self.agendaVC {
-            if let roomListVC = getRoomsListVC() {
-                let pageVC = MainContentPageViewController()
-                pageVC.setChildViewControllers([roomListVC, agendaVC])
-                addChild(viewController: pageVC, inView: containerView)
-                self.pageVC = pageVC
-            }
+        if let agendaVC = self.agendaVC, let roomListVC = self.roomListVC {
+            let pageVC = MainContentPageViewController()
+            pageVC.setChildViewControllers([roomListVC, agendaVC])
+            addChild(viewController: pageVC, inView: containerView)
+            self.pageVC = pageVC
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector (roomBooked(sender:)), name: NSNotification.Name(rawValue: Constants.roomsBookedNotification), object: nil)
