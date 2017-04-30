@@ -171,7 +171,7 @@ private extension RoomsListViewController {
         let startValue: Int = 0
         let endValue: Int = startValue + twentyFourHours
         let startAutoSelect: Int = (hour * 60) + minutes
-        let endAutoSelect: Int = startAutoSelect + 120
+        let endAutoSelect: Int = startAutoSelect + 60
         
         sliderView.setMinValue(CGFloat(startValue), maxValue: CGFloat(endValue))
         sliderView.setLeftValue(CGFloat(startAutoSelect), rightValue: CGFloat(endAutoSelect))
