@@ -77,8 +77,8 @@ private extension MyAgendaViewController {
     }
     
     func goToSelectedSection() {
-        if let selectedSection = viewModel?.selectedSection(), let position = UITableViewScrollPosition(rawValue: selectedSection) {
-            tableView.scrollToRow(at: IndexPath(row: 0, section: selectedSection), at: position, animated: true)
+        if let selectedSection = viewModel?.selectedSection() {
+            tableView.scrollToRow(at: IndexPath(row: 0, section: selectedSection), at: .top, animated: true)
         }
     }
 }
