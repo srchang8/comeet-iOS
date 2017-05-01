@@ -65,6 +65,13 @@ class RoomsListViewController: BaseViewController {
         endTimelabel.text = "End " + end
     }
     
+    func hideGuideView() {
+        if ( self.guideView.isHidden == false) {
+            self.guideView.isHidden = true
+        }
+        UserDefaults.standard.set(true, forKey: "isRoomsGuideShown")
+    }
+
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
     }
@@ -138,15 +145,7 @@ private extension RoomsListViewController {
                 if let weakSelf = self {
                     weakSelf.guideView.isHidden = false
                     let isGuideShown = userDefault.bool(forKey: "isRoomsGuideShown")
-                    if (!isGuideShown) {
-                        let when = DispatchTime.now() + 3
-                        DispatchQueue.main.asyncAfter(deadline: when) {
-                            if ( weakSelf.guideView.isHidden == false) {
-                                weakSelf.guideView.isHidden = true
-                            }
-                            userDefault.set(true, forKey: "isRoomsGuideShown")
-                        }
-                    } else {
+                    if (isGuideShown) {
                         weakSelf.guideView.isHidden = true
                     }
                 }

@@ -27,21 +27,20 @@ class MyAgendaViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if let vm = viewModel {
-            if vm.showGuide  {
-                let when = DispatchTime.now() + 3 // change 2 to desired number of seconds
-                DispatchQueue.main.asyncAfter(deadline: when) { [weak self] () in
-                    // Your code with delay
-                    if let s = self {
-                        if ( s.guideView.isHidden == false) {
-                            s.guideView.isHidden = true
-                        }
-                        s.viewModel?.showGuide = false
-                    }
-                }
-            } else {
+            if vm.showGuide {
+                self.guideView.isHidden = false;
+            }
+            else {
                 self.guideView.isHidden = true;
             }
         }
+    }
+    
+    func hideGuideView() {
+        if ( self.guideView.isHidden == false) {
+            self.guideView.isHidden = true
+        }
+        self.viewModel?.showGuide = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
