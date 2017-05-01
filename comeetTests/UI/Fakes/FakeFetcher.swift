@@ -19,6 +19,8 @@ class FakeFetcher: FetcherProtocol {
     var error: Error?
     var bookRoomParams: [String: Any] = [:]
     var meetings: [Meeting] = []
+    var meeting: Meeting?
+    var bookSuccess = false
     
     func set(environment: Environment) {
         self.environment = environment
@@ -38,7 +40,7 @@ class FakeFetcher: FetcherProtocol {
     }
     
     func bookRoom(organization: String, roomrecipient: String, params: [String: Any], completion:@escaping BookRoomCompletion) {
-        
+        completion(bookSuccess, error)
     }
     
     func bookRoomParams(start: String, end: String, subject: String, body: String, requiredAttendees: String) -> [String: Any] {
@@ -46,9 +48,10 @@ class FakeFetcher: FetcherProtocol {
     }
     
     func getMeetings(organization: String, user: String, start: String, end: String, completion:@escaping FetchMeetingsCompletion) {
+        completion(meetings, error)
     }
     
     func getMeetingData(organization: String, id: String, completion:@escaping FetchMeetingCompletion) {
-        
+        completion(meeting, error)
     }
 }

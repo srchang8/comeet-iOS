@@ -30,8 +30,16 @@
 		053564BD1E6E69540072A167 /* AuthenticatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053564BC1E6E69540072A167 /* AuthenticatorProtocol.swift */; };
 		053564BF1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053564BE1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift */; };
 		053564C11E6E6C7B0072A167 /* DataSimpleBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053564C01E6E6C7B0072A167 /* DataSimpleBridge.swift */; };
+		056512D81EB66972000DBEC4 /* FakePersistor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056512D71EB66972000DBEC4 /* FakePersistor.swift */; };
+		056512F01EB6A878000DBEC4 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056512E81EB6A878000DBEC4 /* LoginViewModelTests.swift */; };
+		056512F11EB6A878000DBEC4 /* MainMenuViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056512E91EB6A878000DBEC4 /* MainMenuViewModelTests.swift */; };
+		056512F21EB6A878000DBEC4 /* MetroareaViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056512EA1EB6A878000DBEC4 /* MetroareaViewModelTests.swift */; };
+		056512F31EB6A878000DBEC4 /* MyAgendaDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056512EB1EB6A878000DBEC4 /* MyAgendaDetailViewModelTests.swift */; };
+		056512F41EB6A878000DBEC4 /* MyAgendaViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056512EC1EB6A878000DBEC4 /* MyAgendaViewModelTests.swift */; };
+		056512F51EB6A878000DBEC4 /* RoomDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056512ED1EB6A878000DBEC4 /* RoomDetailViewModelTests.swift */; };
+		056512F61EB6A878000DBEC4 /* RoomsListsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056512EE1EB6A878000DBEC4 /* RoomsListsViewModelTests.swift */; };
+		056512F71EB6A878000DBEC4 /* RoomsListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056512EF1EB6A878000DBEC4 /* RoomsListViewModelTests.swift */; };
 		05756C2A1E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05756C291E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift */; };
-		05756C2E1E6FD6CA00A8A61B /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05756C2D1E6FD6CA00A8A61B /* LoginViewModelTests.swift */; };
 		057B12AF1EB0CB9C004ECA36 /* MyAgendaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057B12AE1EB0CB9C004ECA36 /* MyAgendaDetailViewController.swift */; };
 		057B12B11EB0CBB0004ECA36 /* MyAgendaDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057B12B01EB0CBB0004ECA36 /* MyAgendaDetailViewModel.swift */; };
 		057B12B41EB1C08D004ECA36 /* FloorPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057B12B31EB1C08D004ECA36 /* FloorPlanViewController.swift */; };
@@ -73,7 +81,6 @@
 		05F214FE1E6E4D7A004E4A16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05F214FD1E6E4D7A004E4A16 /* Assets.xcassets */; };
 		05F215011E6E4D7A004E4A16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05F214FF1E6E4D7A004E4A16 /* LaunchScreen.storyboard */; };
 		05F215171E6E4D7A004E4A16 /* comeetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F215161E6E4D7A004E4A16 /* comeetUITests.swift */; };
-		05F986BA1E7EFBFE00120AB4 /* RoomsListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F986B91E7EFBFE00120AB4 /* RoomsListViewModelTests.swift */; };
 		05F986BD1E7EFCFC00120AB4 /* FakeAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F986BC1E7EFCFC00120AB4 /* FakeAuthenticator.swift */; };
 		05F986BF1E7EFE8900120AB4 /* FakeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F986BE1E7EFE8900120AB4 /* FakeFetcher.swift */; };
 		05F986C11E7F005100120AB4 /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F986C01E7F005100120AB4 /* Stubs.swift */; };
@@ -141,8 +148,16 @@
 		053564BC1E6E69540072A167 /* AuthenticatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticatorProtocol.swift; path = Data/Authenticator/AuthenticatorProtocol.swift; sourceTree = "<group>"; };
 		053564BE1E6E6ABE0072A167 /* AuthenticatorADALImplementer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticatorADALImplementer.swift; path = Data/Authenticator/AuthenticatorADALImplementer.swift; sourceTree = "<group>"; };
 		053564C01E6E6C7B0072A167 /* DataSimpleBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSimpleBridge.swift; path = Data/DataSimpleBridge.swift; sourceTree = "<group>"; };
+		056512D71EB66972000DBEC4 /* FakePersistor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakePersistor.swift; path = UI/Fakes/FakePersistor.swift; sourceTree = "<group>"; };
+		056512E81EB6A878000DBEC4 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModelTests.swift; path = UI/ViewModels/LoginViewModelTests.swift; sourceTree = "<group>"; };
+		056512E91EB6A878000DBEC4 /* MainMenuViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainMenuViewModelTests.swift; path = UI/ViewModels/MainMenuViewModelTests.swift; sourceTree = "<group>"; };
+		056512EA1EB6A878000DBEC4 /* MetroareaViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MetroareaViewModelTests.swift; path = UI/ViewModels/MetroareaViewModelTests.swift; sourceTree = "<group>"; };
+		056512EB1EB6A878000DBEC4 /* MyAgendaDetailViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyAgendaDetailViewModelTests.swift; path = UI/ViewModels/MyAgendaDetailViewModelTests.swift; sourceTree = "<group>"; };
+		056512EC1EB6A878000DBEC4 /* MyAgendaViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyAgendaViewModelTests.swift; path = UI/ViewModels/MyAgendaViewModelTests.swift; sourceTree = "<group>"; };
+		056512ED1EB6A878000DBEC4 /* RoomDetailViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomDetailViewModelTests.swift; path = UI/ViewModels/RoomDetailViewModelTests.swift; sourceTree = "<group>"; };
+		056512EE1EB6A878000DBEC4 /* RoomsListsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomsListsViewModelTests.swift; path = UI/ViewModels/RoomsListsViewModelTests.swift; sourceTree = "<group>"; };
+		056512EF1EB6A878000DBEC4 /* RoomsListViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomsListViewModelTests.swift; path = UI/ViewModels/RoomsListViewModelTests.swift; sourceTree = "<group>"; };
 		05756C291E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticatorADALImplementerTests.swift; path = Data/Authenticator/AuthenticatorADALImplementerTests.swift; sourceTree = "<group>"; };
-		05756C2D1E6FD6CA00A8A61B /* LoginViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModelTests.swift; path = UI/Login/LoginViewModelTests.swift; sourceTree = "<group>"; };
 		057B12AE1EB0CB9C004ECA36 /* MyAgendaDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyAgendaDetailViewController.swift; path = UI/MyAgendaDetail/MyAgendaDetailViewController.swift; sourceTree = "<group>"; };
 		057B12B01EB0CBB0004ECA36 /* MyAgendaDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyAgendaDetailViewModel.swift; path = UI/MyAgendaDetail/MyAgendaDetailViewModel.swift; sourceTree = "<group>"; };
 		057B12B31EB1C08D004ECA36 /* FloorPlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloorPlanViewController.swift; path = UI/FloorPlan/FloorPlanViewController.swift; sourceTree = "<group>"; };
@@ -191,7 +206,6 @@
 		05F215121E6E4D7A004E4A16 /* comeetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = comeetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F215161E6E4D7A004E4A16 /* comeetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = comeetUITests.swift; sourceTree = "<group>"; };
 		05F215181E6E4D7A004E4A16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		05F986B91E7EFBFE00120AB4 /* RoomsListViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoomsListViewModelTests.swift; path = UI/RoomsList/RoomsListViewModelTests.swift; sourceTree = "<group>"; };
 		05F986BC1E7EFCFC00120AB4 /* FakeAuthenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeAuthenticator.swift; path = UI/Fakes/FakeAuthenticator.swift; sourceTree = "<group>"; };
 		05F986BE1E7EFE8900120AB4 /* FakeFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FakeFetcher.swift; path = UI/Fakes/FakeFetcher.swift; sourceTree = "<group>"; };
 		05F986C01E7F005100120AB4 /* Stubs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stubs.swift; path = UI/Fakes/Stubs.swift; sourceTree = "<group>"; };
@@ -291,6 +305,21 @@
 			name = Authenticator;
 			sourceTree = "<group>";
 		};
+		056512DB1EB68863000DBEC4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				056512E81EB6A878000DBEC4 /* LoginViewModelTests.swift */,
+				056512E91EB6A878000DBEC4 /* MainMenuViewModelTests.swift */,
+				056512EA1EB6A878000DBEC4 /* MetroareaViewModelTests.swift */,
+				056512EB1EB6A878000DBEC4 /* MyAgendaDetailViewModelTests.swift */,
+				056512EC1EB6A878000DBEC4 /* MyAgendaViewModelTests.swift */,
+				056512ED1EB6A878000DBEC4 /* RoomDetailViewModelTests.swift */,
+				056512EE1EB6A878000DBEC4 /* RoomsListsViewModelTests.swift */,
+				056512EF1EB6A878000DBEC4 /* RoomsListViewModelTests.swift */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
 		05756C251E6FCA6000A8A61B /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,19 +342,10 @@
 		05756C2B1E6FD68800A8A61B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				056512DB1EB68863000DBEC4 /* ViewModels */,
 				05F986BB1E7EFCBC00120AB4 /* Fakes */,
-				05756C2C1E6FD69F00A8A61B /* Login */,
-				05F986B81E7EFBDF00120AB4 /* RoomsList */,
 			);
 			name = UI;
-			sourceTree = "<group>";
-		};
-		05756C2C1E6FD69F00A8A61B /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				05756C2D1E6FD6CA00A8A61B /* LoginViewModelTests.swift */,
-			);
-			name = Login;
 			sourceTree = "<group>";
 		};
 		057B12AD1EB0CB6A004ECA36 /* MyAgendaDetail */ = {
@@ -582,20 +602,13 @@
 			path = comeetUITests;
 			sourceTree = "<group>";
 		};
-		05F986B81E7EFBDF00120AB4 /* RoomsList */ = {
-			isa = PBXGroup;
-			children = (
-				05F986B91E7EFBFE00120AB4 /* RoomsListViewModelTests.swift */,
-			);
-			name = RoomsList;
-			sourceTree = "<group>";
-		};
 		05F986BB1E7EFCBC00120AB4 /* Fakes */ = {
 			isa = PBXGroup;
 			children = (
 				05F986BC1E7EFCFC00120AB4 /* FakeAuthenticator.swift */,
 				05F986BE1E7EFE8900120AB4 /* FakeFetcher.swift */,
 				05F986C01E7F005100120AB4 /* Stubs.swift */,
+				056512D71EB66972000DBEC4 /* FakePersistor.swift */,
 			);
 			name = Fakes;
 			sourceTree = "<group>";
@@ -1046,18 +1059,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				056512F01EB6A878000DBEC4 /* LoginViewModelTests.swift in Sources */,
 				05F986C11E7F005100120AB4 /* Stubs.swift in Sources */,
 				05CF17E61E7912A70024D84F /* AlamofireAccessTokenAdapterTests.swift in Sources */,
 				05CF17EB1E791AED0024D84F /* RoomParserTests.swift in Sources */,
+				056512D81EB66972000DBEC4 /* FakePersistor.swift in Sources */,
+				056512F61EB6A878000DBEC4 /* RoomsListsViewModelTests.swift in Sources */,
+				056512F31EB6A878000DBEC4 /* MyAgendaDetailViewModelTests.swift in Sources */,
 				05CF17E81E7917F70024D84F /* EnvironmentTests.swift in Sources */,
 				052A3C131E87410A00DD88D6 /* AmenitiesParserTests.swift in Sources */,
-				05F986BA1E7EFBFE00120AB4 /* RoomsListViewModelTests.swift in Sources */,
+				056512F71EB6A878000DBEC4 /* RoomsListViewModelTests.swift in Sources */,
+				056512F21EB6A878000DBEC4 /* MetroareaViewModelTests.swift in Sources */,
+				056512F51EB6A878000DBEC4 /* RoomDetailViewModelTests.swift in Sources */,
 				05F986BF1E7EFE8900120AB4 /* FakeFetcher.swift in Sources */,
 				052A3C1D1E87516900DD88D6 /* SearchCriteriaParserTests.swift in Sources */,
-				05756C2E1E6FD6CA00A8A61B /* LoginViewModelTests.swift in Sources */,
 				052A3C151E87413900DD88D6 /* FreebusyBlockParserTests.swift in Sources */,
+				056512F41EB6A878000DBEC4 /* MyAgendaViewModelTests.swift in Sources */,
 				05756C2A1E6FCE7400A8A61B /* AuthenticatorADALImplementerTests.swift in Sources */,
 				05F986BD1E7EFCFC00120AB4 /* FakeAuthenticator.swift in Sources */,
+				056512F11EB6A878000DBEC4 /* MainMenuViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,11 +27,14 @@ class RoomParserTests: XCTestCase {
     }
     
     func testValidRoom() {
-        let invalidRoomDict = [RoomParser.Constants.nameKey : "Name",
-                               RoomParser.Constants.emailKey : "Email"]
+        let room = RoomParser.parseRoom(roomDict: Stubs.roomDict())
         
-        let room = RoomParser.parseRoom(roomDict: invalidRoomDict)
-        
-        XCTAssert(room?.name == "Name" && room?.email == "Email")
+        XCTAssert(room!.name == Stubs.roomDict()[RoomParser.Constants.nameKey] as! String &&
+            room!.email == Stubs.roomDict()[RoomParser.Constants.emailKey] as! String)
+    }
+    
+    func testParseRooms() {
+        XCTAssert(RoomParser.parseRooms(roomsArray: [["Nothing" : "Invalid"]]).count == 0)
+        XCTAssert(RoomParser.parseRooms(roomsArray: [Stubs.roomDict()]).count == 1)
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Room {
+struct Room: Equatable {
     
     let name: String
     let email: String
@@ -23,4 +23,8 @@ struct Room {
     let navigation: String?
     let amenities: [Amenity]?
     let freebusy: [FreebusyBlock]?
+    
+    public static func ==(lhs: Room, rhs: Room) -> Bool {
+        return lhs.email == rhs.email && lhs.name == rhs.name
+    }
 }
