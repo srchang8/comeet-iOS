@@ -60,6 +60,8 @@ class RoomsListViewModel : BaseViewModel {
     
     func change(date: Date) {
         selectedDate = date
+        startDate = startDate.changeYearMonthDay(newDate: date)
+        endDate = endDate.changeYearMonthDay(newDate: date)
         fetchRooms()
     }
     
@@ -162,7 +164,7 @@ class RoomsListViewModel : BaseViewModel {
 
     func startTime(value: CGFloat) -> String {
         let count = availableRooms().count
-        startDate = Date.dateFrom(sliderValue: Float(value), date: startDate)
+        startDate = Date.dateFrom(sliderValue: Float(value), date: selectedDate)
         if count != availableRooms().count {
             reloadBinding?()
         }
@@ -171,7 +173,7 @@ class RoomsListViewModel : BaseViewModel {
     
     func endTime(value: CGFloat) -> String {
         let count = availableRooms().count
-        endDate = Date.dateFrom(sliderValue: Float(value), date: endDate)
+        endDate = Date.dateFrom(sliderValue: Float(value), date: selectedDate)
         if count != availableRooms().count {
             reloadBinding?()
         }

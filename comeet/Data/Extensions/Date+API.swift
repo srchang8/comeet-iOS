@@ -97,5 +97,17 @@ extension Date {
         components.minute = minutes
         return NSCalendar.current.date(from: components) ?? date
     }
+    
+    func changeYearMonthDay(newDate: Date) -> Date {
+        
+        let hours = Calendar.current.component(.hour, from: self)
+        let minutes = Calendar.current.component(.minute, from: self)
+        
+        var components = NSCalendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: newDate)
+        components.hour = hours
+        components.minute = minutes
+        return NSCalendar.current.date(from: components) ?? newDate
+        
+    }
 }
 
