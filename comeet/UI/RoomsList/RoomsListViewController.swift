@@ -76,23 +76,7 @@ class RoomsListViewController: BaseViewController {
     func newLocation(sender: Any) {
         viewModel?.newLocation(metroarea: Router.selectedMetroarea, roomsList: Router.selectedRoomsList)
         selectLocationButton.setTitle(viewModel?.roomsList?.name, for: .normal)
-        
-        let userDefault = UserDefaults.standard
-        userDefault.set(false, forKey: "isRoomsGuideShown")
-        self.guideView.isHidden = false
-        let isGuideShown = userDefault.bool(forKey: "isRoomsGuideShown")
-        if (!isGuideShown) {
-            let when = DispatchTime.now() + 3
-            DispatchQueue.main.asyncAfter(deadline: when) {
-                if ( self.guideView.isHidden == false) {
-                    self.guideView.isHidden = true
-                }
-                userDefault.set(true, forKey: "isRoomsGuideShown")
-            }
-        } else {
-            self.guideView.isHidden = true
-        }
-        
+        self.guideView.isHidden = true
     }
     
     func book(sender: Any) {
@@ -148,7 +132,27 @@ private extension RoomsListViewController {
         title = viewModel.title()
         
         viewModel.reloadBinding = { [weak self] in
-            self?.tableView.reloadSections([0], with: UITableViewRowAnimation.fade)
+            
+            if viewModel.roomsCount() > 0 {
+                let userDefault = UserDefaults.standard
+                if let weakSelf = self {
+                    weakSelf.guideView.isHidden = false
+                    let isGuideShown = userDefault.bool(forKey: "isRoomsGuideShown")
+                    if (!isGuideShown) {
+                        let when = DispatchTime.now() + 3
+                        DispatchQueue.main.asyncAfter(deadline: when) {
+                            if ( weakSelf.guideView.isHidden == false) {
+                                weakSelf.guideView.isHidden = true
+                            }
+                            userDefault.set(true, forKey: "isRoomsGuideShown")
+                        }
+                    } else {
+                        weakSelf.guideView.isHidden = true
+                    }
+                }
+            }
+            
+            self?.tableView.reloadData()
         }
         viewModel.fetchRooms()
         
