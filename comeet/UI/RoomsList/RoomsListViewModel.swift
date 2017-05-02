@@ -163,18 +163,18 @@ class RoomsListViewModel : BaseViewModel {
     }
 
     func startTime(value: CGFloat) -> String {
-        let count = availableRooms().count
+        let rooms = availableRooms()
         startDate = Date.dateFrom(sliderValue: Float(value), date: selectedDate)
-        if count != availableRooms().count {
+        if rooms != availableRooms() {
             reloadBinding?()
         }
         return startDate.displayStringHourMinute()
     }
     
     func endTime(value: CGFloat) -> String {
-        let count = availableRooms().count
+        let rooms = availableRooms()
         endDate = Date.dateFrom(sliderValue: Float(value), date: selectedDate)
-        if count != availableRooms().count {
+        if rooms != availableRooms() {
             reloadBinding?()
         }
         return endDate.displayStringHourMinute()
