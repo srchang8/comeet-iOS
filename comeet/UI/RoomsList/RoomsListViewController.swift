@@ -192,6 +192,8 @@ extension RoomsListViewController : UITableViewDataSource {
         }
         
         roomCell.bookButton.tag = indexPath.row
+        roomCell.mapButton.tag = indexPath.row
+        roomCell.floorPlanButton.tag = indexPath.row
         roomCell.roomName.text = viewModel?.roomName(index: indexPath.row)
         roomCell.roomCapacity.text = viewModel?.roomDescription(index: indexPath.row)
         roomCell.bookButton.addTarget(self, action: #selector(book(sender:)), for: .touchUpInside)
