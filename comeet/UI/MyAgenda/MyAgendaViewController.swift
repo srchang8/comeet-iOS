@@ -26,22 +26,8 @@ class MyAgendaViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if let vm = viewModel {
-            if vm.showGuide  {
-                let when = DispatchTime.now() + 3 // change 2 to desired number of seconds
-                DispatchQueue.main.asyncAfter(deadline: when) { [weak self] () in
-                    // Your code with delay
-                    if let s = self {
-                        if ( s.guideView.isHidden == false) {
-                            s.guideView.isHidden = true
-                        }
-                        s.viewModel?.showGuide = false
-                    }
-                }
-            } else {
-                self.guideView.isHidden = true;
-            }
-        }
+        super.viewWillAppear(animated)
+        showSwipeGuide()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -80,6 +66,14 @@ private extension MyAgendaViewController {
         if let selectedSection = viewModel?.selectedSection(), let position = UITableViewScrollPosition(rawValue: selectedSection) {
             tableView.scrollToRow(at: IndexPath(row: 0, section: selectedSection), at: position, animated: true)
         }
+    }
+    
+    func showSwipeGuide() {
+        guideView.isHidden = true
+        guard let showGuide = viewModel?.showSwipeGuide(), showGuide == true else {
+            return
+        }
+        showTemporarily(view: guideView)
     }
 }
 

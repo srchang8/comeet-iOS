@@ -14,6 +14,8 @@ class PersistorUserDefaultsImplementer : PersistorProtocol {
         static let metroAreaKey = "metroAreaKey"
         static let roomlistNameKey = "roomlistNameKey"
         static let roomlistEmailKey = "roomlistEmailKey"
+        static let roomSwipeGuideWasPresentedKey = "roomSwipeGuideWasPresentedKey"
+        static let agendaSwipeGuideWasPresentedKey = "agendaSwipeGuideWasPresentedKey"
     }
     
     func save(metroArea: String?) {
@@ -44,5 +46,19 @@ class PersistorUserDefaultsImplementer : PersistorProtocol {
         
         let user = User(name: name, email: email)
         return user
+    }
+    
+    func roomSwipeGuideWasPresented() -> Bool {
+        let showSwipe = UserDefaults.standard.bool(forKey: Constants.roomSwipeGuideWasPresentedKey)
+        UserDefaults.standard.set(true, forKey: Constants.roomSwipeGuideWasPresentedKey)
+        UserDefaults.standard.synchronize()
+        return showSwipe
+    }
+    
+    func agendaSwipeGuideWasPresented() -> Bool {
+        let showSwipe = UserDefaults.standard.bool(forKey: Constants.agendaSwipeGuideWasPresentedKey)
+        UserDefaults.standard.set(true, forKey: Constants.agendaSwipeGuideWasPresentedKey)
+        UserDefaults.standard.synchronize()
+        return showSwipe
     }
 }

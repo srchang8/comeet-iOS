@@ -76,23 +76,6 @@ class RoomsListViewController: BaseViewController {
     func newLocation(sender: Any) {
         viewModel?.newLocation(metroarea: Router.selectedMetroarea, roomsList: Router.selectedRoomsList)
         selectLocationButton.setTitle(viewModel?.roomsList?.name, for: .normal)
-        
-        let userDefault = UserDefaults.standard
-        userDefault.set(false, forKey: "isRoomsGuideShown")
-        self.guideView.isHidden = false
-        let isGuideShown = userDefault.bool(forKey: "isRoomsGuideShown")
-        if (!isGuideShown) {
-            let when = DispatchTime.now() + 3
-            DispatchQueue.main.asyncAfter(deadline: when) {
-                if ( self.guideView.isHidden == false) {
-                    self.guideView.isHidden = true
-                }
-                userDefault.set(true, forKey: "isRoomsGuideShown")
-            }
-        } else {
-            self.guideView.isHidden = true
-        }
-        
     }
     
     func book(sender: Any) {
@@ -148,6 +131,7 @@ private extension RoomsListViewController {
         title = viewModel.title()
         
         viewModel.reloadBinding = { [weak self] in
+            self?.showSwipeGuide()
             self?.tableView.reloadSections([0], with: UITableViewRowAnimation.fade)
         }
         viewModel.fetchRooms()
@@ -161,6 +145,14 @@ private extension RoomsListViewController {
         } else {
             performSegue(withIdentifier: Router.Constants.metroareaSegue, sender: self)
         }
+    }
+    
+    func showSwipeGuide() {
+        guideView.isHidden = true
+        guard let showGuide = viewModel?.showSwipeGuide(), showGuide == true else {
+            return
+        }
+        showTemporarily(view: guideView)
     }
     
     func setupSlider() {

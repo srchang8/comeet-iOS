@@ -193,6 +193,10 @@ class RoomsListViewModel : BaseViewModel {
             return false
         }
     }
+    
+    func showSwipeGuide() -> Bool {
+        return !persistor.roomSwipeGuideWasPresented()
+    }
 }
 
 private extension RoomsListViewModel {
@@ -219,10 +223,11 @@ private extension RoomsListViewModel {
     }
     
     func removeRooms() {
-        if (!testing) {
-            rooms = []
-            reloadBinding?()
+        guard !testing, rooms.count > 0 else {
+            return
         }
+        rooms = []
+        reloadBinding?()
     }
     
     func showLoading() {
