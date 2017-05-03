@@ -199,14 +199,14 @@ private extension RoomsListViewModel {
     
     func startDateForRequest() -> String {
         let start = selectedDate.startOfDay()
-        return start.stringForAPIRooms()
+        return start.stringISO8601()
     }
     
     func endDateForRequest() -> String {
         guard let end = selectedDate.endOfDay() else {
-            return selectedDate.stringForAPIRooms()
+            return selectedDate.stringISO8601()
         }
-        return end.stringForAPIRooms()
+        return end.stringISO8601()
     }
     
     func availableRooms() -> [Room] {

@@ -40,7 +40,7 @@ class RoomDetailViewModel :  BaseViewModel {
         let finalSubject = subject ?? ""
         let finalBody = body ?? ""
         let requiredAtendees = room.email
-        let params = fetcher.bookRoomParams(start: startDate.stringForAPI(), end: endDate.stringForAPI(), subject: finalSubject, body: finalBody, requiredAttendees: requiredAtendees)
+        let params = fetcher.bookRoomParams(start: startDate.stringISO8601(), end: endDate.stringISO8601(), subject: finalSubject, body: finalBody, requiredAttendees: requiredAtendees)
         
         loader.show(text: Constants.loadingText)
         
