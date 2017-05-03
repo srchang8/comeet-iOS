@@ -35,4 +35,16 @@ class BaseViewController: UIViewController {
         mapItem.name = name
         mapItem.openInMaps(launchOptions: options)
     }
+    
+    func showTemporarily(view: UIView) {
+        view.isHidden = false
+        view.alpha = 1.0
+        UIView.animate(withDuration: 0.5, delay: 3.0, options: [], animations: {
+            view.alpha = 0.0
+        }) { (completion: Bool) in
+            if completion {
+                view.isHidden = true
+            }
+        }
+    }
 }

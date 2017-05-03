@@ -54,17 +54,8 @@ class MyAgendaViewModel : BaseViewModel {
         }
     }
     
-    /// Whethere to show the guide graphic.
-    var showGuide : Bool {
-        get {
-            let userDefault = UserDefaults.standard
-            let isGuideShown = userDefault.bool(forKey: "isAgendaGuideShown")
-            return !isGuideShown
-        }
-        set {
-            let userDefault = UserDefaults.standard
-            userDefault.set(newValue, forKey: "isAgendaGuideShown")
-        }
+    func showSwipeGuide() -> Bool {
+        return !persistor.agendaSwipeGuideWasPresented()
     }
     
     func sectionsCount() -> Int {

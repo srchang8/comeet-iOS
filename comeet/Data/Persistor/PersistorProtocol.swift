@@ -14,4 +14,6 @@ protocol PersistorProtocol {
     func getMetroArea() -> String?
     func save(roomlist: User?)
     func getRoomlist() -> User?
+    func roomSwipeGuideWasPresented() -> Bool
+    func agendaSwipeGuideWasPresented() -> Bool
 }
