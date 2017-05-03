@@ -8,7 +8,11 @@
 
 import Foundation
 
-struct Amenity {
+struct Amenity : Equatable {
     let name: String
     let description: String
+    
+    public static func ==(lhs: Amenity, rhs: Amenity) -> Bool {
+        return lhs.description == rhs.description && lhs.name == rhs.name
+    }
 }

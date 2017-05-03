@@ -54,8 +54,26 @@ class MyAgendaViewModel : BaseViewModel {
         }
     }
     
+    /// Whethere to show the guide graphic.
+    var showGuide : Bool {
+        get {
+            let userDefault = UserDefaults.standard
+            let isGuideShown = userDefault.bool(forKey: "isAgendaGuideShown")
+            return !isGuideShown
+        }
+        set {
+            let userDefault = UserDefaults.standard
+            userDefault.set(newValue, forKey: "isAgendaGuideShown")
+        }
+    }
+    
     func sectionsCount() -> Int {
         return meetingsByDate.keys.count
+    }
+    
+    func selectedSection() -> Int? {
+        let sortedDays = getSortedDays()
+        return sortedDays.index(of: selectedDate.startOfDay())
     }
     
     func sectionTitle(section: Int) -> String? {
@@ -105,7 +123,7 @@ private extension MyAgendaViewModel {
         
         for meeting in meetings {
             
-            let startWithoutTime = Calendar.current.startOfDay(for: meeting.start)
+            let startWithoutTime = meeting.start.startOfDay()
             
             if var dayArray = meetingsByDate[startWithoutTime] {
                 dayArray.append(meeting)
@@ -127,11 +145,15 @@ private extension MyAgendaViewModel {
     }
     
     func dateFrom(section: Int) -> Date? {
-        let sortedDays = Array(meetingsByDate.keys).sorted { $0 < $1 }
+        let sortedDays = getSortedDays()
         
         guard sortedDays.count > section else {
             return nil
         }
         return sortedDays[section]
+    }
+    
+    func getSortedDays() -> [Date] {
+        return Array(meetingsByDate.keys).sorted { $0 < $1 }
     }
 }

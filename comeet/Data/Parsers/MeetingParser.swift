@@ -38,9 +38,9 @@ class MeetingParser {
         if let locationValue = meetingDict[Constants.locationKey] as? String {
             location = locationValue
         }
-        
-        guard let start = Date.fromAPIMeetings(stringDate: startString),
-            let end = Date.fromAPIMeetings(stringDate: endString) else {
+
+        guard let start = Date.fromISO8601(string: startString),
+            let end = Date.fromISO8601(string: endString) else {
                 return nil
         }
         

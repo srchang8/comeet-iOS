@@ -55,24 +55,14 @@ class RoomsListViewController: BaseViewController {
     }
     
     func sliderChange(slider: MARKRangeSlider) {
-        startTimelabel.text = "Start \(displayTime(sliderValue: slider.leftValue, start: true))"
-        endTimelabel.text = "End \(displayTime(sliderValue: slider.rightValue, start: false))"
-    }
-    
-    func displayTime(sliderValue: CGFloat, start: Bool) -> String {
-        var hours = Int(sliderValue / 60)
-        if hours >= 24 {
-            hours -= 24
+        
+        guard let start = viewModel?.startTime(value: slider.leftValue),
+            let end = viewModel?.endTime(value: slider.rightValue) else {
+                return
         }
-        let minutes = Int(sliderValue.truncatingRemainder(dividingBy: 60))
-        if start {
-            viewModel?.start(hours: hours, minutes: minutes)
-        } else {
-            viewModel?.end(hours: hours, minutes: minutes)
-        }
-        let startHoursString = hours > 9 ? "\(hours)" : "0\(hours)"
-        let startMinutesString = minutes > 9 ? "\(minutes)" : "0\(minutes)"
-        return "\(startHoursString):\(startMinutesString)"
+        
+        startTimelabel.text = "Start " + start
+        endTimelabel.text = "End " + end
     }
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
@@ -87,8 +77,7 @@ class RoomsListViewController: BaseViewController {
         viewModel?.newLocation(metroarea: Router.selectedMetroarea, roomsList: Router.selectedRoomsList)
         selectLocationButton.setTitle(viewModel?.roomsList?.name, for: .normal)
         
-        self.guideView.isHidden = true
-        /*let userDefault = UserDefaults.standard
+        let userDefault = UserDefaults.standard
         userDefault.set(false, forKey: "isRoomsGuideShown")
         self.guideView.isHidden = false
         let isGuideShown = userDefault.bool(forKey: "isRoomsGuideShown")
@@ -102,7 +91,7 @@ class RoomsListViewController: BaseViewController {
             }
         } else {
             self.guideView.isHidden = true
-        }*/
+        }
         
     }
     
@@ -159,28 +148,7 @@ private extension RoomsListViewController {
         title = viewModel.title()
         
         viewModel.reloadBinding = { [weak self] in
-            
-            if viewModel.roomsCount() > 0 {
-                let userDefault = UserDefaults.standard
-                //userDefault.set(false, forKey: "isRoomsGuideShown")
-                if let weakSelf = self {
-                    weakSelf.guideView.isHidden = false
-                    let isGuideShown = userDefault.bool(forKey: "isRoomsGuideShown")
-                    if (!isGuideShown) {
-                        let when = DispatchTime.now() + 3
-                        DispatchQueue.main.asyncAfter(deadline: when) {
-                            if ( weakSelf.guideView.isHidden == false) {
-                                weakSelf.guideView.isHidden = true
-                            }
-                            userDefault.set(true, forKey: "isRoomsGuideShown")
-                        }
-                    } else {
-                        weakSelf.guideView.isHidden = true
-                    }
-                }
-            }
-            
-            self?.tableView.reloadData()
+            self?.tableView.reloadSections([0], with: UITableViewRowAnimation.fade)
         }
         viewModel.fetchRooms()
         
@@ -203,14 +171,10 @@ private extension RoomsListViewController {
         let startValue: Int = 0
         let endValue: Int = startValue + twentyFourHours
         let startAutoSelect: Int = (hour * 60) + minutes
-        let endAutoSelect: Int = startAutoSelect + 120
+        let endAutoSelect: Int = startAutoSelect + 60
         
         sliderView.setMinValue(CGFloat(startValue), maxValue: CGFloat(endValue))
         sliderView.setLeftValue(CGFloat(startAutoSelect), rightValue: CGFloat(endAutoSelect))
-        
-        let color = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 1.0, alpha: 1.0)
-        let rangeImage = UIImage.from(color: color)
-        sliderView.rangeImage = rangeImage
         sliderView.addTarget(self, action: #selector(sliderChange(slider:)), for: .valueChanged)
         
         sliderChange(slider: sliderView)
@@ -222,8 +186,6 @@ private extension RoomsListViewController {
         controller.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: selectLocationButton.bounds.width, height: selectLocationButton.bounds.height)
     }
 }
-
-
 
 extension RoomsListViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

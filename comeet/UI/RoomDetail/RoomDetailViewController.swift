@@ -29,8 +29,13 @@ class RoomDetailViewController: BaseViewController {
     }
     
     @IBAction func book (_ sender: Any) {
+        guard let subjectText = subjectInput.text, !subjectText.isEmpty else {
+            subjectInput.backgroundColor = UIConstants.Colors.red
+            return
+        }
+        
         view.endEditing(true)
-        viewModel?.bookRoom(subject: subjectInput.text, body: bodyInput.text)
+        viewModel?.bookRoom(subject: subjectText, body: bodyInput.text)
     }
     
     @IBAction func cancel(_ sender: Any) {

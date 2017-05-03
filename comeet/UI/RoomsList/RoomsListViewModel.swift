@@ -60,6 +60,8 @@ class RoomsListViewModel : BaseViewModel {
     
     func change(date: Date) {
         selectedDate = date
+        startDate = startDate.changeYearMonthDay(newDate: date)
+        endDate = endDate.changeYearMonthDay(newDate: date)
         fetchRooms()
     }
     
@@ -159,15 +161,23 @@ class RoomsListViewModel : BaseViewModel {
         }
         return availableRooms()[index]
     }
-    
-    func start(hours: Int, minutes: Int) {
-        startDate = dateFrom(hours: hours, minutes: minutes)
-        reloadBinding?()
+
+    func startTime(value: CGFloat) -> String {
+        let rooms = availableRooms()
+        startDate = Date.dateFrom(sliderValue: Float(value), date: selectedDate)
+        if rooms != availableRooms() {
+            reloadBinding?()
+        }
+        return startDate.displayStringHourMinute()
     }
     
-    func end(hours: Int, minutes: Int) {
-        endDate = dateFrom(hours: hours, minutes: minutes)
-        reloadBinding?()
+    func endTime(value: CGFloat) -> String {
+        let rooms = availableRooms()
+        endDate = Date.dateFrom(sliderValue: Float(value), date: selectedDate)
+        if rooms != availableRooms() {
+            reloadBinding?()
+        }
+        return endDate.displayStringHourMinute()
     }
     
     func locationPersisted() -> Bool {
@@ -175,6 +185,8 @@ class RoomsListViewModel : BaseViewModel {
             let roomlist = persistor.getRoomlist() {
             Router.selectedMetroarea = metroarea
             Router.selectedRoomsList = roomlist
+            self.metroarea = metroarea
+            self.roomsList = roomlist
             newLocation(metroarea: metroarea, roomsList: roomlist)
             return true
         } else {
@@ -187,21 +199,14 @@ private extension RoomsListViewModel {
     
     func startDateForRequest() -> String {
         let start = selectedDate.startOfDay()
-        return start.stringForAPIRooms()
+        return start.stringISO8601()
     }
     
     func endDateForRequest() -> String {
         guard let end = selectedDate.endOfDay() else {
-            return selectedDate.stringForAPIRooms()
+            return selectedDate.stringISO8601()
         }
-        return end.stringForAPIRooms()
-    }
-    
-    func dateFrom(hours: Int, minutes: Int) -> Date {
-        var components = NSCalendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: selectedDate)
-        components.hour = hours
-        components.minute = minutes
-        return NSCalendar.current.date(from: components) ?? selectedDate
+        return end.stringISO8601()
     }
     
     func availableRooms() -> [Room] {

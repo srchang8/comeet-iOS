@@ -31,6 +31,7 @@ class MainMenuViewModel : BaseViewModel {
     func logout() {
         authenticator.logout()
         persistor.save(metroArea: nil)
+        persistor.save(roomlist: nil)
     }
     
   

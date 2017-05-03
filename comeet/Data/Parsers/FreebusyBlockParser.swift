@@ -22,8 +22,9 @@ class FreebusyBlockParser {
             let endString = freebusyBlockDict[Constants.endKey] as? String else {
                 return nil
         }
-        guard let start = Date.fromAPIFreeBusy(stringDate: startString),
-            let end = Date.fromAPIFreeBusy(stringDate: endString),
+
+        guard let start = Date.fromISO8601(string: startString),
+            let end = Date.fromISO8601(string: endString),
             start < end else {
                 return nil
         }

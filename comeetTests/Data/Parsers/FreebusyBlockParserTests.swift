@@ -28,8 +28,8 @@ class FreebusyBlockParserTests: XCTestCase {
     
     func testValidFreeBusyBlock() {
         let validAFreeBusyDict = [FreebusyBlockParser.Constants.statusKey : "Tentative",
-                                    FreebusyBlockParser.Constants.startKey : "2017-04-24T13:00:00.000Z",
-                                    FreebusyBlockParser.Constants.endKey : "2017-04-24T14:05:00.000Z"]
+                                    FreebusyBlockParser.Constants.startKey : "2017-08-26T11:39:00Z",
+                                    FreebusyBlockParser.Constants.endKey : "2017-08-26T12:39:00Z"]
         let freeBusyBlock = FreebusyBlockParser.parseFreebusyBlock(freebusyBlockDict: validAFreeBusyDict)
         
         XCTAssert(freeBusyBlock != nil)

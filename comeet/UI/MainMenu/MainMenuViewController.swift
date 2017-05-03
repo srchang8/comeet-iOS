@@ -18,8 +18,10 @@ class MainMenuViewController: BaseViewController {
     
     var viewModel: MainMenuViewModel?
     
+    var pageVC: MainContentPageViewController?
     var agendaVC: MyAgendaViewController?
     var roomListVC: RoomsListViewController?
+    
     internal struct Constants {
         static let roomsBookedNotification = "RoomsBooked"
     }
@@ -36,18 +38,13 @@ class MainMenuViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        
-        
         // Show the navigation bar on other view controllers
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier,
@@ -66,25 +63,9 @@ class MainMenuViewController: BaseViewController {
     }
     
     @IBAction func changeDate(_ sender: Any) {
-        
         let calendarVC = createCalendar()
         calendarVC.popoverPresentationController?.sourceView = sender as? UIButton
         present(calendarVC, animated: true, completion: nil)
-    }
-    
-    func containerViewSwiped(gesture: UISwipeGestureRecognizer) {
-        let gesturePoint = gesture.location(in: containerView)
-        
-        switch gesture.direction {
-        case UISwipeGestureRecognizerDirection.left:
-            if gesturePoint.y < containerView.frame.height - 80 { //bottom vie height
-                showAgenda()
-            }
-        case UISwipeGestureRecognizerDirection.right:
-            showRoomsList()
-        default:
-            break
-        }
     }
     
     func roomBooked(sender: Any) {
@@ -109,45 +90,23 @@ extension MainMenuViewController : WWCalendarTimeSelectorProtocol {
 }
 
 private extension MainMenuViewController {
+    
     func setup() {
-        
         title = viewModel?.title()
         navigationItem.setHidesBackButton(true, animated: false)
         
-        addGestureRecognizers()
         dateButton.setTitle(viewModel?.selectedDate.displayStringDate(), for: .normal)
         
-        addRoomsList()
-        addAgendaView()
+        self.agendaVC = getAgendaVC()
+        self.roomListVC = getRoomsListVC()
+        if let agendaVC = self.agendaVC, let roomListVC = self.roomListVC {
+            let pageVC = MainContentPageViewController()
+            pageVC.setChildViewControllers([roomListVC, agendaVC])
+            addChild(viewController: pageVC, inView: containerView)
+            self.pageVC = pageVC
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector (roomBooked(sender:)), name: NSNotification.Name(rawValue: Constants.roomsBookedNotification), object: nil)
-    }
-    
-    func addGestureRecognizers() {
-        //add swipe gesture recognizer to container view
-        let swipeGestureLeft = UISwipeGestureRecognizer(target: self, action: #selector(containerViewSwiped(gesture:)))
-        swipeGestureLeft.direction = UISwipeGestureRecognizerDirection.left
-        let swipeGestureRight = UISwipeGestureRecognizer(target: self, action: #selector(containerViewSwiped(gesture:)))
-        swipeGestureRight.direction = UISwipeGestureRecognizerDirection.right
-        containerView.addGestureRecognizer(swipeGestureLeft)
-        containerView.addGestureRecognizer(swipeGestureRight)
-    }
-    
-    func addAgendaView() {
-        if let agendaVC = getAgendaVC() {
-            addChild(viewController: agendaVC, inView: containerView)
-            self.agendaVC = agendaVC
-            //hide agenda view initially
-            agendaVC.view.isHidden = true
-        }
-    }
-    
-    func addRoomsList() {
-        if let roomsListVC = getRoomsListVC() {
-            // have a reference to the rooms list view controller
-            self.roomListVC = roomsListVC
-            addChild(viewController: roomsListVC, inView: containerView)
-        }
     }
     
     func addChild(viewController: UIViewController, inView: UIView) {
@@ -164,6 +123,7 @@ private extension MainMenuViewController {
         inView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: vflHorizontall, options: [], metrics: nil, views: views))
     }
     
+    /// Create a reference to Rooms List View Controller
     func getRoomsListVC() -> RoomsListViewController? {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "RoomsListViewController")
@@ -177,7 +137,7 @@ private extension MainMenuViewController {
         return roomsListVC
     }
     
-    //create a reference of Agenda VC
+    /// Create a reference of Agenda View Controller
     func getAgendaVC() -> MyAgendaViewController? {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "MyAgendaViewController")
@@ -230,47 +190,27 @@ private extension MainMenuViewController {
     }
     
     func showAgenda() {
-        if agendaVC?.view.isHidden ?? true {
-            //animate fade in of agenda VC
-            agendaVC?.view.alpha = 0.0
-            agendaVC?.view.isHidden = false
-            UIView.animate(withDuration: 0.5, animations: {
-                self.agendaVC?.view.alpha = 1.0
-                self.roomListVC?.view.alpha = 0.0
-                let userDefault = UserDefaults.standard
-                userDefault.set(false, forKey: "isAgendaGuideShown")
-                let isGuideShown = userDefault.bool(forKey: "isAgendaGuideShown")
-                if (!isGuideShown) {
-                    let when = DispatchTime.now() + 3
-                    DispatchQueue.main.asyncAfter(deadline: when) {
-                        if ( self.agendaVC?.guideView.isHidden == false) {
-                            self.agendaVC?.guideView.isHidden = true
-                        }
-                        userDefault.set(true, forKey: "isAgendaGuideShown")
-                    }
-                } else {
-                    self.agendaVC?.guideView.isHidden = true
-                }
-            }, completion: { (success) in
-                self.roomListVC?.view.isHidden = true
-                
-            })
+        guard let pvc = self.pageVC else {
+            return;
         }
-    }
-    
-    func showRoomsList() {
-        if roomListVC?.view.isHidden ?? true {
-            
-            //animate fade in of agenda VC
-            roomListVC?.view.alpha = 0.0
-            roomListVC?.view.isHidden = false
-            UIView.animate(withDuration: 0.5, animations: {
-                self.roomListVC?.view.alpha = 1.0
-                self.agendaVC?.view.alpha = 0.0
-            }, completion: { (success) in
-                self.agendaVC?.view.isHidden = true
-                
-            })
+        
+        guard let page = self.agendaVC else {
+            return;
+        }
+        
+        // Swift port of this StackOverflow answer:
+        // http://stackoverflow.com/questions/13633059/uipageviewcontroller-how-do-i-correctly-jump-to-a-specific-page-without-messing#
+        weak var pvcw = pvc
+        pvc.setViewControllers(
+            [page],
+            direction: UIPageViewControllerNavigationDirection.forward,
+            animated: false) { [weak pvc] (finished) in
+                DispatchQueue.main.async() {
+                pvc?.setViewControllers(
+                    [page],
+                    direction: UIPageViewControllerNavigationDirection.forward,
+                    animated: false)
+            }
         }
     }
 }

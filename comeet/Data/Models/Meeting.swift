@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Meeting {
+struct Meeting : Equatable {
 
     let id: String
     let subject: String
@@ -20,4 +20,8 @@ struct Meeting {
     let meetingcreator: User?
     let requiredattendees: [User]?
     let optionalattendees: [User]?
+    
+    public static func ==(lhs: Meeting, rhs: Meeting) -> Bool {
+        return lhs.id == rhs.id && lhs.subject == rhs.subject
+    }
 }

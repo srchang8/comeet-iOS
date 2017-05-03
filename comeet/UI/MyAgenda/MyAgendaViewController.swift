@@ -25,6 +25,25 @@ class MyAgendaViewController: BaseViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if let vm = viewModel {
+            if vm.showGuide  {
+                let when = DispatchTime.now() + 3 // change 2 to desired number of seconds
+                DispatchQueue.main.asyncAfter(deadline: when) { [weak self] () in
+                    // Your code with delay
+                    if let s = self {
+                        if ( s.guideView.isHidden == false) {
+                            s.guideView.isHidden = true
+                        }
+                        s.viewModel?.showGuide = false
+                    }
+                }
+            } else {
+                self.guideView.isHidden = true;
+            }
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier,
             let viewModel = viewModel else {
@@ -52,10 +71,15 @@ private extension MyAgendaViewController {
         
         viewModel.reloadBinding = { [weak self] in
             self?.tableView.reloadData()
+            self?.goToSelectedSection()
         }
         viewModel.fetchMeetings()
-        
-        
+    }
+    
+    func goToSelectedSection() {
+        if let selectedSection = viewModel?.selectedSection(), let position = UITableViewScrollPosition(rawValue: selectedSection) {
+            tableView.scrollToRow(at: IndexPath(row: 0, section: selectedSection), at: position, animated: true)
+        }
     }
 }
 
