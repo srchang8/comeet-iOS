@@ -26,6 +26,7 @@ class MainContentPageViewController : UIPageViewController {
         super.viewDidLoad()
         
         dataSource = self
+        delegate = self
         
         if let firstViewController = self.orderedChildViewControllers.first {
             setViewControllers([firstViewController],
@@ -37,6 +38,22 @@ class MainContentPageViewController : UIPageViewController {
     
     func setChildViewControllers(_ orderedChildViewControllers: [UIViewController]) {
         self.orderedChildViewControllers = orderedChildViewControllers
+    }
+}
+
+extension MainContentPageViewController: UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            didFinishAnimating finished: Bool,
+                            previousViewControllers: [UIViewController],
+                            transitionCompleted completed: Bool) {
+        for vc in previousViewControllers {
+            if let vc = vc as? RoomsListViewController {
+                vc.hideGuideView()
+            }
+            if let vc = vc as? MyAgendaViewController {
+                vc.hideGuideView()
+            }
+        }
     }
 }
 

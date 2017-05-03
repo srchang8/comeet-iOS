@@ -65,6 +65,14 @@ class RoomsListViewController: BaseViewController {
         endTimelabel.text = "End " + end
     }
     
+    func hideGuideView() {
+        if ( self.guideView.isHidden == false) {
+            self.guideView.isHidden = true
+        }
+        UserDefaults.standard.set(true, forKey: "isRoomsGuideShown")
+    }
+    
+    
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
     }
@@ -131,11 +139,27 @@ private extension RoomsListViewController {
         title = viewModel.title()
         
         viewModel.reloadBinding = { [weak self] in
+            
+            
+            if viewModel.roomsCount() > 0 {
+                let userDefault = UserDefaults.standard
+                if let weakSelf = self {
+                    weakSelf.guideView.isHidden = false
+                    let isGuideShown = userDefault.bool(forKey: "isRoomsGuideShown")
+                    if (isGuideShown) {
+                        weakSelf.guideView.isHidden = true
+                    }
+                }
+            }
+            
+            self?.tableView.reloadData()
+        
+        
             self?.showSwipeGuide()
             self?.tableView.reloadSections([0], with: UITableViewRowAnimation.fade)
         }
-        viewModel.fetchRooms()
         
+        viewModel.fetchRooms()
         setupSlider()
         
         NotificationCenter.default.addObserver(self, selector: #selector (newLocation(sender:)), name: NSNotification.Name(rawValue: Constants.roomsListNewLocationNotification), object: nil)

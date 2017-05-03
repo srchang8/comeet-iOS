@@ -26,9 +26,30 @@ class MyAgendaViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        
+        if let vm = viewModel {
+            if vm.showGuide {
+                self.guideView.isHidden = false;
+            }
+            else {
+                self.guideView.isHidden = true;
+            }
+        }
+        
         super.viewWillAppear(animated)
         showSwipeGuide()
     }
+    
+    
+    
+    func hideGuideView() {
+        if ( self.guideView.isHidden == false) {
+            self.guideView.isHidden = true
+        }
+        self.viewModel?.showGuide = true
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier,
