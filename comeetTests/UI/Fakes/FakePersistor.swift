@@ -29,4 +29,12 @@ class FakePersistor : PersistorProtocol {
     func getRoomlist() -> User? {
         return roomlist
     }
+    
+    func roomSwipeGuideWasPresented() -> Bool {
+        return true
+    }
+    
+    func agendaSwipeGuideWasPresented() -> Bool {
+        return true
+    }
 }
